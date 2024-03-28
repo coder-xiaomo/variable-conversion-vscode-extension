@@ -9,13 +9,22 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:extension.convertCase"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "text-conversion.helloWorld",
         "title": "Hello World"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.convertCase",
+        "key": "shift+alt+t",
+        "when": "editorTextFocus"
       }
     ]
   },
