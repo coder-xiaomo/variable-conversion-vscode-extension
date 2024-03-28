@@ -16,8 +16,20 @@
   "contributes": {
     "commands": [
       {
-        "command": "text-conversion.helloWorld",
-        "title": "Hello World"
+        "command": "extension.toCamelCase",
+        "title": "转小驼峰 To Camel Case"
+      },
+      {
+        "command": "extension.toPascalCase",
+        "title": "转大驼峰 To Pascal Case"
+      },
+      {
+        "command": "extension.toUpperCase",
+        "title": "转大写 To Upper Case"
+      },
+      {
+        "command": "extension.toLowerCase",
+        "title": "转小写 To Lower Case"
       }
     ],
     "keybindings": [
@@ -26,7 +38,27 @@
         "key": "shift+alt+t",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorTextFocus",
+          "submenu": "extension.stringConversion"
+        }
+      ],
+      "submenus": [
+        {
+          "id": "extension.stringConversion",
+          "when": "editorTextFocus",
+          "command": "extension.toCamelCase",
+          "label": "字符串转换"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "extension.toPascalCase"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

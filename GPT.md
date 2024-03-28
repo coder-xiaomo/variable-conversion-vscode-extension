@@ -77,3 +77,82 @@
    - 按照[官方文档](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)发布到VSCode Marketplace。
 
 请注意，这只是一个基本的指南，您可能需要根据您的具体需求调整代码。如果您需要更详细的帮助或有任何问题，请随时告诉我！
+
+====================
+
+谢谢你，那么我想添加一个右键菜单，选中文本后，可以通过右键菜单，实现转小驼峰，转大驼峰，转小写，转大写，转下划线，转中划线等功能，请问应该如何实现
+
+要在VSCode插件中添加一个右键菜单（上下文菜单），您需要在`package.json`文件中使用`menus`字段。以下是您可以遵循的步骤：
+
+1. **在`package.json`中定义上下文菜单**：
+   - 找到`contributes`部分，并添加一个新的`menus`字段。
+   - 在`menus`字段中，使用`editor/context`来定义一个新的上下文菜单项。
+   - 为每个转换操作指定一个命令和标题。
+
+   这是一个示例：
+   ```json
+   "contributes": {
+     "commands": [
+       {
+         "command": "extension.toCamelCase",
+         "title": "转小驼峰"
+       },
+       {
+         "command": "extension.toPascalCase",
+         "title": "转大驼峰"
+       },
+       // 添加其他命令...
+     ],
+     "menus": {
+       "editor/context": [
+         {
+           "when": "editorTextFocus",
+           "command": "extension.toCamelCase"
+         },
+         {
+           "when": "editorTextFocus",
+           "command": "extension.toPascalCase"
+         },
+         // 添加其他菜单项...
+       ]
+     }
+   }
+   ```
+
+2. **在`extension.ts`中实现命令逻辑**：
+   - 对于每个命令，编写一个函数来执行相应的字符串转换。
+   - 使用`vscode.commands.registerCommand`注册每个转换函数作为命令。
+
+   这是一个示例：
+   ```typescript
+   import * as vscode from 'vscode';
+
+   function toCamelCase(str: string): string {
+     // 实现转小驼峰的逻辑
+     return str.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
+   }
+
+   function toPascalCase(str: string): string {
+     // 实现转大驼峰的逻辑
+     return str.replace(/(^\w|_\w)/g, (g) => g.toUpperCase().replace('_', ''));
+   }
+
+   // 注册命令
+   export function activate(context: vscode.ExtensionContext) {
+     let disposableCamel = vscode.commands.registerCommand('extension.toCamelCase', () => {
+       // 调用转换函数
+     });
+     let disposablePascal = vscode.commands.registerCommand('extension.toPascalCase', () => {
+       // 调用转换函数
+     });
+
+     context.subscriptions.push(disposableCamel);
+     context.subscriptions.push(disposablePascal);
+     // 注册其他命令...
+   }
+   ```
+
+3. **测试您的插件**：
+   - 按下`F5`来运行和测试您的插件，确保上下文菜单正确显示并且命令能够正确执行。
+
+通过这些步骤，您应该能够为您的VSCode插件添加一个右键菜单，并实现不同的字符串转换功能。如果您在实现过程中遇到任何问题，或者需要更多帮助，请随时联系我！🛠️
