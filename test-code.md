@@ -13,4 +13,6 @@ const HELLO_WORLD = ''
 const helloworld = ''
 // 大写
 const HELLOWORLD = ''
+// 加空格
+const a = 'hello world'
 ```
