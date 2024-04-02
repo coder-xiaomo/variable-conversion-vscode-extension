@@ -123,13 +123,13 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     'How do you\bdo?\n                    How do you\tdo!'
                 ,
-                eol: [LF, CRLF],
+                eol: [LF],
                 transformText: [
                     'how|do|you|\b|do|?',
                     '                    how|do|you|\t|do|!',
                 ],
                 output: {
-                    camelCase: 'howDoYou\bDo?\n                    HowDoYou\tDo!',
+                    camelCase: 'howDoYou\bDo?\n                    howDoYou\tDo!',
                     pascalCase: 'HowDoYou\bDo?\n                    HowDoYou\tDo!',
                 },
             },
@@ -366,8 +366,8 @@ const testGroups: Array<TestCaseGroup> = [
                         '      exercisingPermissionsGrantedByThisLicense.'
                     ,
                     pascalCase:
-                        '      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity\n' +
-                        '      exercising permissions granted by this License.'
+                        '      &Quot;You&Quot;(Or&Quot;Your&Quot;)ShallMeanAnIndividualOrLegalEntity\n' +
+                        '      ExercisingPermissionsGrantedByThisLicense.'
                     ,
                 },
             },

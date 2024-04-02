@@ -12,7 +12,7 @@ import { transformMutliLineText, transformText } from './text-transform';
 export const toCamelCase: ConvertFunction = (str: string, eol: EOL): string => {
     // Cut text 切割文本
     const results: Array<TransformTextResult> = transformMutliLineText(str);
-    console.log('results', results);
+    // console.log('results', results);
 
     const transformedLines: Array<string> = [];
     for (const result of results) {
@@ -54,16 +54,20 @@ export const toCamelCase: ConvertFunction = (str: string, eol: EOL): string => {
  */
 export const toPascalCase: ConvertFunction = (str: string, eol: EOL): string => {
     // Cut text 切割文本
-    let result = transformText(str);
-    console.log('result', result);
+    const results: Array<TransformTextResult> = transformMutliLineText(str);
+    // console.log('results', results);
 
-    // Post Process 后置处理
-    const words = result.trimResult.split('|');
-    const pascalCaseWords = words.map((word, index) => {
-        // 首字母大写
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    });
-    return result.leadingSpace + pascalCaseWords.join('') + result.trailingSpace;
+    const transformedLines: Array<string> = [];
+    for (const result of results) {
+        const words = result.trimResult.split('|');
+        const pascalCaseWords = words.map((word, index) => {
+            // 首字母大写
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        });
+        const transformedLine = result.leadingSpace + pascalCaseWords.join('') + result.trailingSpace;
+        transformedLines.push(transformedLine);
+    }
+    return transformedLines.join(eol);
 
     // return str.replace(/(^\w|_\w)/g, (g) => g.toUpperCase().replace('_', ''));
 };
