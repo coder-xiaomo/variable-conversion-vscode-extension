@@ -45,6 +45,10 @@
         "title": "全小写 (Lower Case) [ foobar ]"
       },
       {
+        "command": "extension.toCamelSnakeCase",
+        "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
+      },
+      {
         "command": "editor.action.transformToCamelcase",
         "title": "[VSCode 自带] 驼峰式大小写 (Camel Case) [ fooBar ]"
       },

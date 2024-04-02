@@ -69,4 +69,14 @@ export enum SupportCase {
      * @since 2024-04-02
      */
     LOWER_CASE,
+
+    /**
+     * 驼峰蛇形命名
+     * Camel Snake Case
+     * e.g. Foo_Bar
+     * 
+     * @alias: camelSnakeCase / CamelSnakeCase / camel_snake_case / CAMEL_SNAKE_CASE
+     * @since 2024-04-02
+     */
+    CAMEL_SNAKE_CASE,
 }
