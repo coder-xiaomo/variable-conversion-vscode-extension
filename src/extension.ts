@@ -2,8 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as TextConversion from './main-code/text-conversion';
-
-type ConvertFunction = (selectionText: string) => string;
+import { ConvertFunction, EOL } from './type-definition/convert-function-type';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -32,12 +31,13 @@ export function activate(context: vscode.ExtensionContext) {
 		console.log('============ start convert ============');
 		let document = editor.document;
 		let selection = editor.selection;
+		let eol: EOL = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
 
 		// 获取选中的文本
 		let text = document.getText(selection);
 
 		// 转换文本
-		const converted = convertFunction(text);
+		const converted = convertFunction(text, eol);
 		console.log('converted', converted);
 
 		// 无法转换时，跳过转换

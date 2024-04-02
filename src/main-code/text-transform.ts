@@ -2,6 +2,15 @@ import { TransformTextResult } from "../type-definition/text-transform-type";
 
 const logDebugInfo = false;
 
+export function transformMutliLineText(multilineInput: string): Array<TransformTextResult> {
+    const results: Array<TransformTextResult> = [];
+    const lines = multilineInput.split(/\r?\n/);
+    for (const line of lines) {
+        // console.log('line', '->' + line + '<-');
+        results.push(transformText(line));
+    }
+    return results;
+}
 /**
  * 分词
  *
@@ -16,6 +25,8 @@ export function transformText(input: string): TransformTextResult {
     const trailingSpaces = /^[ ]+$/.test(input)
         ? '' // 字符串全为空格时，将尾空格置为空字符串
         : input.match(/ +$/);
+
+    // const debug = { input, leadingSpaces, trailingSpaces };
 
     // 去除首尾空格
     // 不可以使用 input = input.trim(); 否则换行会被替换掉
@@ -61,5 +72,6 @@ export function transformText(input: string): TransformTextResult {
         trailingSpace: trailingSpaceStr,
         result: noTrimResult,
         trimResult: result,
+        // debug: debug
     };
 }

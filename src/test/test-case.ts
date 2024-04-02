@@ -1,5 +1,8 @@
 import { TestCaseGroup } from "../type-definition/test-case-type";
 
+const LF = '\n';
+const CRLF = '\r\n';
+
 const testGroups: Array<TestCaseGroup> = [
     {
         group: 'Input validation',
@@ -9,7 +12,10 @@ const testGroups: Array<TestCaseGroup> = [
             {
                 title: 'empty input',
                 input: '',
-                transformText: '',
+                eol: [LF, CRLF],
+                transformText: [
+                    '',
+                ],
                 output: {
                     camelCase: '',
                     pascalCase: '',
@@ -18,28 +24,65 @@ const testGroups: Array<TestCaseGroup> = [
             {
                 title: 'empty input (contains space)',
                 input: '  ',
-                transformText: '  ',
+                eol: [LF, CRLF],
+                transformText: [
+                    '  ',
+                ],
                 output: {
                     camelCase: '  ',
                     pascalCase: '  ',
                 },
             },
             {
-                title: 'empty input (contains space and enter 1)',
+                title: 'empty input (contains space and crlf enter 1)',
+                input: ' \r\n ',
+                eol: [CRLF],
+                transformText: [
+                    ' ',
+                    ' ',
+                ],
+                output: {
+                    camelCase: ' \r\n ',
+                    pascalCase: ' \r\n ',
+                },
+            },
+            {
+                title: 'empty input (contains space and crlf enter 2)',
+                input: ' x \r\ny ',
+                eol: [CRLF],
+                transformText: [
+                    ' x ',
+                    'y ',
+                ],
+                output: {
+                    camelCase: ' x \r\ny ',
+                    pascalCase: ' X \r\nY ',
+                },
+            },
+            {
+                title: 'empty input (contains space and lf enter 1)',
                 input: ' \n ',
-                transformText: ' \n ',
+                eol: [LF],
+                transformText: [
+                    ' ',
+                    ' ',
+                ],
                 output: {
                     camelCase: ' \n ',
                     pascalCase: ' \n ',
                 },
             },
             {
-                title: 'empty input (contains space and enter 2)',
+                title: 'empty input (contains space and lf enter 2)',
                 input: ' a\nb ',
-                transformText: ' a|\n|b ',
+                eol: [LF],
+                transformText: [
+                    ' a',
+                    'b ',
+                ],
                 output: {
                     camelCase: ' a\nb ',
-                    pascalCase: ' a\nb ',
+                    pascalCase: ' A\nB ',
                 },
             },
             // 输入长文本
@@ -48,35 +91,46 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     `China's factory activity expanded in March after five consecutive months of contraction, an official survey revealed on Sunday, adding to a run of indicators that suggest the stabilization of the world's second-largest economy.`
                 ,
-                transformText:
+                eol: [LF, CRLF],
+                transformText: [
                     "china|'|s|factory|activity|expanded|in|march|after|five|consecutive|months|of|contraction|,|an|official|survey|revealed|on|sunday|,|adding|to|a|run|of|indicators|that|suggest|the|stabilization|of|the|world|'|s|second|largest|economy|."
-                ,
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase:
+                        "china'SFactoryActivityExpandedInMarchAfterFiveConsecutiveMonthsOfContraction,AnOfficialSurveyRevealedOnSunday,AddingToARunOfIndicatorsThatSuggestTheStabilizationOfTheWorld'SSecondLargestEconomy."
+                    ,
+                    pascalCase:
+                        "China'SFactoryActivityExpandedInMarchAfterFiveConsecutiveMonthsOfContraction,AnOfficialSurveyRevealedOnSunday,AddingToARunOfIndicatorsThatSuggestTheStabilizationOfTheWorld'SSecondLargestEconomy."
+                    ,
                 },
             },
             // 输入包含数字
             {
                 title: 'text and number input',
                 input: 'entity2Map',
-                transformText: 'entity|2|map',
+                eol: [LF, CRLF],
+                transformText: [
+                    'entity|2|map',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: 'entity2Map',
+                    pascalCase: 'Entity2Map',
                 },
             },
             // 输入包含换行
             {
                 title: 'enter input',
                 input:
-                    `How do you\bdo?
-                    How do you\tdo!`
+                    'How do you\bdo?\n                    How do you\tdo!'
                 ,
-                transformText: 'how|do|you|\b|do|?\n|how|do|you|\t|do|!',
+                eol: [LF, CRLF],
+                transformText: [
+                    'how|do|you|\b|do|?',
+                    '                    how|do|you|\t|do|!',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: 'howDoYou\bDo?\n                    HowDoYou\tDo!',
+                    pascalCase: 'HowDoYou\bDo?\n                    HowDoYou\tDo!',
                 },
             },
             // 非英文字符，特殊字符
@@ -85,7 +139,10 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     '今天是星期日'
                 ,
-                transformText: '今天是星期日',
+                eol: [LF, CRLF],
+                transformText: [
+                    '今天是星期日',
+                ],
                 output: {
                     camelCase: '今天是星期日',
                     pascalCase: '今天是星期日',
@@ -96,10 +153,13 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     '🥰 a-cup/_of Coffee🍻,-_please!. '
                 ,
-                transformText: '🥰|a|cup|/|of|coffee|🍻,|please|!. ',
+                eol: [LF, CRLF],
+                transformText: [
+                    '🥰|a|cup|/|of|coffee|🍻,|please|!. ',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: '🥰aCup/OfCoffee🍻,Please!. ',
+                    pascalCase: '🥰ACup/OfCoffee🍻,Please!. ',
                 },
             },
             {
@@ -107,10 +167,13 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     '    NHDAs--+90-usz&* '
                 ,
-                transformText: '    n|h|d|as|+90|usz|&* ',
+                eol: [LF, CRLF],
+                transformText: [
+                    '    n|h|d|as|+90|usz|&* ',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: '    nHDAs+90Usz&* ',
+                    pascalCase: '    NHDAs+90Usz&* ',
                 },
             },
             {
@@ -118,10 +181,13 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     '--担心你鸿dAf_=coffee—_— '
                 ,
-                transformText: '担心你鸿|d|af|=|coffee|—|— ',
+                eol: [LF, CRLF],
+                transformText: [
+                    '担心你鸿|d|af|=|coffee|—|— ',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: '担心你鸿dAf=Coffee—— ',
+                    pascalCase: '担心你鸿DAf=Coffee—— ',
                 },
             },
             {
@@ -129,10 +195,13 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     'fsdi_sdacsaf+desd'
                 ,
-                transformText: 'fsdi|sdacsaf|+|desd',
+                eol: [LF, CRLF],
+                transformText: [
+                    'fsdi|sdacsaf|+|desd',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: 'fsdiSdacsaf+Desd',
+                    pascalCase: 'FsdiSdacsaf+Desd',
                 },
             },
             // add more cases...
@@ -150,7 +219,10 @@ const testGroups: Array<TestCaseGroup> = [
                     '-foo -bar',
                     '__foo - _bar-__',
                 ],
-                transformText: 'foo|bar',
+                eol: [LF, CRLF],
+                transformText: [
+                    'foo|bar',
+                ],
                 output: {
                     camelCase: 'fooBar',
                     pascalCase: 'FooBar',
@@ -166,7 +238,10 @@ const testGroups: Array<TestCaseGroup> = [
                     'TestCase',
                     'TEST_CASE',
                 ],
-                transformText: 'test|case',
+                eol: [LF, CRLF],
+                transformText: [
+                    'test|case',
+                ],
                 output: {
                     camelCase: 'testCase',
                     pascalCase: 'TestCase',
@@ -177,7 +252,10 @@ const testGroups: Array<TestCaseGroup> = [
                 input: [
                     'pineApple',
                 ],
-                transformText: 'pine|apple',
+                eol: [LF, CRLF],
+                transformText: [
+                    'pine|apple',
+                ],
                 output: {
                     camelCase: 'pineApple',
                     pascalCase: 'PineApple',
@@ -197,7 +275,10 @@ const testGroups: Array<TestCaseGroup> = [
                     'HaveANiceDay!',
                     'haveANiceDay!',
                 ],
-                transformText: 'have|a|nice|day|!',
+                eol: [LF, CRLF],
+                transformText: [
+                    'have|a|nice|day|!',
+                ],
                 output: {
                     camelCase: 'haveANiceDay!',
                     pascalCase: 'HaveANiceDay!',
@@ -215,7 +296,10 @@ const testGroups: Array<TestCaseGroup> = [
                     // ' A----NiCe_Day_-_!-- ',
                     ' A----NICE_Day_-_!-- ',
                 ],
-                transformText: ' a|nice|day|! ',
+                eol: [LF, CRLF],
+                transformText: [
+                    ' a|nice|day|! ',
+                ],
                 output: {
                     camelCase: ' aNiceDay! ',
                     pascalCase: ' ANiceDay! ',
@@ -227,22 +311,28 @@ const testGroups: Array<TestCaseGroup> = [
                     ' A NICE-Day-',
                     ' A niceDay',
                 ],
-                transformText: ' a|nice|day',
+                eol: [LF, CRLF],
+                transformText: [
+                    ' a|nice|day',
+                ],
                 output: {
-                    camelCase: ' a niceDay',
-                    pascalCase: ' A NiceDay',
+                    camelCase: ' aNiceDay',
+                    pascalCase: ' ANiceDay',
                 },
             },
             {
-                title: 'Normal input (foo-bar)',
+                title: 'Normal input (apple-2-Tree)',
                 input: [
-                    ' app2-Trrre ',
-                    ' app2Trrre ',
+                    ' apple2-Tree ',
+                    ' apple2Tree ',
                 ],
-                transformText: ' app|2|trrre ',
+                eol: [LF, CRLF],
+                transformText: [
+                    ' apple|2|tree ',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: ' apple2Tree ',
+                    pascalCase: ' Apple2Tree ',
                 },
             },
             {
@@ -250,24 +340,35 @@ const testGroups: Array<TestCaseGroup> = [
                 input:
                     ' Julius_Caesar, William_Shakespeare, Albert_Einstein, Marie_Curie, WolfgangAmadeusMozart, Vincent-van-Gogh. '
                 ,
-                transformText: ' julius|caesar|,|william|shakespeare|,|albert|einstein|,|marie|curie|,|wolfgang|amadeus|mozart|,|vincent|van|gogh|. ',
+                eol: [LF, CRLF],
+                transformText: [
+                    ' julius|caesar|,|william|shakespeare|,|albert|einstein|,|marie|curie|,|wolfgang|amadeus|mozart|,|vincent|van|gogh|. ',
+                ],
                 output: {
-                    camelCase: '',
-                    pascalCase: '',
+                    camelCase: ' juliusCaesar,WilliamShakespeare,AlbertEinstein,MarieCurie,WolfgangAmadeusMozart,VincentVanGogh. ',
+                    pascalCase: ' JuliusCaesar,WilliamShakespeare,AlbertEinstein,MarieCurie,WolfgangAmadeusMozart,VincentVanGogh. ',
                 },
             },
             {
                 title: 'Normal input (&quot;You&quot; (or &quot;Your&quot;) ...)',
                 input:
-                    [
-                        `      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity`,
-                        `      exercising permissions granted by this License.`
-                    ].join('\n')
+                    '      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity\n' +
+                    '      exercising permissions granted by this License.'
                 ,
-                transformText: '      &|quot|;|you|&|quot|;|(|or|&|quot|;|your|&|quot|;)|shall|mean|an|individual|or|legal|entity|\n|exercising|permissions|granted|by|this|license|.',
+                eol: [LF],
+                transformText: [
+                    '      &|quot|;|you|&|quot|;|(|or|&|quot|;|your|&|quot|;)|shall|mean|an|individual|or|legal|entity',
+                    '      exercising|permissions|granted|by|this|license|.',
+                ],
                 output: {
-                    camelCase: '      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity\n      exercising permissions granted by this License.',
-                    pascalCase: '      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity\n      exercising permissions granted by this License.',
+                    camelCase:
+                        '      &quot;You&Quot;(Or&Quot;Your&Quot;)ShallMeanAnIndividualOrLegalEntity\n' +
+                        '      exercisingPermissionsGrantedByThisLicense.'
+                    ,
+                    pascalCase:
+                        '      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity\n' +
+                        '      exercising permissions granted by this License.'
+                    ,
                 },
             },
             // add more cases...
@@ -290,7 +391,10 @@ const testGroups: Array<TestCaseGroup> = [
             // {
             //     title: 'Normal input ( ...)',
             //     input: '',
-            //     transformText: '',
+            //     eol: [LF, CRLF],
+            //     transformText: [
+            //         '',
+            //     ],
             //     output: {
             //         camelCase: '',
             //         pascalCase: ''

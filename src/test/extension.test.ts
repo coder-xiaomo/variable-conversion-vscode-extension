@@ -5,8 +5,9 @@ import * as assert from 'assert';
 import * as vscode from 'vscode';
 import testGroups from './test-case';
 import { TestCase, TestCaseGroup } from '../type-definition/test-case-type';
-import { transformText } from '../main-code/text-transform';
+import { transformMutliLineText, transformText } from '../main-code/text-transform';
 import { toCamelCase, toPascalCase } from '../main-code/text-conversion';
+import { TransformTextResult } from '../type-definition/text-transform-type';
 // import * as myExtension from '../../extension';
 
 /*
@@ -31,15 +32,28 @@ suite('Extension Test: run test case', () => {
 		const testTitle = testGroup.testTitle;
 		const testCases: Array<TestCase> = testGroup.cases;
 		for (const testCase of testCases) {
+			// // 临时
+			// if (testCase.title !== '') {
+			// 	continue;
+			// }
 			test(testTitle + ' - ' + testCase.title, () => {
 				const inputList = Array.isArray(testCase.input) ? testCase.input : [testCase.input];
+				const eolList = Array.isArray(testCase.eol) ? testCase.eol : [testCase.eol];
 				for (const input of inputList) {
+					// console.log('input', '->' + input + '<-');
 					// 验证 transformText
-					const transformTextResult = transformText(input);
-					assert.strictEqual(testCase.transformText, transformTextResult.result);
+					const transformTextResult: Array<TransformTextResult> = transformMutliLineText(input);
+					const results = transformTextResult.map(res => res.result);
+					for (let index = 0; index < testCase.transformText.length; index++) {
+						const correctValue = testCase.transformText[index];
+						const currentValue = results[index];
+						assert.strictEqual(correctValue, currentValue);
+					}
 					// 验证转换
-					assert.strictEqual(testCase.output.camelCase, toCamelCase(input));
-					assert.strictEqual(testCase.output.pascalCase, toPascalCase(input));
+					for (let eol of eolList) {
+						assert.strictEqual(testCase.output.camelCase, toCamelCase(input, eol));
+						assert.strictEqual(testCase.output.pascalCase, toPascalCase(input, eol));
+					}
 				}
 			});
 		}
