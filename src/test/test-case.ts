@@ -135,7 +135,7 @@ const testGroups: Array<TestCaseGroup> = [
             },
             // 非英文字符，特殊字符
             {
-                title: 'Chinese input',
+                title: 'Chinese input 1',
                 input:
                     '今天是星期日'
                 ,
@@ -146,6 +146,20 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '今天是星期日',
                     pascalCase: '今天是星期日',
+                },
+            },
+            {
+                title: 'Chinese input 2',
+                input:
+                    '--担心你dAf_=coffee—爸妈不在家_— '
+                ,
+                eol: [LF, CRLF],
+                transformText: [
+                    '担心你|d|af|=|coffee|—爸妈不在家|— ',
+                ],
+                output: {
+                    camelCase: '担心你dAf=Coffee—爸妈不在家— ',
+                    pascalCase: '担心你DAf=Coffee—爸妈不在家— ',
                 },
             },
             {
@@ -160,6 +174,20 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '🥰aCup/OfCoffee🍻,Please!. ',
                     pascalCase: '🥰ACup/OfCoffee🍻,Please!. ',
+                },
+            },
+            {
+                title: 'Special character with multiple input',
+                input:
+                    'takeARest😊haPPy,😢triSTE,ENFADADO, 驚きました,❤️, 笑, 😎COol, 😳-Embarrassed'
+                ,
+                eol: [LF, CRLF],
+                transformText: [
+                    'take|a|rest|😊|ha|p|py|,😢|tri|ste|,|enfadado|,|驚きました,❤️,|笑,|😎|c|ool|,|😳|embarrassed',
+                ],
+                output: {
+                    camelCase: 'takeARest😊HaPPy,😢TriSte,Enfadado,驚きました,❤️,笑,😎COol,😳Embarrassed',
+                    pascalCase: 'TakeARest😊HaPPy,😢TriSte,Enfadado,驚きました,❤️,笑,😎COol,😳Embarrassed',
                 },
             },
             {
@@ -318,6 +346,20 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' aNiceDay',
                     pascalCase: ' ANiceDay',
+                },
+            },
+            {
+                title: 'Normal input (tom-likes-eat-ice-cream)',
+                input: [
+                    'TomLikes eat iceCream.',
+                ],
+                eol: [LF, CRLF],
+                transformText: [
+                    'tom|likes|eat|ice|cream|.',
+                ],
+                output: {
+                    camelCase: 'tomLikesEatIceCream.',
+                    pascalCase: 'TomLikesEatIceCream.',
                 },
             },
             {
