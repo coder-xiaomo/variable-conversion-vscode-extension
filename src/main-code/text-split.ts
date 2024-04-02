@@ -1,89 +1,56 @@
 
-const handlerList = [];
-/**
- * 小驼峰处理中间件
- * 
- * @param str 
- * @since 2024-03-29
- */
-const camelCaseHandler = (str: string) => {
-    // 是否是小驼峰
-    const regexp = /^$/g; // need done
-    // if()
-};
-handlerList.push(camelCaseHandler);
-
-/**
- * 小驼峰处理中间件
- * 
- * @param str 
- * @since 2024-03-29
- */
-const pascalCaseHandler = (str: string) => {
-    // 是否是小驼峰
-    const regexp = /^$/g; // need done
-};
-handlerList.push(pascalCaseHandler);
-
-type SplitFailResult = {
-    success: false
-    errMsg: string
-};
-
-type SplitSuccessResult = {
-    success: true
-    result: Array<string>
-};
-
-type SplitResult = SplitFailResult | SplitSuccessResult;
+const logDebugInfo = false;
 
 /**
  * 分词
  * 
  * @param str 
- * @since 2024-03-29
+ * @since 2024-04-02
  */
-export function splitWord(str: string): SplitResult {
-    // check parameter type
-    if (typeof str !== 'string') {
-        return { success: false, errMsg: `str is not string, type: ${typeof str}` };
-    }
+export function transformText(input: string): string {
+    logDebugInfo && console.log('input  ', '->' + input + '<-');
 
-    // check parameter length
-    if (str.length === 0) {
-        return { success: false, errMsg: 'str is empty string.' };
-    }
-    else if (str.length > 64) {
-        return { success: false, errMsg: 'str is too long, it does not appear to be an acceptable input.' };
-    }
+    // 记录首尾空格
+    const leadingSpaces = input.match(/^ +/);
+    const trailingSpaces = input.match(/ +$/);
 
-    // check whether the input matches the criteria
-    // 是否包含空格
-    const isContainSpace = str.indexOf(' ') !== -1;
-    // 是否包含连字符
-    const isContainHyphen = str.indexOf('-') !== -1;
-    // 是否包含下划线
-    const isContainUnderline = str.indexOf('_') !== -1;
-    // 是否包含除空格外的其他连字符 (检查字符串是否包含 - 或 _ ，并且不包含空格)
-    const isContainSeparator =  /^[^\s]*[-_]+[^\s]*$/.test(str);
+    // 去除首尾空格
+    input = input.trim();
 
-    // 是否是小驼峰命名法
-    const isCamelCase = /^[a-z][a-zA-Z]*$/;
-    // 是否是大驼峰命名法
-    const isPascalCase = /^[A-Z][a-zA-Z]*$/;
-    // 是否包含大写字母
-    const isContainUpperCaseLetter = /[A-Z]/.test(str);
-    // 是否包含小写字母
-    const isContainLowerCaseLetter = /[a-z]/.test(str);
-    // 是否包含字母
-    const isContainLetter = /[a-zA-Z]/.test(str);
+    // 使用正则表达式匹配中英文字母、连字符、下划线和空格
+    let result = input.replace(/([A-Za-z\-_ ]+)/g, (match: string) => {
 
-    return { success: true, result: [] };
-}
+        // 替换连字符为 '|' （如有多个则合并）
+        match = match.replace(/[-_ ]+/g, '|');
 
-const result = splitWord('hello world');
-if (result.success) {
-    console.log('success!', result.result);
-} else {
-    console.log('skip!', result.errMsg);
+        // 拆分连续的小写字母和大写字母为多个单词
+        match = match.replace(/([a-z])([A-Z])/g, '$1|$2');
+
+        // 分割
+        let words = match.split('|');
+
+        // 处理特殊情况，如 'ENFADADO' 不应该被拆分
+        words = words.map(word => {
+            if (word.toUpperCase() === word && word.length > 1) {
+                return word.toLowerCase();
+            }
+            return word.replace(/([A-Z])/g, '|$1').toLowerCase();
+        });
+
+        // 重新组合单词
+        return '|' + words.join('|') + '|';
+    });
+
+    // 如果有多个 | 将其合并
+    result = result.replace(/[\|]+/g, '|');
+
+    // 如果首尾有 | 将其替换掉
+    result = result.replace(/(^[\|]+|[\|]+$)/g, '');
+
+    // 还原首尾空格
+    // result = (leadingSpaces ? (leadingSpaces[0] + '|') : '') + result + (trailingSpaces ? ('|' + trailingSpaces[0]) : '');
+    result = (leadingSpaces ? leadingSpaces[0] : '') + result + (trailingSpaces ? trailingSpaces[0] : '');
+
+    logDebugInfo && console.log('output ', '->' + result + '<-');
+    return result;
 }

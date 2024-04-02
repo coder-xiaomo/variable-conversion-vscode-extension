@@ -49,7 +49,7 @@ const testCase: Array<TestCase> = [
     },
     {
         input:
-            `今天是星期日`
+            '今天是星期日'
         ,
         isSkip: true,
         skipReason: SkipReason.NOT_CONTAIN_LETTERS
@@ -123,6 +123,61 @@ const testCase: Array<TestCase> = [
         output: {
             camelCase: ' a niceDay',
             pascalCase: ' A NiceDay',
+        }
+    },
+    {
+        input:
+            ' Julius_Caesar, William_Shakespeare, Albert_Einstein, Marie_Curie, WolfgangAmadeusMozart, Vincent-van-Gogh. '
+        ,
+        isSkip: false,
+        splitResult: [],
+        output: {
+            camelCase: '',
+            pascalCase: '',
+        }
+    },
+    {
+        input:
+            '🥰 a-cup/_of Coffee🍻,-_please!. '
+        ,
+        isSkip: false,
+        splitResult: [],
+        output: {
+            camelCase: '',
+            pascalCase: '',
+        }
+    },
+    {
+        input:
+            '    NHDAs--+90-usz&* '
+        ,
+        isSkip: false,
+        splitResult: [],
+        output: {
+            camelCase: '',
+            pascalCase: '',
+        }
+    },
+    {
+        input:
+            '--担心你鸿dAf_=coffee—_— '
+        ,
+        isSkip: false,
+        splitResult: [],
+        output: {
+            camelCase: '',
+            pascalCase: '',
+        }
+    },
+    {
+        input:
+            'fsdi_sdacsaf+desd'
+        ,
+        isSkip: false,
+        splitResult: [],
+        output: {
+            camelCase: '',
+            pascalCase: '',
         }
     },
 ];

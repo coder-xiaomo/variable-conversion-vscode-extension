@@ -1,3 +1,5 @@
+import { transformText } from './text-split';
+
 /**
  * 转小驼峰 to Camel Case
  * 
@@ -6,6 +8,12 @@
  * @since 2024-03-28
  */
 export function toCamelCase(str: string): string {
+    // 切割文本
+    const result = transformText(str);
+    console.log('result', result);
+
+    // TODO
+
     return str.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
 }
 

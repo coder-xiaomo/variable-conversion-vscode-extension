@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import * as TextConversion from './main-code/text-conversion';
 
-type ConvertFunction = (selectionText: string) => string | undefined;
+type ConvertFunction = (selectionText: string) => string;
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!editor) {
 			return;
 		}
-		
+
 		console.log('============ start convert ============');
 		let document = editor.document;
 		let selection = editor.selection;
@@ -46,7 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		// 当转换后文本与转换前相同时，跳过转换
+		// 当转换后文本与转换前相同时，跳过转换，避免形成 Ctrl + Z 撤销历史记录
 		if (converted === text) {
 			console.log('selection text is same to converted text, skip replace contents.');
 			return;
