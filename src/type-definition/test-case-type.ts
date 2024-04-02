@@ -14,5 +14,7 @@ export type TestCase = {
     output: {
         camelCase: string
         pascalCase: string
+        upperCase?: string
+		lowerCase?: string
     }
 };

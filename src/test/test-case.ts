@@ -19,6 +19,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '',
                     pascalCase: '',
+                    upperCase: '',
+                    lowerCase: '',
                 },
             },
             {
@@ -31,6 +33,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '  ',
                     pascalCase: '  ',
+                    upperCase: '  ',
+                    lowerCase: '  ',
                 },
             },
             {
@@ -44,6 +48,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' \r\n ',
                     pascalCase: ' \r\n ',
+                    upperCase: ' \r\n ',
+                    lowerCase: ' \r\n ',
                 },
             },
             {
@@ -57,6 +63,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' x \r\ny ',
                     pascalCase: ' X \r\nY ',
+                    upperCase: ' X \r\nY ',
+                    lowerCase: ' x \r\ny ',
                 },
             },
             {
@@ -70,6 +78,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' \n ',
                     pascalCase: ' \n ',
+                    upperCase: ' \n ',
+                    lowerCase: ' \n ',
                 },
             },
             {
@@ -83,6 +93,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' a\nb ',
                     pascalCase: ' A\nB ',
+                    upperCase: ' A\nB ',
+                    lowerCase: ' a\nb ',
                 },
             },
             // 输入长文本
@@ -102,6 +114,12 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase:
                         "China'SFactoryActivityExpandedInMarchAfterFiveConsecutiveMonthsOfContraction,AnOfficialSurveyRevealedOnSunday,AddingToARunOfIndicatorsThatSuggestTheStabilizationOfTheWorld'SSecondLargestEconomy."
                     ,
+                    upperCase:
+                        "CHINA'S FACTORY ACTIVITY EXPANDED IN MARCH AFTER FIVE CONSECUTIVE MONTHS OF CONTRACTION, AN OFFICIAL SURVEY REVEALED ON SUNDAY, ADDING TO A RUN OF INDICATORS THAT SUGGEST THE STABILIZATION OF THE WORLD'S SECOND-LARGEST ECONOMY."
+                    ,
+                    lowerCase:
+                        "china's factory activity expanded in march after five consecutive months of contraction, an official survey revealed on sunday, adding to a run of indicators that suggest the stabilization of the world's second-largest economy."
+                    ,
                 },
             },
             // 输入包含数字
@@ -115,6 +133,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'entity2Map',
                     pascalCase: 'Entity2Map',
+                    upperCase: 'ENTITY2MAP',
+                    lowerCase: 'entity2map',
                 },
             },
             // 输入包含换行
@@ -131,6 +151,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'howDoYou\bDo?\n                    howDoYou\tDo!',
                     pascalCase: 'HowDoYou\bDo?\n                    HowDoYou\tDo!',
+                    upperCase: 'HOW DO YOU\bDO?\n                    HOW DO YOU\tDO!',
+                    lowerCase: 'how do you\bdo?\n                    how do you\tdo!',
                 },
             },
             // 非英文字符，特殊字符
@@ -146,6 +168,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '今天是星期日',
                     pascalCase: '今天是星期日',
+                    upperCase: '今天是星期日',
+                    lowerCase: '今天是星期日',
                 },
             },
             {
@@ -160,6 +184,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '担心你dAf=Coffee—爸妈不在家— ',
                     pascalCase: '担心你DAf=Coffee—爸妈不在家— ',
+                    upperCase: '--担心你DAF_=COFFEE—爸妈不在家_— ',
+                    lowerCase: '--担心你daf_=coffee—爸妈不在家_— ',
                 },
             },
             {
@@ -174,6 +200,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '🥰aCup/OfCoffee🍻,Please!. ',
                     pascalCase: '🥰ACup/OfCoffee🍻,Please!. ',
+                    upperCase: '🥰 A-CUP/_OF COFFEE🍻,-_PLEASE!. ',
+                    lowerCase: '🥰 a-cup/_of coffee🍻,-_please!. ',
                 },
             },
             {
@@ -188,6 +216,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'takeARest😊HaPPy,😢TriSte,Enfadado,驚きました,❤️,笑,😎COol,😳Embarrassed',
                     pascalCase: 'TakeARest😊HaPPy,😢TriSte,Enfadado,驚きました,❤️,笑,😎COol,😳Embarrassed',
+                    upperCase: 'TAKEAREST😊HAPPY,😢TRISTE,ENFADADO, 驚きました,❤️, 笑, 😎COOL, 😳-EMBARRASSED',
+                    lowerCase: 'takearest😊happy,😢triste,enfadado, 驚きました,❤️, 笑, 😎cool, 😳-embarrassed',
                 },
             },
             {
@@ -202,6 +232,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '    nHDAs+90Usz&* ',
                     pascalCase: '    NHDAs+90Usz&* ',
+                    upperCase: '    NHDAS--+90-USZ&* ',
+                    lowerCase: '    nhdas--+90-usz&* ',
                 },
             },
             {
@@ -216,6 +248,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: '担心你鸿dAf=Coffee—— ',
                     pascalCase: '担心你鸿DAf=Coffee—— ',
+                    upperCase: '--担心你鸿DAF_=COFFEE—_— ',
+                    lowerCase: '--担心你鸿daf_=coffee—_— ',
                 },
             },
             {
@@ -230,6 +264,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'fsdiSdacsaf+Desd',
                     pascalCase: 'FsdiSdacsaf+Desd',
+                    upperCase: 'FSDI_SDACSAF+DESD',
+                    lowerCase: 'fsdi_sdacsaf+desd',
                 },
             },
             // add more cases...
@@ -254,6 +290,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'fooBar',
                     pascalCase: 'FooBar',
+                    // upperCase: 'FOO--BAR',
+                    // lowerCase: 'foo--bar',
                 },
             },
             {
@@ -273,6 +311,26 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'testCase',
                     pascalCase: 'TestCase',
+                    // upperCase: 'TEST CASE',
+                    // lowerCase: 'test case',
+                },
+            },
+            {
+                title: 'Normal input (apple)',
+                input: [
+                    'apple',
+                    'APPLE',
+                    'Apple',
+                ],
+                eol: [LF, CRLF],
+                transformText: [
+                    'apple',
+                ],
+                output: {
+                    camelCase: 'apple',
+                    pascalCase: 'Apple',
+                    upperCase: 'APPLE',
+                    lowerCase: 'apple',
                 },
             },
             {
@@ -287,6 +345,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'pineApple',
                     pascalCase: 'PineApple',
+                    upperCase: 'PINEAPPLE',
+                    lowerCase: 'pineapple',
                 },
             },
             {
@@ -310,6 +370,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'haveANiceDay!',
                     pascalCase: 'HaveANiceDay!',
+                    // upperCase: 'HAVE A NICE DAY!',
+                    // lowerCase: 'have a nice day!',
                 },
             },
             {
@@ -331,6 +393,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' aNiceDay! ',
                     pascalCase: ' ANiceDay! ',
+                    // upperCase: ' A NICE DAY! ',
+                    // lowerCase: ' a nice day! ',
                 },
             },
             {
@@ -346,6 +410,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' aNiceDay',
                     pascalCase: ' ANiceDay',
+                    // upperCase: ' A NICE-DAY-',
+                    // lowerCase: ' a nice-day-',
                 },
             },
             {
@@ -360,13 +426,15 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: 'tomLikesEatIceCream.',
                     pascalCase: 'TomLikesEatIceCream.',
+                    upperCase: 'TOMLIKES EAT ICECREAM.',
+                    lowerCase: 'tomlikes eat icecream.',
                 },
             },
             {
                 title: 'Normal input (apple-2-Tree)',
                 input: [
                     ' apple2-Tree ',
-                    ' apple2Tree ',
+                    // ' apple2Tree ',
                 ],
                 eol: [LF, CRLF],
                 transformText: [
@@ -375,6 +443,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' apple2Tree ',
                     pascalCase: ' Apple2Tree ',
+                    upperCase: ' APPLE2-TREE ',
+                    lowerCase: ' apple2-tree ',
                 },
             },
             {
@@ -389,6 +459,8 @@ const testGroups: Array<TestCaseGroup> = [
                 output: {
                     camelCase: ' juliusCaesar,WilliamShakespeare,AlbertEinstein,MarieCurie,WolfgangAmadeusMozart,VincentVanGogh. ',
                     pascalCase: ' JuliusCaesar,WilliamShakespeare,AlbertEinstein,MarieCurie,WolfgangAmadeusMozart,VincentVanGogh. ',
+                    upperCase: ' JULIUS_CAESAR, WILLIAM_SHAKESPEARE, ALBERT_EINSTEIN, MARIE_CURIE, WOLFGANGAMADEUSMOZART, VINCENT-VAN-GOGH. ',
+                    lowerCase: ' julius_caesar, william_shakespeare, albert_einstein, marie_curie, wolfgangamadeusmozart, vincent-van-gogh. ',
                 },
             },
             {
@@ -410,6 +482,14 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase:
                         '      &Quot;You&Quot;(Or&Quot;Your&Quot;)ShallMeanAnIndividualOrLegalEntity\n' +
                         '      ExercisingPermissionsGrantedByThisLicense.'
+                    ,
+                    upperCase:
+                        '      &QUOT;YOU&QUOT; (OR &QUOT;YOUR&QUOT;) SHALL MEAN AN INDIVIDUAL OR LEGAL ENTITY\n' +
+                        '      EXERCISING PERMISSIONS GRANTED BY THIS LICENSE.'
+                    ,
+                    lowerCase:
+                        '      &quot;you&quot; (or &quot;your&quot;) shall mean an individual or legal entity\n' +
+                        '      exercising permissions granted by this license.'
                     ,
                 },
             },
@@ -439,8 +519,10 @@ const testGroups: Array<TestCaseGroup> = [
             //     ],
             //     output: {
             //         camelCase: '',
-            //         pascalCase: ''
-            //     }
+            //         pascalCase: '',
+            //         upperCase: '',
+            //         lowerCase: '',
+            //     },
             // },
             // add more cases...
         ],

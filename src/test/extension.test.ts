@@ -6,7 +6,7 @@ import * as vscode from 'vscode';
 import testGroups from './test-case';
 import { TestCase, TestCaseGroup } from '../type-definition/test-case-type';
 import { transformMutliLineText, transformText } from '../main-code/text-transform';
-import { toCamelCase, toPascalCase } from '../main-code/text-conversion';
+import { toCamelCase, toLowerCase, toPascalCase, toUpperCase } from '../main-code/text-conversion';
 import { TransformTextResult } from '../type-definition/text-transform-type';
 // import * as myExtension from '../../extension';
 
@@ -53,6 +53,12 @@ suite('Extension Test: run test case', () => {
 					for (let eol of eolList) {
 						assert.strictEqual(testCase.output.camelCase, toCamelCase(input, eol));
 						assert.strictEqual(testCase.output.pascalCase, toPascalCase(input, eol));
+						if (testCase.output.upperCase !== undefined) {
+							assert.strictEqual(testCase.output.upperCase, toUpperCase(input, eol));
+						}
+						if (testCase.output.lowerCase !== undefined) {
+							assert.strictEqual(testCase.output.lowerCase, toLowerCase(input, eol));
+						}
 					}
 				}
 			});
