@@ -9,7 +9,12 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coder-xiaomo/text-conversion-vscode-extension.git"
+  },
   "main": "./out/extension.js",
+  "activationEvents": [],
   "contributes": {
     "commands": [
       {
@@ -164,7 +169,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "echo \"start `vsce package`\" & vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

@@ -1,6 +1,6 @@
-# text-conversion README
+# README
 
-This is the README for your extension "text-conversion". After writing up a brief description, we recommend including the following sections.
+After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

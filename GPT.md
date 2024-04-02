@@ -1,4 +1,4 @@
-docs: 
+docs:
 
 右键二级菜单
 https://fishpi.cn/article/1630641187509
@@ -168,3 +168,33 @@ https://code.visualstudio.com/api/references/contribution-points#contributes.sub
    - 按下`F5`来运行和测试您的插件，确保上下文菜单正确显示并且命令能够正确执行。
 
 通过这些步骤，您应该能够为您的VSCode插件添加一个右键菜单，并实现不同的字符串转换功能。如果您在实现过程中遇到任何问题，或者需要更多帮助，请随时联系我！🛠️
+
+==========
+
+VSCode开发的插件如何打包
+
+在 Visual Studio Code (VSCode) 中，你可以按照以下步骤来打包你的插件：
+
+1. **安装打包工具**：首先，你需要安装 VSCode 插件的专用打包工具 `vsce`。你可以通过 npm 来安装它，命令如下¹⁴⁵：
+```bash
+npm install -g vsce
+```
+2. **修改 README.md**：你需要修改项目根目录下的 README.md 文件内容，删除 “This is the README for your extension” 这句话¹。否则，你可能无法正常打包。
+
+3. **处理静态文件与 node_modules 文件夹**：一些如 .txt、.json 文件等的静态文件可以在开发的时候放在根目录¹。
+
+4. **打包插件**：接下来，你可以开始打包你的插件。使用以下命令来打包¹⁴⁵：
+```bash
+vsce package
+```
+这个命令会生成一个 `.vsix` 文件，这就是你的插件的安装包。
+
+以上就是 VSCode 插件的基本打包流程。希望这个答案对你有所帮助！
+
+源: 与必应的对话， 2024/4/3
+(1) VSCode 插件开发（三）：插件打包与本地安装 - 简书. https://www.jianshu.com/p/bb379a628004.
+(2) VSCode打包插件及安装vsix包方法_npm from visx-CSDN博客. https://blog.csdn.net/qq_23350817/article/details/83374373.
+(3) VSCode打包插件及安装vsix包方法 - 马克队长 - 博客园. https://www.cnblogs.com/baokang/p/13251495.html.
+(4) vscode插件打包流程 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/643962235.
+(5) VSCode打包插件及安装vsix包方法 - 马克队长 - 博客园. https://bing.com/search?q=%e5%a6%82%e4%bd%95%e6%89%93%e5%8c%85VSCode%e6%8f%92%e4%bb%b6.
+
