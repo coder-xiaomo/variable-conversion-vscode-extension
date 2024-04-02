@@ -1,3 +1,4 @@
+import { TransformTextResult } from "../type-definition/text-transform-type";
 
 const logDebugInfo = false;
 
@@ -7,19 +8,21 @@ const logDebugInfo = false;
  * @param str
  * @since 2024-04-02
  */
-export function transformText(input: string): string {
+export function transformText(input: string): TransformTextResult {
     logDebugInfo && console.log('input  ', '->' + input + '<-');
 
     // 记录首尾空格
     const leadingSpaces = input.match(/^ +/);
-    const trailingSpaces = input.match(/ +$/);
+    const trailingSpaces = /^[ ]+$/.test(input)
+        ? '' // 字符串全为空格时，将尾空格置为空字符串
+        : input.match(/ +$/);
 
     // 去除首尾空格
-    input = input.trim();
+    // 不可以使用 input = input.trim(); 否则换行会被替换掉
+    input = input.replace(/^ +| +$/g, '');
 
-    // 使用正则表达式匹配中英文字母、连字符、下划线和空格
+    // 使用正则表达式匹配中英文字母、连字符、下划线、空格
     let result = input.replace(/([A-Za-z\-_ ]+)/g, (match: string) => {
-
         // 替换连字符为 '|' （如有多个则合并）
         match = match.replace(/[-_ ]+/g, '|');
 
@@ -48,9 +51,15 @@ export function transformText(input: string): string {
     result = result.replace(/(^[\|]+|[\|]+$)/g, '');
 
     // 还原首尾空格
-    // result = (leadingSpaces ? (leadingSpaces[0] + '|') : '') + result + (trailingSpaces ? ('|' + trailingSpaces[0]) : '');
-    result = (leadingSpaces ? leadingSpaces[0] : '') + result + (trailingSpaces ? trailingSpaces[0] : '');
+    const leadingSpaceStr = leadingSpaces ? leadingSpaces[0] : '';
+    const trailingSpaceStr = trailingSpaces ? trailingSpaces[0] : '';
+    let noTrimResult = leadingSpaceStr + result + trailingSpaceStr;
 
     logDebugInfo && console.log('output ', '->' + result + '<-');
-    return result;
+    return {
+        leadingSpace: leadingSpaceStr,
+        trailingSpace: trailingSpaceStr,
+        result: noTrimResult,
+        trimResult: result,
+    };
 }

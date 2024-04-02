@@ -35,7 +35,8 @@ suite('Extension Test: run test case', () => {
 				const inputList = Array.isArray(testCase.input) ? testCase.input : [testCase.input];
 				for (const input of inputList) {
 					// 验证 transformText
-					assert.strictEqual(testCase.transformText, transformText(input));
+					const transformTextResult = transformText(input);
+					assert.strictEqual(testCase.transformText, transformTextResult.result);
 					// 验证转换
 					assert.strictEqual(testCase.output.camelCase, toCamelCase(input));
 					assert.strictEqual(testCase.output.pascalCase, toPascalCase(input));
