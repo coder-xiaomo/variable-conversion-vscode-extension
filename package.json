@@ -102,11 +102,27 @@
           "group": "group-extension"
         },
         {
+          "command": "extension.toKebabCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "extension.toSnakeCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "extension.toSnakeUpperCase",
+          "group": "group-extension"
+        },
+        {
           "command": "extension.toUpperCase",
           "group": "group-extension"
         },
         {
           "command": "extension.toLowerCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "extension.toCamelSnakeCase",
           "group": "group-extension"
         },
         {
