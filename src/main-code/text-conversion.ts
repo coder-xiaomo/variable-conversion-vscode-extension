@@ -1,10 +1,10 @@
-import { transformText } from './text-split';
+import { transformText } from './text-transform';
 
 /**
  * 转小驼峰 to Camel Case
- * 
+ *
  * @param {string} str user selection
- * @returns 
+ * @returns
  * @since 2024-03-28
  */
 export function toCamelCase(str: string): string {
@@ -19,9 +19,9 @@ export function toCamelCase(str: string): string {
 
 /**
  * 转大驼峰 to Pascal Case
- * 
+ *
  * @param {string} str user selection
- * @returns 
+ * @returns
  * @since 2024-03-28
  */
 export function toPascalCase(str: string): string {
@@ -30,9 +30,9 @@ export function toPascalCase(str: string): string {
 
 /**
  * 转大写 to Upper Case
- * 
+ *
  * @param {string} str user selection
- * @returns 
+ * @returns
  * @since 2024-03-28
  */
 export function toUpperCase(str: string): string {
@@ -41,9 +41,9 @@ export function toUpperCase(str: string): string {
 
 /**
  * 转小写 to Lower Case
- * 
+ *
  * @param {string} str user selection
- * @returns 
+ * @returns
  * @since 2024-03-28
  */
 export function toLowerCase(str: string): string {
