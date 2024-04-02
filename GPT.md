@@ -1,3 +1,15 @@
+docs: 
+
+右键二级菜单
+https://fishpi.cn/article/1630641187509
+https://code.visualstudio.com/api/references/contribution-points#contributes.menus
+https://code.visualstudio.com/api/references/contribution-points#contributes.submenus
+
+>extension.toCamelCase
+>Transform to
+
+=====
+
 请帮我用js写一个小驼峰，大驼峰，下划线写法互相转换的VSCode插件。实现按shift+alt+t自动在这几种模式下切换。我完全没有写过VSCode插件，所以你可能需要详细告诉我每一步该怎么做，谢谢你
 
 当然可以帮助您！创建一个VSCode插件涉及几个步骤，包括设置项目结构、编写代码以及打包和发布插件。以下是创建您所需插件的基本步骤：

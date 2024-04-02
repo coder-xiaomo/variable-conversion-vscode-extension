@@ -1,7 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as TextConversion from './text-conversion';
+import * as TextConversion from './main-code/text-conversion';
+
+type ConvertFunction = (selectionText: string) => string | undefined;
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -20,51 +22,57 @@ export function activate(context: vscode.ExtensionContext) {
 	// 	vscode.window.showInformationMessage('Hello World from text-conversion!');
 	// });
 
-	const handleEditorReplace = (convertFunction: (selectionText: string) => string) => {
+	const handleEditorReplace = (convertFunction: ConvertFunction) => {
 		// 获取当前编辑器
 		let editor = vscode.window.activeTextEditor;
-		if (editor) {
-			let document = editor.document;
-			let selection = editor.selection;
-
-			// 获取选中的文本
-			let text = document.getText(selection);
-			// 转换文本
-			let converted = convertFunction(text);
-
-			// 当转换后文本与转换前相同时，跳过转换
-			if (text === converted) {
-				console.log('selection text is same to converted text, skip replace contents.');
-				return;
-			}
-
-			// 替换文本
-			console.log('replace selection text', text, 'to', converted);
-			editor.edit(editBuilder => {
-				editBuilder.replace(selection, converted);
-			});
+		if (!editor) {
+			return;
 		}
+		
+		console.log('============ start convert ============');
+		let document = editor.document;
+		let selection = editor.selection;
+
+		// 获取选中的文本
+		let text = document.getText(selection);
+
+		// 转换文本
+		const converted = convertFunction(text);
+		console.log('converted', converted);
+
+		// 无法转换时，跳过转换
+		if (converted === undefined) {
+			console.log('converted text is undefined, skip replace contents.');
+			return;
+		}
+
+		// 当转换后文本与转换前相同时，跳过转换
+		if (converted === text) {
+			console.log('selection text is same to converted text, skip replace contents.');
+			return;
+		}
+
+		// 替换文本
+		console.log('replace selection text', text, 'to', converted);
+		editor.edit(editBuilder => {
+			editBuilder.replace(selection, converted);
+		});
+		console.log('============ finish convert ============');
 	};
 
-	let disposableCamelCase = vscode.commands.registerCommand('extension.toCamelCase', () => {
-		handleEditorReplace(TextConversion.toCamelCase);
-	});
-	context.subscriptions.push(disposableCamelCase);
+	const commands: Array<{ command: string; convertFunction: ConvertFunction }> = [
+		{ command: 'extension.toCamelCase', convertFunction: TextConversion.toCamelCase },
+		{ command: 'extension.toPascalCase', convertFunction: TextConversion.toPascalCase },
+		{ command: 'extension.toUpperCase', convertFunction: TextConversion.toUpperCase },
+		{ command: 'extension.toLowerCase', convertFunction: TextConversion.toLowerCase },
+	];
 
-	let disposablePascalCase = vscode.commands.registerCommand('extension.toPascalCase', () => {
-		handleEditorReplace(TextConversion.toPascalCase);
-	});
-	context.subscriptions.push(disposablePascalCase);
-
-	let disposableUpperCase = vscode.commands.registerCommand('extension.toUpperCase', () => {
-		handleEditorReplace(TextConversion.toUpperCase);
-	});
-	context.subscriptions.push(disposableUpperCase);
-
-	let disposableLowerCase = vscode.commands.registerCommand('extension.toLowerCase', () => {
-		handleEditorReplace(TextConversion.toLowerCase);
-	});
-	context.subscriptions.push(disposableLowerCase);
+	for (const { command, convertFunction } of commands) {
+		let disposable = vscode.commands.registerCommand(command, () => {
+			handleEditorReplace(convertFunction);
+		});
+		context.subscriptions.push(disposable);
+	}
 
 }
 

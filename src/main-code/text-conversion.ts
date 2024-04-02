@@ -3,6 +3,7 @@
  * 
  * @param {string} str user selection
  * @returns 
+ * @since 2024-03-28
  */
 export function toCamelCase(str: string): string {
     return str.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
@@ -13,6 +14,7 @@ export function toCamelCase(str: string): string {
  * 
  * @param {string} str user selection
  * @returns 
+ * @since 2024-03-28
  */
 export function toPascalCase(str: string): string {
     return str.replace(/(^\w|_\w)/g, (g) => g.toUpperCase().replace('_', ''));
@@ -23,6 +25,7 @@ export function toPascalCase(str: string): string {
  * 
  * @param {string} str user selection
  * @returns 
+ * @since 2024-03-28
  */
 export function toUpperCase(str: string): string {
     return str.toUpperCase();
@@ -33,6 +36,7 @@ export function toUpperCase(str: string): string {
  * 
  * @param {string} str user selection
  * @returns 
+ * @since 2024-03-28
  */
 export function toLowerCase(str: string): string {
     return str.toLowerCase();

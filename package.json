@@ -9,27 +9,64 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:extension.convertCase"
-  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
+        "command": "extension.convertCase",
+        "title": "字符串转换"
+      },
+      {
         "command": "extension.toCamelCase",
-        "title": "转小驼峰 To Camel Case"
+        "title": "小驼峰 / 驼峰命名 (Camel Case) [ fooBar ]"
       },
       {
         "command": "extension.toPascalCase",
-        "title": "转大驼峰 To Pascal Case"
+        "title": "大驼峰 / 帕斯卡命名 (Pascal Case) [ FooBar ]"
+      },
+      {
+        "command": "extension.toKebabCase",
+        "title": "连字符 / 脊柱式命名 (Kebab Case / Spinal Case) [ foo-bar ]"
+      },
+      {
+        "command": "extension.toSnakeCase",
+        "title": "下划线 / 蛇形命名 (Snake Case) [ foo_bar ]"
+      },
+      {
+        "command": "extension.toSnakeUpperCase",
+        "title": "下划线大写 (Snake Upper Case) [ FOO_BAR ]"
       },
       {
         "command": "extension.toUpperCase",
-        "title": "转大写 To Upper Case"
+        "title": "全大写 (Upper Case) [ FOOBAR ]"
       },
       {
         "command": "extension.toLowerCase",
-        "title": "转小写 To Lower Case"
+        "title": "全小写 (Lower Case) [ foobar ]"
+      },
+      {
+        "command": "editor.action.transformToCamelcase",
+        "title": "[VSCode 自带] 驼峰式大小写 (Camel Case) [ fooBar ]"
+      },
+      {
+        "command": "editor.action.transformToKebabcase",
+        "title": "[VSCode 自带] Kebab 命名 (Kebab Case) [ foo-bar ]"
+      },
+      {
+        "command": "editor.action.transformToTitlecase",
+        "title": "[VSCode 自带] 词首字母大写 (Title Case) [ Foo Bar ]"
+      },
+      {
+        "command": "editor.action.transformToLowercase",
+        "title": "[VSCode 自带] 转换为小写 (Lower Case) [ foo bar ]"
+      },
+      {
+        "command": "editor.action.transformToUppercase",
+        "title": "[VSCode 自带] 转换为大写 (Upper Case) [ FOO BAR ]"
+      },
+      {
+        "command": "editor.action.transformToSnakecase",
+        "title": "[VSCode 自带] 转换为蛇形命名法 (Snake Case) [ foo_bar ]"
       }
     ],
     "keybindings": [
@@ -43,22 +80,63 @@
       "editor/context": [
         {
           "when": "editorTextFocus",
-          "submenu": "extension.stringConversion"
-        }
-      ],
-      "submenus": [
-        {
-          "id": "extension.stringConversion",
-          "when": "editorTextFocus",
-          "command": "extension.toCamelCase",
-          "label": "字符串转换"
+          "command": "extension.convertCase",
+          "group": "1_modification@9"
         },
         {
-          "when": "editorTextFocus",
-          "command": "extension.toPascalCase"
+          "submenu": "extension.stringConversionMenu",
+          "group": "1_modification@9"
+        }
+      ],
+      "extension.stringConversionMenu": [
+        {
+          "command": "extension.toCamelCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "extension.toPascalCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "extension.toUpperCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "extension.toLowerCase",
+          "group": "group-extension"
+        },
+        {
+          "command": "editor.action.transformToCamelcase",
+          "group": "group-vscode"
+        },
+        {
+          "command": "editor.action.transformToKebabcase",
+          "group": "group-vscode"
+        },
+        {
+          "command": "editor.action.transformToTitlecase",
+          "group": "group-vscode"
+        },
+        {
+          "command": "editor.action.transformToLowercase",
+          "group": "group-vscode"
+        },
+        {
+          "command": "editor.action.transformToUppercase",
+          "group": "group-vscode"
+        },
+        {
+          "command": "editor.action.transformToSnakecase",
+          "group": "group-vscode"
         }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "extension.stringConversionMenu",
+        "label": "将字符串转换为..."
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -69,14 +147,14 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.87.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.8",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
   }
 }
