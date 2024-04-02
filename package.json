@@ -1,6 +1,6 @@
 {
-  "name": "text-conversion",
-  "displayName": "text-conversion",
+  "name": "variable-conversion",
+  "displayName": "Variable Conversion",
   "description": "",
   "version": "0.0.1",
   "engines": {
