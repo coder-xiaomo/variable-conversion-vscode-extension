@@ -1,7 +1,7 @@
 {
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
-  "description": "",
+  "description": "A variable naming conversion extension, support camel case, pascal case, kebab(spinal) case, snake case, snake upper case, upper case, lower case, camel snake case, and more. \n一个变量命名方式互相转换的 VSCode 插件，支持小驼峰(驼峰命名)、大驼峰(帕斯卡命名)、连字符(脊柱式命名)、下划线(蛇形命名)、驼峰蛇形命名、下划线大写、全大写、全小写等常用命名方式",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.87.0"
@@ -34,6 +34,10 @@
         "title": "下划线 / 蛇形命名 (Snake Case) [ foo_bar ]"
       },
       {
+        "command": "extension.toCamelSnakeCase",
+        "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
+      },
+      {
         "command": "extension.toSnakeUpperCase",
         "title": "下划线大写 (Snake Upper Case) [ FOO_BAR ]"
       },
@@ -44,10 +48,6 @@
       {
         "command": "extension.toLowerCase",
         "title": "全小写 (Lower Case) [ foobar ]"
-      },
-      {
-        "command": "extension.toCamelSnakeCase",
-        "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
       }
     ],
     "keybindings": [
@@ -83,6 +83,10 @@
           "group": "group-extension"
         },
         {
+          "command": "extension.toCamelSnakeCase",
+          "group": "group-extension"
+        },
+        {
           "command": "extension.toSnakeUpperCase",
           "group": "group-extension"
         },
@@ -92,10 +96,6 @@
         },
         {
           "command": "extension.toLowerCase",
-          "group": "group-extension"
-        },
-        {
-          "command": "extension.toCamelSnakeCase",
           "group": "group-extension"
         }
       ]
