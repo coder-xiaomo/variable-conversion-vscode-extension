@@ -24,9 +24,16 @@ export function activate(context: vscode.ExtensionContext) {
 	// 用于判断是否展示右键菜单
 	vscode.window.onDidChangeTextEditorSelection(event => {
 		const text = event.textEditor.document.getText(event.selections[0]);
+		// console.log('text.length', text.length);
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
 	});
 
+	/**
+	 * 编辑器右键菜单
+	 * 
+	 * @param convertFunction 
+	 * @returns 
+	 */
 	const handleEditorReplace = (convertFunction: ConvertFunction) => {
 		// 获取当前编辑器
 		let editor = vscode.window.activeTextEditor;
@@ -80,6 +87,51 @@ export function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(disposable);
 	}
 
+	interface ExtendedQuickPickItem extends vscode.QuickPickItem {
+		value: string;
+	}
+
+	/**
+	 * 弹出的提示
+	 */
+	function generateOptionsBasedOnText(text: string): Array<ExtendedQuickPickItem | vscode.QuickPickItem> {
+		// 根据文本生成选项的逻辑
+		return [
+			{ label: text.toUpperCase(), description: '转换为大写', value: text.toUpperCase() },
+			{ label: 'Group 1', kind: vscode.QuickPickItemKind.Separator },
+			{ label: text.toLowerCase(), description: '转换为小写', value: text.toLowerCase() },
+		];
+	}
+
+	let convertCaseDisposable = vscode.commands.registerCommand('extension.convertCase', () => {
+		// 获取当前编辑器
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+
+		let document = editor.document;
+		let selection = editor.selection;
+
+		// 获取选中的文本
+		let text = document.getText(selection);
+
+		if (text.length === 0) {
+			vscode.window.showInformationMessage('Please select the variable you want to convert and try again.\n请选择需要转换的变量后重试');
+			return;
+		}
+
+		// 基于选中的文本生成选项
+		const options = generateOptionsBasedOnText(text);
+		// 显示推荐项列表
+		vscode.window.showQuickPick(options).then(selection => {
+			if (selection) {
+				// 处理用户的选择
+				vscode.window.showInformationMessage(`你选择了: ${selection}`);
+			}
+		});
+	});
+	context.subscriptions.push(convertCaseDisposable);
 }
 
 // This method is called when your extension is deactivated

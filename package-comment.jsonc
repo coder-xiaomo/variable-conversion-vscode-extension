@@ -27,13 +27,15 @@
     }
   ],
   "main": "./out/extension.js",
-  "activationEvents": [],
+  "activationEvents": [
+    "*"
+  ],
   "contributes": {
     "commands": [
-      // {
-      //   "command": "extension.convertCase",
-      //   "title": "字符串转换"
-      // },
+      {
+        "command": "extension.convertCase",
+        "title": "字符串转换"
+      },
       {
         "command": "extension.toCamelCase",
         "title": "小驼峰 / 驼峰命名 (Camel Case) [ fooBar ]"
@@ -110,11 +112,12 @@
     "menus": {
       // 编辑器右键菜单
       "editor/context": [
-        // {
-        //   "when": "editorTextFocus",
-        //   "command": "extension.convertCase",
-        //   "group": "1_modification@9"
-        // },
+        {
+          "when": "editorTextFocus",
+          "command": "extension.convertCase",
+          // "group": "1_modification@9"
+          "group": "navigation@9"
+        },
         {
           "when": "editorTextFocus && _textSelectionLength >= 1",
           "submenu": "extension.stringConversionMenu",
