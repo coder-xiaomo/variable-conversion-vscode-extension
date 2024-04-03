@@ -1,6 +1,6 @@
 import { ConvertFunction, EOL } from '../type-definition/convert-function-type';
-import { TransformTextResult } from '../type-definition/text-transform-type';
-import { transformMutliLineText, transformText } from './text-transform';
+import { TransformTextResult } from '../type-definition/variable-transform-type';
+import { transformMutliLineText, transformText } from './variable-transform';
 
 /**
  * 转小驼峰 to Camel Case

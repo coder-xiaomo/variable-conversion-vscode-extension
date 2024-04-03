@@ -1,4 +1,4 @@
-import { TransformTextResult } from "../type-definition/text-transform-type";
+import { TransformTextResult } from "../type-definition/variable-transform-type";
 
 const logDebugInfo = false;
 

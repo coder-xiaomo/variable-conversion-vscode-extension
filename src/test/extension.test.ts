@@ -5,9 +5,9 @@ import * as assert from 'assert';
 import * as vscode from 'vscode';
 import testGroups from './test-case';
 import { TestCase, TestCaseGroup } from '../type-definition/test-case-type';
-import { transformMutliLineText, transformText } from '../main-code/text-transform';
-import { toCamelCase, toLowerCase, toPascalCase, toUpperCase } from '../main-code/text-conversion';
-import { TransformTextResult } from '../type-definition/text-transform-type';
+import { transformMutliLineText, transformText } from '../main-code/variable-transform';
+import { toCamelCase, toLowerCase, toPascalCase, toUpperCase } from '../main-code/variable-conversion';
+import { TransformTextResult } from '../type-definition/variable-transform-type';
 // import * as myExtension from '../../extension';
 
 /*

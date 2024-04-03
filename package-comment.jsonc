@@ -106,6 +106,7 @@
         //   "group": "1_modification@9"
         // },
         {
+          "when": "editorTextFocus && _textSelectionLength >= 1",
           "submenu": "extension.stringConversionMenu",
           // docs: https://code.visualstudio.com/api/references/contribution-points#Sorting-of-groups
           // "group": "1_modification@9"
@@ -144,7 +145,8 @@
         {
           "command": "extension.toCamelSnakeCase",
           "group": "group-extension"
-        },
+        }
+        // 隐藏菜单项
         // {
         //   "command": "editor.action.transformToCamelcase",
         //   "group": "group-vscode",
