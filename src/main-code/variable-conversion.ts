@@ -73,6 +73,88 @@ export const toPascalCase: ConvertFunction = (str: string, eol: EOL): string => 
 };
 
 /**
+ * 转连字符 / 脊柱式命名 to Kebab Case / Spinal Case
+ *
+ * @param {string} str user selection
+ * @returns
+ * @since 2024-04-03
+*/
+export const toKebabCase: ConvertFunction = (str: string, eol: EOL): string => {
+    // Cut text 切割文本
+    const results: Array<TransformTextResult> = transformMutliLineText(str);
+    // console.log('results', results);
+
+    const transformedLines: Array<string> = [];
+    for (const result of results) {
+        const words = result.trimResult.split('|');
+
+        let isPreviousWordSpecial = true;
+        const transformedWords = [];
+        for (let index = 0; index < words.length; index++) {
+            const word = words[index];
+
+            const isCurrentWordSpecial = !/^[A-Za-z]+$/.test(word);
+            if (!isPreviousWordSpecial && !isCurrentWordSpecial) {
+                transformedWords.push('-');
+            }
+            transformedWords.push(word);
+
+            isPreviousWordSpecial = isCurrentWordSpecial;
+        }
+        const transformedLine = result.leadingSpace + transformedWords.join('') + result.trailingSpace;
+        transformedLines.push(transformedLine);
+    }
+    return transformedLines.join(eol);
+};
+
+/**
+ * 转驼峰脊柱式命名 to Camel Kebab Case
+ *
+ * @param {string} str user selection
+ * @returns
+ * @since 2024-04-03
+*/
+export const toCamelKebabCase: ConvertFunction = (str: string, eol: EOL): string => {
+    // Cut text 切割文本
+    const results: Array<TransformTextResult> = transformMutliLineText(str);
+    // console.log('results', results);
+
+    const transformedLines: Array<string> = [];
+    for (const result of results) {
+        const words = result.trimResult.split('|');
+
+        let isPreviousWordSpecial = true;
+        const transformedWords = [];
+        for (let index = 0; index < words.length; index++) {
+            const word = words[index];
+
+            const isCurrentWordSpecial = !/^[A-Za-z]+$/.test(word);
+            if (!isPreviousWordSpecial && !isCurrentWordSpecial) {
+                transformedWords.push('-');
+            }
+            const pascalCaseWord = word.charAt(0).toUpperCase() + word.slice(1);
+            transformedWords.push(pascalCaseWord);
+
+            isPreviousWordSpecial = isCurrentWordSpecial;
+        }
+        const transformedLine = result.leadingSpace + transformedWords.join('') + result.trailingSpace;
+        transformedLines.push(transformedLine);
+    }
+    return transformedLines.join(eol);
+};
+
+/**
+ * 转连字符命名大写 to Kebab Upper Case
+ *
+ * @param {string} str user selection
+ * @returns
+ * @since 2024-04-03
+*/
+export const toKebabUpperCase: ConvertFunction = (str: string, eol: EOL): string => {
+    return toKebabCase(str, eol).toUpperCase();
+};
+
+/**
  * 转大写 to Upper Case
  *
  * @param {string} str user selection

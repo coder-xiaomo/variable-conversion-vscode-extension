@@ -21,6 +21,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '',
                     upperCase: '',
                     lowerCase: '',
+                    kebabCase: '',
+                    camelkebabCase: '',
+                    kebabUpperCase: '',
                 },
             },
             {
@@ -35,6 +38,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '  ',
                     upperCase: '  ',
                     lowerCase: '  ',
+                    kebabCase: '  ',
+                    camelkebabCase: '  ',
+                    kebabUpperCase: '  ',
                 },
             },
             {
@@ -50,6 +56,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' \r\n ',
                     upperCase: ' \r\n ',
                     lowerCase: ' \r\n ',
+                    kebabCase: ' \r\n ',
+                    camelkebabCase: ' \r\n ',
+                    kebabUpperCase: ' \r\n ',
                 },
             },
             {
@@ -65,6 +74,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' X \r\nY ',
                     upperCase: ' X \r\nY ',
                     lowerCase: ' x \r\ny ',
+                    kebabCase: ' x \r\ny ',
+                    camelkebabCase: ' X \r\nY ',
+                    kebabUpperCase: ' X \r\nY ',
                 },
             },
             {
@@ -80,6 +92,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' \n ',
                     upperCase: ' \n ',
                     lowerCase: ' \n ',
+                    kebabCase: ' \n ',
+                    camelkebabCase: ' \n ',
+                    kebabUpperCase: ' \n ',
                 },
             },
             {
@@ -95,6 +110,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' A\nB ',
                     upperCase: ' A\nB ',
                     lowerCase: ' a\nb ',
+                    kebabCase: ' a\nb ',
+                    camelkebabCase: ' A\nB ',
+                    kebabUpperCase: ' A\nB ',
                 },
             },
             // 输入长文本
@@ -120,6 +138,15 @@ const testGroups: Array<TestCaseGroup> = [
                     lowerCase:
                         "china's factory activity expanded in march after five consecutive months of contraction, an official survey revealed on sunday, adding to a run of indicators that suggest the stabilization of the world's second-largest economy."
                     ,
+                    kebabCase:
+                        "china's-factory-activity-expanded-in-march-after-five-consecutive-months-of-contraction,an-official-survey-revealed-on-sunday,adding-to-a-run-of-indicators-that-suggest-the-stabilization-of-the-world's-second-largest-economy."
+                    ,
+                    camelkebabCase:
+                        "China'S-Factory-Activity-Expanded-In-March-After-Five-Consecutive-Months-Of-Contraction,An-Official-Survey-Revealed-On-Sunday,Adding-To-A-Run-Of-Indicators-That-Suggest-The-Stabilization-Of-The-World'S-Second-Largest-Economy."
+                    ,
+                    kebabUpperCase:
+                        "CHINA'S-FACTORY-ACTIVITY-EXPANDED-IN-MARCH-AFTER-FIVE-CONSECUTIVE-MONTHS-OF-CONTRACTION,AN-OFFICIAL-SURVEY-REVEALED-ON-SUNDAY,ADDING-TO-A-RUN-OF-INDICATORS-THAT-SUGGEST-THE-STABILIZATION-OF-THE-WORLD'S-SECOND-LARGEST-ECONOMY."
+                    ,
                 },
             },
             // 输入包含数字
@@ -135,6 +162,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'Entity2Map',
                     upperCase: 'ENTITY2MAP',
                     lowerCase: 'entity2map',
+                    kebabCase: 'entity2map',
+                    camelkebabCase: 'Entity2Map',
+                    kebabUpperCase: 'ENTITY2MAP',
                 },
             },
             // 输入包含换行
@@ -153,6 +183,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'HowDoYou\bDo?\n                    HowDoYou\tDo!',
                     upperCase: 'HOW DO YOU\bDO?\n                    HOW DO YOU\tDO!',
                     lowerCase: 'how do you\bdo?\n                    how do you\tdo!',
+                    kebabCase: 'how-do-you\bdo?\n                    how-do-you\tdo!',
+                    camelkebabCase: 'How-Do-You\bDo?\n                    How-Do-You\tDo!',
+                    kebabUpperCase: 'HOW-DO-YOU\bDO?\n                    HOW-DO-YOU\tDO!',
                 },
             },
             // 非英文字符，特殊字符
@@ -170,6 +203,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '今天是星期日',
                     upperCase: '今天是星期日',
                     lowerCase: '今天是星期日',
+                    kebabCase: '今天是星期日',
+                    camelkebabCase: '今天是星期日',
+                    kebabUpperCase: '今天是星期日',
                 },
             },
             {
@@ -186,6 +222,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '担心你DAf=Coffee—爸妈不在家— ',
                     upperCase: '--担心你DAF_=COFFEE—爸妈不在家_— ',
                     lowerCase: '--担心你daf_=coffee—爸妈不在家_— ',
+                    kebabCase: '担心你d-af=coffee—爸妈不在家— ',
+                    camelkebabCase: '担心你D-Af=Coffee—爸妈不在家— ',
+                    kebabUpperCase: '担心你D-AF=COFFEE—爸妈不在家— ',
                 },
             },
             {
@@ -202,6 +241,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '🥰ACup/OfCoffee🍻,Please!. ',
                     upperCase: '🥰 A-CUP/_OF COFFEE🍻,-_PLEASE!. ',
                     lowerCase: '🥰 a-cup/_of coffee🍻,-_please!. ',
+                    kebabCase: '🥰a-cup/of-coffee🍻,please!. ',
+                    camelkebabCase: '🥰A-Cup/Of-Coffee🍻,Please!. ',
+                    kebabUpperCase: '🥰A-CUP/OF-COFFEE🍻,PLEASE!. ',
                 },
             },
             {
@@ -218,6 +260,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'TakeARest😊HaPPy,😢TriSte,Enfadado,驚きました,❤️,笑,😎COol,😳Embarrassed',
                     upperCase: 'TAKEAREST😊HAPPY,😢TRISTE,ENFADADO, 驚きました,❤️, 笑, 😎COOL, 😳-EMBARRASSED',
                     lowerCase: 'takearest😊happy,😢triste,enfadado, 驚きました,❤️, 笑, 😎cool, 😳-embarrassed',
+                    kebabCase: 'take-a-rest😊ha-p-py,😢tri-ste,enfadado,驚きました,❤️,笑,😎c-ool,😳embarrassed',
+                    camelkebabCase: 'Take-A-Rest😊Ha-P-Py,😢Tri-Ste,Enfadado,驚きました,❤️,笑,😎C-Ool,😳Embarrassed',
+                    kebabUpperCase: 'TAKE-A-REST😊HA-P-PY,😢TRI-STE,ENFADADO,驚きました,❤️,笑,😎C-OOL,😳EMBARRASSED',
                 },
             },
             {
@@ -234,6 +279,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '    NHDAs+90Usz&* ',
                     upperCase: '    NHDAS--+90-USZ&* ',
                     lowerCase: '    nhdas--+90-usz&* ',
+                    kebabCase: '    n-h-d-as+90usz&* ',
+                    camelkebabCase: '    N-H-D-As+90Usz&* ',
+                    kebabUpperCase: '    N-H-D-AS+90USZ&* ',
                 },
             },
             {
@@ -250,6 +298,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: '担心你鸿DAf=Coffee—— ',
                     upperCase: '--担心你鸿DAF_=COFFEE—_— ',
                     lowerCase: '--担心你鸿daf_=coffee—_— ',
+                    kebabCase: '担心你鸿d-af=coffee—— ',
+                    camelkebabCase: '担心你鸿D-Af=Coffee—— ',
+                    kebabUpperCase: '担心你鸿D-AF=COFFEE—— ',
                 },
             },
             {
@@ -266,6 +317,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'FsdiSdacsaf+Desd',
                     upperCase: 'FSDI_SDACSAF+DESD',
                     lowerCase: 'fsdi_sdacsaf+desd',
+                    kebabCase: 'fsdi-sdacsaf+desd',
+                    camelkebabCase: 'Fsdi-Sdacsaf+Desd',
+                    kebabUpperCase: 'FSDI-SDACSAF+DESD',
                 },
             },
             // add more cases...
@@ -292,6 +346,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'FooBar',
                     // upperCase: 'FOO--BAR',
                     // lowerCase: 'foo--bar',
+                    kebabCase: 'foo-bar',
+                    camelkebabCase: 'Foo-Bar',
+                    kebabUpperCase: 'FOO-BAR',
                 },
             },
             {
@@ -313,6 +370,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'TestCase',
                     // upperCase: 'TEST CASE',
                     // lowerCase: 'test case',
+                    kebabCase: 'test-case',
+                    camelkebabCase: 'Test-Case',
+                    kebabUpperCase: 'TEST-CASE',
                 },
             },
             {
@@ -331,6 +391,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'Apple',
                     upperCase: 'APPLE',
                     lowerCase: 'apple',
+                    kebabCase: 'apple',
+                    camelkebabCase: 'Apple',
+                    kebabUpperCase: 'APPLE',
                 },
             },
             {
@@ -347,6 +410,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'PineApple',
                     upperCase: 'PINEAPPLE',
                     lowerCase: 'pineapple',
+                    kebabCase: 'pine-apple',
+                    camelkebabCase: 'Pine-Apple',
+                    kebabUpperCase: 'PINE-APPLE',
                 },
             },
             {
@@ -372,6 +438,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'HaveANiceDay!',
                     // upperCase: 'HAVE A NICE DAY!',
                     // lowerCase: 'have a nice day!',
+                    kebabCase: 'have-a-nice-day!',
+                    camelkebabCase: 'Have-A-Nice-Day!',
+                    kebabUpperCase: 'HAVE-A-NICE-DAY!',
                 },
             },
             {
@@ -395,6 +464,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' ANiceDay! ',
                     // upperCase: ' A NICE DAY! ',
                     // lowerCase: ' a nice day! ',
+                    kebabCase: ' a-nice-day! ',
+                    camelkebabCase: ' A-Nice-Day! ',
+                    kebabUpperCase: ' A-NICE-DAY! ',
                 },
             },
             {
@@ -412,6 +484,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' ANiceDay',
                     // upperCase: ' A NICE-DAY-',
                     // lowerCase: ' a nice-day-',
+                    kebabCase: ' a-nice-day',
+                    camelkebabCase: ' A-Nice-Day',
+                    kebabUpperCase: ' A-NICE-DAY',
                 },
             },
             {
@@ -428,6 +503,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: 'TomLikesEatIceCream.',
                     upperCase: 'TOMLIKES EAT ICECREAM.',
                     lowerCase: 'tomlikes eat icecream.',
+                    kebabCase: 'tom-likes-eat-ice-cream.',
+                    camelkebabCase: 'Tom-Likes-Eat-Ice-Cream.',
+                    kebabUpperCase: 'TOM-LIKES-EAT-ICE-CREAM.',
                 },
             },
             {
@@ -445,6 +523,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' Apple2Tree ',
                     upperCase: ' APPLE2-TREE ',
                     lowerCase: ' apple2-tree ',
+                    kebabCase: ' apple2tree ',
+                    camelkebabCase: ' Apple2Tree ',
+                    kebabUpperCase: ' APPLE2TREE ',
                 },
             },
             {
@@ -461,6 +542,9 @@ const testGroups: Array<TestCaseGroup> = [
                     pascalCase: ' JuliusCaesar,WilliamShakespeare,AlbertEinstein,MarieCurie,WolfgangAmadeusMozart,VincentVanGogh. ',
                     upperCase: ' JULIUS_CAESAR, WILLIAM_SHAKESPEARE, ALBERT_EINSTEIN, MARIE_CURIE, WOLFGANGAMADEUSMOZART, VINCENT-VAN-GOGH. ',
                     lowerCase: ' julius_caesar, william_shakespeare, albert_einstein, marie_curie, wolfgangamadeusmozart, vincent-van-gogh. ',
+                    kebabCase: ' julius-caesar,william-shakespeare,albert-einstein,marie-curie,wolfgang-amadeus-mozart,vincent-van-gogh. ',
+                    camelkebabCase: ' Julius-Caesar,William-Shakespeare,Albert-Einstein,Marie-Curie,Wolfgang-Amadeus-Mozart,Vincent-Van-Gogh. ',
+                    kebabUpperCase: ' JULIUS-CAESAR,WILLIAM-SHAKESPEARE,ALBERT-EINSTEIN,MARIE-CURIE,WOLFGANG-AMADEUS-MOZART,VINCENT-VAN-GOGH. ',
                 },
             },
             {
@@ -490,6 +574,18 @@ const testGroups: Array<TestCaseGroup> = [
                     lowerCase:
                         '      &quot;you&quot; (or &quot;your&quot;) shall mean an individual or legal entity\n' +
                         '      exercising permissions granted by this license.'
+                    ,
+                    kebabCase:
+                        '      &quot;you&quot;(or&quot;your&quot;)shall-mean-an-individual-or-legal-entity\n' +
+                        '      exercising-permissions-granted-by-this-license.'
+                    ,
+                    camelkebabCase:
+                        '      &Quot;You&Quot;(Or&Quot;Your&Quot;)Shall-Mean-An-Individual-Or-Legal-Entity\n' +
+                        '      Exercising-Permissions-Granted-By-This-License.'
+                    ,
+                    kebabUpperCase:
+                        '      &QUOT;YOU&QUOT;(OR&QUOT;YOUR&QUOT;)SHALL-MEAN-AN-INDIVIDUAL-OR-LEGAL-ENTITY\n' +
+                        '      EXERCISING-PERMISSIONS-GRANTED-BY-THIS-LICENSE.'
                     ,
                 },
             },
@@ -522,6 +618,9 @@ const testGroups: Array<TestCaseGroup> = [
             //         pascalCase: '',
             //         upperCase: '',
             //         lowerCase: '',
+            //         kebabCase: '',
+            //         camelkebabCase: '',
+            //         kebabUpperCase: '',
             //     },
             // },
             // add more cases...

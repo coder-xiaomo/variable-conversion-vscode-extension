@@ -30,9 +30,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	/**
 	 * 编辑器右键菜单
-	 * 
-	 * @param convertFunction 
-	 * @returns 
+	 *
+	 * @param convertFunction
+	 * @returns
 	 */
 	const handleEditorReplace = (convertFunction: ConvertFunction) => {
 		// 获取当前编辑器
@@ -76,6 +76,9 @@ export function activate(context: vscode.ExtensionContext) {
 	const commands: Array<{ command: string; convertFunction: ConvertFunction }> = [
 		{ command: 'extension.toCamelCase', convertFunction: TextConversion.toCamelCase },
 		{ command: 'extension.toPascalCase', convertFunction: TextConversion.toPascalCase },
+		{ command: 'extension.toKebabCase', convertFunction: TextConversion.toKebabCase },
+		{ command: 'extension.toCamelKebabCase', convertFunction: TextConversion.toCamelKebabCase },
+		{ command: 'extension.toKebabUpperCase', convertFunction: TextConversion.toKebabUpperCase },
 		{ command: 'extension.toUpperCase', convertFunction: TextConversion.toUpperCase },
 		{ command: 'extension.toLowerCase', convertFunction: TextConversion.toLowerCase },
 	];
