@@ -93,6 +93,7 @@
           "group": "1_modification@9"
         },
         {
+          "when": "editorTextFocus && _textSelectionLength >= 1",
           "submenu": "extension.stringConversionMenu",
           "group": "1_modification@9"
         }

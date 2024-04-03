@@ -21,6 +21,12 @@ export function activate(context: vscode.ExtensionContext) {
 	// 	vscode.window.showInformationMessage('Hello World from text-conversion!');
 	// });
 
+	// 用于判断是否展示右键菜单
+	vscode.window.onDidChangeTextEditorSelection(event => {
+		const text = event.textEditor.document.getText(event.selections[0]);
+		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
+	});
+
 	const handleEditorReplace = (convertFunction: ConvertFunction) => {
 		// 获取当前编辑器
 		let editor = vscode.window.activeTextEditor;
