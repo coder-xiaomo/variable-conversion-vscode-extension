@@ -198,3 +198,78 @@ vsce package
 (4) vscode插件打包流程 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/643962235.
 (5) VSCode打包插件及安装vsix包方法 - 马克队长 - 博客园. https://bing.com/search?q=%e5%a6%82%e4%bd%95%e6%89%93%e5%8c%85VSCode%e6%8f%92%e4%bb%b6.
 
+==========
+
+谢谢你，那么打包完毕后，如何上架到VSCode插件市场呢
+
+将 VSCode 插件发布到插件市场需要以下几个步骤¹²³：
+
+1. **准备工作**：确保你已经安装了 Node.js 和 npm。
+
+2. **安装 VS Code Extension CLI 工具**：运行以下命令来安装 `vsce`，这是一个用于打包和发布 VSCode 插件的命令行工具：
+```bash
+npm install -g vsce
+```
+
+3. **创建一个 Microsoft 账户并获取发布者身份**：访问 Visual Studio Marketplace 并创建一个发布者身份。
+
+4. **准备你的插件代码**：确保你的 `package.json` 文件中有所有必要的字段（例如，`name`，`version`，`description`等）。
+
+5. **打包插件**：在插件的根目录中运行以下命令来打包插件：
+```bash
+vsce package
+```
+这将生成一个 `.vsix` 文件，这就是你的插件的安装包。
+
+6. **发布插件**：首次发布前，运行以下命令来创建一个发布者：
+```bash
+vsce create-publisher [publisher name]
+```
+然后运行以下命令来发布插件：
+```bash
+vsce publish
+```
+这个过程中，`vsce` 会检查 `package.json` 的一些必填项。如果一切无误，你的插件就会被成功发布到插件市场。
+
+7. **更新插件**：当你需要更新插件时，修改 `package.json` 中的版本号，然后重新运行 `vsce package` 和 `vsce publish`。
+
+8. **管理插件**：你可以在 Visual Studio Marketplace 管理界面中管理你的插件。
+
+以上就是将 VSCode 插件发布到插件市场的基本流程。希望这个答案对你有所帮助！
+
+源: 与必应的对话， 2024/4/3
+(1) 如何发行你的插件 | 跟我学 VSCode 插件开发 - 知乎. https://zhuanlan.zhihu.com/p/339695661.
+(2) 如何将插件发布到vs code插件市场_vscode插件市场-CSDN博客. https://blog.csdn.net/m0_57236802/article/details/132755535.
+(3) 如何将插件发布到vs code插件市场_vscode插件市场-CSDN博客. https://bing.com/search?q=%e5%a6%82%e4%bd%95%e4%b8%8a%e6%9e%b6VSCode%e6%8f%92%e4%bb%b6%e5%88%b0%e6%8f%92%e4%bb%b6%e5%b8%82%e5%9c%ba.
+(4) visual-studio-code - VScode技巧 | 如何开发一个插件 - 个人文章 - SegmentFault 思否. https://segmentfault.com/a/1190000043764128.
+
+==========
+
+如何配置VSCode插件logo
+
+在Visual Studio Code中创建插件时，你可以为你的插件设置一个图标，这个图标会在VS Code的插件市场和插件侧边栏中显示。以下是设置插件图标的步骤²：
+
+1. **准备图标文件**：准备一个你想用作插件图标的图片文件。确保这个文件是一个PNG或者JPEG格式，并且推荐至少为128x128像素的分辨率²。
+2. **添加图标到你的插件项目中**：将图标文件放入你的插件项目的某个目录中，通常是项目的根目录²。
+3. **在 package.json 中指定图标路径**：在你的插件项目的 package.json 文件中，使用 icon 字段来指定图标文件的路径。路径是相对于 package.json 文件的。例如²：
+```json
+{
+  "name": "your-extension-name",
+  "displayName": "Your Extension",
+  "description": "Your extension description",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "icon": "images/your-icon.png", // 其他字段...
+}
+```
+在这个例子中，假设你的图标文件名为 your-icon.png ，并且它位于项目根目录下的 images 文件夹中²。
+4. **发布或更新你的插件**：当你发布或更新你的插件到VS Code插件市场时， package.json 文件中的 icon 字段会被用来显示你的插件图标。 确保在发布或更新插件之前测试图标显示是否正确。 你可以通过在本地VS Code中加载你的插件来预览图标。 如果一切看起来都好，你就可以按照VS Code插件发布的正常流程来发布你的插件了²。
+
+源: 与必应的对话， 2024/4/3
+(1) 【vscode插件】之插件图标设置 - CSDN博客. https://blog.csdn.net/liyananweb/article/details/135181787.
+(2) vscode-更换图标主题VSCode Icons._vscode更改不了icon-CSDN博客. https://bing.com/search?q=%e5%a6%82%e4%bd%95%e9%85%8d%e7%bd%aeVSCode%e6%8f%92%e4%bb%b6logo.
+(3) 让你的 VSCode 文件图标更好看的10个文件 ... - 掘金. https://juejin.cn/post/7247569496696389691.
+(4) vscode-更换图标主题VSCode Icons._vscode更改不了icon-CSDN博客. https://blog.csdn.net/xiaomizhou66a/article/details/81260347.
+(5) 【VSCode插件】之插件图标设置 - 掘金. https://juejin.cn/post/7315373969833754624.
+
+
