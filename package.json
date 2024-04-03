@@ -11,8 +11,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/coder-xiaomo/text-conversion-vscode-extension.git"
+    "url": "https://github.com/coder-xiaomo/variable-conversion-vscode-extension.git"
   },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://git.only4.work/coder-xiaomo/variable-conversion-vscode-extension.git"
+    },
+    {
+      "type": "git",
+      "url": "https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git"
+    }
+  ],
   "main": "./out/extension.js",
   "activationEvents": [],
   "contributes": {
