@@ -1,7 +1,9 @@
 {
+  // 插件 id 及名称
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "",
+  // 版本号
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.87.0"
@@ -9,6 +11,7 @@
   "categories": [
     "Other"
   ],
+  // 仓库地址
   "repository": {
     "type": "git",
     "url": "https://github.com/coder-xiaomo/text-conversion-vscode-extension.git"
@@ -17,6 +20,10 @@
   "activationEvents": [],
   "contributes": {
     "commands": [
+      // {
+      //   "command": "extension.convertCase",
+      //   "title": "字符串转换"
+      // },
       {
         "command": "extension.toCamelCase",
         "title": "小驼峰 / 驼峰命名 (Camel Case) [ fooBar ]"
@@ -49,19 +56,59 @@
         "command": "extension.toCamelSnakeCase",
         "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
       }
+      // 隐藏命令
+      // {
+      //   "command": "editor.action.transformToCamelcase",
+      //   "title": "[VSCode 自带] 驼峰式大小写 (Camel Case) [ fooBar ]",
+      //   "enablement": "false"
+      // },
+      // {
+      //   "command": "editor.action.transformToKebabcase",
+      //   "title": "[VSCode 自带] Kebab 命名 (Kebab Case) [ foo-bar ]",
+      //   "enablement": "false"
+      // },
+      // {
+      //   "command": "editor.action.transformToTitlecase",
+      //   "title": "[VSCode 自带] 词首字母大写 (Title Case) [ Foo Bar ]",
+      //   "enablement": "false"
+      // },
+      // {
+      //   "command": "editor.action.transformToLowercase",
+      //   "title": "[VSCode 自带] 转换为小写 (Lower Case) [ foo bar ]",
+      //   "enablement": "false"
+      // },
+      // {
+      //   "command": "editor.action.transformToUppercase",
+      //   "title": "[VSCode 自带] 转换为大写 (Upper Case) [ FOO BAR ]",
+      //   "enablement": "false"
+      // },
+      // {
+      //   "command": "editor.action.transformToSnakecase",
+      //   "title": "[VSCode 自带] 转换为蛇形命名法 (Snake Case) [ foo_bar ]",
+      //   "enablement": "false"
+      // }
     ],
     "keybindings": [
+      // 绑定快捷键
       {
         "command": "extension.convertCase",
         "key": "shift+alt+t",
         "when": "editorTextFocus"
       }
     ],
+    // docs: https://code.visualstudio.com/api/references/contribution-points#contributes.menus
     "menus": {
+      // 编辑器右键菜单
       "editor/context": [
+        // {
+        //   "when": "editorTextFocus",
+        //   "command": "extension.convertCase",
+        //   "group": "1_modification@9"
+        // },
         {
-          "when": "editorTextFocus && _textSelectionLength >= 1",
           "submenu": "extension.stringConversionMenu",
+          // docs: https://code.visualstudio.com/api/references/contribution-points#Sorting-of-groups
+          // "group": "1_modification@9"
           "group": "navigation@9"
         }
       ],
@@ -97,9 +144,40 @@
         {
           "command": "extension.toCamelSnakeCase",
           "group": "group-extension"
-        }
+        },
+        // {
+        //   "command": "editor.action.transformToCamelcase",
+        //   "group": "group-vscode",
+        //   "when": "false"
+        // },
+        // {
+        //   "command": "editor.action.transformToKebabcase",
+        //   "group": "group-vscode",
+        //   "when": "false"
+        // },
+        // {
+        //   "command": "editor.action.transformToTitlecase",
+        //   "group": "group-vscode",
+        //   "when": "false"
+        // },
+        // {
+        //   "command": "editor.action.transformToLowercase",
+        //   "group": "group-vscode",
+        //   "when": "false"
+        // },
+        // {
+        //   "command": "editor.action.transformToUppercase",
+        //   "group": "group-vscode",
+        //   "when": "false"
+        // },
+        // {
+        //   "command": "editor.action.transformToSnakecase",
+        //   "group": "group-vscode",
+        //   "when": "false"
+        // }
       ]
     },
+    // docs: https://code.visualstudio.com/api/references/contribution-points#contributes.submenus
     "submenus": [
       {
         "id": "extension.stringConversionMenu",
