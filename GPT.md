@@ -289,3 +289,101 @@ vsce publish
 
 我还是有点不太明白，可以帮我继续完善这个代码吗，谢谢你！
 
+
+当然可以！让我们继续完善代码。以下是一个更详细的示例，展示了如何在 VSCode 插件中实现你所描述的功能。请注意，这只是一个基本的框架，你可以根据你的实际需求进行进一步的扩展和优化。
+
+```typescript
+import * as vscode from 'vscode';
+
+// 记录用户初始选中内容
+let selectedText: string | null = null;
+// 当前转换方式
+let currentCase: 'camel' | 'pascal' | 'kebab' | 'snake' | 'upper' | 'lower' = 'camel';
+
+// 监听编辑器的选择事件
+vscode.window.onDidChangeTextEditorSelection(handleSelectionChange);
+
+// 监听用户按键事件
+vscode.commands.registerCommand('extension.handleShortcut', handleShortcut);
+
+// 处理选择事件
+function handleSelectionChange(event: vscode.TextEditorSelectionChangeEvent) {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        return;
+    }
+
+    // 获取当前选中的文本
+    const selection = editor.selection;
+    const selectedRange = new vscode.Range(selection.start, selection.end);
+    selectedText = editor.document.getText(selectedRange);
+}
+
+// 转换函数（假设你已经有了这个函数）
+function convertText(text: string, targetCase: 'camel' | 'pascal' | 'kebab' | 'snake' | 'upper' | 'lower'): string {
+    // 实现各种转换逻辑
+    // ...
+    return convertedText;
+}
+
+// 用户按下快捷键时调用
+function handleShortcut() {
+    if (selectedText) {
+        // 根据当前状态转换选中的文本
+        const convertedText = convertText(selectedText, currentCase);
+        // 更新编辑器中的文本
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            editor.edit(editBuilder => {
+                editBuilder.replace(editor.selection, convertedText);
+            });
+        }
+    }
+}
+
+// 用户切换转换方式时调用
+function switchCase() {
+    // 切换到下一个转换方式
+    switch (currentCase) {
+        case 'camel':
+            currentCase = 'pascal';
+            break;
+        case 'pascal':
+            currentCase = 'kebab';
+            break;
+        case 'kebab':
+            currentCase = 'snake';
+            break;
+        case 'snake':
+            currentCase = 'upper';
+            break;
+        case 'upper':
+            currentCase = 'lower';
+            break;
+        case 'lower':
+            currentCase = 'camel';
+            break;
+        default:
+            currentCase = 'camel';
+            break;
+    }
+}
+
+// 在你的插件激活时注册命令
+export function activate(context: vscode.ExtensionContext) {
+    context.subscriptions.push(
+        vscode.commands.registerCommand('extension.handleShortcut', handleShortcut)
+    );
+}
+
+// 在你的插件停用时清理资源
+export function deactivate() {
+    // 清理资源
+}
+```
+
+在这个示例中，我们添加了一个 `switchCase` 函数，用于切换转换方式。每次用户按下快捷键时，会根据当前状态执行相应的转换，并更新编辑器中的文本。你可以根据你的需求进一步扩展这个功能，例如添加更多的转换方式、自定义快捷键等。
+
+希望这对你有所帮助！如果还有其他问题，请随时继续提问。🙂
+
+
