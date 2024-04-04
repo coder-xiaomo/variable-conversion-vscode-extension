@@ -58,7 +58,7 @@ export enum SupportCase {
     CAMEL_UPPER_CASE,
 
     /**
-     * 连字符命名大写
+     * 连字符大写命名
      * Kebab Upper Case
      * e.g. FOO-BAR
      *
@@ -88,7 +88,7 @@ export enum SupportCase {
     CAMEL_SNAKE_CASE,
 
     /**
-     * 下划线大写
+     * 下划线大写命名
      * Snake Upper Case
      * e.g. FOO_BAR
      *

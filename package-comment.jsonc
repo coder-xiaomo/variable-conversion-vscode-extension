@@ -2,7 +2,7 @@
   // 插件 id 及名称
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
-  "description": "A variable naming conversion extension, support camel case, pascal case, kebab(spinal) case, camel kebab case, kebab upper case, snake case, snake upper case, upper case, lower case, camel snake case, and more. \n一个变量命名方式互相转换的 VSCode 插件，支持小驼峰(驼峰命名)、大驼峰(帕斯卡命名)、连字符(脊柱式命名)、驼峰脊柱式命名、连字符命名大写、下划线(蛇形命名)、驼峰蛇形命名、下划线大写、全大写、全小写等常用命名方式",
+  "description": "A variable naming conversion extension, support camel case, pascal case, kebab(spinal) case, camel kebab case, kebab upper case, snake case, snake upper case, upper case, lower case, camel snake case, and more. \n一个变量命名方式互相转换的 VSCode 插件，支持小驼峰(驼峰命名)、大驼峰(帕斯卡)命名、连字符(脊柱式)命名、驼峰脊柱式命名、连字符大写命名、下划线(蛇形)命名、驼峰蛇形命名、下划线大写命名、全大写、全小写等常用命名方式",
   // 版本号
   "version": "0.0.1",
   "engines": {
@@ -32,10 +32,17 @@
   ],
   "contributes": {
     "commands": [
+      /**
+       * 右键菜单
+       */
       {
         "command": "variable-conversion.convertCase",
         "title": "字符串转换"
       },
+      /**
+       * 右键菜单 - 子菜单
+       */
+      // group-1-camel
       {
         "command": "variable-conversion.toCamelCase",
         "title": "小驼峰 / 驼峰命名 (Camel Case) [ fooBar ]"
@@ -44,37 +51,40 @@
         "command": "variable-conversion.toPascalCase",
         "title": "大驼峰 / 帕斯卡命名 (Pascal Case) [ FooBar ]"
       },
-      {
-        "command": "variable-conversion.toKebabCase",
-        "title": "连字符 / 脊柱式命名 (Kebab Case / Spinal Case) [ foo-bar ]"
-      },
-      {
-        "command": "variable-conversion.toCamelKebabCase",
-        "title": "连字符命名大写 (Kebab Upper Case) [ Foo-Bar ]"
-      },
-      {
-        "command": "variable-conversion.toKebabUpperCase",
-        "title": "连字符命名大写 (Kebab Upper Case) [ FOO-BAR ]"
-      },
+      // group-2-snake
       {
         "command": "variable-conversion.toSnakeCase",
         "title": "下划线 / 蛇形命名 (Snake Case) [ foo_bar ]"
       },
       {
+        "command": "variable-conversion.toSnakeUpperCase",
+        "title": "下划线大写命名 (Snake Upper Case) [ FOO_BAR ]"
+      },
+      {
         "command": "variable-conversion.toCamelSnakeCase",
         "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
       },
+      // group-3-kebab
       {
-        "command": "variable-conversion.toSnakeUpperCase",
-        "title": "下划线大写 (Snake Upper Case) [ FOO_BAR ]"
+        "command": "variable-conversion.toKebabCase",
+        "title": "连字符 / 脊柱式命名 (Kebab Case / Spinal Case) [ foo-bar ]"
+      },
+      {
+        "command": "variable-conversion.toKebabUpperCase",
+        "title": "连字符大写命名 (Kebab Upper Case) [ FOO-BAR ]"
+      },
+      {
+        "command": "variable-conversion.toCamelKebabCase",
+        "title": "驼峰脊柱式命名 (Kebab Upper Case) [ Foo-Bar ]"
+      },
+      // group-4-upper-lower
+      {
+        "command": "variable-conversion.toLowerCase",
+        "title": "全小写 (Lower Case) [ foobar ]"
       },
       {
         "command": "variable-conversion.toUpperCase",
         "title": "全大写 (Upper Case) [ FOOBAR ]"
-      },
-      {
-        "command": "variable-conversion.toLowerCase",
-        "title": "全小写 (Lower Case) [ foobar ]"
       }
       // 隐藏命令
       // {
@@ -138,43 +148,43 @@
       "variable-conversion.stringConversionMenu": [
         {
           "command": "variable-conversion.toCamelCase",
-          "group": "group-extension"
+          "group": "group-1-camel@1"
         },
         {
           "command": "variable-conversion.toPascalCase",
-          "group": "group-extension"
-        },
-        {
-          "command": "variable-conversion.toKebabCase",
-          "group": "group-kebab"
-        },
-        {
-          "command": "variable-conversion.toCamelKebabCase",
-          "group": "group-kebab"
-        },
-        {
-          "command": "variable-conversion.toKebabUpperCase",
-          "group": "group-kebab"
+          "group": "group-1-camel@2"
         },
         {
           "command": "variable-conversion.toSnakeCase",
-          "group": "group-extension"
-        },
-        {
-          "command": "variable-conversion.toCamelSnakeCase",
-          "group": "group-extension"
+          "group": "group-2-snake@1"
         },
         {
           "command": "variable-conversion.toSnakeUpperCase",
-          "group": "group-extension"
+          "group": "group-2-snake@2"
         },
         {
-          "command": "variable-conversion.toUpperCase",
-          "group": "group-extension"
+          "command": "variable-conversion.toCamelSnakeCase",
+          "group": "group-2-snake@3"
+        },
+        {
+          "command": "variable-conversion.toKebabCase",
+          "group": "group-3-kebab@1"
+        },
+        {
+          "command": "variable-conversion.toKebabUpperCase",
+          "group": "group-3-kebab@2"
+        },
+        {
+          "command": "variable-conversion.toCamelKebabCase",
+          "group": "group-3-kebab@3"
         },
         {
           "command": "variable-conversion.toLowerCase",
-          "group": "group-extension"
+          "group": "group-4-upper-lower@1"
+        },
+        {
+          "command": "variable-conversion.toUpperCase",
+          "group": "group-4-upper-lower@2"
         }
         // 隐藏菜单项
         // {

@@ -144,7 +144,7 @@ export const toCamelKebabCase: ConvertFunction = (str: string, eol: EOL): string
 };
 
 /**
- * 转连字符命名大写 to Kebab Upper Case
+ * 转连字符大写命名 to Kebab Upper Case
  *
  * @param {string} str user selection
  * @returns
