@@ -1,10 +1,10 @@
 # Variable Conversion 命名方式转换插件
 
-A variable naming conversion extension, support camel case, pascal case, snake case, snake camel case, snake pascal case, snake upper case, kebab(spinal) case, kebab camel case, kebab pascal case, kebab upper case, lower case, upper case, camel snake case, and more.
+A variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), lower, upper case, and more.
 
-一个变量命名方式互相转换的 VSCode 插件，支持小驼峰(驼峰)命名、大驼峰(帕斯卡)命名、下划线(蛇形)命名、下划线(蛇形) + 小驼峰(驼峰)命名、下划线(蛇形) + 大驼峰(帕斯卡)命名、下划线(蛇形) + 全大写命名、连字符(脊柱式)命名、连字符(脊柱式) + 小驼峰(驼峰)命名、连字符(脊柱式) + 大驼峰(帕斯卡)命名、连字符(脊柱式) + 全大写命名、全小写、全大写等常用命名方式
+变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、连字符(脊柱式)、全小写、全大写等常用命名方式(及组合)转换
 
-## Features
+## Features 特点
 
 Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
