@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as TextConversion from '../main-code/variable-conversion';
 import { ConvertFunction, EOL } from '../type-definition/convert-function-type';
 
 /**
