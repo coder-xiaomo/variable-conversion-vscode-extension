@@ -30,6 +30,18 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
 	});
 
+	// 初始(VSCode 插件初始化)时也判断一次 (考虑上次关闭 VSCode 有选区，重新打开后 VSCode 回复选区但用户未重新切换选区的场景)
+	let editor = vscode.window.activeTextEditor;
+	if (editor) {
+		let document = editor.document;
+		let selection = editor.selection;
+		// 获取选中的文本
+		let text = document.getText(selection);
+		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
+	} else {
+		vscode.window.showInformationMessage('editor is undefined');
+	}
+
 	const commands: Array<{ command: string; convertFunction: ConvertFunction }> = [
 		{ command: 'variable-conversion.toCamelCase', convertFunction: TextConversion.toCamelCase },
 		{ command: 'variable-conversion.toPascalCase', convertFunction: TextConversion.toPascalCase },
