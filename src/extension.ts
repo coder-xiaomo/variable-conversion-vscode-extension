@@ -3,6 +3,8 @@
 import * as vscode from 'vscode';
 import * as TextConversion from './main-code/variable-conversion';
 import { ConvertFunction, EOL } from './type-definition/convert-function-type';
+import handleEditorReplace from './extension-handler/editor-submenu-handler';
+import QuickPickItemEx from './type-definition/extended-quick-pick-item-type';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -28,57 +30,15 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
 	});
 
-	/**
-	 * 编辑器右键菜单
-	 *
-	 * @param convertFunction
-	 * @returns
-	 */
-	const handleEditorReplace = (convertFunction: ConvertFunction) => {
-		// 获取当前编辑器
-		let editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;
-		}
-
-		console.log('============ start convert ============');
-		let document = editor.document;
-		let selection = editor.selection;
-		let eol: EOL = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
-
-		// 获取选中的文本
-		let text = document.getText(selection);
-
-		// 转换文本
-		const converted = convertFunction(text, eol);
-		console.log('converted', converted);
-
-		// 无法转换时，跳过转换
-		if (converted === undefined) {
-			console.log('converted text is undefined, skip replace contents.');
-			return;
-		}
-
-		// 当转换后文本与转换前相同时，跳过转换，避免形成 Ctrl + Z 撤销历史记录
-		if (converted === text) {
-			console.log('selection text is same to converted text, skip replace contents.');
-			return;
-		}
-
-		// 替换文本
-		console.log('replace selection text', text, 'to', converted);
-		editor.edit(editBuilder => {
-			editBuilder.replace(selection, converted);
-		});
-		console.log('============ finish convert ============');
-	};
-
 	const commands: Array<{ command: string; convertFunction: ConvertFunction }> = [
 		{ command: 'variable-conversion.toCamelCase', convertFunction: TextConversion.toCamelCase },
 		{ command: 'variable-conversion.toPascalCase', convertFunction: TextConversion.toPascalCase },
 		{ command: 'variable-conversion.toKebabCase', convertFunction: TextConversion.toKebabCase },
 		{ command: 'variable-conversion.toCamelKebabCase', convertFunction: TextConversion.toCamelKebabCase },
 		{ command: 'variable-conversion.toKebabUpperCase', convertFunction: TextConversion.toKebabUpperCase },
+		// { command: 'variable-conversion.toSnakeCase', convertFunction: TextConversion.toSnakeCase },
+		// { command: 'variable-conversion.toCamelSnakeCase', convertFunction: TextConversion.toCamelSnakeCase },
+		// { command: 'variable-conversion.toSnakeUpperCase', convertFunction: TextConversion.toSnakeUpperCase },
 		{ command: 'variable-conversion.toUpperCase', convertFunction: TextConversion.toUpperCase },
 		{ command: 'variable-conversion.toLowerCase', convertFunction: TextConversion.toLowerCase },
 	];
@@ -90,19 +50,20 @@ export function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(disposable);
 	}
 
-	interface ExtendedQuickPickItem extends vscode.QuickPickItem {
-		value: string;
-	}
 
 	/**
 	 * 弹出的提示
 	 */
-	function generateOptionsBasedOnText(text: string): Array<ExtendedQuickPickItem | vscode.QuickPickItem> {
+	function generateOptionsBasedOnText(text: string): Array<QuickPickItemEx> {
 		// 根据文本生成选项的逻辑
 		return [
-			{ label: text.toUpperCase(), description: '转换为大写', value: text.toUpperCase() },
-			{ label: 'Group 1', kind: vscode.QuickPickItemKind.Separator },
+			{ label: '输入对应项下方任一关键词可快速选择', kind: vscode.QuickPickItemKind.Separator },
+			{ label: text.toUpperCase(), description: '转换为大写', detail: '关键词：DaXie 大写 UpperCase', value: text.toUpperCase() },
+			{ label: 'Group 2', kind: vscode.QuickPickItemKind.Separator },
 			{ label: text.toLowerCase(), description: '转换为小写', value: text.toLowerCase() },
+			{ label: text.toLowerCase(), description: '转换为小写', value: text.toLowerCase() },
+			{ label: text.toLowerCase(), description: '转换为下划线', detail: '关键词：_', value: text.toLowerCase() },
+			{ label: text.toLowerCase(), description: '转换为连字符', detail: '关键词：-', value: text.toLowerCase() },
 		];
 	}
 
@@ -127,7 +88,11 @@ export function activate(context: vscode.ExtensionContext) {
 		// 基于选中的文本生成选项
 		const options = generateOptionsBasedOnText(text);
 		// 显示推荐项列表
-		vscode.window.showQuickPick(options).then(selection => {
+		vscode.window.showQuickPick(options, {
+			matchOnDetail: true,
+			title: '标题',
+			placeHolder: '输入对应项下方任一关键词可快速选择！'
+		}).then(selection => {
 			if (selection) {
 				// 处理用户的选择
 				vscode.window.showInformationMessage(`你选择了: ${selection}`);
