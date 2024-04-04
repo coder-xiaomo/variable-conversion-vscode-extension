@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
-import { ConvertFunction, EOL } from '../type-definition/convert-function-type';
+import { EOL } from '../type-definition/EOLType';
+import { caseConversion } from '../main-code/conversion';
+import { SupportCase } from '../type-definition/SupportCaseType';
 
 /**
  * 编辑器右键菜单
@@ -7,7 +9,7 @@ import { ConvertFunction, EOL } from '../type-definition/convert-function-type';
  * @param convertFunction
  * @returns
  */
-const handleEditorReplace = (convertFunction: ConvertFunction) => {
+const handleEditorReplace = (targetCase: SupportCase) => {
     // 获取当前编辑器
     let editor = vscode.window.activeTextEditor;
     if (!editor) {
@@ -23,7 +25,7 @@ const handleEditorReplace = (convertFunction: ConvertFunction) => {
     let text = document.getText(selection);
 
     // 转换文本
-    const converted = convertFunction(text, eol);
+    const converted = caseConversion(targetCase, text, eol);
     console.log('converted', converted);
 
     // 无法转换时，跳过转换

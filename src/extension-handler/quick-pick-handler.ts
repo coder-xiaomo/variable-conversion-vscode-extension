@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import QuickPickItemEx from "../type-definition/extended-quick-pick-item-type";
+import QuickPickItemEx from "../type-definition/QuickPickItemExType";
 
 /**
  * 弹出的提示

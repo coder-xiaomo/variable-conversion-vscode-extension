@@ -35,35 +35,43 @@
       },
       {
         "command": "variable-conversion.toCamelCase",
-        "title": "小驼峰 / 驼峰命名 (Camel Case) [ fooBar ]"
+        "title": "小驼峰(驼峰)命名 (Camel Case) [ fooBar ]"
       },
       {
         "command": "variable-conversion.toPascalCase",
-        "title": "大驼峰 / 帕斯卡命名 (Pascal Case) [ FooBar ]"
+        "title": "大驼峰(帕斯卡)命名 (Pascal Case) [ FooBar ]"
       },
       {
         "command": "variable-conversion.toSnakeCase",
-        "title": "下划线 / 蛇形命名 (Snake Case) [ foo_bar ]"
+        "title": "下划线(蛇形)命名 (Snake Case) [ foo_bar ]"
       },
       {
         "command": "variable-conversion.toSnakeUpperCase",
-        "title": "下划线大写命名 (Snake Upper Case) [ FOO_BAR ]"
+        "title": "下划线(蛇形) + 全大写命名 (Snake Upper Case) [ FOO_BAR ]"
       },
       {
-        "command": "variable-conversion.toCamelSnakeCase",
-        "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
+        "command": "variable-conversion.toSnakePascalCase",
+        "title": "下划线(蛇形) + 大驼峰(帕斯卡)命名 (Snake Pascal Case) [ Foo_Bar ]"
+      },
+      {
+        "command": "variable-conversion.toSnakeCamelCase",
+        "title": "下划线(蛇形) + 小驼峰(驼峰)命名 (Snake Camel Case) [ foo_Bar ]"
       },
       {
         "command": "variable-conversion.toKebabCase",
-        "title": "连字符 / 脊柱式命名 (Kebab Case / Spinal Case) [ foo-bar ]"
+        "title": "连字符(脊柱式)命名 (Kebab/Spinal Case) [ foo-bar ]"
       },
       {
         "command": "variable-conversion.toKebabUpperCase",
-        "title": "连字符大写命名 (Kebab Upper Case) [ FOO-BAR ]"
+        "title": "连字符(脊柱式) + 全大写命名 (Kebab Upper Case) [ FOO-BAR ]"
       },
       {
-        "command": "variable-conversion.toCamelKebabCase",
-        "title": "驼峰脊柱式命名 (Kebab Upper Case) [ Foo-Bar ]"
+        "command": "variable-conversion.toKebabPascalCase",
+        "title": "连字符(脊柱式) + 大驼峰(帕斯卡)命名 (Kebab Pascal Case) [ Foo-Bar ]"
+      },
+      {
+        "command": "variable-conversion.toKebabCamelCase",
+        "title": "连字符(脊柱式) + 小驼峰(驼峰)命名 (Kebab Camel Case) [ foo-Bar ]"
       },
       {
         "command": "variable-conversion.toLowerCase",
@@ -112,8 +120,12 @@
           "group": "group-2-snake@2"
         },
         {
-          "command": "variable-conversion.toCamelSnakeCase",
+          "command": "variable-conversion.toSnakePascalCase",
           "group": "group-2-snake@3"
+        },
+        {
+          "command": "variable-conversion.toSnakeCamelCase",
+          "group": "group-2-snake@4"
         },
         {
           "command": "variable-conversion.toKebabCase",
@@ -124,8 +136,12 @@
           "group": "group-3-kebab@2"
         },
         {
-          "command": "variable-conversion.toCamelKebabCase",
+          "command": "variable-conversion.toKebabPascalCase",
           "group": "group-3-kebab@3"
+        },
+        {
+          "command": "variable-conversion.toKebabCamelCase",
+          "group": "group-3-kebab@4"
         },
         {
           "command": "variable-conversion.toLowerCase",

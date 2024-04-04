@@ -1,10 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as TextConversion from './main-code/variable-conversion';
-import { ConvertFunction, EOL } from './type-definition/convert-function-type';
 import handleEditorReplace from './extension-handler/editor-submenu-handler';
 import { handleQuickPick } from './extension-handler/quick-pick-handler';
+import { SupportCase } from './type-definition/SupportCaseType';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -42,22 +41,24 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('editor is undefined');
 	}
 
-	const commands: Array<{ command: string; convertFunction: ConvertFunction }> = [
-		{ command: 'variable-conversion.toCamelCase', convertFunction: TextConversion.toCamelCase },
-		{ command: 'variable-conversion.toPascalCase', convertFunction: TextConversion.toPascalCase },
-		{ command: 'variable-conversion.toKebabCase', convertFunction: TextConversion.toKebabCase },
-		{ command: 'variable-conversion.toCamelKebabCase', convertFunction: TextConversion.toCamelKebabCase },
-		{ command: 'variable-conversion.toKebabUpperCase', convertFunction: TextConversion.toKebabUpperCase },
-		// { command: 'variable-conversion.toSnakeCase', convertFunction: TextConversion.toSnakeCase },
-		// { command: 'variable-conversion.toCamelSnakeCase', convertFunction: TextConversion.toCamelSnakeCase },
-		// { command: 'variable-conversion.toSnakeUpperCase', convertFunction: TextConversion.toSnakeUpperCase },
-		{ command: 'variable-conversion.toUpperCase', convertFunction: TextConversion.toUpperCase },
-		{ command: 'variable-conversion.toLowerCase', convertFunction: TextConversion.toLowerCase },
+	const commands: Array<{ command: string; targetCase: SupportCase }> = [
+		{ command: 'variable-conversion.toCamelCase', targetCase: SupportCase.CAMEL_CASE },
+		{ command: 'variable-conversion.toPascalCase', targetCase: SupportCase.PASCAL_CASE },
+		{ command: 'variable-conversion.toSnakeCase', targetCase: SupportCase.SNAKE_CASE },
+		{ command: 'variable-conversion.toSnakeUpperCase', targetCase: SupportCase.SNAKE_UPPER_CASE },
+		{ command: 'variable-conversion.toSnakePascalCase', targetCase: SupportCase.SNAKE_PASCAL_CASE },
+		{ command: 'variable-conversion.toSnakeCamelCase', targetCase: SupportCase.SNAKE_CAMEL_CASE },
+		{ command: 'variable-conversion.toKebabCase', targetCase: SupportCase.KEBAB_CASE },
+		{ command: 'variable-conversion.toKebabUpperCase', targetCase: SupportCase.KEBAB_UPPER_CASE },
+		{ command: 'variable-conversion.toKebabPascalCase', targetCase: SupportCase.KEBAB_PASCAL_CASE },
+		{ command: 'variable-conversion.toKebabCamelCase', targetCase: SupportCase.KEBAB_CAMEL_CASE },
+		{ command: 'variable-conversion.toLowerCase', targetCase: SupportCase.LOWER_CASE },
+		{ command: 'variable-conversion.toUpperCase', targetCase: SupportCase.UPPER_CASE },
 	];
 
-	for (const { command, convertFunction } of commands) {
+	for (const { command, targetCase } of commands) {
 		let disposable = vscode.commands.registerCommand(command, () => {
-			handleEditorReplace(convertFunction);
+			handleEditorReplace(targetCase);
 		});
 		context.subscriptions.push(disposable);
 	}

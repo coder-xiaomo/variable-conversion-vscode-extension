@@ -1,4 +1,4 @@
-import { EOL } from "./convert-function-type";
+import { EOL } from "./EOLType";
 
 export type TestCaseGroup = {
     group: string
@@ -14,10 +14,15 @@ export type TestCase = {
     output: {
         camelCase: string
         pascalCase: string
-        upperCase?: string
-        lowerCase?: string
+        snakeCase: string
+        snakeCamelCase: string
+        snakePascalCase: string
+        snakeUpperCase: string
         kebabCase: string
-        camelkebabCase: string
+        kebabCamelCase: string
+        kebabPascalCase: string
         kebabUpperCase: string
+        lowerCase?: string
+        upperCase?: string
     }
 };
