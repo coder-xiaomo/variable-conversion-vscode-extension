@@ -5,7 +5,7 @@ https://fishpi.cn/article/1630641187509
 https://code.visualstudio.com/api/references/contribution-points#contributes.menus
 https://code.visualstudio.com/api/references/contribution-points#contributes.submenus
 
->extension.toCamelCase
+>variable-conversion.toCamelCase
 >Transform to
 
 =====

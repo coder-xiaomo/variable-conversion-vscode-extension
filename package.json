@@ -30,53 +30,53 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.convertCase",
+        "command": "variable-conversion.convertCase",
         "title": "字符串转换"
       },
       {
-        "command": "extension.toCamelCase",
+        "command": "variable-conversion.toCamelCase",
         "title": "小驼峰 / 驼峰命名 (Camel Case) [ fooBar ]"
       },
       {
-        "command": "extension.toPascalCase",
+        "command": "variable-conversion.toPascalCase",
         "title": "大驼峰 / 帕斯卡命名 (Pascal Case) [ FooBar ]"
       },
       {
-        "command": "extension.toKebabCase",
+        "command": "variable-conversion.toKebabCase",
         "title": "连字符 / 脊柱式命名 (Kebab Case / Spinal Case) [ foo-bar ]"
       },
       {
-        "command": "extension.toCamelKebabCase",
+        "command": "variable-conversion.toCamelKebabCase",
         "title": "连字符命名大写 (Kebab Upper Case) [ Foo-Bar ]"
       },
       {
-        "command": "extension.toKebabUpperCase",
+        "command": "variable-conversion.toKebabUpperCase",
         "title": "连字符命名大写 (Kebab Upper Case) [ FOO-BAR ]"
       },
       {
-        "command": "extension.toSnakeCase",
+        "command": "variable-conversion.toSnakeCase",
         "title": "下划线 / 蛇形命名 (Snake Case) [ foo_bar ]"
       },
       {
-        "command": "extension.toCamelSnakeCase",
+        "command": "variable-conversion.toCamelSnakeCase",
         "title": "驼峰蛇形命名 (Camel Snake Case) [ Foo_Bar ]"
       },
       {
-        "command": "extension.toSnakeUpperCase",
+        "command": "variable-conversion.toSnakeUpperCase",
         "title": "下划线大写 (Snake Upper Case) [ FOO_BAR ]"
       },
       {
-        "command": "extension.toUpperCase",
+        "command": "variable-conversion.toUpperCase",
         "title": "全大写 (Upper Case) [ FOOBAR ]"
       },
       {
-        "command": "extension.toLowerCase",
+        "command": "variable-conversion.toLowerCase",
         "title": "全小写 (Lower Case) [ foobar ]"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.convertCase",
+        "command": "variable-conversion.convertCase",
         "key": "shift+alt+t",
         "when": "editorTextFocus"
       }
@@ -85,61 +85,61 @@
       "editor/context": [
         {
           "when": "editorTextFocus",
-          "command": "extension.convertCase",
+          "command": "variable-conversion.convertCase",
           "group": "navigation@9"
         },
         {
           "when": "editorTextFocus && _textSelectionLength >= 1",
-          "submenu": "extension.stringConversionMenu",
+          "submenu": "variable-conversion.stringConversionMenu",
           "group": "navigation@9"
         }
       ],
-      "extension.stringConversionMenu": [
+      "variable-conversion.stringConversionMenu": [
         {
-          "command": "extension.toCamelCase",
+          "command": "variable-conversion.toCamelCase",
           "group": "group-extension"
         },
         {
-          "command": "extension.toPascalCase",
+          "command": "variable-conversion.toPascalCase",
           "group": "group-extension"
         },
         {
-          "command": "extension.toKebabCase",
+          "command": "variable-conversion.toKebabCase",
           "group": "group-kebab"
         },
         {
-          "command": "extension.toCamelKebabCase",
+          "command": "variable-conversion.toCamelKebabCase",
           "group": "group-kebab"
         },
         {
-          "command": "extension.toKebabUpperCase",
+          "command": "variable-conversion.toKebabUpperCase",
           "group": "group-kebab"
         },
         {
-          "command": "extension.toSnakeCase",
+          "command": "variable-conversion.toSnakeCase",
           "group": "group-extension"
         },
         {
-          "command": "extension.toCamelSnakeCase",
+          "command": "variable-conversion.toCamelSnakeCase",
           "group": "group-extension"
         },
         {
-          "command": "extension.toSnakeUpperCase",
+          "command": "variable-conversion.toSnakeUpperCase",
           "group": "group-extension"
         },
         {
-          "command": "extension.toUpperCase",
+          "command": "variable-conversion.toUpperCase",
           "group": "group-extension"
         },
         {
-          "command": "extension.toLowerCase",
+          "command": "variable-conversion.toLowerCase",
           "group": "group-extension"
         }
       ]
     },
     "submenus": [
       {
-        "id": "extension.stringConversionMenu",
+        "id": "variable-conversion.stringConversionMenu",
         "label": "将字符串转换为..."
       }
     ]

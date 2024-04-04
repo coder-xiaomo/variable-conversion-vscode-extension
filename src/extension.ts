@@ -74,13 +74,13 @@ export function activate(context: vscode.ExtensionContext) {
 	};
 
 	const commands: Array<{ command: string; convertFunction: ConvertFunction }> = [
-		{ command: 'extension.toCamelCase', convertFunction: TextConversion.toCamelCase },
-		{ command: 'extension.toPascalCase', convertFunction: TextConversion.toPascalCase },
-		{ command: 'extension.toKebabCase', convertFunction: TextConversion.toKebabCase },
-		{ command: 'extension.toCamelKebabCase', convertFunction: TextConversion.toCamelKebabCase },
-		{ command: 'extension.toKebabUpperCase', convertFunction: TextConversion.toKebabUpperCase },
-		{ command: 'extension.toUpperCase', convertFunction: TextConversion.toUpperCase },
-		{ command: 'extension.toLowerCase', convertFunction: TextConversion.toLowerCase },
+		{ command: 'variable-conversion.toCamelCase', convertFunction: TextConversion.toCamelCase },
+		{ command: 'variable-conversion.toPascalCase', convertFunction: TextConversion.toPascalCase },
+		{ command: 'variable-conversion.toKebabCase', convertFunction: TextConversion.toKebabCase },
+		{ command: 'variable-conversion.toCamelKebabCase', convertFunction: TextConversion.toCamelKebabCase },
+		{ command: 'variable-conversion.toKebabUpperCase', convertFunction: TextConversion.toKebabUpperCase },
+		{ command: 'variable-conversion.toUpperCase', convertFunction: TextConversion.toUpperCase },
+		{ command: 'variable-conversion.toLowerCase', convertFunction: TextConversion.toLowerCase },
 	];
 
 	for (const { command, convertFunction } of commands) {
@@ -106,7 +106,7 @@ export function activate(context: vscode.ExtensionContext) {
 		];
 	}
 
-	let convertCaseDisposable = vscode.commands.registerCommand('extension.convertCase', () => {
+	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', () => {
 		// 获取当前编辑器
 		let editor = vscode.window.activeTextEditor;
 		if (!editor) {
