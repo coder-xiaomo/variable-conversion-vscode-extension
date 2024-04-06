@@ -15,11 +15,22 @@ A powerful variable naming conversion extension. You can use it through the edit
 > 可以通过 `Ctrl + D` 快捷键选中光标所在的单词<br>
 > You can press `Ctrl + D` to select the word near the cursor
 
-#### 2. 按 `Shift + Alt + T` <br>Press `Shift + Alt + T`
+#### 2. 按 `Shift + Alt + T`<br>Press `Shift + Alt + T`
 
 ![Step2. Press Shift + Alt + T](image/step2-press-shift-alt-t.gif)
 
-或者右键 -> 将字符串转换为... <br>Or right-click on the selected text -> Convert string to...
+或者点击状态栏的 `字符串转换` 按钮<br>
+Or click the `String Conversion` button in the status bar
+
+![Step2. Press Status Bar Button](image/step2-press-status-bar-button.png)
+
+或者右键 -> `字符串转换`<br>
+Or right-click -> `String Conversion`
+
+![Step2. Variable conversion on the context menu](image/step2-variable-conversion-on-context-menu.png)
+
+或者右键 -> 将字符串转换为... <br>
+Or right-click on the selected text -> Convert string to...
 
 ![Step2. Right-click on the selected text](image/step2-right-click-on-the-selected-text.gif)
 

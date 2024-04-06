@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import handleEditorReplace from './extension-handler/editor-submenu-handler';
 import { handleQuickPick } from './extension-handler/quick-pick-handler';
 import { SupportCase } from './type-definition/SupportCaseType';
+import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -22,11 +23,20 @@ export function activate(context: vscode.ExtensionContext) {
 	// 	vscode.window.showInformationMessage('Hello World from variable-conversion!');
 	// });
 
+	let selectTextLength = 0;
+	createStatusBarItem();
+	vscode.window.onDidChangeActiveTextEditor(event => {
+		updateStatusBarItemVisable(selectTextLength);
+	});
+
 	// 用于判断是否展示右键菜单
 	vscode.window.onDidChangeTextEditorSelection(event => {
 		const text = event.textEditor.document.getText(event.selections[0]);
 		// console.log('text.length', text.length);
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
+
+		selectTextLength = text.length;
+		updateStatusBarItemVisable(selectTextLength);
 	});
 
 	// 初始(VSCode 插件初始化)时也判断一次 (考虑上次关闭 VSCode 有选区，重新打开后 VSCode 回复选区但用户未重新切换选区的场景)
@@ -37,6 +47,9 @@ export function activate(context: vscode.ExtensionContext) {
 		// 获取选中的文本
 		let text = document.getText(selection);
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
+
+		selectTextLength = text.length;
+		updateStatusBarItemVisable(selectTextLength);
 	} else {
 		// vscode.window.showInformationMessage('editor is undefined');
 		console.log('editor is undefined');

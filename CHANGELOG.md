@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -->
 
 
+## 1.0.6
+
+### Added
+
+- Add a status bar button to trigger string conversion (添加底栏按钮，支持通过底栏按钮触发字符串转换)
+
 ## 1.0.5
 
 ### Fixed
