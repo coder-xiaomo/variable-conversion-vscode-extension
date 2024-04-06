@@ -26,7 +26,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add extension logo
+- Add extension logo (添加插件 logo)
+
+### Fixed
+
+- Fixed an issue where the editor context menu was not displayed correctly. (修复右键菜单未能正确展示的问题)
 
 ## 1.0.0
 

@@ -30,7 +30,10 @@
     }
   ],
   "main": "./out/extension.js",
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished", // 当编辑器完成启动时激活
+    "onTextSelected" // 当用户选中文本时激活
+  ],
   "contributes": {
     "commands": [
       /**

@@ -26,7 +26,10 @@
     }
   ],
   "main": "./out/extension.js",
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished",
+    "onTextSelected"
+  ],
   "contributes": {
     "commands": [
       {
