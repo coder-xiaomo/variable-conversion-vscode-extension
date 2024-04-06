@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add shortcut key `Ctrl + Shift + T` to show vscode QickPick window (添加快捷键 Ctrl + Shift + T 来显示 vscode QickPick 弹窗)
+- Add shortcut key `Shift + Alt + T` to show vscode QickPick window (添加快捷键 Shift + Alt + T 来显示 vscode QickPick 弹窗)
 - Write `README.md` (完善 README 文档)
 
 ## 1.0.3
