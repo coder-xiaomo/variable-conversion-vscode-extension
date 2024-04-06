@@ -140,17 +140,120 @@ export enum SupportCase {
     UPPER_CASE,
 }
 
-export const AllSupportCase = [
-    SupportCase.CAMEL_CASE,
-    SupportCase.PASCAL_CASE,
-    SupportCase.SNAKE_CASE,
-    SupportCase.SNAKE_CAMEL_CASE,
-    SupportCase.SNAKE_PASCAL_CASE,
-    SupportCase.SNAKE_UPPER_CASE,
-    SupportCase.KEBAB_CASE,
-    SupportCase.KEBAB_CAMEL_CASE,
-    SupportCase.KEBAB_PASCAL_CASE,
-    SupportCase.KEBAB_UPPER_CASE,
-    SupportCase.LOWER_CASE,
-    SupportCase.UPPER_CASE,
+const keyword = {
+    camel: [
+        '小驼峰', '驼峰',
+        'Camel Case',
+        'XiaoTuoFeng', 'TuoFeng',
+        'XTF', 'TF',
+    ],
+    pascal: [
+        '大驼峰', '帕斯卡',
+        'Pascal Case',
+        'DaTuoFeng', 'PaSiKa',
+        'DTF', 'PSK',
+    ],
+    snake: [
+        '下划线', '蛇形', '_',
+        'Snake Case', 'Underline Case',
+        'XiaHuaXian', 'SheXing',
+        'XHX', 'SX',
+    ],
+    kebab: [
+        '连字符', '脊柱式', '-',
+        'Kebab Case', 'Spinal Case',
+        'LianZiFu', 'JiZhuShi',
+        'LZF', 'JZS',
+    ],
+    upper: [
+        '全大写', '大写',
+        'Upper Case',
+        'QuanDaXie',
+        'QDX',
+    ],
+    lower: [
+        '全小写', '小写',
+        'Lower Case',
+        'QuanXiaoXie',
+        'QXX',
+    ],
+};
+
+/**
+ * 所有支持的命名方式
+ * @since 2024-04-06
+ */
+export const qickPickSupportCases = [
+    {
+        type: SupportCase.CAMEL_CASE,
+        name: '小驼峰(驼峰)命名',
+        shortName:'小驼峰',
+        keyword: keyword.camel,
+    },
+    {
+        type: SupportCase.PASCAL_CASE,
+        name: '大驼峰(帕斯卡)命名',
+        shortName:'帕斯卡',
+        keyword: keyword.pascal,
+    },
+    {
+        type: SupportCase.SNAKE_CASE,
+        name: '下划线(蛇形)命名',
+        shortName:'蛇形',
+        keyword: [...keyword.snake, ...keyword.lower],
+    },
+    {
+        type: SupportCase.SNAKE_CAMEL_CASE,
+        name: '下划线(蛇形) + 小驼峰(驼峰)命名',
+        shortName:'蛇形驼峰',
+        keyword: [...keyword.snake, ...keyword.camel],
+    },
+    {
+        type: SupportCase.SNAKE_PASCAL_CASE,
+        name: '下划线(蛇形) + 大驼峰(帕斯卡)命名',
+        shortName:'蛇形帕斯卡',
+        keyword: [...keyword.snake, ...keyword.pascal],
+    },
+    {
+        type: SupportCase.SNAKE_UPPER_CASE,
+        name: '下划线(蛇形) + 全大写命名',
+        shortName:'蛇形大写',
+        keyword: [...keyword.snake, ...keyword.upper],
+    },
+    {
+        type: SupportCase.KEBAB_CASE,
+        name: '连字符(脊柱式)命名',
+        shortName:'脊柱',
+        keyword: [...keyword.kebab, ...keyword.lower],
+    },
+    {
+        type: SupportCase.KEBAB_CAMEL_CASE,
+        name: '连字符(脊柱式) + 小驼峰(驼峰)命名',
+        shortName:'脊柱驼峰',
+        keyword: [...keyword.kebab, ...keyword.camel],
+    },
+    {
+        type: SupportCase.KEBAB_PASCAL_CASE,
+        name: '连字符(脊柱式) + 大驼峰(帕斯卡)命名',
+        shortName:'脊柱帕斯卡',
+        keyword: [...keyword.snake, ...keyword.pascal],
+    },
+    {
+        type: SupportCase.KEBAB_UPPER_CASE,
+        name: '连字符(脊柱式) + 全大写命名',
+        shortName:'脊柱大写',
+        keyword: [...keyword.snake, ...keyword.upper],
+    },
+    {
+        type: SupportCase.LOWER_CASE,
+        name: '全小写',
+        shortName:'小写',
+        keyword: keyword.lower,
+    },
+    {
+        type: SupportCase.UPPER_CASE,
+        name: '全大写',
+        shortName:'大写',
+        keyword: keyword.upper,
+    },
 ];

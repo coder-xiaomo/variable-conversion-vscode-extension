@@ -12,7 +12,7 @@ import { transformMutliLineText, transformText } from './transform';
  * @returns 转换后的文本
  * @since 2024-04-04
  */
-export function caseConversion(targetCase: SupportCase, str: string, eol: EOL): string {
+export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, cutText: Array<TransformTextResult> | undefined = undefined): string {
     let spaceCharacter: '-' | '_' | ' ' | undefined = undefined;
     switch (targetCase) {
         default:
@@ -39,7 +39,7 @@ export function caseConversion(targetCase: SupportCase, str: string, eol: EOL): 
     }
 
     // Cut text 切割文本
-    const results: Array<TransformTextResult> = transformMutliLineText(str);
+    const results: Array<TransformTextResult> = cutText === undefined ? transformMutliLineText(str) : cutText;
     // console.log('results', results);
 
     const transformedLines: Array<string> = [];

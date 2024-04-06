@@ -9,6 +9,7 @@ All notable changes to this extension will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!--
 
 ## [Unreleased]
 
@@ -20,7 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+-->
 
+
+## 1.0.4
+
+### Added
+
+- Add shortcut key `Ctrl + Shift + T` to show vscode QickPick window (添加快捷键 Ctrl + Shift + T 来显示 vscode QickPick 弹窗)
+- Write `README.md` (完善 README 文档)
 
 ## 1.0.3
 
