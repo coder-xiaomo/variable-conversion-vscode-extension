@@ -22,11 +22,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## 1.0.3
+
+### Added
+
+- Add extension logo
+
 ## 1.0.0
 
 ### Added
 
 - Adds an editor context menu with submenu
-- Implement conversion to Camel Case, Pascal Case, Upper Case, Lower Case
+- Implement conversion to Camel Case, Pascal Case, Snake Case(Snake Camel, Snake Pascal, Snake Upper), Kebab Case(Kebab Camel, Kebab Pascal, Kebab Upper), Lower Case, Upper Case
 - Add test cases
 - Initial release

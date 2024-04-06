@@ -2,9 +2,11 @@
   // 插件 id 及名称
   "name": "variable-conversion",
   "displayName": "Variable Conversion [Under development(正在开发中)]",
-  "description": "A variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), lower, upper case, and more. \n变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、连字符(脊柱式)、全小写、全大写等常用命名方式(及组合)转换",
+  "description": "A variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), lower, upper case, and more. \n变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、连字符(脊柱式)、全小写、全大写等常用命名方式(及组合)转换。",
   // 版本号
-  "version": "0.0.1",
+  "version": "0.0.3",
+  // logo
+  "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
     "vscode": "^1.87.0"

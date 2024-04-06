@@ -2,7 +2,7 @@
 
 A variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), lower, upper case, and more.
 
-变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、连字符(脊柱式)、全小写、全大写等常用命名方式(及组合)转换
+变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、连字符(脊柱式)、全小写、全大写等常用命名方式(及组合)转换。
 
 ## Features 特点
 
