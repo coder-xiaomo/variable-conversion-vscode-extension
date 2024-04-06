@@ -34,7 +34,7 @@ Or right-click on the selected text -> Convert string to...
 
 ![Step2. Right-click on the selected text](image/step2-right-click-on-the-selected-text.gif)
 
-选择转换目标，转换完成
+#### 3. 选择转换目标，转换完成 <br>Select the conversion target and complete
 
 ## 支持的类型
 
