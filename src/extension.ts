@@ -38,7 +38,8 @@ export function activate(context: vscode.ExtensionContext) {
 		let text = document.getText(selection);
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
 	} else {
-		vscode.window.showInformationMessage('editor is undefined');
+		// vscode.window.showInformationMessage('editor is undefined');
+		console.log('editor is undefined');
 	}
 
 	const commands: Array<{ command: string; targetCase: SupportCase }> = [
