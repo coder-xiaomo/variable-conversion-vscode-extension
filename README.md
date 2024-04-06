@@ -5,7 +5,9 @@ A powerful variable naming conversion extension. You can use it through the edit
 
 ## 如何使用？ How to Use?
 
-1. 选中代码中需要转换的内容 <br>Select The Text To Convert
+> 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点击这里查看](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)
+
+#### 1. 选中代码中需要转换的内容 <br>Select The Text To Convert
 
 ![Step1. Select The Text To Convert](image/step1-select-the-text-to-convert.gif)
 
@@ -13,7 +15,7 @@ A powerful variable naming conversion extension. You can use it through the edit
 > 可以通过 `Ctrl + D` 快捷键选中光标所在的单词<br>
 > You can press `Ctrl + D` to select the word near the cursor
 
-2. 按 `Shift + Alt + T` <br>Press `Shift + Alt + T`
+#### 2. 按 `Shift + Alt + T` <br>Press `Shift + Alt + T`
 
 ![Step2. Press Shift + Alt + T](image/step2-press-shift-alt-t.gif)
 

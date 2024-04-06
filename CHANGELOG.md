@@ -24,6 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -->
 
 
+## 1.0.5
+
+### Fixed
+
+- Fix bug: The infobox showed `editor is undefined` when the current active TAB was not an editor
+
+
 ## 1.0.4
 
 ### Added
