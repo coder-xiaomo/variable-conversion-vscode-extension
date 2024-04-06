@@ -25,6 +25,25 @@ A powerful variable naming conversion extension. You can use it through the edit
 
 选择转换目标，转换完成
 
+## 支持的类型
+
+| 类型                                | Type                     | 举例 e.g.        |
+| ----------------------------------- | ------------------------ | ---------------- |
+| 小驼峰(驼峰)命名                    | Camel Case               | fooBar           |
+| 大驼峰(帕斯卡)命名                  | Pascal Case              | FooBar           |
+| 下划线(蛇形)命名                    | Snake Case               | foo_bar          |
+| 下划线(蛇形) + 小驼峰(驼峰)命名     | Snake Camel Case         | foo_Bar          |
+| 下划线(蛇形) + 大驼峰(帕斯卡)命名   | Snake Pascal Case        | Foo_Bar          |
+| 下划线(蛇形) + 全大写命名           | Snake Upper Case         | FOO_BAR          |
+| 连字符(脊柱式)命名                  | Kebab Case / Spinal Case | foo-bar          |
+| 连字符(脊柱式) + 小驼峰(驼峰)命名   | Kebab Camel Case         | foo-Bar          |
+| 连字符(脊柱式) + 大驼峰(帕斯卡)命名 | Kebab Pascal Case        | Foo-Bar          |
+| 连字符(脊柱式) + 全大写命名         | Kebab Upper Case         | FOO-BAR          |
+| 全小写                              | Lower Case               | foo_bar / foobar |
+| 全大写                              | Upper Case               | FOO_BAR / FOOBAR |
+
+
+
 ## 反馈 Feedback
 
 如果您觉得本插件还不够好用，有更好的使用建议；或者发现了 BUG，欢迎[前往 GitHub 仓库提 issue](https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues). 使用简体中文、繁體中文或 English 均可，不建议使用翻译软件翻译，否则可能会让文字描述变得抽象难懂。<br>

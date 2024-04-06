@@ -15,6 +15,7 @@
  * - Add type definition in below `SupportCase` enum
  * - Modify `description` in package.json
  * - Add changes in CHANGELOG.md
+ * - Add changes in README.md
  */
 export enum SupportCase {
 
