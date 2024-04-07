@@ -26,9 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add 4 new conversion types: space case, space camel case, space pascal case, space upper case (新增 4 种转换类型: 空格分隔 + 小驼峰/大驼峰/全小写/全大写)
+
 ### Changed
 
--- Optimize QickPick conversion value display (优化 QickPick 转换值展示)
+- Optimize QickPick conversion value display (优化 QickPick 转换值展示)
+- Fixed typo: keyword of KEBAB_PASCAL_CASE, KEBAB_UPPER_CASE (修正 KEBAB_PASCAL_CASE, KEBAB_UPPER_CASE 关键词错误)
 
 ## 1.0.6
 

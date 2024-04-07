@@ -77,6 +77,22 @@
         "title": "连字符(脊柱式) + 小驼峰(驼峰)命名 (Kebab Camel Case) [ foo-Bar ]"
       },
       {
+        "command": "variable-conversion.toSpaceCase",
+        "title": "空格分隔命名 (Space Case) [ foo bar ]"
+      },
+      {
+        "command": "variable-conversion.toSpaceUpperCase",
+        "title": "空格分隔 + 全大写命名 (Space Upper Case) [ FOO BAR ]"
+      },
+      {
+        "command": "variable-conversion.toSpacePascalCase",
+        "title": "空格分隔 + 大驼峰(帕斯卡)命名 (Space Pascal Case) [ Foo Bar ]"
+      },
+      {
+        "command": "variable-conversion.toSpaceCamelCase",
+        "title": "空格分隔 + 小驼峰(驼峰)命名 (Space Camel Case) [ foo Bar ]"
+      },
+      {
         "command": "variable-conversion.toLowerCase",
         "title": "全小写 (Lower Case) [ foobar ]"
       },
@@ -147,12 +163,28 @@
           "group": "group-3-kebab@4"
         },
         {
+          "command": "variable-conversion.toSpaceCase",
+          "group": "group-4-space@1"
+        },
+        {
+          "command": "variable-conversion.toSpaceUpperCase",
+          "group": "group-4-space@2"
+        },
+        {
+          "command": "variable-conversion.toSpacePascalCase",
+          "group": "group-4-space@3"
+        },
+        {
+          "command": "variable-conversion.toSpaceCamelCase",
+          "group": "group-4-space@4"
+        },
+        {
           "command": "variable-conversion.toLowerCase",
-          "group": "group-4-upper-lower@1"
+          "group": "group-5-upper-lower@1"
         },
         {
           "command": "variable-conversion.toUpperCase",
-          "group": "group-4-upper-lower@2"
+          "group": "group-5-upper-lower@2"
         }
       ]
     },

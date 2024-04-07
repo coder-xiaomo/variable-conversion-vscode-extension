@@ -51,14 +51,22 @@ suite('Extension Test: run test case', () => {
 					for (let eol of eolList) {
 						assert.strictEqual(testCase.output.camelCase, caseConversion(SupportCase.CAMEL_CASE, input, eol));
 						assert.strictEqual(testCase.output.pascalCase, caseConversion(SupportCase.PASCAL_CASE, input, eol));
+
 						assert.strictEqual(testCase.output.snakeCase, caseConversion(SupportCase.SNAKE_CASE, input, eol));
 						assert.strictEqual(testCase.output.snakeCamelCase, caseConversion(SupportCase.SNAKE_CAMEL_CASE, input, eol));
 						assert.strictEqual(testCase.output.snakePascalCase, caseConversion(SupportCase.SNAKE_PASCAL_CASE, input, eol));
 						assert.strictEqual(testCase.output.snakeUpperCase, caseConversion(SupportCase.SNAKE_UPPER_CASE, input, eol));
+
 						assert.strictEqual(testCase.output.kebabCase, caseConversion(SupportCase.KEBAB_CASE, input, eol));
 						assert.strictEqual(testCase.output.kebabCamelCase, caseConversion(SupportCase.KEBAB_CAMEL_CASE, input, eol));
 						assert.strictEqual(testCase.output.kebabPascalCase, caseConversion(SupportCase.KEBAB_PASCAL_CASE, input, eol));
 						assert.strictEqual(testCase.output.kebabUpperCase, caseConversion(SupportCase.KEBAB_UPPER_CASE, input, eol));
+						
+						assert.strictEqual(testCase.output.spaceCase, caseConversion(SupportCase.SPACE_CASE, input, eol));
+						assert.strictEqual(testCase.output.spaceCamelCase, caseConversion(SupportCase.SPACE_CAMEL_CASE, input, eol));
+						assert.strictEqual(testCase.output.spacePascalCase, caseConversion(SupportCase.SPACE_PASCAL_CASE, input, eol));
+						assert.strictEqual(testCase.output.spaceUpperCase, caseConversion(SupportCase.SPACE_UPPER_CASE, input, eol));
+						
 						if (testCase.output.lowerCase !== undefined) {
 							assert.strictEqual(testCase.output.lowerCase, caseConversion(SupportCase.LOWER_CASE, input, eol));
 						}

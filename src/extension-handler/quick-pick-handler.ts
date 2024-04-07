@@ -96,7 +96,7 @@ export function handleQuickPick() {
         title: '请选择需要转换的命名类型...',
         placeHolder: '点击转换，输入关键词可快速选择'
     }).then(pickItem => {
-        if (pickItem === undefined) {
+        if (!editor || pickItem === undefined) {
             return;
         }
 

@@ -121,6 +121,46 @@ export enum SupportCase {
     KEBAB_UPPER_CASE,
 
     /**
+     * 空格分隔命名
+     * Space Case / Spinal Case
+     * e.g. foo bar
+     *
+     * @alias: spaceCase / SpaceCase / space case / space_case / SPACE_CASE
+     * @since 2024-04-07
+     */
+    SPACE_CASE,
+
+    /**
+     * 空格分隔 + 小驼峰(驼峰)命名
+     * Space Camel Case
+     * e.g. foo Bar
+     *
+     * @alias: spaceCamelCase / SpaceCamelCase / space camel case / space_camel_case / SPACE_CAMEL_CASE
+     * @since 2024-04-07
+     */
+    SPACE_CAMEL_CASE,
+
+    /**
+     * 空格分隔 + 大驼峰(帕斯卡)命名
+     * Space Pascal Case
+     * e.g. Foo Bar
+     *
+     * @alias: spacePascalCase / SpacePascalCase / space pascal case / space_pascal_case / SPACE_PASCAL_CASE
+     * @since 2024-04-07
+     */
+    SPACE_PASCAL_CASE,
+
+    /**
+     * 空格分隔 + 全大写命名
+     * Space Upper Case
+     * e.g. FOO BAR
+     *
+     * @alias: spaceUpperCase / SpaceUpperCase / space upper case / space_upper_case / SPACE_UPPER_CASE
+     * @since 2024-04-07
+     */
+    SPACE_UPPER_CASE,
+
+    /**
      * 全小写
      * Lower Case
      * e.g. foo_bar / foobar
@@ -169,6 +209,13 @@ const keyword = {
         'kc', 'sc',
         'LianZiFu', 'JiZhuShi',
         'lzf', 'jzs',
+    ],
+    space: [
+        '空格', // ' ',
+        'Space Case',
+        'sc',
+        'KongGe',
+        'kg',
     ],
     upper: [
         '全大写', '大写',
@@ -243,13 +290,37 @@ export const qickPickSupportCases = [
         type: SupportCase.KEBAB_PASCAL_CASE,
         name: '连字符(脊柱式) + 大驼峰(帕斯卡)命名',
         shortName: '脊柱帕斯卡',
-        keyword: [...keyword.snake, ...keyword.pascal],
+        keyword: [...keyword.kebab, ...keyword.pascal],
     },
     {
         type: SupportCase.KEBAB_UPPER_CASE,
         name: '连字符(脊柱式) + 全大写命名',
         shortName: '脊柱大写',
-        keyword: [...keyword.snake, ...keyword.upper],
+        keyword: [...keyword.kebab, ...keyword.upper],
+    },
+    {
+        type: SupportCase.SPACE_CASE,
+        name: '空格分隔命名',
+        shortName: '脊柱',
+        keyword: [...keyword.space, ...keyword.lower],
+    },
+    {
+        type: SupportCase.SPACE_CAMEL_CASE,
+        name: '空格分隔 + 小驼峰(驼峰)命名',
+        shortName: '脊柱驼峰',
+        keyword: [...keyword.space, ...keyword.camel],
+    },
+    {
+        type: SupportCase.SPACE_PASCAL_CASE,
+        name: '空格分隔 + 大驼峰(帕斯卡)命名',
+        shortName: '脊柱帕斯卡',
+        keyword: [...keyword.space, ...keyword.pascal],
+    },
+    {
+        type: SupportCase.SPACE_UPPER_CASE,
+        name: '空格分隔 + 全大写命名',
+        shortName: '脊柱大写',
+        keyword: [...keyword.space, ...keyword.upper],
     },
     {
         type: SupportCase.LOWER_CASE,

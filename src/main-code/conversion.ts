@@ -32,6 +32,12 @@ export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, c
         case SupportCase.KEBAB_UPPER_CASE:  // 连字符(脊柱式) + 全大写命名
             spaceCharacter = '-';
             break;
+        case SupportCase.SPACE_CASE:        // 空格分隔命名
+        case SupportCase.SPACE_CAMEL_CASE:  // 空格分隔 + 小驼峰(驼峰)命名
+        case SupportCase.SPACE_PASCAL_CASE: // 空格分隔 + 大驼峰(帕斯卡)命名
+        case SupportCase.SPACE_UPPER_CASE:  // 空格分隔 + 全大写命名
+            spaceCharacter = ' ';
+            break;
         case SupportCase.LOWER_CASE:        // 全小写
             return str.toLowerCase();
         case SupportCase.UPPER_CASE:        // 全大写
@@ -75,6 +81,7 @@ export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, c
                 case SupportCase.CAMEL_CASE:        // 小驼峰(驼峰)命名
                 case SupportCase.SNAKE_CAMEL_CASE:  // 下划线(蛇形) + 小驼峰(驼峰)命名
                 case SupportCase.KEBAB_CAMEL_CASE:  // 连字符(脊柱式) + 小驼峰(驼峰)命名
+                case SupportCase.SPACE_CAMEL_CASE:  // 空格分隔 + 小驼峰(驼峰)命名
                     if (isFirstWord) {
                         transformedWords.push(word);
                         if (isCurrentWordNormal) {
@@ -87,14 +94,17 @@ export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, c
                 case SupportCase.PASCAL_CASE:       // 大驼峰(帕斯卡)命名
                 case SupportCase.SNAKE_PASCAL_CASE: // 下划线(蛇形) + 大驼峰(帕斯卡)命名
                 case SupportCase.KEBAB_PASCAL_CASE: // 连字符(脊柱式) + 大驼峰(帕斯卡)命名
+                case SupportCase.SPACE_PASCAL_CASE: // 空格分隔 + 大驼峰(帕斯卡)命名
                     transformedWords.push(pascalCaseWord);
                     break;
                 case SupportCase.SNAKE_CASE:        // 下划线(蛇形)命名
-                case SupportCase.KEBAB_CASE: // 转连字符 / 脊柱式命名
+                case SupportCase.KEBAB_CASE:        // 连字符(脊柱式)命名
+                case SupportCase.SPACE_CASE:        // 空格分隔命名
                     transformedWords.push(word);
                     break;
                 case SupportCase.SNAKE_UPPER_CASE:  // 下划线(蛇形) + 全大写命名
                 case SupportCase.KEBAB_UPPER_CASE:  // 连字符(脊柱式) + 全大写命名
+                case SupportCase.SPACE_UPPER_CASE:  // 空格分隔 + 全大写命名
                     transformedWords.push(word.toUpperCase());
                     break;
                 default:

@@ -14,14 +14,22 @@ export type TestCase = {
     output: {
         camelCase: string
         pascalCase: string
+
         snakeCase: string
         snakeCamelCase: string
         snakePascalCase: string
         snakeUpperCase: string
+
         kebabCase: string
         kebabCamelCase: string
         kebabPascalCase: string
         kebabUpperCase: string
+
+        spaceCase: string
+        spaceCamelCase: string
+        spacePascalCase: string
+        spaceUpperCase: string
+
         lowerCase?: string
         upperCase?: string
     }
