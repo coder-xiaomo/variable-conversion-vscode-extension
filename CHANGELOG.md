@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -->
 
 
+## [Unreleased]
+
+### Changed
+
+-- Optimize QickPick conversion value display (优化 QickPick 转换值展示)
+
 ## 1.0.6
 
 ### Added

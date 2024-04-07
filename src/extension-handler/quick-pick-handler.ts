@@ -55,10 +55,11 @@ function generateOptionsBasedOnText(text: string, eol: EOL): Array<QuickPickItem
         if (text === recommendItem.conversionText) {
             continue; // 如果转换后与转换前相同，那么跳过这一项
         }
+        const conversionTextForDisplay = recommendItem.conversionText.trim();
         let quickPickItem: QuickPickItemEx = {
-            label: recommendItem.conversionText.length >= QuickPickLabelMaxLength
-                ? (recommendItem.conversionText.substring(0, QuickPickLabelMaxLength - 3) + '...')
-                : recommendItem.conversionText,
+            label: conversionTextForDisplay.length >= QuickPickLabelMaxLength
+                ? (conversionTextForDisplay.substring(0, QuickPickLabelMaxLength - 3) + '...')
+                : conversionTextForDisplay,
             description: `转换为 ${recommendItem.transforTo.join(' / ')}`,
             detail: `关键词 ${recommendItem.keyword.join(' ')}`,
             value: recommendItem.conversionText,
