@@ -3,5 +3,4 @@ export type TransformTextResult = {
     trailingSpace: string
     result: string
     trimResult: string
-    // debug?: any
 };

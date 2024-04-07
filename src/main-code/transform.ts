@@ -26,8 +26,6 @@ export function transformText(input: string): TransformTextResult {
         ? '' // 字符串全为空格时，将尾空格置为空字符串
         : input.match(/ +$/);
 
-    // const debug = { input, leadingSpaces, trailingSpaces };
-
     // 去除首尾空格
     // 不可以使用 input = input.trim(); 否则换行会被替换掉
     input = input.replace(/^ +| +$/g, '');
@@ -72,6 +70,5 @@ export function transformText(input: string): TransformTextResult {
         trailingSpace: trailingSpaceStr,
         result: noTrimResult,
         trimResult: result,
-        // debug: debug
     };
 }
