@@ -234,6 +234,32 @@ const keyword = {
 };
 
 /**
+ * 接管的字符串转换命令
+ */
+export const commands: Array<{ command: string; targetCase: SupportCase }> = [
+    { command: 'variable-conversion.toCamelCase', targetCase: SupportCase.CAMEL_CASE },
+    { command: 'variable-conversion.toPascalCase', targetCase: SupportCase.PASCAL_CASE },
+
+    { command: 'variable-conversion.toSnakeCase', targetCase: SupportCase.SNAKE_CASE },
+    { command: 'variable-conversion.toSnakeUpperCase', targetCase: SupportCase.SNAKE_UPPER_CASE },
+    { command: 'variable-conversion.toSnakePascalCase', targetCase: SupportCase.SNAKE_PASCAL_CASE },
+    { command: 'variable-conversion.toSnakeCamelCase', targetCase: SupportCase.SNAKE_CAMEL_CASE },
+
+    { command: 'variable-conversion.toKebabCase', targetCase: SupportCase.KEBAB_CASE },
+    { command: 'variable-conversion.toKebabUpperCase', targetCase: SupportCase.KEBAB_UPPER_CASE },
+    { command: 'variable-conversion.toKebabPascalCase', targetCase: SupportCase.KEBAB_PASCAL_CASE },
+    { command: 'variable-conversion.toKebabCamelCase', targetCase: SupportCase.KEBAB_CAMEL_CASE },
+
+    { command: 'variable-conversion.toSpaceCase', targetCase: SupportCase.SPACE_CASE },
+    { command: 'variable-conversion.toSpaceUpperCase', targetCase: SupportCase.SPACE_UPPER_CASE },
+    { command: 'variable-conversion.toSpacePascalCase', targetCase: SupportCase.SPACE_PASCAL_CASE },
+    { command: 'variable-conversion.toSpaceCamelCase', targetCase: SupportCase.SPACE_CAMEL_CASE },
+
+    { command: 'variable-conversion.toLowerCase', targetCase: SupportCase.LOWER_CASE },
+    { command: 'variable-conversion.toUpperCase', targetCase: SupportCase.UPPER_CASE },
+];
+
+/**
  * 所有支持的命名方式
  * @since 2024-04-06
  */
