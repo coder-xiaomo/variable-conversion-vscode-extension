@@ -84,7 +84,7 @@ export function handleQuickPick() {
     let text = document.getText(selection);
 
     if (text.length === 0) {
-        vscode.window.showInformationMessage('Please select the variable you want to convert and try again.\n请选择需要转换的变量后重试');
+        vscode.window.showInformationMessage('请选择需要转换的变量后重试\nPlease select the variable you want to convert and try again.');
         return;
     }
 
