@@ -2,6 +2,8 @@
 
 vsce login coder-xiaomo
 
+重要！删除 out 目录，并切到 release 分支再进行打包，避免打入其他无用文件
+
 vsce publish
 
  INFO  Publishing 'coder-xiaomo.variable-conversion v0.0.1'...
