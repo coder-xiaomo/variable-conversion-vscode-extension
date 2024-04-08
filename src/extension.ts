@@ -45,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// 判断是否展示状态栏按钮
 		updateStatusBarItemVisable(selectTextLength);
 
-		// 滚动转换：记录当前选中内容，并且进行转换
+		// 循环转换：记录当前选中内容，并且进行转换
 		let eol: EOL = textEditor.document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
 		CyclicConversion.onUserSelectionUpdated(selections, textList, eol);
 	};
@@ -66,7 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
 	 * 编辑器中光标选中位置改变触发
 	 */
 	vscode.window.onDidChangeTextEditorSelection(event => {
-		console.log('光标选中位置改变 onDidChangeTextEditorSelection', event);
+		// console.log('光标选中位置改变 onDidChangeTextEditorSelection', event);
 		// 执行 Callback
 		onTextEditorSelectionChangeCallback(event.textEditor, event.selections);
 	});
@@ -86,11 +86,11 @@ export function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(disposable);
 	}
 
-	// 注册字符串转换 command 状态栏/快捷键/右键[字符串转换]菜单均有用到
+	// 注册变量转换 command 状态栏/快捷键/右键[变量转换]菜单均有用到
 	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', handleQuickPick);
 	context.subscriptions.push(convertCaseDisposable);
 
-	// 注册滚动转换 command
+	// 注册循环转换 command
 	let disposableLoopConversionPrev = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
 		console.log('variable-conversion.convertCase', arrowKey);
 		CyclicConversion.previousOne();

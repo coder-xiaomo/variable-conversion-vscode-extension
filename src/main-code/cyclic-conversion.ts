@@ -11,7 +11,7 @@ interface UserSelection {
     currentIndex: number
     isConverted: boolean
     conversionsTarget: Array<string[]>
-    lastConvertedSelectionsText: string[] // 按快捷键后转换的值（如果下次触发 onUserSelectionUpdated 后传入值是这个，那么跳过，避免丢失当前滚动转换记录）
+    lastConvertedSelectionsText: string[] // 按快捷键后转换的值（如果下次触发 onUserSelectionUpdated 后传入值是这个，那么跳过，避免丢失当前循环转换记录）
 }
 
 const userSelection: UserSelection = {
@@ -25,17 +25,17 @@ const userSelection: UserSelection = {
 };
 
 export function onUserSelectionUpdated(selections: readonly vscode.Selection[], textList: string[], eol: EOL): void {
+    userSelection.currentSelections = selections;
     if (textList.length !== 0 && isStringArrayEqual(textList, userSelection.lastConvertedSelectionsText)) {
         console.log('skip onUserSelectionUpdated');
         return;
     }
     console.log('onUserSelectionUpdated', textList, userSelection.lastConvertedSelectionsText);
     userSelection.currentEol = eol;
-    userSelection.currentSelections = selections;
     userSelection.currentSelectionsText = textList;
     userSelection.currentIndex = 0;
     userSelection.isConverted = false;
-    userSelection.conversionsTarget = [];
+    userSelection.conversionsTarget = [textList];
     userSelection.lastConvertedSelectionsText = textList;
 }
 
@@ -65,8 +65,9 @@ function lazyConvert() {
     }
 
     const textList = userSelection.currentSelectionsText;
+    // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
     const eol = userSelection.currentEol;
-    const conversionsTarget: Array<string[]> = [];
+    const conversionsTarget: Array<string[]> = [textList];
     for (const cyclicConvertCase of cyclicConvertCaseOrder) {
         // 每一个类型
         const conversionsTargetItem: string[] = [];
@@ -80,9 +81,9 @@ function lazyConvert() {
 
     // 按数组去重
     const noDuplicate = stringListArrayDuplicateRemoval(conversionsTarget);
-    console.log('noDuplicate', noDuplicate);
+    // console.log('noDuplicate', noDuplicate);
 
-    userSelection.conversionsTarget = conversionsTarget;
+    userSelection.conversionsTarget = noDuplicate;
     userSelection.isConverted = true;
 }
 

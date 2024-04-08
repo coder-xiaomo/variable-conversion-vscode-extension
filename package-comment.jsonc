@@ -2,7 +2,7 @@
   // 插件 id 及名称
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
-  "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
+  "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、状态栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
   // 版本号
   "version": "1.0.8",
   // logo
@@ -45,7 +45,7 @@
         "key": "shift+alt+t",
         "when": "editorTextFocus"
       },
-      // 滚动转换 上一个
+      // 循环转换 上一个
       {
         "command": "variable-conversion.cyclicConvertCase.previous",
         "key": "ctrl+alt+[",
@@ -54,7 +54,7 @@
         },
         "when": "editorTextFocus"
       },
-      // 滚动转换 下一个
+      // 循环转换 下一个
       {
         "command": "variable-conversion.cyclicConvertCase.next",
         "key": "ctrl+alt+]",
@@ -66,22 +66,22 @@
     ],
     "commands": [
       /**
-       * 滚动转换 可以不添加
+       * 循环转换 可以不添加
        */
       // {
       //   "command": "variable-conversion.cyclicConvertCase.previous",
-      //   "title": "字符串转换（上一个）"
+      //   "title": "变量转换（上一个）"
       // },
       // {
       //   "command": "variable-conversion.cyclicConvertCase.next",
-      //   "title": "字符串转换（下一个）"
+      //   "title": "变量转换（下一个）"
       // },
       /**
        * 右键菜单
        */
       {
         "command": "variable-conversion.convertCase",
-        "title": "字符串转换"
+        "title": "变量转换"
       },
       /**
        * 右键菜单 - 子菜单
@@ -312,7 +312,7 @@
     "submenus": [
       {
         "id": "variable-conversion.stringConversionMenu",
-        "label": "将字符串转换为..."
+        "label": "将变量转换为..."
       }
     ]
   },

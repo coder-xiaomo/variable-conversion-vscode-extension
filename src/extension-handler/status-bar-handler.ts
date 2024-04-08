@@ -11,7 +11,7 @@ let statusBar: vscode.StatusBarItem;
  */
 export function createStatusBarItem() {
     statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-    statusBar.text = '$(find-replace)字符串转换';
+    statusBar.text = '$(find-replace)变量转换';
     statusBar.command = 'variable-conversion.convertCase';
     // statusBar.color = 'red';
     // statusBar.show();

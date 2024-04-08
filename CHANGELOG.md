@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Supports scrolling conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (simultaneously supports multi-line selection conversion) 支持通过快捷键滚动转换 (同时支持多行选区转换)
+- Supports scrolling conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (simultaneously supports multi-line selection conversion) 支持通过快捷键循环转换 (同时支持多行选区转换)
 
 ## 1.0.7
 
@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a status bar button to trigger string conversion (添加底栏按钮，支持通过底栏按钮触发字符串转换)
+- Add a status bar button to trigger string conversion (添加状态栏按钮，支持通过状态栏按钮触发变量转换)
 
 ## 1.0.5
 

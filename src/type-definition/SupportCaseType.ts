@@ -232,7 +232,7 @@ const keyword = {
 };
 
 /**
- * 接管的字符串转换命令
+ * 接管的变量转换命令
  */
 export const commands: Array<{ command: string; targetCase: SupportCase }> = [
     { command: 'variable-conversion.toCamelCase', targetCase: SupportCase.CAMEL_CASE },
@@ -361,7 +361,7 @@ export const quickPickSupportCases = [
 ];
 
 /**
- * 通过快捷键滚动转换的顺序
+ * 通过快捷键循环转换的顺序
  * @since 2024-04-08
  */
 export const cyclicConvertCaseOrder = [

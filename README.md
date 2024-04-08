@@ -1,40 +1,67 @@
 # 命名方式转换插件 Variable Conversion
 
-一个强大的变量名转换插件，支持常用命名方式间一键转换，支持右键菜单、快捷键、底栏等多种方式使用。<br>
-A powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar.
+一个强大的变量名转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
+A powerful variable naming conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and bottom bar.
+
+- [x] 支持多选区 Support multi-selection
+- [x] 支持多窗口 (不支持子窗口状态栏) Support subwindow  (subwindow status bar are not supported)
+- [x] 支持撤回 & 重做 Support undo & redo (Ctrl + Z / Ctrl + Y)
 
 ## 如何使用？ How to Use?
 
 > 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点击这里查看](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)
 
-#### 1. 选中代码中需要转换的内容 <br>Select The Text To Convert
+### 循环转换(Beta) Cyclic conversion(Beta)
+
+选中代码中需要转换的内容，然后按下 `Ctrl + Alt + [` and `Ctrl + Alt + ]` 即可前后灵活切换变量命名方式。
+
+![](image/cyclic-conversion.gif)
+
+### 基础转换
+
+**1. 选中代码中需要转换的内容** **Select The Text To Convert**
 
 ![Step1. Select The Text To Convert](image/step1-select-the-text-to-convert.gif)
 
-> Tips:<br>
-> 可以通过 `Ctrl + D` 快捷键选中光标所在的单词<br>
-> You can press `Ctrl + D` to select the word near the cursor
+> 小提示: <br>
+> 1. 可以先按住 `Alt` 键不放，再鼠标先后选中多个选区 <br>
+> 2. 可以先按住 `Shift + Alt` 键不放，再按下鼠标左键，使用鼠标滑过需要选中的区块 <br>
+> 3. 可以通过 `Ctrl + D` 快捷键选中光标所在的单词 <br>
+> Tips: <br>
+> 1. You can first hold down `Alt`,  and then use the mouse to select multiple selection <br>
+> 2. You can first hold down `Shift + Alt`, then press the left mouse button, and use the mouse to slide over the block that needs to be selected <br>
+> 3. You can press `Ctrl + D` to select the word near the cursor <br>
 
-#### 2. 按 `Shift + Alt + T`<br>Press `Shift + Alt + T`
+**2. 按 `Shift + Alt + T`** **Press `Shift + Alt + T`**
 
 ![Step2. Press Shift + Alt + T](image/step2-press-shift-alt-t.gif)
 
-或者点击状态栏的 `字符串转换` 按钮<br>
+或者点击状态栏的 `变量转换` 按钮<br>
 Or click the `String Conversion` button in the status bar
 
 ![Step2. Press Status Bar Button](image/step2-press-status-bar-button.png)
 
-或者右键 -> `字符串转换`<br>
+或者右键 -> `变量转换`<br>
 Or right-click -> `String Conversion`
 
 ![Step2. Variable conversion on the context menu](image/step2-variable-conversion-on-context-menu.png)
 
-或者右键 -> 将字符串转换为... <br>
+或者右键 -> 将变量转换为... <br>
 Or right-click on the selected text -> Convert string to...
 
 ![Step2. Right-click on the selected text](image/step2-right-click-on-the-selected-text.gif)
 
-#### 3. 选择转换目标，转换完成 <br>Select the conversion target and complete
+**3. 选择转换目标，转换完成** **Select the conversion target and complete**
+
+## 快捷键
+
+| 功能 Feature                                     | 快捷键 shortcut key |
+| ------------------------------------------------ | ------------------- |
+| 变量转换 快速选择 QuickPick                      |                     |
+| 循环转换→上一个 Cyclic conversion → Previous one | Ctrl + Alt + [      |
+| 循环转换→下一个 Cyclic conversion → Next one     | Ctrl + Alt + ]      |
+
+
 
 ## 支持的类型 Support Case
 
@@ -56,8 +83,6 @@ Or right-click on the selected text -> Convert string to...
 | 空格分隔 + 全大写命名                      | Space Upper Case         | FOO BAR          |
 | 全小写                                     | Lower Case               | foo_bar / foobar |
 | 全大写                                     | Upper Case               | FOO_BAR / FOOBAR |
-
-
 
 ## 反馈 Feedback
 
