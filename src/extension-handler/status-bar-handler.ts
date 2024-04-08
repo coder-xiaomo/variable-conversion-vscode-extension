@@ -5,6 +5,8 @@ import * as vscode from 'vscode';
 let statusBar: vscode.StatusBarItem;
 
 /**
+ * 创建状态栏按钮
+ *
  * @since 2024-04-07
  */
 export function createStatusBarItem() {
@@ -16,6 +18,8 @@ export function createStatusBarItem() {
 }
 
 /**
+ * 判断是否展示状态栏按钮
+ *
  * @since 2024-04-07
  */
 export function updateStatusBarItemVisable(selectTextLength: number) {

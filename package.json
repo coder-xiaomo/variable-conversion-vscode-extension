@@ -2,7 +2,7 @@
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
@@ -31,6 +31,29 @@
     "onTextSelected"
   ],
   "contributes": {
+    "keybindings": [
+      {
+        "command": "variable-conversion.convertCase",
+        "key": "shift+alt+t",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertCase.previous",
+        "key": "ctrl+alt+[",
+        "args": {
+          "arrowKey": "["
+        },
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertCase.next",
+        "key": "ctrl+alt+]",
+        "args": {
+          "arrowKey": "]"
+        },
+        "when": "editorTextFocus"
+      }
+    ],
     "commands": [
       {
         "command": "variable-conversion.convertCase",
@@ -99,13 +122,6 @@
       {
         "command": "variable-conversion.toUpperCase",
         "title": "全大写 (Upper Case) [ FOOBAR ]"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "variable-conversion.convertCase",
-        "key": "shift+alt+t",
-        "when": "editorTextFocus"
       }
     ],
     "menus": {

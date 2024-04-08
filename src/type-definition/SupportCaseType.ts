@@ -359,3 +359,31 @@ export const quickPickSupportCases = [
         keyword: keyword.upper,
     },
 ];
+
+/**
+ * 通过快捷键滚动转换的顺序
+ * @since 2024-04-08
+ */
+export const cyclicConvertCaseOrder = [
+    SupportCase.CAMEL_CASE,
+    SupportCase.PASCAL_CASE,
+
+    SupportCase.SNAKE_CASE,
+    SupportCase.KEBAB_CASE,
+    SupportCase.SPACE_CASE,
+
+    SupportCase.SNAKE_UPPER_CASE,
+    SupportCase.KEBAB_UPPER_CASE,
+    SupportCase.SPACE_UPPER_CASE,
+
+    SupportCase.SNAKE_PASCAL_CASE,
+    SupportCase.KEBAB_PASCAL_CASE,
+    SupportCase.SPACE_PASCAL_CASE,
+
+    SupportCase.SNAKE_CAMEL_CASE,
+    SupportCase.KEBAB_CAMEL_CASE,
+    SupportCase.SPACE_CAMEL_CASE,
+
+    SupportCase.LOWER_CASE,
+    SupportCase.UPPER_CASE,
+];

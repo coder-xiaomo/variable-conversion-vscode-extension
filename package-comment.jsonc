@@ -4,7 +4,7 @@
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
   // 版本号
-  "version": "1.0.7",
+  "version": "1.0.8",
   // logo
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
@@ -37,7 +37,45 @@
     "onTextSelected"
   ],
   "contributes": {
+    // docs: https://code.visualstudio.com/docs/getstarted/keybindings#_accepted-keys
+    "keybindings": [
+      // 绑定快捷键
+      {
+        "command": "variable-conversion.convertCase",
+        "key": "shift+alt+t",
+        "when": "editorTextFocus"
+      },
+      // 滚动转换 上一个
+      {
+        "command": "variable-conversion.cyclicConvertCase.previous",
+        "key": "ctrl+alt+[",
+        "args": {
+          "arrowKey": "["
+        },
+        "when": "editorTextFocus"
+      },
+      // 滚动转换 下一个
+      {
+        "command": "variable-conversion.cyclicConvertCase.next",
+        "key": "ctrl+alt+]",
+        "args": {
+          "arrowKey": "]"
+        },
+        "when": "editorTextFocus"
+      }
+    ],
     "commands": [
+      /**
+       * 滚动转换 可以不添加
+       */
+      // {
+      //   "command": "variable-conversion.cyclicConvertCase.previous",
+      //   "title": "字符串转换（上一个）"
+      // },
+      // {
+      //   "command": "variable-conversion.cyclicConvertCase.next",
+      //   "title": "字符串转换（下一个）"
+      // },
       /**
        * 右键菜单
        */
@@ -148,15 +186,6 @@
       //   "title": "[VSCode 自带] 转换为蛇形命名法 (Snake Case) [ foo_bar ]",
       //   "enablement": "false"
       // }
-    ],
-    // docs: https://code.visualstudio.com/docs/getstarted/keybindings#_accepted-keys
-    "keybindings": [
-      // 绑定快捷键
-      {
-        "command": "variable-conversion.convertCase",
-        "key": "shift+alt+t",
-        "when": "editorTextFocus"
-      }
     ],
     // docs: https://code.visualstudio.com/api/references/contribution-points#contributes.menus
     "menus": {
