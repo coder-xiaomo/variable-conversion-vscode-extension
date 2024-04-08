@@ -3,7 +3,7 @@
 import * as vscode from 'vscode';
 import handleEditorReplace from './extension-handler/editor-submenu-handler';
 import { handleQuickPick } from './extension-handler/quick-pick-handler';
-import { SupportCase, commands } from './type-definition/SupportCaseType';
+import { commands } from './type-definition/SupportCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
 
 // This method is called when your extension is activated

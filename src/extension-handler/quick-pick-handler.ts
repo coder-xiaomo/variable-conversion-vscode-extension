@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import QuickPickItemEx from "../type-definition/QuickPickItemExType";
-import { qickPickSupportCases } from '../type-definition/SupportCaseType';
+import { quickPickSupportCases } from '../type-definition/SupportCaseType';
 import { TransformTextResult } from '../type-definition/TransformTextResultType';
 import { transformMutliLineText } from '../main-code/transform';
 import { EOL } from '../type-definition/EOLType';
@@ -22,22 +22,22 @@ function generateOptionsBasedOnText(text: string, eol: EOL): Array<QuickPickItem
     const results: Array<TransformTextResult> = transformMutliLineText(text);
 
     const mergeResultList: Array<RecommendItem> = [];
-    for (const qickPick of qickPickSupportCases) {
-        const conversionResult: string = caseConversion(qickPick.type, text, eol, results);
+    for (const quickPick of quickPickSupportCases) {
+        const conversionResult: string = caseConversion(quickPick.type, text, eol, results);
         const recommendItem: RecommendItem | undefined = mergeResultList.find(item => item.conversionText === conversionResult);
 
         if (recommendItem === undefined) {
             let item: RecommendItem = {
                 conversionText: conversionResult,
-                transforTo: [qickPick.shortName], // qickPick.name
-                keyword: qickPick.keyword,
+                transforTo: [quickPick.shortName], // quickPick.name
+                keyword: quickPick.keyword,
             };
             mergeResultList.push(item);
             continue;
         }
 
-        recommendItem.transforTo.push(qickPick.shortName); // qickPick.name
-        recommendItem.keyword = Array.from(new Set(recommendItem.keyword.concat(qickPick.keyword))); // 关键词去重
+        recommendItem.transforTo.push(quickPick.shortName); // quickPick.name
+        recommendItem.keyword = Array.from(new Set(recommendItem.keyword.concat(quickPick.keyword))); // 关键词去重
     }
 
     // 根据文本生成选项的逻辑

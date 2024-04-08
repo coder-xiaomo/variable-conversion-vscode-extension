@@ -263,7 +263,7 @@ export const commands: Array<{ command: string; targetCase: SupportCase }> = [
  * 所有支持的命名方式
  * @since 2024-04-06
  */
-export const qickPickSupportCases = [
+export const quickPickSupportCases = [
     {
         type: SupportCase.CAMEL_CASE,
         name: '小驼峰(驼峰)命名',
