@@ -38,24 +38,24 @@ Or right-click on the selected text -> Convert string to...
 
 ## 支持的类型 Support Case
 
-| 类型                                | Case                     | 举例 e.g.        |
-| ----------------------------------- | ------------------------ | ---------------- |
-| 小驼峰(驼峰)命名                    | Camel Case               | fooBar           |
-| 大驼峰(帕斯卡)命名                  | Pascal Case              | FooBar           |
-| 下划线(蛇形)命名                    | Snake Case               | foo_bar          |
-| 下划线(蛇形) + 小驼峰(驼峰)命名     | Snake Camel Case         | foo_Bar          |
-| 下划线(蛇形) + 大驼峰(帕斯卡)命名   | Snake Pascal Case        | Foo_Bar          |
-| 下划线(蛇形) + 全大写命名           | Snake Upper Case         | FOO_BAR          |
+| 类型                                       | Case                     | 举例 e.g.        |
+| ------------------------------------------ | ------------------------ | ---------------- |
+| 小驼峰(驼峰)命名                           | Camel Case               | fooBar           |
+| 大驼峰(帕斯卡)命名                         | Pascal Case              | FooBar           |
+| 下划线(蛇形)命名                           | Snake Case               | foo_bar          |
+| 下划线(蛇形) + 小驼峰(驼峰)命名            | Snake Camel Case         | foo_Bar          |
+| 下划线(蛇形) + 大驼峰(帕斯卡)命名          | Snake Pascal Case        | Foo_Bar          |
+| 下划线(蛇形) + 全大写命名                  | Snake Upper Case         | FOO_BAR          |
 | 中划线(连字符/脊柱式)命名                  | Kebab Case / Spinal Case | foo-bar          |
 | 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名   | Kebab Camel Case         | foo-Bar          |
 | 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名 | Kebab Pascal Case        | Foo-Bar          |
 | 中划线(连字符/脊柱式) + 全大写命名         | Kebab Upper Case         | FOO-BAR          |
-| 空格分隔命名                        | Space Case               | foo bar          |
-| 空格分隔 + 小驼峰(驼峰)命名         | Space Camel Case         | foo Bar          |
-| 空格分隔 + 大驼峰(帕斯卡)命名       | Space Pascal Case        | Foo Bar          |
-| 空格分隔 + 全大写命名               | Space Upper Case         | FOO BAR          |
-| 全小写                              | Lower Case               | foo_bar / foobar |
-| 全大写                              | Upper Case               | FOO_BAR / FOOBAR |
+| 空格分隔命名                               | Space Case               | foo bar          |
+| 空格分隔 + 小驼峰(驼峰)命名                | Space Camel Case         | foo Bar          |
+| 空格分隔 + 大驼峰(帕斯卡)命名              | Space Pascal Case        | Foo Bar          |
+| 空格分隔 + 全大写命名                      | Space Upper Case         | FOO BAR          |
+| 全小写                                     | Lower Case               | foo_bar / foobar |
+| 全大写                                     | Upper Case               | FOO_BAR / FOOBAR |
 
 
 

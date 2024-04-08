@@ -2,20 +2,18 @@
  * When support a new case, there's something we need to do.
  *
  * Code:
- * - Add `commands`, `menus` parts in package.json (and package-comment.jsonc)
- * - Add main conversion logic in src/main-code/variable-conversion.ts
- * - Add disposable in src/extension.ts
+ * - Add type definition in below `SupportCase` enum and following array
+ * - Add `commands`, `menus` parts in [package.json] and [package-comment.jsonc]
+ * - Add main conversion logic in [src/main-code/conversion.ts]
  *
  * Test:
- * - Add test case type definition in src/type-definition/test-case-type.ts
- * - Add test case in src/test/test-case.ts
- * - Add test code in src/test/extension.test.ts
+ * - Add test case type definition in [src/type-definition/TestCaseType.ts]
+ * - Add test case in [src/test/test-case.ts]
+ * - Add test code in [src/test/extension.test.ts]
  *
  * Docs:
- * - Add type definition in below `SupportCase` enum
- * - Modify `description` in package.json
- * - Add changes in CHANGELOG.md
- * - Add changes in README.md
+ * - Modify `description` in [package.json] and [package-comment.jsonc]
+ * - Add changes in [CHANGELOG.md] and [README.md]
  */
 export enum SupportCase {
 

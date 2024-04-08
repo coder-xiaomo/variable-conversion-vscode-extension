@@ -16,7 +16,6 @@ const handleEditorReplace = (targetCase: SupportCase) => {
         return;
     }
 
-    // console.log('============ start convert ============');
     let document = editor.document;
     let selection = editor.selection;
     let eol: EOL = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
@@ -45,7 +44,6 @@ const handleEditorReplace = (targetCase: SupportCase) => {
     editor.edit(editBuilder => {
         editBuilder.replace(selection, converted);
     });
-    // console.log('============ finish convert ============');
 };
 
 export default handleEditorReplace;
