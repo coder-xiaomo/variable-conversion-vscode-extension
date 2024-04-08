@@ -2,7 +2,7 @@
   // 插件 id 及名称
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
-  "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、连字符(脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
+  "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、底栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
   // 版本号
   "version": "1.0.7",
   // logo
@@ -77,19 +77,19 @@
       // group-3-kebab
       {
         "command": "variable-conversion.toKebabCase",
-        "title": "连字符(脊柱式)命名 (Kebab/Spinal Case) [ foo-bar ]"
+        "title": "中划线(连字符/脊柱式)命名 (Kebab/Spinal Case) [ foo-bar ]"
       },
       {
         "command": "variable-conversion.toKebabUpperCase",
-        "title": "连字符(脊柱式) + 全大写命名 (Kebab Upper Case) [ FOO-BAR ]"
+        "title": "中划线(连字符/脊柱式) + 全大写命名 (Kebab Upper Case) [ FOO-BAR ]"
       },
       {
         "command": "variable-conversion.toKebabPascalCase",
-        "title": "连字符(脊柱式) + 大驼峰(帕斯卡)命名 (Kebab Pascal Case) [ Foo-Bar ]"
+        "title": "中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名 (Kebab Pascal Case) [ Foo-Bar ]"
       },
       {
         "command": "variable-conversion.toKebabCamelCase",
-        "title": "连字符(脊柱式) + 小驼峰(驼峰)命名 (Kebab Camel Case) [ foo-Bar ]"
+        "title": "中划线(连字符/脊柱式) + 小驼峰(驼峰)命名 (Kebab Camel Case) [ foo-Bar ]"
       },
       // group-4-space
       {

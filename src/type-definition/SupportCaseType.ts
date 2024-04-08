@@ -80,7 +80,7 @@ export enum SupportCase {
     SNAKE_UPPER_CASE,
 
     /**
-     * 连字符(脊柱式)命名
+     * 中划线(连字符/脊柱式)命名
      * Kebab Case / Spinal Case
      * e.g. foo-bar
      *
@@ -91,7 +91,7 @@ export enum SupportCase {
     KEBAB_CASE,
 
     /**
-     * 连字符(脊柱式) + 小驼峰(驼峰)命名
+     * 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名
      * Kebab Camel Case
      * e.g. foo-Bar
      *
@@ -101,7 +101,7 @@ export enum SupportCase {
     KEBAB_CAMEL_CASE,
 
     /**
-     * 连字符(脊柱式) + 大驼峰(帕斯卡)命名
+     * 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名
      * Kebab Pascal Case
      * e.g. Foo-Bar
      *
@@ -111,7 +111,7 @@ export enum SupportCase {
     KEBAB_PASCAL_CASE,
 
     /**
-     * 连字符(脊柱式) + 全大写命名
+     * 中划线(连字符/脊柱式) + 全大写命名
      * Kebab Upper Case
      * e.g. FOO-BAR
      *
@@ -302,25 +302,25 @@ export const quickPickSupportCases = [
     },
     {
         type: SupportCase.KEBAB_CASE,
-        name: '连字符(脊柱式)命名',
+        name: '中划线(连字符/脊柱式)命名',
         shortName: '脊柱',
         keyword: [...keyword.kebab, ...keyword.lower],
     },
     {
         type: SupportCase.KEBAB_CAMEL_CASE,
-        name: '连字符(脊柱式) + 小驼峰(驼峰)命名',
+        name: '中划线(连字符/脊柱式) + 小驼峰(驼峰)命名',
         shortName: '脊柱驼峰',
         keyword: [...keyword.kebab, ...keyword.camel],
     },
     {
         type: SupportCase.KEBAB_PASCAL_CASE,
-        name: '连字符(脊柱式) + 大驼峰(帕斯卡)命名',
+        name: '中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名',
         shortName: '脊柱帕斯卡',
         keyword: [...keyword.kebab, ...keyword.pascal],
     },
     {
         type: SupportCase.KEBAB_UPPER_CASE,
-        name: '连字符(脊柱式) + 全大写命名',
+        name: '中划线(连字符/脊柱式) + 全大写命名',
         shortName: '脊柱大写',
         keyword: [...keyword.kebab, ...keyword.upper],
     },
