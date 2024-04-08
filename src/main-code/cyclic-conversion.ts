@@ -27,10 +27,10 @@ const userSelection: UserSelection = {
 export function onUserSelectionUpdated(selections: readonly vscode.Selection[], textList: string[], eol: EOL): void {
     userSelection.currentSelections = selections;
     if (textList.length !== 0 && isStringArrayEqual(textList, userSelection.lastConvertedSelectionsText)) {
-        console.log('skip onUserSelectionUpdated');
+        // console.log('skip onUserSelectionUpdated');
         return;
     }
-    console.log('onUserSelectionUpdated', textList, userSelection.lastConvertedSelectionsText);
+    // console.log('onUserSelectionUpdated', textList, userSelection.lastConvertedSelectionsText);
     userSelection.currentEol = eol;
     userSelection.currentSelectionsText = textList;
     userSelection.currentIndex = 0;
