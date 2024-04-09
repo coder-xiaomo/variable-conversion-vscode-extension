@@ -27,7 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Supports scrolling conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (simultaneously supports multi-line selection conversion) 支持通过快捷键循环转换 (同时支持多行选区转换)
+- New: Supports multi-selection conversion (支持多选区转换)
+- New: Supports scrolling conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (also supports multi-selection conversion) 支持通过快捷键循环转换 (同时支持多选区转换)
 
 ## 1.0.7
 

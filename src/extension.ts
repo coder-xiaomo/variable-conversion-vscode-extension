@@ -28,16 +28,15 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// 选中文本改变时触发
 	const onTextEditorSelectionChangeCallback = (textEditor: vscode.TextEditor, selections: readonly vscode.Selection[]) => {
-		// 获取选中的文本
-		const text: string = textEditor.document.getText(selections[0]);
-		selectTextLength = text.length;
-
 		// 获取选中的文本块
 		const textList: string[] = [];
+		let tmp_selectTextLength = 0;
 		for (const selection of selections) {
 			const text = textEditor.document.getText(selection);
 			textList.push(text);
+			tmp_selectTextLength += text.length;
 		}
+		selectTextLength = tmp_selectTextLength;
 
 		// 更新 _textSelectionLength (用于判断是否展示右键菜单)
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', selectTextLength);
