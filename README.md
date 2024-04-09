@@ -1,4 +1,4 @@
-# 命名方式转换插件 Variable Conversion
+# 变量命名转换插件 Variable Conversion
 
 一个强大的变量名转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
 A powerful variable naming conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and bottom bar.
