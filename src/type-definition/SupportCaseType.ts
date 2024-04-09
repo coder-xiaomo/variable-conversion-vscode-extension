@@ -2,20 +2,18 @@
  * When support a new case, there's something we need to do.
  *
  * Code:
- * - Add `commands`, `menus` parts in package.json (and package-comment.jsonc)
- * - Add main conversion logic in src/main-code/variable-conversion.ts
- * - Add disposable in src/extension.ts
+ * - Add type definition in below `SupportCase` enum and following array
+ * - Add `commands`, `menus` parts in [package.json] and [package-comment.jsonc]
+ * - Add main conversion logic in [src/main-code/conversion.ts]
  *
  * Test:
- * - Add test case type definition in src/type-definition/test-case-type.ts
- * - Add test case in src/test/test-case.ts
- * - Add test code in src/test/extension.test.ts
+ * - Add test case type definition in [src/type-definition/TestCaseType.ts]
+ * - Add test case in [src/test/test-case.ts]
+ * - Add test code in [src/test/extension.test.ts]
  *
  * Docs:
- * - Add type definition in below `SupportCase` enum
- * - Modify `description` in package.json
- * - Add changes in CHANGELOG.md
- * - Add changes in README.md
+ * - Modify `description` in [package.json] and [package-comment.jsonc]
+ * - Add changes in [CHANGELOG.md] and [README.md]
  */
 export enum SupportCase {
 
@@ -80,7 +78,7 @@ export enum SupportCase {
     SNAKE_UPPER_CASE,
 
     /**
-     * 连字符(脊柱式)命名
+     * 中划线(连字符/脊柱式)命名
      * Kebab Case / Spinal Case
      * e.g. foo-bar
      *
@@ -91,7 +89,7 @@ export enum SupportCase {
     KEBAB_CASE,
 
     /**
-     * 连字符(脊柱式) + 小驼峰(驼峰)命名
+     * 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名
      * Kebab Camel Case
      * e.g. foo-Bar
      *
@@ -101,7 +99,7 @@ export enum SupportCase {
     KEBAB_CAMEL_CASE,
 
     /**
-     * 连字符(脊柱式) + 大驼峰(帕斯卡)命名
+     * 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名
      * Kebab Pascal Case
      * e.g. Foo-Bar
      *
@@ -111,7 +109,7 @@ export enum SupportCase {
     KEBAB_PASCAL_CASE,
 
     /**
-     * 连字符(脊柱式) + 全大写命名
+     * 中划线(连字符/脊柱式) + 全大写命名
      * Kebab Upper Case
      * e.g. FOO-BAR
      *
@@ -234,7 +232,7 @@ const keyword = {
 };
 
 /**
- * 接管的字符串转换命令
+ * 接管的变量转换命令
  */
 export const commands: Array<{ command: string; targetCase: SupportCase }> = [
     { command: 'variable-conversion.toCamelCase', targetCase: SupportCase.CAMEL_CASE },
@@ -263,7 +261,7 @@ export const commands: Array<{ command: string; targetCase: SupportCase }> = [
  * 所有支持的命名方式
  * @since 2024-04-06
  */
-export const qickPickSupportCases = [
+export const quickPickSupportCases = [
     {
         type: SupportCase.CAMEL_CASE,
         name: '小驼峰(驼峰)命名',
@@ -302,25 +300,25 @@ export const qickPickSupportCases = [
     },
     {
         type: SupportCase.KEBAB_CASE,
-        name: '连字符(脊柱式)命名',
+        name: '中划线(连字符/脊柱式)命名',
         shortName: '脊柱',
         keyword: [...keyword.kebab, ...keyword.lower],
     },
     {
         type: SupportCase.KEBAB_CAMEL_CASE,
-        name: '连字符(脊柱式) + 小驼峰(驼峰)命名',
+        name: '中划线(连字符/脊柱式) + 小驼峰(驼峰)命名',
         shortName: '脊柱驼峰',
         keyword: [...keyword.kebab, ...keyword.camel],
     },
     {
         type: SupportCase.KEBAB_PASCAL_CASE,
-        name: '连字符(脊柱式) + 大驼峰(帕斯卡)命名',
+        name: '中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名',
         shortName: '脊柱帕斯卡',
         keyword: [...keyword.kebab, ...keyword.pascal],
     },
     {
         type: SupportCase.KEBAB_UPPER_CASE,
-        name: '连字符(脊柱式) + 全大写命名',
+        name: '中划线(连字符/脊柱式) + 全大写命名',
         shortName: '脊柱大写',
         keyword: [...keyword.kebab, ...keyword.upper],
     },
@@ -360,4 +358,32 @@ export const qickPickSupportCases = [
         shortName: '大写',
         keyword: keyword.upper,
     },
+];
+
+/**
+ * 通过快捷键循环转换的顺序
+ * @since 2024-04-08
+ */
+export const cyclicConvertCaseOrder = [
+    SupportCase.CAMEL_CASE,
+    SupportCase.PASCAL_CASE,
+
+    SupportCase.SNAKE_CASE,
+    SupportCase.KEBAB_CASE,
+    SupportCase.SPACE_CASE,
+
+    SupportCase.SNAKE_UPPER_CASE,
+    SupportCase.KEBAB_UPPER_CASE,
+    SupportCase.SPACE_UPPER_CASE,
+
+    SupportCase.SNAKE_PASCAL_CASE,
+    SupportCase.KEBAB_PASCAL_CASE,
+    SupportCase.SPACE_PASCAL_CASE,
+
+    SupportCase.SNAKE_CAMEL_CASE,
+    SupportCase.KEBAB_CAMEL_CASE,
+    SupportCase.SPACE_CAMEL_CASE,
+
+    SupportCase.LOWER_CASE,
+    SupportCase.UPPER_CASE,
 ];

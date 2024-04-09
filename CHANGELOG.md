@@ -17,14 +17,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-
 ### Changed
-
 
 ### Removed
 
 -->
 
+## 1.0.8
+
+### Added
+
+- New: Supports multi-selection conversion (支持多选区转换)
+- New: Supports scrolling conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (also supports multi-selection conversion) 支持通过快捷键循环转换 (同时支持多选区转换)
 
 ## 1.0.7
 
@@ -34,14 +38,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Optimize QickPick conversion value display (优化 QickPick 转换值展示)
+- Optimize QuickPick conversion value display (优化 QuickPick 转换值展示)
 - Fixed typo: keyword of KEBAB_PASCAL_CASE, KEBAB_UPPER_CASE (修正 KEBAB_PASCAL_CASE, KEBAB_UPPER_CASE 关键词错误)
 
 ## 1.0.6
 
 ### Added
 
-- Add a status bar button to trigger string conversion (添加底栏按钮，支持通过底栏按钮触发字符串转换)
+- Add a status bar button to trigger string conversion (添加状态栏按钮，支持通过状态栏按钮触发变量转换)
 
 ## 1.0.5
 
@@ -54,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add shortcut key `Shift + Alt + T` to show vscode QickPick window (添加快捷键 Shift + Alt + T 来显示 vscode QickPick 弹窗)
+- Add shortcut key `Shift + Alt + T` to show vscode QuickPick window (添加快捷键 Shift + Alt + T 来显示 vscode QuickPick 弹窗)
 - Write `README.md` (完善 README 文档)
 
 ## 1.0.3

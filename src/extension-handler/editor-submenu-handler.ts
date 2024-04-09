@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { EOL } from '../type-definition/EOLType';
 import { caseConversion } from '../main-code/conversion';
 import { SupportCase } from '../type-definition/SupportCaseType';
+import { isStringArrayEqual } from '../main-code/utils';
 
 /**
  * 编辑器右键菜单
@@ -16,36 +17,43 @@ const handleEditorReplace = (targetCase: SupportCase) => {
         return;
     }
 
-    // console.log('============ start convert ============');
-    let document = editor.document;
-    let selection = editor.selection;
-    let eol: EOL = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
+    const document = editor.document;
+    const selections = editor.selections;
+    const eol: EOL = document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
 
     // 获取选中的文本
-    let text = document.getText(selection);
+    const textList = selections.map(selection => document.getText(selection));
+
+    if (textList.filter(text => text.length > 0).length === 0) {
+        vscode.window.showInformationMessage('请选择需要转换的变量后重试\nPlease select the variable you want to convert and try again.');
+        return;
+    }
 
     // 转换文本
-    const converted = caseConversion(targetCase, text, eol);
-    console.log('converted', converted);
+    const convertedList = textList.map(text => caseConversion(targetCase, text, eol));
+    console.log('convertedList', convertedList);
 
     // 无法转换时，跳过转换
-    if (converted === undefined) {
+    if (convertedList.filter(converted => converted !== undefined).length === 0) {
         console.log('converted text is undefined, skip replace contents.');
         return;
     }
 
     // 当转换后文本与转换前相同时，跳过转换，避免形成 Ctrl + Z 撤销历史记录
-    if (converted === text) {
+    if (isStringArrayEqual(convertedList, textList)) {
         console.log('selection text is same to converted text, skip replace contents.');
         return;
     }
 
     // 替换文本
-    console.log('replace selection text', text, 'to', converted);
+    console.log('replace selection text', textList, 'to', convertedList);
     editor.edit(editBuilder => {
-        editBuilder.replace(selection, converted);
+        for (let i = 0; i < selections.length; i++) {
+            const selection = selections[i];
+            const converted = convertedList[i];
+            editBuilder.replace(selection, converted);
+        }
     });
-    // console.log('============ finish convert ============');
 };
 
 export default handleEditorReplace;

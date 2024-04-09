@@ -3,58 +3,81 @@
 import * as vscode from 'vscode';
 import handleEditorReplace from './extension-handler/editor-submenu-handler';
 import { handleQuickPick } from './extension-handler/quick-pick-handler';
-import { SupportCase, commands } from './type-definition/SupportCaseType';
+import { commands } from './type-definition/SupportCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
+import * as CyclicConversion from './main-code/cyclic-conversion';
+import { EOL } from './type-definition/EOLType';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	try {
+		// 获取当前插件的扩展对象
+		const currentExtension = vscode.extensions.getExtension('coder-xiaomo.variable-conversion');
+		if (currentExtension) {
+			// 获取版本号
+			const version = currentExtension.packageJSON.version;
+			console.log('[Variable Conversion] current version:', version);
+		}
+	} catch (err) {
+		console.log('get current extension failed', err);
+	}
 
-	// // Use the console to output diagnostic information (console.log) and errors (console.error)
-	// // This line of code will only be executed once when your extension is activated
-	// console.log('Congratulations, your extension "variable-conversion" is now active!');
-
-	// // The command has been defined in the package.json file
-	// // Now provide the implementation of the command with registerCommand
-	// // The commandId parameter must match the command field in package.json
-	// let disposable = vscode.commands.registerCommand('variable-conversion.helloWorld', () => {
-	// 	// The code you place here will be executed every time your command is executed
-	// 	// Display a message box to the user
-	// 	vscode.window.showInformationMessage('Hello World from variable-conversion!');
-	// });
-
+	// 用于记录当前选中的文本的长度
 	let selectTextLength = 0;
+
+	// 选中文本改变时触发
+	const onTextEditorSelectionChangeCallback = (textEditor: vscode.TextEditor, selections: readonly vscode.Selection[]) => {
+		// 获取选中的文本块
+		const textList: string[] = [];
+		let tmp_selectTextLength = 0;
+		for (const selection of selections) {
+			const text = textEditor.document.getText(selection);
+			textList.push(text);
+			tmp_selectTextLength += text.length;
+		}
+		selectTextLength = tmp_selectTextLength;
+
+		// 更新 _textSelectionLength (用于判断是否展示右键菜单)
+		vscode.commands.executeCommand('setContext', '_textSelectionLength', selectTextLength);
+
+		// 判断是否展示状态栏按钮
+		updateStatusBarItemVisable(selectTextLength);
+
+		// 循环转换：记录当前选中内容，并且进行转换
+		let eol: EOL = textEditor.document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
+		CyclicConversion.onUserSelectionUpdated(selections, textList, eol);
+	};
+
+	// 创建状态栏按钮
 	createStatusBarItem();
+
+	/**
+	 * 切换编辑器 Tab 时触发
+	 */
 	vscode.window.onDidChangeActiveTextEditor(event => {
+		console.log('onDidChangeActiveTextEditor', event);
+		// 判断是否展示状态栏按钮
 		updateStatusBarItemVisable(selectTextLength);
 	});
 
-	// 用于判断是否展示右键菜单
+	/**
+	 * 编辑器中光标选中位置改变触发
+	 */
 	vscode.window.onDidChangeTextEditorSelection(event => {
-		const text = event.textEditor.document.getText(event.selections[0]);
-		// console.log('text.length', text.length);
-		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
-
-		selectTextLength = text.length;
-		updateStatusBarItemVisable(selectTextLength);
+		// console.log('光标选中位置改变 onDidChangeTextEditorSelection', event);
+		// 执行 Callback
+		onTextEditorSelectionChangeCallback(event.textEditor, event.selections);
 	});
 
 	// 初始(VSCode 插件初始化)时也判断一次 (考虑上次关闭 VSCode 有选区，重新打开后 VSCode 回复选区但用户未重新切换选区的场景)
 	let editor = vscode.window.activeTextEditor;
 	if (editor) {
-		let document = editor.document;
-		let selection = editor.selection;
-		// 获取选中的文本
-		let text = document.getText(selection);
-		vscode.commands.executeCommand('setContext', '_textSelectionLength', text.length);
-
-		selectTextLength = text.length;
-		updateStatusBarItemVisable(selectTextLength);
-	} else {
-		// vscode.window.showInformationMessage('editor is undefined');
-		console.log('editor is undefined');
+		// VSCode 启动时打开的 Tab 不是编辑器 Tab, 执行 Callback (如果不是则跳过)
+		onTextEditorSelectionChangeCallback(editor, editor.selections);
 	}
 
+	// 逐一注册右键菜单-子菜单项 command
 	for (const { command, targetCase } of commands) {
 		let disposable = vscode.commands.registerCommand(command, () => {
 			handleEditorReplace(targetCase);
@@ -62,8 +85,21 @@ export function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(disposable);
 	}
 
+	// 注册变量转换 command 状态栏/快捷键/右键[变量转换]菜单均有用到
 	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', handleQuickPick);
 	context.subscriptions.push(convertCaseDisposable);
+
+	// 注册循环转换 command
+	let disposableLoopConversionPrev = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
+		console.log('variable-conversion.convertCase', arrowKey);
+		CyclicConversion.previousOne();
+	});
+	context.subscriptions.push(disposableLoopConversionPrev);
+	let disposableLoopConversionNext = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
+		console.log('variable-conversion.convertCase', arrowKey);
+		CyclicConversion.nextOne();
+	});
+	context.subscriptions.push(disposableLoopConversionNext);
 }
 
 // This method is called when your extension is deactivated
