@@ -1,19 +1,22 @@
 # 变量命名转换插件 Variable Conversion
 
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=coder-xiaomo.variable-conversion) [GitHub](https://github.com/coder-xiaomo/variable-conversion-vscode-extension.git) [Gitee](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git)
+
 一个强大的变量名转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
 A powerful variable naming conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and bottom bar.
 
-- [x] 支持多选区 Support multi-selection
-- [x] 支持多窗口 (不支持子窗口状态栏) Support subwindow  (subwindow status bar are not supported)
-- [x] 支持撤回 & 重做 Support undo & redo (Ctrl + Z / Ctrl + Y)
+- ✅ 支持多选区 Support multi-selection
+- ✅ 支持多窗口 (不支持子窗口状态栏) Support subwindow  (subwindow status bar are not supported)
+- ✅ 支持撤回 & 重做 Support undo & redo (Ctrl + Z / Ctrl + Y)
 
 ## 如何使用？ How to Use?
 
 > 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点击这里查看](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)
 
-### 循环转换(Beta) Cyclic conversion(Beta)
+### 循环转换 Cyclic conversion (Beta)
 
-选中代码中需要转换的内容，然后按下 `Ctrl + Alt + [` and `Ctrl + Alt + ]` 即可前后灵活切换变量命名方式。
+选中需要转换的内容，然后按下 `Ctrl + Alt + [` 或 `Ctrl + Alt + ]` 即可前后灵活切换变量命名方式。
+Select what you want to convert in the editor, and then press `Ctrl + Alt + [` or `Ctrl + Alt + ]` to flexibly convert variable name flexibly.
 
 ![](image/cyclic-conversion.gif)
 
@@ -22,15 +25,6 @@ A powerful variable naming conversion extension. Supports one-key conversion & c
 **1. 选中代码中需要转换的内容** **Select The Text To Convert**
 
 ![Step1. Select The Text To Convert](image/step1-select-the-text-to-convert.gif)
-
-> 小提示: <br>
-> 1. 可以先按住 `Alt` 键不放，再鼠标先后选中多个选区 <br>
-> 2. 可以先按住 `Shift + Alt` 键不放，再按下鼠标左键，使用鼠标滑过需要选中的区块 <br>
-> 3. 可以通过 `Ctrl + D` 快捷键选中光标所在的单词 <br>
-> Tips: <br>
-> 1. You can first hold down `Alt`,  and then use the mouse to select multiple selection <br>
-> 2. You can first hold down `Shift + Alt`, then press the left mouse button, and use the mouse to slide over the block that needs to be selected <br>
-> 3. You can press `Ctrl + D` to select the word near the cursor <br>
 
 **2. 按 `Shift + Alt + T`** **Press `Shift + Alt + T`**
 
@@ -61,8 +55,6 @@ Or right-click on the selected text -> Convert string to...
 | 循环转换→上一个 Cyclic conversion → Previous one | Ctrl + Alt + [      |
 | 循环转换→下一个 Cyclic conversion → Next one     | Ctrl + Alt + ]      |
 
-
-
 ## 支持的类型 Support Case
 
 | 类型                                       | Case                     | 举例 e.g.        |
@@ -84,6 +76,17 @@ Or right-click on the selected text -> Convert string to...
 | 全小写                                     | Lower Case               | foo_bar / foobar |
 | 全大写                                     | Upper Case               | FOO_BAR / FOOBAR |
 
+## 小提示 Tips
+
+#### 关于文本选区...
+
+- 可以先按住 `Alt` 键不放，再鼠标先后选中多个选区
+  You can first hold down `Alt`,  and then use the mouse to select multiple selection
+- 可以先按住 `Shift + Alt` 键不放，再按下鼠标左键，使用鼠标滑过需要选中的区块
+  You can first hold down `Shift + Alt`, then press the left mouse button, and use the mouse to slide over the block that needs to be selected
+- 可以通过 `Ctrl + D` 快捷键选中光标所在的单词
+  You can press `Ctrl + D` to select the word near the cursor
+
 ## 反馈 Feedback
 
 如果您觉得本插件还不够好用，有更好的使用建议；或者发现了 BUG，欢迎[前往 GitHub 仓库提 issue](https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues). 使用简体中文、繁體中文或 English 均可，不建议使用翻译软件翻译，否则可能会让文字描述变得抽象难懂。<br>
@@ -98,19 +101,6 @@ GitHub Repo (开源地址): https://github.com/coder-xiaomo/variable-conversion-
 
 Gitee Mirror (码云镜像): https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git
 
-<!--
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
--->
+-----
 
 **Enjoy!**
