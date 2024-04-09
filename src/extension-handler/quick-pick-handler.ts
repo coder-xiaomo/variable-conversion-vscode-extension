@@ -97,6 +97,11 @@ export function handleQuickPick() {
 
     // 基于选中的文本生成选项
     const options = generateOptionsBasedOnText(textList, eol);
+    if (options.length === 0) {
+        vscode.window.showInformationMessage('所选内容暂无可选转换，请尝试重新选择\nNo conversion candidates are available for the selected content, please try to select another text.');
+        return;
+    }
+
     // 显示推荐项列表
     vscode.window.showQuickPick(options, {
         matchOnDetail: true,
