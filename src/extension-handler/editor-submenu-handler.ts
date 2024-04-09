@@ -24,6 +24,11 @@ const handleEditorReplace = (targetCase: SupportCase) => {
     // 获取选中的文本
     const textList = selections.map(selection => document.getText(selection));
 
+    if (textList.filter(text => text.length > 0).length === 0) {
+        vscode.window.showInformationMessage('请选择需要转换的变量后重试\nPlease select the variable you want to convert and try again.');
+        return;
+    }
+
     // 转换文本
     const convertedList = textList.map(text => caseConversion(targetCase, text, eol));
     console.log('convertedList', convertedList);

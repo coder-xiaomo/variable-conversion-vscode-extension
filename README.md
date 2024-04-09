@@ -57,7 +57,7 @@ Or right-click on the selected text -> Convert string to...
 
 | 功能 Feature                                     | 快捷键 shortcut key |
 | ------------------------------------------------ | ------------------- |
-| 变量转换 快速选择 QuickPick                      |                     |
+| 变量转换 快速选择 QuickPick                      | Shift + Alt + T     |
 | 循环转换→上一个 Cyclic conversion → Previous one | Ctrl + Alt + [      |
 | 循环转换→下一个 Cyclic conversion → Next one     | Ctrl + Alt + ]      |
 

@@ -2,17 +2,36 @@ import { TransformTextResult } from "../type-definition/TransformTextResultType"
 
 const logDebugInfo = false;
 
-export function transformMutliLineText(multilineInput: string): Array<TransformTextResult> {
-    const results: Array<TransformTextResult> = [];
-    const lines = multilineInput.split(/\r?\n/);
+/**
+ * 多选区分词
+ *
+ * @param multiSelectionInputs
+ * @returns
+ * @since 2024-04-03
+ */
+export function transformMutliSelectionText(selectionInputs: string[]): Array<TransformTextResult[]> {
+    return selectionInputs.map(selectionInput => transformMutliLineText(selectionInput));
+}
+
+/**
+ * 多行内容分词(单一选区)
+ *
+ * @param multiLineInput
+ * @returns
+ * @since 2024-04-03
+ */
+export function transformMutliLineText(multiLineInput: string): TransformTextResult[] {
+    const results: TransformTextResult[] = [];
+    const lines = multiLineInput.split(/\r?\n/);
     for (const line of lines) {
         // console.log('line', '->' + line + '<-');
         results.push(transformText(line));
     }
     return results;
 }
+
 /**
- * 分词
+ * 独立段落单元分词 (不包含换行)
  *
  * @param str
  * @since 2024-04-02
