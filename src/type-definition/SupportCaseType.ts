@@ -366,9 +366,8 @@ export const quickPickSupportCases = [
  */
 export const cyclicConvertCaseOrder = [
     SupportCase.CAMEL_CASE,
-    SupportCase.PASCAL_CASE,
-
     SupportCase.SNAKE_CASE,
+    SupportCase.PASCAL_CASE,
     SupportCase.KEBAB_CASE,
     SupportCase.SPACE_CASE,
 

@@ -9,13 +9,13 @@ A powerful variable naming conversion extension. Supports one-key conversion & c
 - ✅ 支持多窗口 (不支持子窗口状态栏) Support subwindow  (subwindow status bar are not supported)
 - ✅ 支持撤回 & 重做 Support undo & redo (Ctrl + Z / Ctrl + Y)
 
-## 如何使用？ How to Use?
+> 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点这里](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)查看
 
-> 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点击这里查看](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)
+## 如何使用？ How to Use?
 
 ### 循环转换 Cyclic conversion (Beta)
 
-选中需要转换的内容，然后按下 `Ctrl + Alt + [` 或 `Ctrl + Alt + ]` 即可前后灵活切换变量命名方式。
+选中需要转换的内容，然后按下 `Ctrl + Alt + [` 或 `Ctrl + Alt + ]` 即可前后灵活切换变量命名方式。 <br>
 Select what you want to convert in the editor, and then press `Ctrl + Alt + [` or `Ctrl + Alt + ]` to flexibly convert variable name flexibly.
 
 ![](image/cyclic-conversion.gif)
