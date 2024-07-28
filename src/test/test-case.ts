@@ -31,6 +31,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: '',
                     spacePascalCase: '',
                     spaceUpperCase: '',
+                    dotCase: '',
+                    dotCamelCase: '',
+                    dotPascalCase: '',
+                    dotUpperCase: '',
                     lowerCase: '',
                     upperCase: '',
                 },
@@ -57,6 +61,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: '  ',
                     spacePascalCase: '  ',
                     spaceUpperCase: '  ',
+                    dotCase: '  ',
+                    dotCamelCase: '  ',
+                    dotPascalCase: '  ',
+                    dotUpperCase: '  ',
                     lowerCase: '  ',
                     upperCase: '  ',
                 },
@@ -84,6 +92,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' \r\n ',
                     spacePascalCase: ' \r\n ',
                     spaceUpperCase: ' \r\n ',
+                    dotCase: ' \r\n ',
+                    dotCamelCase: ' \r\n ',
+                    dotPascalCase: ' \r\n ',
+                    dotUpperCase: ' \r\n ',
                     lowerCase: ' \r\n ',
                     upperCase: ' \r\n ',
                 },
@@ -111,6 +123,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' x \r\ny ',
                     spacePascalCase: ' X \r\nY ',
                     spaceUpperCase: ' X \r\nY ',
+                    dotCase: ' x \r\ny ',
+                    dotCamelCase: ' x \r\ny ',
+                    dotPascalCase: ' X \r\nY ',
+                    dotUpperCase: ' X \r\nY ',
                     lowerCase: ' x \r\ny ',
                     upperCase: ' X \r\nY ',
                 },
@@ -138,6 +154,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' \n ',
                     spacePascalCase: ' \n ',
                     spaceUpperCase: ' \n ',
+                    dotCase: ' \n ',
+                    dotCamelCase: ' \n ',
+                    dotPascalCase: ' \n ',
+                    dotUpperCase: ' \n ',
                     lowerCase: ' \n ',
                     upperCase: ' \n ',
                 },
@@ -165,6 +185,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' a\nb ',
                     spacePascalCase: ' A\nB ',
                     spaceUpperCase: ' A\nB ',
+                    dotCase: ' a\nb ',
+                    dotCamelCase: ' a\nb ',
+                    dotPascalCase: ' A\nB ',
+                    dotUpperCase: ' A\nB ',
                     lowerCase: ' a\nb ',
                     upperCase: ' A\nB ',
                 },
@@ -222,6 +246,18 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceUpperCase:
                         "CHINA'S FACTORY ACTIVITY EXPANDED IN MARCH AFTER FIVE CONSECUTIVE MONTHS OF CONTRACTION,AN OFFICIAL SURVEY REVEALED ON SUNDAY,ADDING TO A RUN OF INDICATORS THAT SUGGEST THE STABILIZATION OF THE WORLD'S SECOND LARGEST ECONOMY."
                     ,
+                    dotCase:
+                        "china's.factory.activity.expanded.in.march.after.five.consecutive.months.of.contraction,an.official.survey.revealed.on.sunday,adding.to.a.run.of.indicators.that.suggest.the.stabilization.of.the.world's.second.largest.economy."
+                    ,
+                    dotCamelCase:
+                        "china'S.Factory.Activity.Expanded.In.March.After.Five.Consecutive.Months.Of.Contraction,An.Official.Survey.Revealed.On.Sunday,Adding.To.A.Run.Of.Indicators.That.Suggest.The.Stabilization.Of.The.World'S.Second.Largest.Economy."
+                    ,
+                    dotPascalCase:
+                        "China'S.Factory.Activity.Expanded.In.March.After.Five.Consecutive.Months.Of.Contraction,An.Official.Survey.Revealed.On.Sunday,Adding.To.A.Run.Of.Indicators.That.Suggest.The.Stabilization.Of.The.World'S.Second.Largest.Economy."
+                    ,
+                    dotUpperCase:
+                        "CHINA'S.FACTORY.ACTIVITY.EXPANDED.IN.MARCH.AFTER.FIVE.CONSECUTIVE.MONTHS.OF.CONTRACTION,AN.OFFICIAL.SURVEY.REVEALED.ON.SUNDAY,ADDING.TO.A.RUN.OF.INDICATORS.THAT.SUGGEST.THE.STABILIZATION.OF.THE.WORLD'S.SECOND.LARGEST.ECONOMY."
+                    ,
                     lowerCase:
                         "china's factory activity expanded in march after five consecutive months of contraction, an official survey revealed on sunday, adding to a run of indicators that suggest the stabilization of the world's second-largest economy."
                     ,
@@ -253,6 +289,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'entity2Map',
                     spacePascalCase: 'Entity2Map',
                     spaceUpperCase: 'ENTITY2MAP',
+                    dotCase: 'entity2map',
+                    dotCamelCase: 'entity2Map',
+                    dotPascalCase: 'Entity2Map',
+                    dotUpperCase: 'ENTITY2MAP',
                     lowerCase: 'entity2map',
                     upperCase: 'ENTITY2MAP',
                 },
@@ -283,6 +323,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'how Do You\bDo?\n                    how Do You\tDo!',
                     spacePascalCase: 'How Do You\bDo?\n                    How Do You\tDo!',
                     spaceUpperCase: 'HOW DO YOU\bDO?\n                    HOW DO YOU\tDO!',
+                    dotCase: 'how.do.you\bdo?\n                    how.do.you\tdo!',
+                    dotCamelCase: 'how.Do.You\bDo?\n                    how.Do.You\tDo!',
+                    dotPascalCase: 'How.Do.You\bDo?\n                    How.Do.You\tDo!',
+                    dotUpperCase: 'HOW.DO.YOU\bDO?\n                    HOW.DO.YOU\tDO!',
                     lowerCase: 'how do you\bdo?\n                    how do you\tdo!',
                     upperCase: 'HOW DO YOU\bDO?\n                    HOW DO YOU\tDO!',
                 },
@@ -312,6 +356,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: '今天是星期日',
                     spacePascalCase: '今天是星期日',
                     spaceUpperCase: '今天是星期日',
+                    dotCase: '今天是星期日',
+                    dotCamelCase: '今天是星期日',
+                    dotPascalCase: '今天是星期日',
+                    dotUpperCase: '今天是星期日',
                     lowerCase: '今天是星期日',
                     upperCase: '今天是星期日',
                 },
@@ -340,6 +388,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: '担心你d Af=Coffee—爸妈不在家— ',
                     spacePascalCase: '担心你D Af=Coffee—爸妈不在家— ',
                     spaceUpperCase: '担心你D AF=COFFEE—爸妈不在家— ',
+                    dotCase: '担心你d.af=coffee—爸妈不在家— ',
+                    dotCamelCase: '担心你d.Af=Coffee—爸妈不在家— ',
+                    dotPascalCase: '担心你D.Af=Coffee—爸妈不在家— ',
+                    dotUpperCase: '担心你D.AF=COFFEE—爸妈不在家— ',
                     lowerCase: '--担心你daf_=coffee—爸妈不在家_— ',
                     upperCase: '--担心你DAF_=COFFEE—爸妈不在家_— ',
                 },
@@ -347,29 +399,33 @@ const testGroups: Array<TestCaseGroup> = [
             {
                 title: 'Special character with emoji input',
                 input:
-                    '🥰 a-cup/_of Coffee🍻,-_please!. '
+                    '🥰 a-cup/_of Coffee🍻,-_please.thanks!. '
                 ,
                 eol: [LF, CRLF],
                 transformText: [
-                    '🥰|a|cup|/|of|coffee|🍻,|please|!. ',
+                    '🥰|a|cup|/|of|coffee|🍻,|please|.|thanks|!. ',
                 ],
                 output: {
-                    camelCase: '🥰aCup/OfCoffee🍻,Please!. ',
-                    pascalCase: '🥰ACup/OfCoffee🍻,Please!. ',
-                    snakeCase: '🥰a_cup/of_coffee🍻,please!. ',
-                    snakeCamelCase: '🥰a_Cup/Of_Coffee🍻,Please!. ',
-                    snakePascalCase: '🥰A_Cup/Of_Coffee🍻,Please!. ',
-                    snakeUpperCase: '🥰A_CUP/OF_COFFEE🍻,PLEASE!. ',
-                    kebabCase: '🥰a-cup/of-coffee🍻,please!. ',
-                    kebabCamelCase: '🥰a-Cup/Of-Coffee🍻,Please!. ',
-                    kebabPascalCase: '🥰A-Cup/Of-Coffee🍻,Please!. ',
-                    kebabUpperCase: '🥰A-CUP/OF-COFFEE🍻,PLEASE!. ',
-                    spaceCase: '🥰a cup/of coffee🍻,please!. ',
-                    spaceCamelCase: '🥰a Cup/Of Coffee🍻,Please!. ',
-                    spacePascalCase: '🥰A Cup/Of Coffee🍻,Please!. ',
-                    spaceUpperCase: '🥰A CUP/OF COFFEE🍻,PLEASE!. ',
-                    lowerCase: '🥰 a-cup/_of coffee🍻,-_please!. ',
-                    upperCase: '🥰 A-CUP/_OF COFFEE🍻,-_PLEASE!. ',
+                    camelCase: '🥰aCup/OfCoffee🍻,Please.Thanks!. ',
+                    pascalCase: '🥰ACup/OfCoffee🍻,Please.Thanks!. ',
+                    snakeCase: '🥰a_cup/of_coffee🍻,please.thanks!. ',
+                    snakeCamelCase: '🥰a_Cup/Of_Coffee🍻,Please.Thanks!. ',
+                    snakePascalCase: '🥰A_Cup/Of_Coffee🍻,Please.Thanks!. ',
+                    snakeUpperCase: '🥰A_CUP/OF_COFFEE🍻,PLEASE.THANKS!. ',
+                    kebabCase: '🥰a-cup/of-coffee🍻,please.thanks!. ',
+                    kebabCamelCase: '🥰a-Cup/Of-Coffee🍻,Please.Thanks!. ',
+                    kebabPascalCase: '🥰A-Cup/Of-Coffee🍻,Please.Thanks!. ',
+                    kebabUpperCase: '🥰A-CUP/OF-COFFEE🍻,PLEASE.THANKS!. ',
+                    spaceCase: '🥰a cup/of coffee🍻,please.thanks!. ',
+                    spaceCamelCase: '🥰a Cup/Of Coffee🍻,Please.Thanks!. ',
+                    spacePascalCase: '🥰A Cup/Of Coffee🍻,Please.Thanks!. ',
+                    spaceUpperCase: '🥰A CUP/OF COFFEE🍻,PLEASE.THANKS!. ',
+                    dotCase: '🥰a.cup/of.coffee🍻,please.thanks!. ',
+                    dotCamelCase: '🥰a.Cup/Of.Coffee🍻,Please.Thanks!. ',
+                    dotPascalCase: '🥰A.Cup/Of.Coffee🍻,Please.Thanks!. ',
+                    dotUpperCase: '🥰A.CUP/OF.COFFEE🍻,PLEASE.THANKS!. ',
+                    lowerCase: '🥰 a-cup/_of coffee🍻,-_please.thanks!. ',
+                    upperCase: '🥰 A-CUP/_OF COFFEE🍻,-_PLEASE.THANKS!. ',
                 },
             },
             {
@@ -396,6 +452,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'take A Rest😊Ha P Py,😢Tri Ste,Enfadado,驚きました,❤️,笑,😎C Ool,😳Embarrassed',
                     spacePascalCase: 'Take A Rest😊Ha P Py,😢Tri Ste,Enfadado,驚きました,❤️,笑,😎C Ool,😳Embarrassed',
                     spaceUpperCase: 'TAKE A REST😊HA P PY,😢TRI STE,ENFADADO,驚きました,❤️,笑,😎C OOL,😳EMBARRASSED',
+                    dotCase: 'take.a.rest😊ha.p.py,😢tri.ste,enfadado,驚きました,❤️,笑,😎c.ool,😳embarrassed',
+                    dotCamelCase: 'take.A.Rest😊Ha.P.Py,😢Tri.Ste,Enfadado,驚きました,❤️,笑,😎C.Ool,😳Embarrassed',
+                    dotPascalCase: 'Take.A.Rest😊Ha.P.Py,😢Tri.Ste,Enfadado,驚きました,❤️,笑,😎C.Ool,😳Embarrassed',
+                    dotUpperCase: 'TAKE.A.REST😊HA.P.PY,😢TRI.STE,ENFADADO,驚きました,❤️,笑,😎C.OOL,😳EMBARRASSED',
                     lowerCase: 'takearest😊happy,😢triste,enfadado, 驚きました,❤️, 笑, 😎cool, 😳-embarrassed',
                     upperCase: 'TAKEAREST😊HAPPY,😢TRISTE,ENFADADO, 驚きました,❤️, 笑, 😎COOL, 😳-EMBARRASSED',
                 },
@@ -424,6 +484,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: '    n H D As+90Usz&* ',
                     spacePascalCase: '    N H D As+90Usz&* ',
                     spaceUpperCase: '    N H D AS+90USZ&* ',
+                    dotCase: '    n.h.d.as+90usz&* ',
+                    dotCamelCase: '    n.H.D.As+90Usz&* ',
+                    dotPascalCase: '    N.H.D.As+90Usz&* ',
+                    dotUpperCase: '    N.H.D.AS+90USZ&* ',
                     lowerCase: '    nhdas--+90-usz&* ',
                     upperCase: '    NHDAS--+90-USZ&* ',
                 },
@@ -452,6 +516,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'fsdi Sdacsaf+Desd',
                     spacePascalCase: 'Fsdi Sdacsaf+Desd',
                     spaceUpperCase: 'FSDI SDACSAF+DESD',
+                    dotCase: 'fsdi.sdacsaf+desd',
+                    dotCamelCase: 'fsdi.Sdacsaf+Desd',
+                    dotPascalCase: 'Fsdi.Sdacsaf+Desd',
+                    dotUpperCase: 'FSDI.SDACSAF+DESD',
                     lowerCase: 'fsdi_sdacsaf+desd',
                     upperCase: 'FSDI_SDACSAF+DESD',
                 },
@@ -490,6 +558,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'foo Bar',
                     spacePascalCase: 'Foo Bar',
                     spaceUpperCase: 'FOO BAR',
+                    dotCase: 'foo.bar',
+                    dotCamelCase: 'foo.Bar',
+                    dotPascalCase: 'Foo.Bar',
+                    dotUpperCase: 'FOO.BAR',
                     // lowerCase: 'foo--bar',
                     // upperCase: 'FOO--BAR',
                 },
@@ -523,6 +595,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'test Case',
                     spacePascalCase: 'Test Case',
                     spaceUpperCase: 'TEST CASE',
+                    dotCase: 'test.case',
+                    dotCamelCase: 'test.Case',
+                    dotPascalCase: 'Test.Case',
+                    dotUpperCase: 'TEST.CASE',
                     // lowerCase: 'test case',
                     // upperCase: 'TEST CASE',
                 },
@@ -553,6 +629,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'apple',
                     spacePascalCase: 'Apple',
                     spaceUpperCase: 'APPLE',
+                    dotCase: 'apple',
+                    dotCamelCase: 'apple',
+                    dotPascalCase: 'Apple',
+                    dotUpperCase: 'APPLE',
                     lowerCase: 'apple',
                     upperCase: 'APPLE',
                 },
@@ -581,6 +661,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'pine Apple',
                     spacePascalCase: 'Pine Apple',
                     spaceUpperCase: 'PINE APPLE',
+                    dotCase: 'pine.apple',
+                    dotCamelCase: 'pine.Apple',
+                    dotPascalCase: 'Pine.Apple',
+                    dotUpperCase: 'PINE.APPLE',
                     lowerCase: 'pineapple',
                     upperCase: 'PINEAPPLE',
                 },
@@ -618,8 +702,82 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'have A Nice Day!',
                     spacePascalCase: 'Have A Nice Day!',
                     spaceUpperCase: 'HAVE A NICE DAY!',
+                    dotCase: 'have.a.nice.day!',
+                    dotCamelCase: 'have.A.Nice.Day!',
+                    dotPascalCase: 'Have.A.Nice.Day!',
+                    dotUpperCase: 'HAVE.A.NICE.DAY!',
                     // lowerCase: 'have a nice day!',
                     // upperCase: 'HAVE A NICE DAY!',
+                },
+            },
+            {
+                title: 'Normal input (Dot input: Every day of your life)',
+                input: '.Every day of your life.. it is..important..to take.the.time to “smell the roses” — to appreciate the experiences that lead to happiness. This is part of being truly happy.',
+                eol: [LF, CRLF],
+                transformText: [
+                    '.|every|day|of|your|life|..|it|is|..|important|..|to|take|.|the|.|time|to|“|smell|the|roses|”|—|to|appreciate|the|experiences|that|lead|to|happiness|.|this|is|part|of|being|truly|happy|.',
+                ],
+                output: {
+                    camelCase:
+                        '.everyDayOfYourLife..ItIs..Important..ToTake.The.TimeTo“SmellTheRoses”—ToAppreciateTheExperiencesThatLeadToHappiness.ThisIsPartOfBeingTrulyHappy.'
+                    ,
+                    pascalCase:
+                        '.EveryDayOfYourLife..ItIs..Important..ToTake.The.TimeTo“SmellTheRoses”—ToAppreciateTheExperiencesThatLeadToHappiness.ThisIsPartOfBeingTrulyHappy.'
+                    ,
+                    snakeCase:
+                        '.every_day_of_your_life..it_is..important..to_take.the.time_to“smell_the_roses”—to_appreciate_the_experiences_that_lead_to_happiness.this_is_part_of_being_truly_happy.'
+                    ,
+                    snakeCamelCase:
+                        '.every_Day_Of_Your_Life..It_Is..Important..To_Take.The.Time_To“Smell_The_Roses”—To_Appreciate_The_Experiences_That_Lead_To_Happiness.This_Is_Part_Of_Being_Truly_Happy.'
+                    ,
+                    snakePascalCase:
+                        '.Every_Day_Of_Your_Life..It_Is..Important..To_Take.The.Time_To“Smell_The_Roses”—To_Appreciate_The_Experiences_That_Lead_To_Happiness.This_Is_Part_Of_Being_Truly_Happy.'
+                    ,
+                    snakeUpperCase:
+                        '.EVERY_DAY_OF_YOUR_LIFE..IT_IS..IMPORTANT..TO_TAKE.THE.TIME_TO“SMELL_THE_ROSES”—TO_APPRECIATE_THE_EXPERIENCES_THAT_LEAD_TO_HAPPINESS.THIS_IS_PART_OF_BEING_TRULY_HAPPY.'
+                    ,
+                    kebabCase:
+                        '.every-day-of-your-life..it-is..important..to-take.the.time-to“smell-the-roses”—to-appreciate-the-experiences-that-lead-to-happiness.this-is-part-of-being-truly-happy.'
+                    ,
+                    kebabCamelCase:
+                        '.every-Day-Of-Your-Life..It-Is..Important..To-Take.The.Time-To“Smell-The-Roses”—To-Appreciate-The-Experiences-That-Lead-To-Happiness.This-Is-Part-Of-Being-Truly-Happy.'
+                    ,
+                    kebabPascalCase:
+                        '.Every-Day-Of-Your-Life..It-Is..Important..To-Take.The.Time-To“Smell-The-Roses”—To-Appreciate-The-Experiences-That-Lead-To-Happiness.This-Is-Part-Of-Being-Truly-Happy.'
+                    ,
+                    kebabUpperCase:
+                        '.EVERY-DAY-OF-YOUR-LIFE..IT-IS..IMPORTANT..TO-TAKE.THE.TIME-TO“SMELL-THE-ROSES”—TO-APPRECIATE-THE-EXPERIENCES-THAT-LEAD-TO-HAPPINESS.THIS-IS-PART-OF-BEING-TRULY-HAPPY.'
+                    ,
+                    spaceCase:
+                        '.every day of your life..it is..important..to take.the.time to“smell the roses”—to appreciate the experiences that lead to happiness.this is part of being truly happy.'
+                    ,
+                    spaceCamelCase:
+                        '.every Day Of Your Life..It Is..Important..To Take.The.Time To“Smell The Roses”—To Appreciate The Experiences That Lead To Happiness.This Is Part Of Being Truly Happy.'
+                    ,
+                    spacePascalCase:
+                        '.Every Day Of Your Life..It Is..Important..To Take.The.Time To“Smell The Roses”—To Appreciate The Experiences That Lead To Happiness.This Is Part Of Being Truly Happy.'
+                    ,
+                    spaceUpperCase:
+                        '.EVERY DAY OF YOUR LIFE..IT IS..IMPORTANT..TO TAKE.THE.TIME TO“SMELL THE ROSES”—TO APPRECIATE THE EXPERIENCES THAT LEAD TO HAPPINESS.THIS IS PART OF BEING TRULY HAPPY.'
+                    ,
+                    dotCase:
+                        '.every.day.of.your.life..it.is..important..to.take.the.time.to“smell.the.roses”—to.appreciate.the.experiences.that.lead.to.happiness.this.is.part.of.being.truly.happy.'
+                    ,
+                    dotCamelCase:
+                        '.every.Day.Of.Your.Life..It.Is..Important..To.Take.The.Time.To“Smell.The.Roses”—To.Appreciate.The.Experiences.That.Lead.To.Happiness.This.Is.Part.Of.Being.Truly.Happy.'
+                    ,
+                    dotPascalCase:
+                        '.Every.Day.Of.Your.Life..It.Is..Important..To.Take.The.Time.To“Smell.The.Roses”—To.Appreciate.The.Experiences.That.Lead.To.Happiness.This.Is.Part.Of.Being.Truly.Happy.'
+                    ,
+                    dotUpperCase:
+                        '.EVERY.DAY.OF.YOUR.LIFE..IT.IS..IMPORTANT..TO.TAKE.THE.TIME.TO“SMELL.THE.ROSES”—TO.APPRECIATE.THE.EXPERIENCES.THAT.LEAD.TO.HAPPINESS.THIS.IS.PART.OF.BEING.TRULY.HAPPY.'
+                    ,
+                    lowerCase:
+                        '.every day of your life.. it is..important..to take.the.time to “smell the roses” — to appreciate the experiences that lead to happiness. this is part of being truly happy.'
+                    ,
+                    upperCase:
+                        '.EVERY DAY OF YOUR LIFE.. IT IS..IMPORTANT..TO TAKE.THE.TIME TO “SMELL THE ROSES” — TO APPRECIATE THE EXPERIENCES THAT LEAD TO HAPPINESS. THIS IS PART OF BEING TRULY HAPPY.'
+                    ,
                 },
             },
             {
@@ -653,6 +811,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' a Nice Day! ',
                     spacePascalCase: ' A Nice Day! ',
                     spaceUpperCase: ' A NICE DAY! ',
+                    dotCase: ' a.nice.day! ',
+                    dotCamelCase: ' a.Nice.Day! ',
+                    dotPascalCase: ' A.Nice.Day! ',
+                    dotUpperCase: ' A.NICE.DAY! ',
                     // lowerCase: ' a nice day! ',
                     // upperCase: ' A NICE DAY! ',
                 },
@@ -682,6 +844,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' a Nice Day',
                     spacePascalCase: ' A Nice Day',
                     spaceUpperCase: ' A NICE DAY',
+                    dotCase: ' a.nice.day',
+                    dotCamelCase: ' a.Nice.Day',
+                    dotPascalCase: ' A.Nice.Day',
+                    dotUpperCase: ' A.NICE.DAY',
                     // lowerCase: ' a nice-day-',
                     // upperCase: ' A NICE-DAY-',
                 },
@@ -710,6 +876,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: 'tom Likes Eat Ice Cream.',
                     spacePascalCase: 'Tom Likes Eat Ice Cream.',
                     spaceUpperCase: 'TOM LIKES EAT ICE CREAM.',
+                    dotCase: 'tom.likes.eat.ice.cream.',
+                    dotCamelCase: 'tom.Likes.Eat.Ice.Cream.',
+                    dotPascalCase: 'Tom.Likes.Eat.Ice.Cream.',
+                    dotUpperCase: 'TOM.LIKES.EAT.ICE.CREAM.',
                     lowerCase: 'tomlikes eat icecream.',
                     upperCase: 'TOMLIKES EAT ICECREAM.',
                 },
@@ -739,6 +909,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' apple2Tree ',
                     spacePascalCase: ' Apple2Tree ',
                     spaceUpperCase: ' APPLE2TREE ',
+                    dotCase: ' apple2tree ',
+                    dotCamelCase: ' apple2Tree ',
+                    dotPascalCase: ' Apple2Tree ',
+                    dotUpperCase: ' APPLE2TREE ',
                     // lowerCase: ' apple2-tree ',
                     // upperCase: ' APPLE2-TREE ',
                 },
@@ -767,6 +941,10 @@ const testGroups: Array<TestCaseGroup> = [
                     spaceCamelCase: ' julius Caesar,William Shakespeare,Albert Einstein,Marie Curie,Wolfgang Amadeus Mozart,Vincent Van Gogh. ',
                     spacePascalCase: ' Julius Caesar,William Shakespeare,Albert Einstein,Marie Curie,Wolfgang Amadeus Mozart,Vincent Van Gogh. ',
                     spaceUpperCase: ' JULIUS CAESAR,WILLIAM SHAKESPEARE,ALBERT EINSTEIN,MARIE CURIE,WOLFGANG AMADEUS MOZART,VINCENT VAN GOGH. ',
+                    dotCase: ' julius.caesar,william.shakespeare,albert.einstein,marie.curie,wolfgang.amadeus.mozart,vincent.van.gogh. ',
+                    dotCamelCase: ' julius.Caesar,William.Shakespeare,Albert.Einstein,Marie.Curie,Wolfgang.Amadeus.Mozart,Vincent.Van.Gogh. ',
+                    dotPascalCase: ' Julius.Caesar,William.Shakespeare,Albert.Einstein,Marie.Curie,Wolfgang.Amadeus.Mozart,Vincent.Van.Gogh. ',
+                    dotUpperCase: ' JULIUS.CAESAR,WILLIAM.SHAKESPEARE,ALBERT.EINSTEIN,MARIE.CURIE,WOLFGANG.AMADEUS.MOZART,VINCENT.VAN.GOGH. ',
                     lowerCase: ' julius_caesar, william_shakespeare, albert_einstein, marie_curie, wolfgangamadeusmozart, vincent-van-gogh. ',
                     upperCase: ' JULIUS_CAESAR, WILLIAM_SHAKESPEARE, ALBERT_EINSTEIN, MARIE_CURIE, WOLFGANGAMADEUSMOZART, VINCENT-VAN-GOGH. ',
                 },
@@ -839,6 +1017,22 @@ const testGroups: Array<TestCaseGroup> = [
                         '      &QUOT;YOU&QUOT;(OR&QUOT;YOUR&QUOT;)SHALL MEAN AN INDIVIDUAL OR LEGAL ENTITY\n' +
                         '      EXERCISING PERMISSIONS GRANTED BY THIS LICENSE.'
                     ,
+                    dotCase:
+                        '      &quot;you&quot;(or&quot;your&quot;)shall.mean.an.individual.or.legal.entity\n' +
+                        '      exercising.permissions.granted.by.this.license.'
+                    ,
+                    dotCamelCase:
+                        '      &quot;You&Quot;(Or&Quot;Your&Quot;)Shall.Mean.An.Individual.Or.Legal.Entity\n' +
+                        '      exercising.Permissions.Granted.By.This.License.'
+                    ,
+                    dotPascalCase:
+                        '      &Quot;You&Quot;(Or&Quot;Your&Quot;)Shall.Mean.An.Individual.Or.Legal.Entity\n' +
+                        '      Exercising.Permissions.Granted.By.This.License.'
+                    ,
+                    dotUpperCase:
+                        '      &QUOT;YOU&QUOT;(OR&QUOT;YOUR&QUOT;)SHALL.MEAN.AN.INDIVIDUAL.OR.LEGAL.ENTITY\n' +
+                        '      EXERCISING.PERMISSIONS.GRANTED.BY.THIS.LICENSE.'
+                    ,
                     lowerCase:
                         '      &quot;you&quot; (or &quot;your&quot;) shall mean an individual or legal entity\n' +
                         '      exercising permissions granted by this license.'
@@ -888,6 +1082,10 @@ const testGroups: Array<TestCaseGroup> = [
             //         spaceCamelCase: '',
             //         spacePascalCase: '',
             //         spaceUpperCase: '',
+            //         dotCase: '',
+            //         dotCamelCase: '',
+            //         dotPascalCase: '',
+            //         dotUpperCase: '',
             //         lowerCase: '',
             //         upperCase: '',
             //     },
