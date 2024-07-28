@@ -30,6 +30,11 @@ export type TestCase = {
         spacePascalCase: string
         spaceUpperCase: string
 
+        dotCase: string
+        dotCamelCase: string
+        dotPascalCase: string
+        dotUpperCase: string
+
         lowerCase?: string
         upperCase?: string
     }

@@ -54,6 +54,9 @@ export function transformText(input: string): TransformTextResult {
         // 替换连字符为 '|' （如有多个则合并）
         match = match.replace(/[-_ ]+/g, '|');
 
+        // // 替换.时跳过连续点(例如Happy.. angry)
+        // match = match.replace(/([^.])([.])([^.])/g, '$1|$3');
+
         // 拆分连续的小写字母和大写字母为多个单词
         match = match.replace(/([a-z])([A-Z])/g, '$1|$2');
 

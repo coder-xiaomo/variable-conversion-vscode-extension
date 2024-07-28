@@ -2,9 +2,9 @@
   // 插件 id 及名称
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
-  "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、状态栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, lower, upper case, and more.",
+  "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、状态栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、点分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, dot, lower, upper case, and more.",
   // 版本号
-  "version": "1.0.8.1",
+  "version": "1.0.10",
   // logo
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
@@ -146,7 +146,24 @@
         "command": "variable-conversion.toSpaceCamelCase",
         "title": "空格分隔 + 小驼峰(驼峰)命名 (Space Camel Case) [ foo Bar ]"
       },
-      // group-5-upper-lower
+      // group-5-dot
+      {
+        "command": "variable-conversion.toDotCase",
+        "title": "点分隔命名 (Dot Case) [ foo bar ]"
+      },
+      {
+        "command": "variable-conversion.toDotUpperCase",
+        "title": "点分隔 + 全大写命名 (Dot Upper Case) [ FOO BAR ]"
+      },
+      {
+        "command": "variable-conversion.toDotPascalCase",
+        "title": "点分隔 + 大驼峰(帕斯卡)命名 (Dot Pascal Case) [ Foo Bar ]"
+      },
+      {
+        "command": "variable-conversion.toDotCamelCase",
+        "title": "点分隔 + 小驼峰(驼峰)命名 (Dot Camel Case) [ foo Bar ]"
+      },
+      // group-6-upper-lower
       {
         "command": "variable-conversion.toLowerCase",
         "title": "全小写 (Lower Case) [ foobar ]"
@@ -266,14 +283,31 @@
           "command": "variable-conversion.toSpaceCamelCase",
           "group": "group-4-space@4"
         },
-        // group-5-upper-lower
+        // group-5-dot
+        {
+          "command": "variable-conversion.toDotCase",
+          "group": "group-5-dot@1"
+        },
+        {
+          "command": "variable-conversion.toDotUpperCase",
+          "group": "group-5-dot@2"
+        },
+        {
+          "command": "variable-conversion.toDotPascalCase",
+          "group": "group-5-dot@3"
+        },
+        {
+          "command": "variable-conversion.toDotCamelCase",
+          "group": "group-5-dot@4"
+        },
+        // group-6-upper-lower
         {
           "command": "variable-conversion.toLowerCase",
-          "group": "group-5-upper-lower@1"
+          "group": "group-6-upper-lower@1"
         },
         {
           "command": "variable-conversion.toUpperCase",
-          "group": "group-5-upper-lower@2"
+          "group": "group-6-upper-lower@2"
         }
         // 隐藏菜单项
         // {

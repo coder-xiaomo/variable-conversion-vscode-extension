@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 1.0.10
+
+### Added
+
+- Add 4 new conversion types: Dot Case, Dot Camel Case, Dot Pascal Case, Dot Upper Case (新增 4 种转换类型: 点分隔 + 全小写/小驼峰/大驼峰/全大写)
+
 ## 1.0.8
 
 ### Added

@@ -73,6 +73,10 @@ Or right-click on the selected text -> Convert string to...
 | 空格分隔 + 小驼峰(驼峰)命名                | Space Camel Case         | foo Bar          |
 | 空格分隔 + 大驼峰(帕斯卡)命名              | Space Pascal Case        | Foo Bar          |
 | 空格分隔 + 全大写命名                      | Space Upper Case         | FOO BAR          |
+| 点分隔命名                                 | Dot Case                 | foo.bar          |
+| 点分隔 + 小驼峰(驼峰)命名                  | Dot Camel Case           | foo.Bar          |
+| 点分隔 + 大驼峰(帕斯卡)命名                | Dot Pascal Case          | Foo.Bar          |
+| 点分隔 + 全大写命名                        | Dot Upper Case           | FOO.BAR          |
 | 全小写                                     | Lower Case               | foo_bar / foobar |
 | 全大写                                     | Upper Case               | FOO_BAR / FOOBAR |
 
@@ -81,7 +85,7 @@ Or right-click on the selected text -> Convert string to...
 #### 关于文本选区...
 
 - 可以先按住 `Alt` 键不放，再鼠标先后选中多个选区
-  You can first hold down `Alt`,  and then use the mouse to select multiple selection
+  You can first hold down `Alt`, and then use the mouse to select multiple selection
 - 可以先按住 `Shift + Alt` 键不放，再按下鼠标左键，使用鼠标滑过需要选中的区块
   You can first hold down `Shift + Alt`, then press the left mouse button, and use the mouse to slide over the block that needs to be selected
 - 可以通过 `Ctrl + D` 快捷键选中光标所在的单词

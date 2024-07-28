@@ -49,29 +49,34 @@ suite('Extension Test: run test case', () => {
 					}
 					// 验证转换
 					for (let eol of eolList) {
-						assert.strictEqual(testCase.output.camelCase, caseConversion(SupportCase.CAMEL_CASE, input, eol));
-						assert.strictEqual(testCase.output.pascalCase, caseConversion(SupportCase.PASCAL_CASE, input, eol));
+						assert.strictEqual(testCase.output.camelCase, caseConversion(SupportCase.CAMEL_CASE, input, eol), 'camel case test failed.');
+						assert.strictEqual(testCase.output.pascalCase, caseConversion(SupportCase.PASCAL_CASE, input, eol), 'pascal case test failed.');
 
-						assert.strictEqual(testCase.output.snakeCase, caseConversion(SupportCase.SNAKE_CASE, input, eol));
-						assert.strictEqual(testCase.output.snakeCamelCase, caseConversion(SupportCase.SNAKE_CAMEL_CASE, input, eol));
-						assert.strictEqual(testCase.output.snakePascalCase, caseConversion(SupportCase.SNAKE_PASCAL_CASE, input, eol));
-						assert.strictEqual(testCase.output.snakeUpperCase, caseConversion(SupportCase.SNAKE_UPPER_CASE, input, eol));
+						assert.strictEqual(testCase.output.snakeCase, caseConversion(SupportCase.SNAKE_CASE, input, eol), 'snake case test failed.');
+						assert.strictEqual(testCase.output.snakeCamelCase, caseConversion(SupportCase.SNAKE_CAMEL_CASE, input, eol), 'snake camel case test failed.');
+						assert.strictEqual(testCase.output.snakePascalCase, caseConversion(SupportCase.SNAKE_PASCAL_CASE, input, eol), 'snake pascal case test failed.');
+						assert.strictEqual(testCase.output.snakeUpperCase, caseConversion(SupportCase.SNAKE_UPPER_CASE, input, eol), 'snake upper case test failed.');
 
-						assert.strictEqual(testCase.output.kebabCase, caseConversion(SupportCase.KEBAB_CASE, input, eol));
-						assert.strictEqual(testCase.output.kebabCamelCase, caseConversion(SupportCase.KEBAB_CAMEL_CASE, input, eol));
-						assert.strictEqual(testCase.output.kebabPascalCase, caseConversion(SupportCase.KEBAB_PASCAL_CASE, input, eol));
-						assert.strictEqual(testCase.output.kebabUpperCase, caseConversion(SupportCase.KEBAB_UPPER_CASE, input, eol));
-						
-						assert.strictEqual(testCase.output.spaceCase, caseConversion(SupportCase.SPACE_CASE, input, eol));
-						assert.strictEqual(testCase.output.spaceCamelCase, caseConversion(SupportCase.SPACE_CAMEL_CASE, input, eol));
-						assert.strictEqual(testCase.output.spacePascalCase, caseConversion(SupportCase.SPACE_PASCAL_CASE, input, eol));
-						assert.strictEqual(testCase.output.spaceUpperCase, caseConversion(SupportCase.SPACE_UPPER_CASE, input, eol));
-						
+						assert.strictEqual(testCase.output.kebabCase, caseConversion(SupportCase.KEBAB_CASE, input, eol), 'kebab case test failed.');
+						assert.strictEqual(testCase.output.kebabCamelCase, caseConversion(SupportCase.KEBAB_CAMEL_CASE, input, eol), 'kebab camel case test failed.');
+						assert.strictEqual(testCase.output.kebabPascalCase, caseConversion(SupportCase.KEBAB_PASCAL_CASE, input, eol), 'kebab pascal case test failed.');
+						assert.strictEqual(testCase.output.kebabUpperCase, caseConversion(SupportCase.KEBAB_UPPER_CASE, input, eol), 'kebab upper case test failed.');
+
+						assert.strictEqual(testCase.output.spaceCase, caseConversion(SupportCase.SPACE_CASE, input, eol), 'space case test failed.');
+						assert.strictEqual(testCase.output.spaceCamelCase, caseConversion(SupportCase.SPACE_CAMEL_CASE, input, eol), 'space camel case test failed.');
+						assert.strictEqual(testCase.output.spacePascalCase, caseConversion(SupportCase.SPACE_PASCAL_CASE, input, eol), 'space pascal case test failed.');
+						assert.strictEqual(testCase.output.spaceUpperCase, caseConversion(SupportCase.SPACE_UPPER_CASE, input, eol), 'space upper case test failed.');
+
+						assert.strictEqual(testCase.output.dotCase, caseConversion(SupportCase.DOT_CASE, input, eol), 'dot case test failed.');
+						assert.strictEqual(testCase.output.dotCamelCase, caseConversion(SupportCase.DOT_CAMEL_CASE, input, eol), 'dot camel case test failed.');
+						assert.strictEqual(testCase.output.dotPascalCase, caseConversion(SupportCase.DOT_PASCAL_CASE, input, eol), 'dot pascal case test failed.');
+						assert.strictEqual(testCase.output.dotUpperCase, caseConversion(SupportCase.DOT_UPPER_CASE, input, eol), 'dot upper case test failed.');
+
 						if (testCase.output.lowerCase !== undefined) {
-							assert.strictEqual(testCase.output.lowerCase, caseConversion(SupportCase.LOWER_CASE, input, eol));
+							assert.strictEqual(testCase.output.lowerCase, caseConversion(SupportCase.LOWER_CASE, input, eol), 'lower case test failed.');
 						}
 						if (testCase.output.upperCase !== undefined) {
-							assert.strictEqual(testCase.output.upperCase, caseConversion(SupportCase.UPPER_CASE, input, eol));
+							assert.strictEqual(testCase.output.upperCase, caseConversion(SupportCase.UPPER_CASE, input, eol), 'upper case test failed.');
 						}
 					}
 				}

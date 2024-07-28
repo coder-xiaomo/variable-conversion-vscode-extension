@@ -159,6 +159,46 @@ export enum SupportCase {
     SPACE_UPPER_CASE,
 
     /**
+     * 点分隔命名
+     * Dot Case / Spinal Case
+     * e.g. foo bar
+     *
+     * @alias: dotCase / DotCase / dot case / dot_case / DOT_CASE
+     * @since 2024-06-13
+     */
+    DOT_CASE,
+
+    /**
+     * 点分隔 + 小驼峰(驼峰)命名
+     * Dot Camel Case
+     * e.g. foo Bar
+     *
+     * @alias: dotCamelCase / DotCamelCase / dot camel case / dot_camel_case / DOT_CAMEL_CASE
+     * @since 2024-06-13
+     */
+    DOT_CAMEL_CASE,
+
+    /**
+     * 点分隔 + 大驼峰(帕斯卡)命名
+     * Dot Pascal Case
+     * e.g. Foo Bar
+     *
+     * @alias: dotPascalCase / DotPascalCase / dot pascal case / dot_pascal_case / DOT_PASCAL_CASE
+     * @since 2024-06-13
+     */
+    DOT_PASCAL_CASE,
+
+    /**
+     * 点分隔 + 全大写命名
+     * Dot Upper Case
+     * e.g. FOO BAR
+     *
+     * @alias: dotUpperCase / DotUpperCase / dot upper case / dot_upper_case / DOT_UPPER_CASE
+     * @since 2024-06-13
+     */
+    DOT_UPPER_CASE,
+
+    /**
      * 全小写
      * Lower Case
      * e.g. foo_bar / foobar
@@ -215,6 +255,13 @@ const keyword = {
         'KongGe',
         'kg',
     ],
+    dot: [
+        '点', '.',
+        'Dot Case',
+        'dc',
+        'Dian',
+        'd',
+    ],
     upper: [
         '全大写', '大写',
         'Upper Case',
@@ -252,6 +299,11 @@ export const commands: Array<{ command: string; targetCase: SupportCase }> = [
     { command: 'variable-conversion.toSpaceUpperCase', targetCase: SupportCase.SPACE_UPPER_CASE },
     { command: 'variable-conversion.toSpacePascalCase', targetCase: SupportCase.SPACE_PASCAL_CASE },
     { command: 'variable-conversion.toSpaceCamelCase', targetCase: SupportCase.SPACE_CAMEL_CASE },
+
+    { command: 'variable-conversion.toDotCase', targetCase: SupportCase.DOT_CASE },
+    { command: 'variable-conversion.toDotUpperCase', targetCase: SupportCase.DOT_UPPER_CASE },
+    { command: 'variable-conversion.toDotPascalCase', targetCase: SupportCase.DOT_PASCAL_CASE },
+    { command: 'variable-conversion.toDotCamelCase', targetCase: SupportCase.DOT_CAMEL_CASE },
 
     { command: 'variable-conversion.toLowerCase', targetCase: SupportCase.LOWER_CASE },
     { command: 'variable-conversion.toUpperCase', targetCase: SupportCase.UPPER_CASE },
@@ -347,6 +399,30 @@ export const quickPickSupportCases = [
         keyword: [...keyword.space, ...keyword.upper],
     },
     {
+        type: SupportCase.DOT_CASE,
+        name: '点分隔命名',
+        shortName: '脊柱',
+        keyword: [...keyword.dot, ...keyword.lower],
+    },
+    {
+        type: SupportCase.DOT_CAMEL_CASE,
+        name: '点分隔 + 小驼峰(驼峰)命名',
+        shortName: '脊柱驼峰',
+        keyword: [...keyword.dot, ...keyword.camel],
+    },
+    {
+        type: SupportCase.DOT_PASCAL_CASE,
+        name: '点分隔 + 大驼峰(帕斯卡)命名',
+        shortName: '脊柱帕斯卡',
+        keyword: [...keyword.dot, ...keyword.pascal],
+    },
+    {
+        type: SupportCase.DOT_UPPER_CASE,
+        name: '点分隔 + 全大写命名',
+        shortName: '脊柱大写',
+        keyword: [...keyword.dot, ...keyword.upper],
+    },
+    {
         type: SupportCase.LOWER_CASE,
         name: '全小写',
         shortName: '小写',
@@ -370,18 +446,22 @@ export const cyclicConvertCaseOrder = [
     SupportCase.PASCAL_CASE,
     SupportCase.KEBAB_CASE,
     SupportCase.SPACE_CASE,
+    SupportCase.DOT_CASE,
 
     SupportCase.SNAKE_UPPER_CASE,
     SupportCase.KEBAB_UPPER_CASE,
     SupportCase.SPACE_UPPER_CASE,
+    SupportCase.DOT_UPPER_CASE,
 
     SupportCase.SNAKE_PASCAL_CASE,
     SupportCase.KEBAB_PASCAL_CASE,
     SupportCase.SPACE_PASCAL_CASE,
+    SupportCase.DOT_PASCAL_CASE,
 
     SupportCase.SNAKE_CAMEL_CASE,
     SupportCase.KEBAB_CAMEL_CASE,
     SupportCase.SPACE_CAMEL_CASE,
+    SupportCase.DOT_CAMEL_CASE,
 
     SupportCase.LOWER_CASE,
     SupportCase.UPPER_CASE,
