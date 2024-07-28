@@ -348,7 +348,113 @@
         "id": "variable-conversion.stringConversionMenu",
         "label": "将变量转换为..."
       }
-    ]
+    ],
+    // docs: https://code.visualstudio.com/api/references/contribution-points#contributes.configuration
+    "configuration": {
+      "title": "Variable Conversion 变量转换",
+      "properties": {
+        // 仅测试用
+        // "variable-conversion.test1": {
+        //   "title": "定义转换格式的排序",
+        //   "description": "Defines the ordering of the conversion format.\n定义转换格式的排序",
+        //   "type": "array",
+        //   "default": [
+        //     "camelCase",
+        //     "snake_case",
+        //     "PascalCase"
+        //   ]
+        // },
+        // "variable-conversion.enableFormat": {
+        //   "type": "object",
+        //   "default": {
+        //     "camelCase": true,
+        //     "snake_case": true,
+        //     "PascalCase": true
+        //   },
+        //   "description": "Define which formats are enabled.\n定义哪些格式是开启的"
+        // },
+        //
+        // 全小写命名
+        // lower_case(全小写), snake_case(下划线), kebab_case(连字符), space_case(空格), dot_case(点)
+        // 全大写命名
+        // upper_case(全大写), snake_upper_case(下划线), kebab_upper_case(连字符), space_upper_case(空格), dot_upper_case(点)
+        // 大驼峰命名
+        // pascal_case(大驼峰), snake_pascal_case(下划线), kebab_pascal_case(连字符), space_pascal_case(空格), dot_pascal_case(点)
+        // 小驼峰命名
+        // camel_case(小驼峰), snake_camel_case(下划线), kebab_camel_case(连字符), space_camel_case(空格), dot_camel_case(点)
+        "variable-conversion.disableFormat": {
+          "order": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "camel_case",
+              "pascal_case",
+              "snake_case",
+              "snake_camel_case",
+              "snake_pascal_case",
+              "snake_upper_case",
+              "kebab_case",
+              "kebab_camel_case",
+              "kebab_pascal_case",
+              "kebab_upper_case",
+              "space_case",
+              "space_camel_case",
+              "space_pascal_case",
+              "space_upper_case",
+              "dot_case",
+              "dot_camel_case",
+              "dot_pascal_case",
+              "dot_upper_case",
+              "lower_case",
+              "upper_case"
+            ],
+            "enumDescriptions": [
+              "小驼峰(驼峰)命名",
+              "大驼峰(帕斯卡)命名",
+              "下划线(蛇形)命名",
+              "下划线(蛇形) + 小驼峰(驼峰)命名",
+              "下划线(蛇形) + 大驼峰(帕斯卡)命名",
+              "下划线(蛇形) + 全大写命名",
+              "中划线(连字符/脊柱式)命名",
+              "中划线(连字符/脊柱式) + 小驼峰(驼峰)命名",
+              "中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名",
+              "中划线(连字符/脊柱式) + 全大写命名",
+              "空格分隔命名",
+              "空格分隔 + 小驼峰(驼峰)命名",
+              "空格分隔 + 大驼峰(帕斯卡)命名",
+              "空格分隔 + 全大写命名",
+              "点分隔命名",
+              "点分隔 + 小驼峰(驼峰)命名",
+              "点分隔 + 大驼峰(帕斯卡)命名",
+              "点分隔 + 全大写命名",
+              "全小写",
+              "全大写"
+            ]
+          },
+          "default": [],
+          // markdownDescription 最多配置 11 行
+          "markdownDescription": "Define which formats are disabled.\n\n定义哪些格式是禁用的\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[Edit in settings.json (在 settings.json 中编辑)](command:workbench.action.openSettingsJson)\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\n[Restart Extension Host (重启扩展宿主)](command:workbench.action.restartExtensionHost), [Reload Window (重启当前窗口)](command:workbench.action.reloadWindow)"
+        },
+        "variable-conversion.circularConversionFormatOrder": {
+          "order": 2,
+          "title": "定义循环转换快捷键的目标格式排序",
+          // "description": "Defines the destination format ordering of the circular conversion shortcut.\n定义循环转换快捷键的目标格式排序",
+          // markdownDescription 最多配置 11 行
+          "markdownDescription": "Defines the destination format ordering of the circular conversion shortcut, separated by commas.\n\n 定义循环转换快捷键的目标格式排序，以英文逗号分隔\n\n Target formats that are not in the following configuration list will appear last in the following custom order in the default order.\n\n不在以下配置列表中的目标格式，将按照默认顺序排在以下自定义顺序最后\n\n 🌟Lower Case 全小写命名: `lower_case`(全小写), `snake_case`(下划线), `kebab_case`(连字符), `space_case`(空格), `dot_case`(点)\n\n 🌟Upper Case 全大写命名: `upper_case`(全大写), `snake_upper_case`(下划线), `kebab_upper_case`(连字符), `space_upper_case`(空格), `dot_upper_case`(点)\n\n 🌟Pascal Case 大驼峰命名: `pascal_case`(大驼峰), `snake_pascal_case`(下划线), `kebab_pascal_case`(连字符), `space_pascal_case`(空格), `dot_pascal_case`(点)\n\n 🌟Camel Case 小驼峰命名: `camel_case`(小驼峰), `snake_camel_case`(下划线), `kebab_camel_case`(连字符), `space_camel_case`(空格), `dot_camel_case`(点)\n\n🐳Default value 默认值: `camel_case, snake_case, pascal_case, kebab_case, space_case, dot_case, snake_upper_case, kebab_upper_case, space_upper_case, dot_upper_case, snake_pascal_case, kebab_pascal_case, space_pascal_case, dot_pascal_case, snake_camel_case, kebab_camel_case, space_camel_case, dot_camel_case, lower_case, upper_case`\n\n If you find the following configuration troublesome, you can also edit this configuration item in `settings.json`. 若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑: `\"variable-conversion.circularConversionFormatOrder\": \"...\",` [Edit in settings.json (在 settings.json 中编辑)](command:workbench.action.openSettingsJson)",
+          "type": "string",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Option1",
+              "Option2",
+              "Option3"
+            ]
+          },
+          "default": "camel_case, snake_case, pascal_case, kebab_case, space_case, dot_case, snake_upper_case, kebab_upper_case, space_upper_case, dot_upper_case, snake_pascal_case, kebab_pascal_case, space_pascal_case, dot_pascal_case, snake_camel_case, kebab_camel_case, space_camel_case, dot_camel_case, lower_case, upper_case"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

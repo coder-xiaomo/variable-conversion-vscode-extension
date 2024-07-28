@@ -3,7 +3,7 @@
  *
  * Code:
  * - Add type definition in below `SupportCase` enum and following array
- * - Add `commands`, `menus` parts in [package.json] and [package-comment.jsonc]
+ * - Add `commands`, `menus`, `configuration` parts in [package.json] and [package-comment.jsonc]
  * - Add main conversion logic in [src/main-code/conversion.ts]
  *
  * Test:
