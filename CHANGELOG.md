@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 1.0.11
+
+### Improvement
+
+- Imperfect support: When a sub window is activated, clicking on the status bar of the main window can correctly bring up the QuickPick menu. 不完美支持：当子窗口激活时，点击主窗口状态栏能够正确弹出快速拾取菜单
+
 ## 1.0.10
 
 ### Added
@@ -58,7 +64,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix bug: The infobox showed `editor is undefined` when the current active TAB was not an editor
-
 
 ## 1.0.4
 

@@ -57,8 +57,17 @@ export function activate(context: vscode.ExtensionContext) {
 	 */
 	vscode.window.onDidChangeActiveTextEditor(event => {
 		console.log('onDidChangeActiveTextEditor', event);
-		// 判断是否展示状态栏按钮
-		updateStatusBarItemVisable(selectTextLength);
+
+		// 小窗中编辑器选中后，不做其他点击鼠标点击操作，直接点击主窗口任务栏[变量转换]按钮
+		// 能够在主窗口 QuickPick 中对小窗中所选文字进行转换操作 (不太完美的兼容)
+		let textEditor = vscode.window.activeTextEditor;
+		if (textEditor) {
+			const selections = textEditor.selections;
+			onTextEditorSelectionChangeCallback(textEditor, selections);
+		} else { // 进入 else 的场景举例: 从[代码编辑器]切换到[设置页]
+			// 判断是否展示状态栏按钮
+			updateStatusBarItemVisable(selectTextLength);
+		}
 	});
 
 	/**
