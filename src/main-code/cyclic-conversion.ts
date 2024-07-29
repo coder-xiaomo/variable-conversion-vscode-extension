@@ -3,6 +3,7 @@ import { EOL } from "../type-definition/EOLType";
 import { cyclicConvertCaseOrder } from "../type-definition/SupportCaseType";
 import { caseConversion } from "./conversion";
 import { isStringArrayEqual, stringListArrayDuplicateRemoval } from './utils';
+import { getUserConfigurations } from './user-configuration';
 
 interface UserSelection {
     currentEol: EOL
@@ -64,16 +65,25 @@ function lazyConvert() {
         return;
     }
 
+    // 获取用户配置
+    const disableFormatList = getUserConfigurations('disableFormat');
+
     const textList = userSelection.currentSelectionsText;
     // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
     const eol = userSelection.currentEol;
     const conversionsTarget: Array<string[]> = [textList];
     for (const cyclicConvertCase of cyclicConvertCaseOrder) {
+        // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
+        // 跳过禁用的目标格式
+        if (disableFormatList.includes(cyclicConvertCase.settingsKey)) {
+            continue;
+        }
+
         // 每一个类型
         const conversionsTargetItem: string[] = [];
         for (const line of textList) {
             // 选中区块的每一行
-            const conversionResult: string = caseConversion(cyclicConvertCase, line, eol);
+            const conversionResult: string = caseConversion(cyclicConvertCase.type, line, eol);
             conversionsTargetItem.push(conversionResult);
         }
         conversionsTarget.push(conversionsTargetItem);

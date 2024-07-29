@@ -20,7 +20,7 @@ Select what you want to convert in the editor, and then press `Ctrl + Alt + [` o
 
 ![](image/cyclic-conversion.gif)
 
-### 基础转换
+### 基础转换 Basic conversion
 
 **1. 选中代码中需要转换的内容** **Select The Text To Convert**
 
@@ -47,13 +47,19 @@ Or right-click on the selected text -> Convert string to...
 
 **3. 选择转换目标，转换完成** **Select the conversion target and complete**
 
-## 快捷键
+## 快捷键 Shortcut key
 
 | 功能 Feature                                     | 快捷键 shortcut key |
 | ------------------------------------------------ | ------------------- |
 | 变量转换 快速选择 QuickPick                      | Shift + Alt + T     |
 | 循环转换→上一个 Cyclic conversion → Previous one | Ctrl + Alt + [      |
 | 循环转换→下一个 Cyclic conversion → Next one     | Ctrl + Alt + ]      |
+
+## 配置项 configurations
+
+| 配置项 Configuration Key            | 描述 Description                                             | 配置示例                       | 默认值 |
+| ----------------------------------- | ------------------------------------------------------------ | ------------------------------ | ------ |
+| `variable-conversion.disableFormat` | 定义哪些格式是禁用的<br />Define which formats are disabled. | `["lower_case", "upper_case"]` | `[]`   |
 
 ## 支持的类型 Support Case
 
@@ -82,7 +88,7 @@ Or right-click on the selected text -> Convert string to...
 
 ## 小提示 Tips
 
-#### 关于文本选区...
+#### 关于文本选区... About text selections...
 
 - 可以先按住 `Alt` 键不放，再鼠标先后选中多个选区
   You can first hold down `Alt`, and then use the mouse to select multiple selection
@@ -106,5 +112,7 @@ GitHub Repo (开源地址): https://github.com/coder-xiaomo/variable-conversion-
 Gitee Mirror (码云镜像): https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git
 
 -----
+
+**玩得开心！**
 
 **Enjoy!**

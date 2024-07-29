@@ -3,7 +3,7 @@
  *
  * Code:
  * - Add type definition in below `SupportCase` enum and following array
- * - Add `commands`, `menus` parts in [package.json] and [package-comment.jsonc]
+ * - Add `commands`, `menus`, `configuration` parts in [package.json] and [package-comment.jsonc]
  * - Add main conversion logic in [src/main-code/conversion.ts]
  *
  * Test:
@@ -281,188 +281,301 @@ const keyword = {
 /**
  * 接管的变量转换命令
  */
-export const commands: Array<{ command: string; targetCase: SupportCase }> = [
-    { command: 'variable-conversion.toCamelCase', targetCase: SupportCase.CAMEL_CASE },
-    { command: 'variable-conversion.toPascalCase', targetCase: SupportCase.PASCAL_CASE },
-
-    { command: 'variable-conversion.toSnakeCase', targetCase: SupportCase.SNAKE_CASE },
-    { command: 'variable-conversion.toSnakeUpperCase', targetCase: SupportCase.SNAKE_UPPER_CASE },
-    { command: 'variable-conversion.toSnakePascalCase', targetCase: SupportCase.SNAKE_PASCAL_CASE },
-    { command: 'variable-conversion.toSnakeCamelCase', targetCase: SupportCase.SNAKE_CAMEL_CASE },
-
-    { command: 'variable-conversion.toKebabCase', targetCase: SupportCase.KEBAB_CASE },
-    { command: 'variable-conversion.toKebabUpperCase', targetCase: SupportCase.KEBAB_UPPER_CASE },
-    { command: 'variable-conversion.toKebabPascalCase', targetCase: SupportCase.KEBAB_PASCAL_CASE },
-    { command: 'variable-conversion.toKebabCamelCase', targetCase: SupportCase.KEBAB_CAMEL_CASE },
-
-    { command: 'variable-conversion.toSpaceCase', targetCase: SupportCase.SPACE_CASE },
-    { command: 'variable-conversion.toSpaceUpperCase', targetCase: SupportCase.SPACE_UPPER_CASE },
-    { command: 'variable-conversion.toSpacePascalCase', targetCase: SupportCase.SPACE_PASCAL_CASE },
-    { command: 'variable-conversion.toSpaceCamelCase', targetCase: SupportCase.SPACE_CAMEL_CASE },
-
-    { command: 'variable-conversion.toDotCase', targetCase: SupportCase.DOT_CASE },
-    { command: 'variable-conversion.toDotUpperCase', targetCase: SupportCase.DOT_UPPER_CASE },
-    { command: 'variable-conversion.toDotPascalCase', targetCase: SupportCase.DOT_PASCAL_CASE },
-    { command: 'variable-conversion.toDotCamelCase', targetCase: SupportCase.DOT_CAMEL_CASE },
-
-    { command: 'variable-conversion.toLowerCase', targetCase: SupportCase.LOWER_CASE },
-    { command: 'variable-conversion.toUpperCase', targetCase: SupportCase.UPPER_CASE },
+export const commands: Array<{ command: string; targetCase: SupportCase; settingsKey: string }> = [
+    {
+        command: 'variable-conversion.toCamelCase',
+        targetCase: SupportCase.CAMEL_CASE,
+        settingsKey: 'camel_case'
+    },
+    {
+        command: 'variable-conversion.toPascalCase',
+        targetCase: SupportCase.PASCAL_CASE,
+        settingsKey: 'pascal_case'
+    },
+    // +++++++++++++++++++++++++++++++++++++++++++++++
+    {
+        command: 'variable-conversion.toSnakeCase',
+        targetCase: SupportCase.SNAKE_CASE,
+        settingsKey: 'snake_case'
+    },
+    {
+        command: 'variable-conversion.toSnakeUpperCase',
+        targetCase: SupportCase.SNAKE_UPPER_CASE,
+        settingsKey: 'snake_upper_case'
+    },
+    {
+        command: 'variable-conversion.toSnakePascalCase',
+        targetCase: SupportCase.SNAKE_PASCAL_CASE,
+        settingsKey: 'snake_pascal_case'
+    },
+    {
+        command: 'variable-conversion.toSnakeCamelCase',
+        targetCase: SupportCase.SNAKE_CAMEL_CASE,
+        settingsKey: 'snake_camel_case'
+    },
+    // +++++++++++++++++++++++++++++++++++++++++++++++
+    {
+        command: 'variable-conversion.toKebabCase',
+        targetCase: SupportCase.KEBAB_CASE,
+        settingsKey: 'kebab_case'
+    },
+    {
+        command: 'variable-conversion.toKebabUpperCase',
+        targetCase: SupportCase.KEBAB_UPPER_CASE,
+        settingsKey: 'kebab_upper_case'
+    },
+    {
+        command: 'variable-conversion.toKebabPascalCase',
+        targetCase: SupportCase.KEBAB_PASCAL_CASE,
+        settingsKey: 'kebab_pascal_case'
+    },
+    {
+        command: 'variable-conversion.toKebabCamelCase',
+        targetCase: SupportCase.KEBAB_CAMEL_CASE,
+        settingsKey: 'kebab_camel_case'
+    },
+    // +++++++++++++++++++++++++++++++++++++++++++++++
+    {
+        command: 'variable-conversion.toSpaceCase',
+        targetCase: SupportCase.SPACE_CASE,
+        settingsKey: 'space_case'
+    },
+    {
+        command: 'variable-conversion.toSpaceUpperCase',
+        targetCase: SupportCase.SPACE_UPPER_CASE,
+        settingsKey: 'space_upper_case'
+    },
+    {
+        command: 'variable-conversion.toSpacePascalCase',
+        targetCase: SupportCase.SPACE_PASCAL_CASE,
+        settingsKey: 'space_pascal_case'
+    },
+    {
+        command: 'variable-conversion.toSpaceCamelCase',
+        targetCase: SupportCase.SPACE_CAMEL_CASE,
+        settingsKey: 'space_camel_case'
+    },
+    // +++++++++++++++++++++++++++++++++++++++++++++++
+    {
+        command: 'variable-conversion.toDotCase',
+        targetCase: SupportCase.DOT_CASE,
+        settingsKey: 'dot_case'
+    },
+    {
+        command: 'variable-conversion.toDotUpperCase',
+        targetCase: SupportCase.DOT_UPPER_CASE,
+        settingsKey: 'dot_upper_case'
+    },
+    {
+        command: 'variable-conversion.toDotPascalCase',
+        targetCase: SupportCase.DOT_PASCAL_CASE,
+        settingsKey: 'dot_pascal_case'
+    },
+    {
+        command: 'variable-conversion.toDotCamelCase',
+        targetCase: SupportCase.DOT_CAMEL_CASE,
+        settingsKey: 'dot_camel_case'
+    },
+    // +++++++++++++++++++++++++++++++++++++++++++++++
+    {
+        command: 'variable-conversion.toLowerCase',
+        targetCase: SupportCase.LOWER_CASE,
+        settingsKey: 'lower_case'
+    },
+    {
+        command: 'variable-conversion.toUpperCase',
+        targetCase: SupportCase.UPPER_CASE,
+        settingsKey: 'upper_case'
+    },
 ];
+
+export interface QuickPickSupportCaseItem {
+    type: SupportCase,
+    name: string,
+    shortName: string,
+    keyword: string[],
+    settingsKey: string,
+}
 
 /**
  * 所有支持的命名方式
  * @since 2024-04-06
  */
-export const quickPickSupportCases = [
+export const quickPickSupportCases: Array<QuickPickSupportCaseItem> = [
     {
         type: SupportCase.CAMEL_CASE,
         name: '小驼峰(驼峰)命名',
         shortName: '小驼峰',
         keyword: keyword.camel,
+        settingsKey: 'camel_case',
     },
     {
         type: SupportCase.PASCAL_CASE,
         name: '大驼峰(帕斯卡)命名',
         shortName: '帕斯卡',
         keyword: keyword.pascal,
+        settingsKey: 'pascal_case',
     },
     {
         type: SupportCase.SNAKE_CASE,
         name: '下划线(蛇形)命名',
         shortName: '蛇形',
         keyword: [...keyword.snake, ...keyword.lower],
+        settingsKey: 'snake_case',
     },
     {
         type: SupportCase.SNAKE_CAMEL_CASE,
         name: '下划线(蛇形) + 小驼峰(驼峰)命名',
         shortName: '蛇形驼峰',
         keyword: [...keyword.snake, ...keyword.camel],
+        settingsKey: 'snake_camel_case',
     },
     {
         type: SupportCase.SNAKE_PASCAL_CASE,
         name: '下划线(蛇形) + 大驼峰(帕斯卡)命名',
         shortName: '蛇形帕斯卡',
         keyword: [...keyword.snake, ...keyword.pascal],
+        settingsKey: 'snake_pascal_case',
     },
     {
         type: SupportCase.SNAKE_UPPER_CASE,
         name: '下划线(蛇形) + 全大写命名',
         shortName: '蛇形大写',
         keyword: [...keyword.snake, ...keyword.upper],
+        settingsKey: 'snake_upper_case',
     },
     {
         type: SupportCase.KEBAB_CASE,
         name: '中划线(连字符/脊柱式)命名',
         shortName: '脊柱',
         keyword: [...keyword.kebab, ...keyword.lower],
+        settingsKey: 'kebab_case',
     },
     {
         type: SupportCase.KEBAB_CAMEL_CASE,
         name: '中划线(连字符/脊柱式) + 小驼峰(驼峰)命名',
         shortName: '脊柱驼峰',
         keyword: [...keyword.kebab, ...keyword.camel],
+        settingsKey: 'kebab_camel_case',
     },
     {
         type: SupportCase.KEBAB_PASCAL_CASE,
         name: '中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名',
         shortName: '脊柱帕斯卡',
         keyword: [...keyword.kebab, ...keyword.pascal],
+        settingsKey: 'kebab_pascal_case',
     },
     {
         type: SupportCase.KEBAB_UPPER_CASE,
         name: '中划线(连字符/脊柱式) + 全大写命名',
         shortName: '脊柱大写',
         keyword: [...keyword.kebab, ...keyword.upper],
+        settingsKey: 'kebab_upper_case',
     },
     {
         type: SupportCase.SPACE_CASE,
         name: '空格分隔命名',
         shortName: '脊柱',
         keyword: [...keyword.space, ...keyword.lower],
+        settingsKey: 'space_case',
     },
     {
         type: SupportCase.SPACE_CAMEL_CASE,
         name: '空格分隔 + 小驼峰(驼峰)命名',
         shortName: '脊柱驼峰',
         keyword: [...keyword.space, ...keyword.camel],
+        settingsKey: 'space_camel_case',
     },
     {
         type: SupportCase.SPACE_PASCAL_CASE,
         name: '空格分隔 + 大驼峰(帕斯卡)命名',
         shortName: '脊柱帕斯卡',
         keyword: [...keyword.space, ...keyword.pascal],
+        settingsKey: 'space_pascal_case',
     },
     {
         type: SupportCase.SPACE_UPPER_CASE,
         name: '空格分隔 + 全大写命名',
         shortName: '脊柱大写',
         keyword: [...keyword.space, ...keyword.upper],
+        settingsKey: 'space_upper_case',
     },
     {
         type: SupportCase.DOT_CASE,
         name: '点分隔命名',
         shortName: '脊柱',
         keyword: [...keyword.dot, ...keyword.lower],
+        settingsKey: 'dot_case',
     },
     {
         type: SupportCase.DOT_CAMEL_CASE,
         name: '点分隔 + 小驼峰(驼峰)命名',
         shortName: '脊柱驼峰',
         keyword: [...keyword.dot, ...keyword.camel],
+        settingsKey: 'dot_camel_case',
     },
     {
         type: SupportCase.DOT_PASCAL_CASE,
         name: '点分隔 + 大驼峰(帕斯卡)命名',
         shortName: '脊柱帕斯卡',
         keyword: [...keyword.dot, ...keyword.pascal],
+        settingsKey: 'dot_pascal_case',
     },
     {
         type: SupportCase.DOT_UPPER_CASE,
         name: '点分隔 + 全大写命名',
         shortName: '脊柱大写',
         keyword: [...keyword.dot, ...keyword.upper],
+        settingsKey: 'dot_upper_case',
     },
     {
         type: SupportCase.LOWER_CASE,
         name: '全小写',
         shortName: '小写',
         keyword: keyword.lower,
+        settingsKey: 'lower_case',
     },
     {
         type: SupportCase.UPPER_CASE,
         name: '全大写',
         shortName: '大写',
         keyword: keyword.upper,
+        settingsKey: 'upper_case',
     },
 ];
+
+export interface CyclicConvertCaseOrderItem {
+    type: SupportCase,
+    settingsKey: string,
+}
 
 /**
  * 通过快捷键循环转换的顺序
  * @since 2024-04-08
  */
-export const cyclicConvertCaseOrder = [
-    SupportCase.CAMEL_CASE,
-    SupportCase.SNAKE_CASE,
-    SupportCase.PASCAL_CASE,
-    SupportCase.KEBAB_CASE,
-    SupportCase.SPACE_CASE,
-    SupportCase.DOT_CASE,
+export const cyclicConvertCaseOrder: Array<CyclicConvertCaseOrderItem> = [
+    { type: SupportCase.CAMEL_CASE, settingsKey: 'camel_case' },
+    { type: SupportCase.SNAKE_CASE, settingsKey: 'snake_case' },
+    { type: SupportCase.PASCAL_CASE, settingsKey: 'pascal_case' },
+    { type: SupportCase.KEBAB_CASE, settingsKey: 'kebab_case' },
+    { type: SupportCase.SPACE_CASE, settingsKey: 'space_case' },
+    { type: SupportCase.DOT_CASE, settingsKey: 'dot_case' },
 
-    SupportCase.SNAKE_UPPER_CASE,
-    SupportCase.KEBAB_UPPER_CASE,
-    SupportCase.SPACE_UPPER_CASE,
-    SupportCase.DOT_UPPER_CASE,
+    { type: SupportCase.SNAKE_UPPER_CASE, settingsKey: 'snake_upper_case' },
+    { type: SupportCase.KEBAB_UPPER_CASE, settingsKey: 'kebab_upper_case' },
+    { type: SupportCase.SPACE_UPPER_CASE, settingsKey: 'space_upper_case' },
+    { type: SupportCase.DOT_UPPER_CASE, settingsKey: 'dot_upper_case' },
 
-    SupportCase.SNAKE_PASCAL_CASE,
-    SupportCase.KEBAB_PASCAL_CASE,
-    SupportCase.SPACE_PASCAL_CASE,
-    SupportCase.DOT_PASCAL_CASE,
+    { type: SupportCase.SNAKE_PASCAL_CASE, settingsKey: 'snake_pascal_case' },
+    { type: SupportCase.KEBAB_PASCAL_CASE, settingsKey: 'kebab_pascal_case' },
+    { type: SupportCase.SPACE_PASCAL_CASE, settingsKey: 'space_pascal_case' },
+    { type: SupportCase.DOT_PASCAL_CASE, settingsKey: 'dot_pascal_case' },
 
-    SupportCase.SNAKE_CAMEL_CASE,
-    SupportCase.KEBAB_CAMEL_CASE,
-    SupportCase.SPACE_CAMEL_CASE,
-    SupportCase.DOT_CAMEL_CASE,
+    { type: SupportCase.SNAKE_CAMEL_CASE, settingsKey: 'snake_camel_case' },
+    { type: SupportCase.KEBAB_CAMEL_CASE, settingsKey: 'kebab_camel_case' },
+    { type: SupportCase.SPACE_CAMEL_CASE, settingsKey: 'space_camel_case' },
+    { type: SupportCase.DOT_CAMEL_CASE, settingsKey: 'dot_camel_case' },
 
-    SupportCase.LOWER_CASE,
-    SupportCase.UPPER_CASE,
+    { type: SupportCase.LOWER_CASE, settingsKey: 'lower_case' },
+    { type: SupportCase.UPPER_CASE, settingsKey: 'upper_case' },
 ];
