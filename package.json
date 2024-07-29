@@ -267,6 +267,7 @@
       "properties": {
         "variable-conversion.disableFormat": {
           "order": 1,
+          "markdownDescription": "定义哪些格式是禁用的\n\nDefine which formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",
           "type": "array",
           "items": {
             "type": "string",
@@ -315,8 +316,7 @@
               "全大写"
             ]
           },
-          "default": [],
-          "markdownDescription": "Define which formats are disabled.\n\n定义哪些格式是禁用的\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[Edit in settings.json (在 settings.json 中编辑)](command:workbench.action.openSettingsJson)\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\n[Restart Extension Host (重启扩展宿主)](command:workbench.action.restartExtensionHost), [Reload Window (重启当前窗口)](command:workbench.action.reloadWindow)"
+          "default": []
         }
       }
     }
