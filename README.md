@@ -6,8 +6,9 @@
 A powerful variable naming conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and bottom bar.
 
 - ✅ 支持多选区 Support multi-selection
-- ✅ 支持多窗口 (不支持子窗口状态栏) Support subwindow  (subwindow status bar are not supported)
+- ✅ 支持多窗口 Support subwindow
 - ✅ 支持撤回 & 重做 Support undo & redo (Ctrl + Z / Ctrl + Y)
+- ✅ 支持禁用部分目标转换格式 Supports disabling some target conversion formats
 
 > 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点这里](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)查看
 
