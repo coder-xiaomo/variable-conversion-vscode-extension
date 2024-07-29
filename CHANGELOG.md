@@ -23,11 +23,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 1.1.0
+
+### Added
+
+- Support configuring which formats are disabled through the VSCode settings page. It will apply to QuickPick menu conversions, context menu conversions, and shortcut key cyclic conversions. (支持通过 VSCode 设置页配置哪些格式是禁用的。配置后将同时对 QuickPick 菜单转换、右键菜单转换、快捷键循环转换生效)
+
 ## 1.0.11
 
 ### Improvement
 
-- Imperfect support: When a sub window is activated, clicking on the status bar of the main window can correctly bring up the QuickPick menu. 不完美支持：当子窗口激活时，点击主窗口状态栏能够正确弹出快速拾取菜单
+- Imperfect support: When a sub window is activated, clicking on the status bar of the main window can correctly bring up the QuickPick menu. (不完美支持：当子窗口激活时，点击主窗口状态栏能够正确弹出快速拾取菜单)
 
 ## 1.0.10
 
