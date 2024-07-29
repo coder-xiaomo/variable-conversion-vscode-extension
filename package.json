@@ -2,7 +2,7 @@
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、状态栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、点分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, dot, lower, upper case, and more.",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
@@ -155,84 +155,104 @@
       ],
       "variable-conversion.stringConversionMenu": [
         {
+          "when": "!_isHideSubMenuItem_camel_case",
           "command": "variable-conversion.toCamelCase",
           "group": "group-1-camel@1"
         },
         {
+          "when": "!_isHideSubMenuItem_pascal_case",
           "command": "variable-conversion.toPascalCase",
           "group": "group-1-camel@2"
         },
         {
+          "when": "!_isHideSubMenuItem_snake_case",
           "command": "variable-conversion.toSnakeCase",
           "group": "group-2-snake@1"
         },
         {
+          "when": "!_isHideSubMenuItem_snake_upper_case",
           "command": "variable-conversion.toSnakeUpperCase",
           "group": "group-2-snake@2"
         },
         {
+          "when": "!_isHideSubMenuItem_snake_pascal_case",
           "command": "variable-conversion.toSnakePascalCase",
           "group": "group-2-snake@3"
         },
         {
+          "when": "!_isHideSubMenuItem_snake_camel_case",
           "command": "variable-conversion.toSnakeCamelCase",
           "group": "group-2-snake@4"
         },
         {
+          "when": "!_isHideSubMenuItem_kebab_case",
           "command": "variable-conversion.toKebabCase",
           "group": "group-3-kebab@1"
         },
         {
+          "when": "!_isHideSubMenuItem_kebab_upper_case",
           "command": "variable-conversion.toKebabUpperCase",
           "group": "group-3-kebab@2"
         },
         {
+          "when": "!_isHideSubMenuItem_kebab_pascal_case",
           "command": "variable-conversion.toKebabPascalCase",
           "group": "group-3-kebab@3"
         },
         {
+          "when": "!_isHideSubMenuItem_kebab_camel_case",
           "command": "variable-conversion.toKebabCamelCase",
           "group": "group-3-kebab@4"
         },
         {
+          "when": "!_isHideSubMenuItem_space_case",
           "command": "variable-conversion.toSpaceCase",
           "group": "group-4-space@1"
         },
         {
+          "when": "!_isHideSubMenuItem_space_upper_case",
           "command": "variable-conversion.toSpaceUpperCase",
           "group": "group-4-space@2"
         },
         {
+          "when": "!_isHideSubMenuItem_space_pascal_case",
           "command": "variable-conversion.toSpacePascalCase",
           "group": "group-4-space@3"
         },
         {
+          "when": "!_isHideSubMenuItem_space_camel_case",
           "command": "variable-conversion.toSpaceCamelCase",
           "group": "group-4-space@4"
         },
         {
+          "when": "!_isHideSubMenuItem_dot_case",
           "command": "variable-conversion.toDotCase",
           "group": "group-5-dot@1"
         },
         {
+          "when": "!_isHideSubMenuItem_dot_upper_case",
           "command": "variable-conversion.toDotUpperCase",
           "group": "group-5-dot@2"
         },
         {
+          "when": "!_isHideSubMenuItem_dot_pascal_case",
           "command": "variable-conversion.toDotPascalCase",
           "group": "group-5-dot@3"
         },
         {
+          "when": "!_isHideSubMenuItem_dot_camel_case",
           "command": "variable-conversion.toDotCamelCase",
           "group": "group-5-dot@4"
         },
         {
+          "when": "!_isHideSubMenuItem_lower_case",
           "command": "variable-conversion.toLowerCase",
-          "group": "group-5-upper-lower@1"
+          "group": "group-6-upper-lower@1"
         },
         {
+          "when": "!_isHideSubMenuItem_upper_case",
           "command": "variable-conversion.toUpperCase",
-          "group": "group-5-upper-lower@2"
+          "group": "group-6-upper-lower@2"
         }
       ]
     },
@@ -241,7 +261,65 @@
         "id": "variable-conversion.stringConversionMenu",
         "label": "将变量转换为..."
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Variable Conversion 变量转换",
+      "properties": {
+        "variable-conversion.disableFormat": {
+          "order": 1,
+          "markdownDescription": "定义哪些格式是禁用的\n\nDefine which formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "camel_case",
+              "pascal_case",
+              "snake_case",
+              "snake_camel_case",
+              "snake_pascal_case",
+              "snake_upper_case",
+              "kebab_case",
+              "kebab_camel_case",
+              "kebab_pascal_case",
+              "kebab_upper_case",
+              "space_case",
+              "space_camel_case",
+              "space_pascal_case",
+              "space_upper_case",
+              "dot_case",
+              "dot_camel_case",
+              "dot_pascal_case",
+              "dot_upper_case",
+              "lower_case",
+              "upper_case"
+            ],
+            "enumDescriptions": [
+              "小驼峰(驼峰)命名",
+              "大驼峰(帕斯卡)命名",
+              "下划线(蛇形)命名",
+              "下划线(蛇形) + 小驼峰(驼峰)命名",
+              "下划线(蛇形) + 大驼峰(帕斯卡)命名",
+              "下划线(蛇形) + 全大写命名",
+              "中划线(连字符/脊柱式)命名",
+              "中划线(连字符/脊柱式) + 小驼峰(驼峰)命名",
+              "中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名",
+              "中划线(连字符/脊柱式) + 全大写命名",
+              "空格分隔命名",
+              "空格分隔 + 小驼峰(驼峰)命名",
+              "空格分隔 + 大驼峰(帕斯卡)命名",
+              "空格分隔 + 全大写命名",
+              "点分隔命名",
+              "点分隔 + 小驼峰(驼峰)命名",
+              "点分隔 + 大驼峰(帕斯卡)命名",
+              "点分隔 + 全大写命名",
+              "全小写",
+              "全大写"
+            ]
+          },
+          "default": []
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

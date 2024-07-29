@@ -1,11 +1,12 @@
 import * as vscode from 'vscode';
 import QuickPickItemEx from "../type-definition/QuickPickItemExType";
-import { quickPickSupportCases } from '../type-definition/SupportCaseType';
+import { QuickPickSupportCaseItem, quickPickSupportCases } from '../type-definition/SupportCaseType';
 import { TransformTextResult } from '../type-definition/TransformTextResultType';
-import { transformMutliLineText, transformMutliSelectionText } from '../main-code/transform';
+import { transformMutliSelectionText } from '../main-code/transform';
 import { EOL } from '../type-definition/EOLType';
 import { caseConversion } from '../main-code/conversion';
 import { isStringArrayEqual } from '../main-code/utils';
+import { getUserConfigurations } from '../main-code/user-configuration';
 
 const QuickPickLabelMaxLength = 60;
 
@@ -18,12 +19,12 @@ interface RecommendItem {
 /**
  * 弹出的提示
  */
-function generateOptionsBasedOnText(textList: string[], eol: EOL): Array<QuickPickItemEx> {
+function generateOptionsBasedOnText(textList: string[], eol: EOL, enabledQuickPickSupportCases: Array<QuickPickSupportCaseItem>): Array<QuickPickItemEx> {
     // Cut text 切割文本
     const resultsList: Array<TransformTextResult[]> = transformMutliSelectionText(textList);
 
     const mergeResultList: Array<RecommendItem> = [];
-    for (const quickPick of quickPickSupportCases) {
+    for (const quickPick of enabledQuickPickSupportCases) {
         const conversionResults: Array<string> = [];
         for (let i = 0; i < textList.length; i++) {
             const text = textList[i];
@@ -95,8 +96,24 @@ export function handleQuickPick() {
         return;
     }
 
+    // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
+    // 获取用户配置
+    const disableFormatList = getUserConfigurations('disableFormat');
+    // 排除禁用的选项
+    const enabledQuickPickSupportCases = [];
+    for (const quickPick of quickPickSupportCases) {
+        if (disableFormatList.includes(quickPick.settingsKey)) {
+            continue;
+        }
+        enabledQuickPickSupportCases.push(quickPick);
+    }
+    if (enabledQuickPickSupportCases.length === 0) {
+        vscode.window.showInformationMessage('所有格式都已被配置为禁用，请修改配置 `variable-conversion.disableFormat` 后重试\nAll formats have been configured to disable. Modify the `variable-conversion.disableFormat` configuration and try again.');
+        return;
+    }
+
     // 基于选中的文本生成选项
-    const options = generateOptionsBasedOnText(textList, eol);
+    const options = generateOptionsBasedOnText(textList, eol, enabledQuickPickSupportCases);
     if (options.length === 0) {
         vscode.window.showInformationMessage('所选内容暂无可选转换，请尝试重新选择\nNo conversion candidates are available for the selected content, please try to select another text.');
         return;

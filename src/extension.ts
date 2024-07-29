@@ -7,6 +7,7 @@ import { commands } from './type-definition/SupportCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
 import * as CyclicConversion from './main-code/cyclic-conversion';
 import { EOL } from './type-definition/EOLType';
+import { getUserConfigurations } from './main-code/user-configuration';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -40,6 +41,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 更新 _textSelectionLength (用于判断是否展示右键菜单)
 		vscode.commands.executeCommand('setContext', '_textSelectionLength', selectTextLength);
+
+		// issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
+		// 获取用户配置
+		const disableFormatList = getUserConfigurations('disableFormat');
+		// 更新右键菜单每一项是否展示
+		for (const { settingsKey } of commands) {
+			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disableFormatList.includes(settingsKey));
+		}
 
 		// 判断是否展示状态栏按钮
 		updateStatusBarItemVisable(selectTextLength);
