@@ -98,7 +98,7 @@ export function handleQuickPick() {
 
     // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
     // 获取用户配置
-    const disableFormatList = getUserConfigurations('disableFormat');
+    const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
     // 排除禁用的选项
     const enabledQuickPickSupportCases = [];
     for (const quickPick of quickPickSupportCases) {

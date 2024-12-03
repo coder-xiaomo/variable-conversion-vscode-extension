@@ -44,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
 		// 获取用户配置
-		const disableFormatList = getUserConfigurations('disableFormat');
+		const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
 		// 更新右键菜单每一项是否展示
 		for (const { settingsKey } of commands) {
 			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disableFormatList.includes(settingsKey));

@@ -7,10 +7,10 @@ import vscode from 'vscode';
  * @returns 配置项的值
  * @since 2024-07-29
  */
-function getUserConfigurations(configKey: string) {
+function getUserConfigurations<T>(configKey: string): T | undefined {
     const config = vscode.workspace.getConfiguration('variable-conversion');
 
-    const configValue = config.get(configKey);
+    const configValue = config.get<T>(configKey);
     console.log('configValue:', configValue);
     return configValue;
 }

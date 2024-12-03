@@ -66,7 +66,7 @@ function lazyConvert() {
     }
 
     // 获取用户配置
-    const disableFormatList = getUserConfigurations('disableFormat');
+    const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
 
     const textList = userSelection.currentSelectionsText;
     // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
