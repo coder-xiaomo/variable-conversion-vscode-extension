@@ -5,7 +5,7 @@ import handleEditorReplace from './extension-handler/editor-submenu-handler';
 import { handleQuickPick } from './extension-handler/quick-pick-handler';
 import { commands } from './type-definition/SupportCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
-import * as CyclicConversion from './main-code/cyclic-conversion';
+import * as CyclicConversion from './main-code/variable-convert/cyclic-conversion';
 import { EOL } from './type-definition/EOLType';
 import { getUserConfigurations } from './main-code/user-configuration';
 

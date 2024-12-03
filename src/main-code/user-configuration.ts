@@ -1,4 +1,4 @@
-const vscode = require('vscode');
+import vscode from 'vscode';
 
 /**
  * 获取用户配置项

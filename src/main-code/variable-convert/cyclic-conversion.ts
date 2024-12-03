@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import { EOL } from "../type-definition/EOLType";
-import { cyclicConvertCaseOrder } from "../type-definition/SupportCaseType";
+import { EOL } from "../../type-definition/EOLType";
+import { cyclicConvertCaseOrder } from "../../type-definition/SupportCaseType";
 import { caseConversion } from "./conversion";
-import { isStringArrayEqual, stringListArrayDuplicateRemoval } from './utils';
-import { getUserConfigurations } from './user-configuration';
+import { isStringArrayEqual, stringListArrayDuplicateRemoval } from '../utils';
+import { getUserConfigurations } from '../user-configuration';
 
 interface UserSelection {
     currentEol: EOL
