@@ -209,7 +209,9 @@
       // 编辑器右键菜单
       "editor/context": [
         {
-          "when": "editorTextFocus",
+          // "when": "editorTextFocus",
+          // 2024.12.07 当未选中文字时，隐藏 [变量转换] 右键菜单
+          "when": "editorTextFocus && _textSelectionLength >= 1",
           "command": "variable-conversion.convertCase",
           // "group": "1_modification@9"
           "group": "navigation@9"

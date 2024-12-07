@@ -143,7 +143,7 @@
     "menus": {
       "editor/context": [
         {
-          "when": "editorTextFocus",
+          "when": "editorTextFocus && _textSelectionLength >= 1",
           "command": "variable-conversion.convertCase",
           "group": "navigation@9"
         },
