@@ -23,6 +23,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 2.0.0
+
+### Improvement
+
+- Adjust the project code directory structure. (项目代码目录结构调整)
+
+### Changed
+
+- Do not display the editor context menu `Variable Conversion` option when text is not selected. (当未选中文本时，不显示右键菜单 `变量转换` 选项)
+
 ## 1.1.0
 
 ### Added
