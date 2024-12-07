@@ -4,10 +4,10 @@
  * Code:
  * - Add type definition in below `SupportCase` enum and following array
  * - Add `commands`, `menus`, `configuration` parts in [package.json] and [package-comment.jsonc]
- * - Add main conversion logic in [src/main-code/conversion.ts]
+ * - Add main conversion logic in [src/core/variable-convert/conversion.ts]
  *
  * Test:
- * - Add test case type definition in [src/type-definition/TestCaseType.ts]
+ * - Add test case type definition in [src/test/types/TestCaseType.ts]
  * - Add test case in [src/test/test-case.ts]
  * - Add test code in [src/test/extension.test.ts]
  *

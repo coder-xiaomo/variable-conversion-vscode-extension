@@ -4,10 +4,10 @@ import * as assert from 'assert';
 // as well as import your extension to test it
 import * as vscode from 'vscode';
 import testGroups from './test-case';
-import { TestCase, TestCaseGroup } from '../type-definition/TestCaseType';
-import { transformMutliLineText, transformText } from '../main-code/variable-convert/transform';
-import { caseConversion } from '../main-code/variable-convert/conversion';
-import { SupportCase } from '../type-definition/SupportCaseType';
+import { TestCase, TestCaseGroup } from './types/TestCaseType';
+import { transformMutliLineText, transformText } from '../utils/transform';
+import { caseConversion } from '../core/variable-convert/conversion';
+import { SupportCase } from '../core/variable-convert/types/SupportCaseType';
 import { TransformTextResult } from '../type-definition/TransformTextResultType';
 // import * as myExtension from '../../extension';
 

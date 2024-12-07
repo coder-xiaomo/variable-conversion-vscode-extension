@@ -1,7 +1,7 @@
 import { EOL } from '../../type-definition/EOLType';
-import { SupportCase } from '../../type-definition/SupportCaseType';
+import { SupportCase } from './types/SupportCaseType';
 import { TransformTextResult } from '../../type-definition/TransformTextResultType';
-import { transformMutliLineText, transformText } from './transform';
+import { transformMutliLineText, transformText } from '../../utils/transform';
 
 /**
  * 统一文本转换函数
@@ -9,6 +9,7 @@ import { transformMutliLineText, transformText } from './transform';
  * @param {SupportCase} targetCase 目标文本情况
  * @param {string} str 用户选择的文本 user selection
  * @param {EOL} eol 行结束符
+ * @param {Array<TransformTextResult>?} cutText 行结束符
  * @returns 转换后的文本
  * @since 2024-04-04
  */

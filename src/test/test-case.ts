@@ -1,4 +1,4 @@
-import { TestCaseGroup } from "../type-definition/TestCaseType";
+import { TestCaseGroup } from "./types/TestCaseType";
 
 const LF = '\n';
 const CRLF = '\r\n';

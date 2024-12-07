@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import { EOL } from '../type-definition/EOLType';
-import { caseConversion } from '../main-code/variable-convert/conversion';
-import { SupportCase } from '../type-definition/SupportCaseType';
-import { isStringArrayEqual } from '../main-code/utils';
+import { caseConversion } from '../core/variable-convert/conversion';
+import { SupportCase } from '../core/variable-convert/types/SupportCaseType';
+import { isStringArrayEqual } from '../utils/utils';
 
 /**
  * 编辑器右键菜单

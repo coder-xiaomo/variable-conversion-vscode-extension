@@ -1,13 +1,23 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+/**
+ * @file extension.ts
+ * @description 该文件包含了 VS Code 插件的主要扩展逻辑，包括命令注册、菜单配置和编辑器事件监听等。
+ * @author coder-xiaomo
+ * @version 1.0.0
+ * @license MIT
+ *
+ * 本文件是插件的核心文件，负责扩展命令的注册以及编辑器中各种事件的处理。通过监听编辑器的选择状态，
+ * 动态更新命令行为。插件在启动时会初始化必要的命令，并根据编辑器状态决定是否启用相关功能。
+ *
+ * @see https://code.visualstudio.com/api
+ */
 import * as vscode from 'vscode';
-import handleEditorReplace from './extension-handler/editor-submenu-handler';
-import { handleQuickPick } from './extension-handler/quick-pick-handler';
-import { commands } from './type-definition/SupportCaseType';
-import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
-import * as CyclicConversion from './main-code/variable-convert/cyclic-conversion';
+import handleEditorReplace from './handler/editor-submenu-handler';
+import { handleQuickPick } from './handler/quick-pick-handler';
+import { commands } from './core/variable-convert/types/SupportCaseType';
+import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
+import * as CyclicConversion from './core/variable-convert/cyclic-conversion';
 import { EOL } from './type-definition/EOLType';
-import { getUserConfigurations } from './main-code/user-configuration';
+import { getUserConfigurations } from './utils/user-configuration';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed

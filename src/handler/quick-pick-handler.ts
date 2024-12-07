@@ -1,12 +1,12 @@
 import * as vscode from 'vscode';
 import QuickPickItemEx from "../type-definition/QuickPickItemExType";
-import { QuickPickSupportCaseItem, quickPickSupportCases } from '../type-definition/SupportCaseType';
+import { QuickPickSupportCaseItem, quickPickSupportCases } from '../core/variable-convert/types/SupportCaseType';
 import { TransformTextResult } from '../type-definition/TransformTextResultType';
-import { transformMutliSelectionText } from '../main-code/variable-convert/transform';
+import { transformMutliSelectionText } from '../utils/transform';
 import { EOL } from '../type-definition/EOLType';
-import { caseConversion } from '../main-code/variable-convert/conversion';
-import { isStringArrayEqual } from '../main-code/utils';
-import { getUserConfigurations } from '../main-code/user-configuration';
+import { caseConversion } from '../core/variable-convert/conversion';
+import { isStringArrayEqual } from '../utils/utils';
+import { getUserConfigurations } from '../utils/user-configuration';
 
 const QuickPickLabelMaxLength = 60;
 
