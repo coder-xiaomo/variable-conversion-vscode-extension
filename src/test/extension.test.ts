@@ -3,8 +3,8 @@ import * as assert from 'assert';
 // You can import and use all API from the 'vscode' module
 // as well as import your extension to test it
 import * as vscode from 'vscode';
-import testGroups from './test-case';
-import { TestCase, TestCaseGroup } from './types/TestCaseType';
+import { pathConvertTestGroups } from './test-case/path-convert-test-case';
+import { TestCase, TestCaseGroup } from './test-case/types/TestCaseType';
 import { transformMutliLineText, transformText } from '../utils/transform';
 import { caseConversion } from '../core/variable-convert/conversion';
 import { SupportCase } from '../core/variable-convert/types/SupportCaseType';
@@ -22,10 +22,15 @@ suite('Extension Test Suite', () => {
 });
  */
 
-suite('Extension Test: run test case', () => {
+/**
+ * 变量转换 测试函数
+ *
+ * @since 2024-04-02
+ */
+suite('Extension Test: run variable convert test case', () => {
 	vscode.window.showInformationMessage('Start all tests.');
 
-	const groups: Array<TestCaseGroup> = testGroups;
+	const groups: Array<TestCaseGroup> = pathConvertTestGroups;
 	for (const testGroup of groups) {
 		const testTitle = testGroup.testTitle;
 		const testCases: Array<TestCase> = testGroup.cases;
