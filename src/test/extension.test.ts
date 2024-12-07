@@ -8,7 +8,7 @@ import { TestCase, TestCaseGroup } from './types/TestCaseType';
 import { transformMutliLineText, transformText } from '../utils/transform';
 import { caseConversion } from '../core/variable-convert/conversion';
 import { SupportCase } from '../core/variable-convert/types/SupportCaseType';
-import { TransformTextResult } from '../type-definition/TransformTextResultType';
+import { TransformTextResult } from '../types/TransformTextResultType';
 // import * as myExtension from '../../extension';
 
 /*

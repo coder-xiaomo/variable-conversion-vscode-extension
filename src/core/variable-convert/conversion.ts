@@ -1,6 +1,6 @@
-import { EOL } from '../../type-definition/EOLType';
+import { EOL } from '../../types/EOLType';
 import { SupportCase } from './types/SupportCaseType';
-import { TransformTextResult } from '../../type-definition/TransformTextResultType';
+import { TransformTextResult } from '../../types/TransformTextResultType';
 import { transformMutliLineText, transformText } from '../../utils/transform';
 
 /**

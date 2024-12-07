@@ -1,4 +1,4 @@
-import { EOL } from "../../type-definition/EOLType";
+import { EOL } from "../../types/EOLType";
 
 export type TestCaseGroup = {
     group: string

@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import QuickPickItemEx from "../type-definition/QuickPickItemExType";
+import QuickPickItemEx from "./types/QuickPickItemExType";
 import { QuickPickSupportCaseItem, quickPickSupportCases } from '../core/variable-convert/types/SupportCaseType';
-import { TransformTextResult } from '../type-definition/TransformTextResultType';
+import { TransformTextResult } from '../types/TransformTextResultType';
 import { transformMutliSelectionText } from '../utils/transform';
-import { EOL } from '../type-definition/EOLType';
+import { EOL } from '../types/EOLType';
 import { caseConversion } from '../core/variable-convert/conversion';
 import { isStringArrayEqual } from '../utils/utils';
 import { getUserConfigurations } from '../utils/user-configuration';

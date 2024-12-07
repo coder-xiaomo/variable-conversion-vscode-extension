@@ -16,7 +16,7 @@ import { handleQuickPick } from './handler/quick-pick-handler';
 import { commands } from './core/variable-convert/types/SupportCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
 import * as CyclicConversion from './core/variable-convert/cyclic-conversion';
-import { EOL } from './type-definition/EOLType';
+import { EOL } from './types/EOLType';
 import { getUserConfigurations } from './utils/user-configuration';
 
 // This method is called when your extension is activated

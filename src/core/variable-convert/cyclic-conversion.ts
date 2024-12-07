@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { EOL } from "../../type-definition/EOLType";
+import { EOL } from "../../types/EOLType";
 import { cyclicConvertCaseOrder } from "./types/SupportCaseType";
 import { caseConversion } from "./conversion";
 import { isStringArrayEqual, stringListArrayDuplicateRemoval } from '../../utils/utils';

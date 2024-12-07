@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { EOL } from '../type-definition/EOLType';
+import { EOL } from '../types/EOLType';
 import { caseConversion } from '../core/variable-convert/conversion';
 import { SupportCase } from '../core/variable-convert/types/SupportCaseType';
 import { isStringArrayEqual } from '../utils/utils';
