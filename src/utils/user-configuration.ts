@@ -11,7 +11,7 @@ function getUserConfigurations<T>(configKey: string): T | undefined {
     const config = vscode.workspace.getConfiguration('variable-conversion');
 
     const configValue = config.get<T>(configKey);
-    console.log('configValue:', configValue);
+    // console.log('configValue:', configValue);
     return configValue;
 }
 

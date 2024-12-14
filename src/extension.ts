@@ -1,13 +1,33 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+/**
+ * @file extension.ts
+ * @description 该文件包含了 VS Code 插件的主要扩展逻辑，包括命令注册、菜单配置和编辑器事件监听等。
+ * @author coder-xiaomo
+ * @version 1.0.0
+ * @license MIT
+ *
+ * 本文件是插件的核心文件，负责扩展命令的注册以及编辑器中各种事件的处理。通过监听编辑器的选择状态，
+ * 动态更新命令行为。插件在启动时会初始化必要的命令，并根据编辑器状态决定是否启用相关功能。
+ *
+ * @see https://code.visualstudio.com/api
+ */
 import * as vscode from 'vscode';
-import handleEditorReplace from './extension-handler/editor-submenu-handler';
-import { handleQuickPick } from './extension-handler/quick-pick-handler';
-import { commands } from './type-definition/SupportCaseType';
-import { createStatusBarItem, updateStatusBarItemVisable } from './extension-handler/status-bar-handler';
-import * as CyclicConversion from './main-code/variable-convert/cyclic-conversion';
-import { EOL } from './type-definition/EOLType';
-import { getUserConfigurations } from './main-code/user-configuration';
+
+// Variable Convert
+import handleEditorReplaceVariable from './handler/variable-convert/editor-submenu-handler';
+import { handleQuickPick as handleQuickPickVariable } from './handler/variable-convert/quick-pick-handler';
+import { commands as variableCommands } from './core/variable-convert/types/SupportVariableCaseType';
+import * as CyclicConversionVariable from './core/variable-convert/cyclic-conversion';
+
+// Path Convert
+import handleEditorReplacePath from './handler/path-convert/editor-submenu-handler';
+import { handleQuickPick as handleQuickPickPath } from './handler/path-convert/quick-pick-handler';
+import { commands as pathCommands } from './core/path-convert/types/SupportPathFormatType';
+import * as CyclicConversionPath from './core/path-convert/cyclic-conversion';
+
+// Common
+import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
+import { EOL } from './types/EOLType';
+import { getUserConfigurations } from './utils/user-configuration';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -45,9 +65,15 @@ export function activate(context: vscode.ExtensionContext) {
 		// issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
 		// 获取用户配置
 		const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+		const disablePathFormatList = getUserConfigurations<Array<string>>('disablePathFormat') || [];
 		// 更新右键菜单每一项是否展示
-		for (const { settingsKey } of commands) {
+		// 变量转换右键菜单visible 2024.07.29
+		for (const { settingsKey } of variableCommands) {
 			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disableFormatList.includes(settingsKey));
+		}
+		// 路径转换右键菜单visible 2024.12.14
+		for (const { settingsKey } of pathCommands) {
+			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disablePathFormatList.includes(settingsKey));
 		}
 
 		// 判断是否展示状态栏按钮
@@ -55,7 +81,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 循环转换：记录当前选中内容，并且进行转换
 		let eol: EOL = textEditor.document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
-		CyclicConversion.onUserSelectionUpdated(selections, textList, eol);
+		// 变量循环转换 2024.04.09
+		CyclicConversionVariable.onUserSelectionUpdated(selections, textList, eol);
+		// 路径循环转换 2024.12.14
+		CyclicConversionPath.onUserSelectionUpdated(selections, textList, eol);
 	};
 
 	// 创建状态栏按钮
@@ -95,29 +124,70 @@ export function activate(context: vscode.ExtensionContext) {
 		onTextEditorSelectionChangeCallback(editor, editor.selections);
 	}
 
+
+	/**
+	 * 变量转换
+	 *
+	 * @since 2024-04
+	 */
+
 	// 逐一注册右键菜单-子菜单项 command
-	for (const { command, targetCase } of commands) {
+	for (const { command, targetCase } of variableCommands) {
 		let disposable = vscode.commands.registerCommand(command, () => {
-			handleEditorReplace(targetCase);
+			// 变量转换右键菜单 2024.04.05
+			handleEditorReplaceVariable(targetCase);
 		});
 		context.subscriptions.push(disposable);
 	}
 
 	// 注册变量转换 command 状态栏/快捷键/右键[变量转换]菜单均有用到
-	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', handleQuickPick);
+	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', handleQuickPickVariable);
 	context.subscriptions.push(convertCaseDisposable);
 
 	// 注册循环转换 command
-	let disposableLoopConversionPrev = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
-		console.log('variable-conversion.convertCase', arrowKey);
-		CyclicConversion.previousOne();
+	let loopConvertCasePrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
+		console.log('variable-conversion.cyclicConvertCase.previous', arrowKey);
+		CyclicConversionVariable.previousOne();
 	});
-	context.subscriptions.push(disposableLoopConversionPrev);
-	let disposableLoopConversionNext = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
-		console.log('variable-conversion.convertCase', arrowKey);
-		CyclicConversion.nextOne();
+	context.subscriptions.push(loopConvertCasePrevDisposable);
+	let loopConvertCaseNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
+		console.log('variable-conversion.cyclicConvertCase.next', arrowKey);
+		CyclicConversionVariable.nextOne();
 	});
-	context.subscriptions.push(disposableLoopConversionNext);
+	context.subscriptions.push(loopConvertCaseNextDisposable);
+
+
+	/**
+	 * 路径转换
+	 * issue: #3 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/3
+	 *
+	 * @since 2024-12
+	 */
+
+	// 逐一注册右键菜单-子菜单项 command
+	for (const { command, targetCase } of pathCommands) {
+		let disposable = vscode.commands.registerCommand(command, () => {
+			// 变量转换右键菜单 2024.12.14
+			handleEditorReplacePath(targetCase);
+		});
+		context.subscriptions.push(disposable);
+	}
+
+	// 注册路径转换 command 状态栏/快捷键/右键[路径转换]菜单均有用到
+	let convertPathDisposable = vscode.commands.registerCommand('variable-conversion.convertPath', handleQuickPickPath);
+	context.subscriptions.push(convertPathDisposable);
+
+	// 注册循环转换 command
+	let loopConvertPathPrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertPath.previous', ({ direction }) => {
+		console.log('variable-conversion.cyclicConvertPath.previous', direction);
+		CyclicConversionPath.previousOne();
+	});
+	context.subscriptions.push(loopConvertPathPrevDisposable);
+	let loopConvertPathNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertPath.next', ({ direction }) => {
+		console.log('variable-conversion.cyclicConvertPath.next', direction);
+		CyclicConversionPath.nextOne();
+	});
+	context.subscriptions.push(loopConvertPathNextDisposable);
 }
 
 // This method is called when your extension is deactivated

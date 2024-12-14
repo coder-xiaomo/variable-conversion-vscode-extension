@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import { EOL } from "../../type-definition/EOLType";
-import { cyclicConvertCaseOrder } from "../../type-definition/SupportCaseType";
-import { caseConversion } from "./conversion";
-import { isStringArrayEqual, stringListArrayDuplicateRemoval } from '../utils';
-import { getUserConfigurations } from '../user-configuration';
+import { EOL } from "../../types/EOLType";
+import { cyclicConvertPathOrder } from "./types/SupportPathFormatType";
+import { pathConversion } from "./conversion";
+import { isStringArrayEqual, stringListArrayDuplicateRemoval } from '../../utils/utils';
+import { getUserConfigurations } from '../../utils/user-configuration';
 
 interface UserSelection {
     currentEol: EOL
@@ -66,24 +66,25 @@ function lazyConvert() {
     }
 
     // 获取用户配置
-    const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+    // TODO
+    // const disablePathFormatList = getUserConfigurations<Array<string>>('disablePathFormat') || [];
 
     const textList = userSelection.currentSelectionsText;
     // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
     const eol = userSelection.currentEol;
     const conversionsTarget: Array<string[]> = [textList];
-    for (const cyclicConvertCase of cyclicConvertCaseOrder) {
-        // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
+    for (const cyclicConvertCase of cyclicConvertPathOrder) {
         // 跳过禁用的目标格式
-        if (disableFormatList.includes(cyclicConvertCase.settingsKey)) {
-            continue;
-        }
+        // TODO
+        // if (disablePathFormatList.includes(cyclicConvertCase.settingsKey)) {
+        //     continue;
+        // }
 
         // 每一个类型
         const conversionsTargetItem: string[] = [];
         for (const line of textList) {
             // 选中区块的每一行
-            const conversionResult: string = caseConversion(cyclicConvertCase.type, line, eol);
+            const conversionResult: string = pathConversion(cyclicConvertCase.type, line, eol);
             conversionsTargetItem.push(conversionResult);
         }
         conversionsTarget.push(conversionsTargetItem);

@@ -1,12 +1,12 @@
-import { EOL } from "./EOLType";
+import { EOL } from "../../../types/EOLType";
 
-export type TestCaseGroup = {
+export type VariableTestCaseGroup = {
     group: string
     testTitle: string
-    cases: Array<TestCase>
+    cases: Array<VariableTestCase>
 };
 
-export type TestCase = {
+export type VariableTestCase = {
     title: string
     input: string | Array<string>
     eol: EOL | Array<EOL>
