@@ -1,5 +1,8 @@
 import { PathTestCaseGroup } from "./types/PathTestCaseType";
 
+const LF = '\n';
+const CRLF = '\r\n';
+
 export const pathConvertTestGroups: Array<PathTestCaseGroup> = [
     {
         group: 'Normal Path Format Convert',
@@ -9,6 +12,7 @@ export const pathConvertTestGroups: Array<PathTestCaseGroup> = [
                 title: 'Windows 风格',
                 input: // E:\Project\variable-conversion-vscode-extension
                     'E:\\Project\\variable-conversion-vscode-extension',
+                eol: [LF, CRLF],
                 output: {
                     Windows: {
                         unEscape: // E:\Project\variable-conversion-vscode-extension
@@ -28,6 +32,7 @@ export const pathConvertTestGroups: Array<PathTestCaseGroup> = [
             {
                 title: 'Unix 风格',
                 input: '/home/user/file.txt',
+                eol: [LF, CRLF],
                 output: {
                     Windows: {
                         unEscape: // \home\user\file.txt
@@ -46,6 +51,7 @@ export const pathConvertTestGroups: Array<PathTestCaseGroup> = [
             {
                 title: 'Windows (Git Bash) 风格',
                 input: '/c/Users/test/file.txt',
+                eol: [LF, CRLF],
                 output: {
                     Windows: {
                         unEscape: // \c\Users\test/file.txt
@@ -81,6 +87,7 @@ export const pathConvertTestGroups: Array<PathTestCaseGroup> = [
             //     title: '',
             //     input: //
             //         '',
+            //     eol: [LF, CRLF],
             //     output: {
             //         Windows: {
             //             unEscape: //

@@ -57,7 +57,7 @@ suite('Extension Test: run variable convert test case', () => {
 						assert.strictEqual(correctValue, currentValue);
 					}
 					// 验证转换
-					for (let eol of eolList) {
+					for (const eol of eolList) {
 						assert.strictEqual(testCase.output.camelCase, caseConversion(SupportVariableCase.CAMEL_CASE, input, eol), 'camel case test failed.');
 						assert.strictEqual(testCase.output.pascalCase, caseConversion(SupportVariableCase.PASCAL_CASE, input, eol), 'pascal case test failed.');
 
@@ -113,11 +113,14 @@ suite('Extension Test: run path convert test case', () => {
 			// }
 			test(testTitle + ' - ' + testCase.title, () => {
 				const inputList = Array.isArray(testCase.input) ? testCase.input : [testCase.input];
+				const eolList = Array.isArray(testCase.eol) ? testCase.eol : [testCase.eol];
 				for (const input of inputList) {
 					// console.log('input', '->' + input + '<-');
 					// 验证转换
-					assert.strictEqual(testCase.output.Windows.unEscape, pathConversion(SupportPathFormat.Windows, input), 'Windows path format test failed.');
-					assert.strictEqual(testCase.output.Unix.unEscape, pathConversion(SupportPathFormat.Unix, input), 'Unix path format test failed.');
+					for (const eol of eolList) {
+						assert.strictEqual(testCase.output.Windows.unEscape, pathConversion(SupportPathFormat.Windows, input, eol), 'Windows path format test failed.');
+						assert.strictEqual(testCase.output.Unix.unEscape, pathConversion(SupportPathFormat.Unix, input, eol), 'Unix path format test failed.');
+					}
 				}
 			});
 		}

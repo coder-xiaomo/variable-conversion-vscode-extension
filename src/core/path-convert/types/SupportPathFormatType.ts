@@ -21,3 +21,20 @@ export enum SupportPathFormat {
      */
     Unix,
 };
+
+/**
+ * @since 2024-12-14
+ */
+export interface CyclicConvertPathOrderItem {
+    type: SupportPathFormat,
+    settingsKey: string,
+}
+
+/**
+ * 通过快捷键循环转换的顺序
+ * @since 2024-12-14
+ */
+export const cyclicConvertPathOrder: Array<CyclicConvertPathOrderItem> = [
+    { type: SupportPathFormat.Windows, settingsKey: 'windows' },
+    { type: SupportPathFormat.Unix, settingsKey: 'unix' },
+];

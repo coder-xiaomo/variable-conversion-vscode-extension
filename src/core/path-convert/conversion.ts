@@ -1,3 +1,4 @@
+import { EOL } from "../../types/EOLType";
 import { SupportPathFormat } from "./types/SupportPathFormatType";
 
 /** / */
@@ -7,7 +8,7 @@ const RIGHT_SLASH = '\\';
 /** \\ */
 const DOUBLE_RIGHT_SLASH = '\\\\';
 
-export function pathConversion(targetPathType: SupportPathFormat, input: string): string {
+export function pathConversion(targetPathType: SupportPathFormat, input: string, eol: EOL): string {
     let resultPath;
 
     let isSeperator = false;

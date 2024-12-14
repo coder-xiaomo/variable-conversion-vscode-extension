@@ -15,7 +15,8 @@ import handleEditorReplace from './handler/editor-submenu-handler';
 import { handleQuickPick } from './handler/quick-pick-handler';
 import { commands } from './core/variable-convert/types/SupportVariableCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
-import * as CyclicConversion from './core/variable-convert/cyclic-conversion';
+import * as CyclicConversionVariable from './core/variable-convert/cyclic-conversion';
+import * as CyclicConversionPath from './core/path-convert/cyclic-conversion';
 import { EOL } from './types/EOLType';
 import { getUserConfigurations } from './utils/user-configuration';
 
@@ -65,7 +66,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 循环转换：记录当前选中内容，并且进行转换
 		let eol: EOL = textEditor.document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
-		CyclicConversion.onUserSelectionUpdated(selections, textList, eol);
+		CyclicConversionVariable.onUserSelectionUpdated(selections, textList, eol);
+
+		CyclicConversionPath.onUserSelectionUpdated(selections, textList, eol);
 	};
 
 	// 创建状态栏按钮
@@ -120,12 +123,12 @@ export function activate(context: vscode.ExtensionContext) {
 	// 注册循环转换 command
 	let loopConvertCasePrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
 		console.log('variable-conversion.cyclicConvertCase.previous', arrowKey);
-		CyclicConversion.previousOne();
+		CyclicConversionVariable.previousOne();
 	});
 	context.subscriptions.push(loopConvertCasePrevDisposable);
 	let loopConvertCaseNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
 		console.log('variable-conversion.cyclicConvertCase.next', arrowKey);
-		CyclicConversion.nextOne();
+		CyclicConversionVariable.nextOne();
 	});
 	context.subscriptions.push(loopConvertCaseNextDisposable);
 
@@ -142,12 +145,12 @@ export function activate(context: vscode.ExtensionContext) {
 	// 注册循环转换 command
 	let loopConvertPathPrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertPath.previous', ({ direction }) => {
 		console.log('variable-conversion.cyclicConvertPath.previous', direction);
-		// TODO
+		CyclicConversionPath.previousOne();
 	});
 	context.subscriptions.push(loopConvertPathPrevDisposable);
 	let loopConvertPathNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertPath.next', ({ direction }) => {
 		console.log('variable-conversion.cyclicConvertPath.next', direction);
-		// TODO
+		CyclicConversionPath.nextOne();
 	});
 	context.subscriptions.push(loopConvertPathNextDisposable);
 }
