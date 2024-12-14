@@ -159,6 +159,18 @@
       {
         "command": "variable-conversion.toUpperCase",
         "title": "全大写 (Upper Case) [ FOOBAR ]"
+      },
+      {
+        "command": "variable-conversion.convertPath",
+        "title": "路径转换"
+      },
+      {
+        "command": "variable-conversion.pathFormat.toWindowsStyle",
+        "title": "Windows 风格 [ C:\\Windows\\System32 ]"
+      },
+      {
+        "command": "variable-conversion.pathFormat.toUnixStyle",
+        "title": "Unix 风格 [ /usr/bin ]"
       }
     ],
     "menus": {
@@ -166,12 +178,22 @@
         {
           "when": "editorTextFocus && _textSelectionLength >= 1",
           "command": "variable-conversion.convertCase",
-          "group": "navigation@9"
+          "group": "navigation@10"
         },
         {
           "when": "editorTextFocus && _textSelectionLength >= 1",
           "submenu": "variable-conversion.stringConversionMenu",
-          "group": "navigation@9"
+          "group": "navigation@11"
+        },
+        {
+          "when": "editorTextFocus && _textSelectionLength >= 1",
+          "command": "variable-conversion.convertPath",
+          "group": "navigation@12"
+        },
+        {
+          "when": "editorTextFocus && _textSelectionLength >= 1",
+          "submenu": "variable-conversion.pathConversionMenu",
+          "group": "navigation@13"
         }
       ],
       "variable-conversion.stringConversionMenu": [
@@ -275,12 +297,28 @@
           "command": "variable-conversion.toUpperCase",
           "group": "group-6-upper-lower@2"
         }
+      ],
+      "variable-conversion.pathConversionMenu": [
+        {
+          "when": "!_isHideSubMenuItem_windows_style",
+          "command": "variable-conversion.pathFormat.toWindowsStyle",
+          "group": "group-1-common-style@1"
+        },
+        {
+          "when": "!_isHideSubMenuItem_unix_style",
+          "command": "variable-conversion.pathFormat.toUnixStyle",
+          "group": "group-1-common-style@2"
+        }
       ]
     },
     "submenus": [
       {
         "id": "variable-conversion.stringConversionMenu",
         "label": "将变量转换为..."
+      },
+      {
+        "id": "variable-conversion.pathConversionMenu",
+        "label": "将路径转换为..."
       }
     ],
     "configuration": {
@@ -288,7 +326,7 @@
       "properties": {
         "variable-conversion.disableFormat": {
           "order": 1,
-          "markdownDescription": "定义哪些格式是禁用的\n\nDefine which formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",
+          "markdownDescription": "定义哪些变量命名方式是禁用的\n\nDefine which variable formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",
           "type": "array",
           "items": {
             "type": "string",
@@ -335,6 +373,23 @@
               "点分隔 + 全大写命名",
               "全小写",
               "全大写"
+            ]
+          },
+          "default": []
+        },
+        "variable-conversion.disablePathFormat": {
+          "order": 3,
+          "markdownDescription": "定义哪些路径风格是禁用的\n\nDefine which path formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disablePathFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "windows_style",
+              "unix_style"
+            ],
+            "enumDescriptions": [
+              "Windows 风格",
+              "Unix 风格"
             ]
           },
           "default": []

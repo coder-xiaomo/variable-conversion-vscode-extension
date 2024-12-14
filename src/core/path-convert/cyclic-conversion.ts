@@ -67,7 +67,7 @@ function lazyConvert() {
 
     // 获取用户配置
     // TODO
-    // const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+    // const disablePathFormatList = getUserConfigurations<Array<string>>('disablePathFormat') || [];
 
     const textList = userSelection.currentSelectionsText;
     // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
@@ -76,7 +76,7 @@ function lazyConvert() {
     for (const cyclicConvertCase of cyclicConvertPathOrder) {
         // 跳过禁用的目标格式
         // TODO
-        // if (disableFormatList.includes(cyclicConvertCase.settingsKey)) {
+        // if (disablePathFormatList.includes(cyclicConvertCase.settingsKey)) {
         //     continue;
         // }
 

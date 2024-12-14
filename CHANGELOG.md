@@ -25,17 +25,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 2.0.0
 
-### Improvement
-
-- Adjust the project code directory structure. (项目代码目录结构调整)
-
 ### Added
 
 - New: Support path conversions via shortcut keys `Ctrl + Alt + /` and `Ctrl + Shift + Alt + /` (also supports multi-selection conversion). (支持通过 `Ctrl + Alt + /`, `Ctrl + Shift + Alt + /` 快捷键进行路径转换 (同时支持多选区转换))
+- New: Support following path conversion type: QuickPick menu conversion, context menu conversion, status bar button conversion, shortcut key conversion. (支持以下路径转换方式：QuickPick 菜单转换、右键菜单转换、状态栏按钮转换、快捷键转换)
 
 ### Changed
 
 - Do not display the editor context menu `Variable Conversion` option when text is not selected. (当未选中文本时，不显示右键菜单 `变量转换` 选项)
+
+### Improvement
+
+- Adjust the project code directory structure. (项目代码目录结构调整)
 
 ## 1.1.0
 

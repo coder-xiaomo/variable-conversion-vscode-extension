@@ -11,12 +11,21 @@
  * @see https://code.visualstudio.com/api
  */
 import * as vscode from 'vscode';
-import handleEditorReplace from './handler/editor-submenu-handler';
-import { handleQuickPick } from './handler/quick-pick-handler';
-import { commands } from './core/variable-convert/types/SupportVariableCaseType';
-import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
+
+// Variable Convert
+import handleEditorReplaceVariable from './handler/variable-convert/editor-submenu-handler';
+import { handleQuickPick as handleQuickPickVariable } from './handler/variable-convert/quick-pick-handler';
+import { commands as variableCommands } from './core/variable-convert/types/SupportVariableCaseType';
 import * as CyclicConversionVariable from './core/variable-convert/cyclic-conversion';
+
+// Path Convert
+import handleEditorReplacePath from './handler/path-convert/editor-submenu-handler';
+import { handleQuickPick as handleQuickPickPath } from './handler/path-convert/quick-pick-handler';
+import { commands as pathCommands } from './core/path-convert/types/SupportPathFormatType';
 import * as CyclicConversionPath from './core/path-convert/cyclic-conversion';
+
+// Common
+import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
 import { EOL } from './types/EOLType';
 import { getUserConfigurations } from './utils/user-configuration';
 
@@ -56,9 +65,15 @@ export function activate(context: vscode.ExtensionContext) {
 		// issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
 		// 获取用户配置
 		const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+		const disablePathFormatList = getUserConfigurations<Array<string>>('disablePathFormat') || [];
 		// 更新右键菜单每一项是否展示
-		for (const { settingsKey } of commands) {
+		// 变量转换右键菜单visible 2024.07.29
+		for (const { settingsKey } of variableCommands) {
 			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disableFormatList.includes(settingsKey));
+		}
+		// 路径转换右键菜单visible 2024.12.14
+		for (const { settingsKey } of pathCommands) {
+			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disablePathFormatList.includes(settingsKey));
 		}
 
 		// 判断是否展示状态栏按钮
@@ -109,16 +124,24 @@ export function activate(context: vscode.ExtensionContext) {
 		onTextEditorSelectionChangeCallback(editor, editor.selections);
 	}
 
+
+	/**
+	 * 变量转换
+	 *
+	 * @since 2024-04
+	 */
+
 	// 逐一注册右键菜单-子菜单项 command
-	for (const { command, targetCase } of commands) {
+	for (const { command, targetCase } of variableCommands) {
 		let disposable = vscode.commands.registerCommand(command, () => {
-			handleEditorReplace(targetCase);
+			// 变量转换右键菜单 2024.04.05
+			handleEditorReplaceVariable(targetCase);
 		});
 		context.subscriptions.push(disposable);
 	}
 
 	// 注册变量转换 command 状态栏/快捷键/右键[变量转换]菜单均有用到
-	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', handleQuickPick);
+	let convertCaseDisposable = vscode.commands.registerCommand('variable-conversion.convertCase', handleQuickPickVariable);
 	context.subscriptions.push(convertCaseDisposable);
 
 	// 注册循环转换 command
@@ -137,10 +160,21 @@ export function activate(context: vscode.ExtensionContext) {
 	/**
 	 * 路径转换
 	 * issue: #3 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/3
+	 *
+	 * @since 2024-12
 	 */
 
+	// 逐一注册右键菜单-子菜单项 command
+	for (const { command, targetCase } of pathCommands) {
+		let disposable = vscode.commands.registerCommand(command, () => {
+			// 变量转换右键菜单 2024.12.14
+			handleEditorReplacePath(targetCase);
+		});
+		context.subscriptions.push(disposable);
+	}
+
 	// 注册路径转换 command 状态栏/快捷键/右键[路径转换]菜单均有用到
-	let convertPathDisposable = vscode.commands.registerCommand('variable-conversion.convertPath', handleQuickPick);
+	let convertPathDisposable = vscode.commands.registerCommand('variable-conversion.convertPath', handleQuickPickPath);
 	context.subscriptions.push(convertPathDisposable);
 
 	// 注册循环转换 command
