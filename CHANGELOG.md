@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Adjust the project code directory structure. (项目代码目录结构调整)
 
+### Added
+
+- New: Support path conversions via shortcut keys `Ctrl + Alt + /` and `Ctrl + Shift + Alt + /` (also supports multi-selection conversion). (支持通过 `Ctrl + Alt + /`, `Ctrl + Shift + Alt + /` 快捷键进行路径转换 (同时支持多选区转换))
+
 ### Changed
 
 - Do not display the editor context menu `Variable Conversion` option when text is not selected. (当未选中文本时，不显示右键菜单 `变量转换` 选项)
@@ -56,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New: Supports multi-selection conversion (支持多选区转换)
-- New: Supports scrolling conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (also supports multi-selection conversion) 支持通过快捷键循环转换 (同时支持多选区转换)
+- New: Supports scrolling variable conversion via shortcut keys `Ctrl + Alt + [` and `Ctrl + Alt + ]` (also supports multi-selection conversion). (支持通过 `Ctrl + Alt + [`, `Ctrl + Alt + ]` 快捷键进行变量循环转换 (同时支持多选区转换))
 
 ## 1.0.7
 

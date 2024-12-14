@@ -52,6 +52,27 @@
           "arrowKey": "]"
         },
         "when": "editorTextFocus"
+      },
+      {
+        "command": "variable-conversion.convertPath",
+        "key": "shift+alt+/",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.previous",
+        "key": "ctrl+alt+shift+/",
+        "args": {
+          "direction": "<-"
+        },
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.next",
+        "key": "ctrl+alt+/",
+        "args": {
+          "direction": "->"
+        },
+        "when": "editorTextFocus"
       }
     ],
     "commands": [

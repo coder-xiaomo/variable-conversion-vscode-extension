@@ -118,16 +118,38 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(convertCaseDisposable);
 
 	// 注册循环转换 command
-	let disposableLoopConversionPrev = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
-		console.log('variable-conversion.convertCase', arrowKey);
+	let loopConvertCasePrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
+		console.log('variable-conversion.cyclicConvertCase.previous', arrowKey);
 		CyclicConversion.previousOne();
 	});
-	context.subscriptions.push(disposableLoopConversionPrev);
-	let disposableLoopConversionNext = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
-		console.log('variable-conversion.convertCase', arrowKey);
+	context.subscriptions.push(loopConvertCasePrevDisposable);
+	let loopConvertCaseNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
+		console.log('variable-conversion.cyclicConvertCase.next', arrowKey);
 		CyclicConversion.nextOne();
 	});
-	context.subscriptions.push(disposableLoopConversionNext);
+	context.subscriptions.push(loopConvertCaseNextDisposable);
+
+
+	/**
+	 * 路径转换
+	 * issue: #3 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/3
+	 */
+
+	// 注册路径转换 command 状态栏/快捷键/右键[路径转换]菜单均有用到
+	let convertPathDisposable = vscode.commands.registerCommand('variable-conversion.convertPath', handleQuickPick);
+	context.subscriptions.push(convertPathDisposable);
+
+	// 注册循环转换 command
+	let loopConvertPathPrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertPath.previous', ({ direction }) => {
+		console.log('variable-conversion.cyclicConvertPath.previous', direction);
+		// TODO
+	});
+	context.subscriptions.push(loopConvertPathPrevDisposable);
+	let loopConvertPathNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertPath.next', ({ direction }) => {
+		console.log('variable-conversion.cyclicConvertPath.next', direction);
+		// TODO
+	});
+	context.subscriptions.push(loopConvertPathNextDisposable);
 }
 
 // This method is called when your extension is deactivated
