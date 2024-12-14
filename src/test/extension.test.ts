@@ -116,8 +116,8 @@ suite('Extension Test: run path convert test case', () => {
 				for (const input of inputList) {
 					// console.log('input', '->' + input + '<-');
 					// 验证转换
-					assert.strictEqual(testCase.output.Windows, pathConversion(SupportPathFormat.Windows, input), 'Windows path format test failed.');
-					assert.strictEqual(testCase.output.Unix, pathConversion(SupportPathFormat.Unix, input), 'Unix path format test failed.');
+					assert.strictEqual(testCase.output.Windows.unEscape, pathConversion(SupportPathFormat.Windows, input), 'Windows path format test failed.');
+					assert.strictEqual(testCase.output.Unix.unEscape, pathConversion(SupportPathFormat.Unix, input), 'Unix path format test failed.');
 				}
 			});
 		}
