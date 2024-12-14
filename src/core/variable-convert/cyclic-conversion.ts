@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { EOL } from "../../types/EOLType";
-import { cyclicConvertCaseOrder } from "./types/SupportCaseType";
+import { cyclicConvertCaseOrder } from "./types/SupportVariableCaseType";
 import { caseConversion } from "./conversion";
 import { isStringArrayEqual, stringListArrayDuplicateRemoval } from '../../utils/utils';
 import { getUserConfigurations } from '../../utils/user-configuration';

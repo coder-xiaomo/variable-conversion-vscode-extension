@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import QuickPickItemEx from "./types/QuickPickItemExType";
-import { QuickPickSupportCaseItem, quickPickSupportCases } from '../core/variable-convert/types/SupportCaseType';
+import { QuickPickSupportCaseItem, quickPickSupportCases } from '../core/variable-convert/types/SupportVariableCaseType';
 import { TransformTextResult } from '../types/TransformTextResultType';
 import { transformMutliSelectionText } from '../utils/transform';
 import { EOL } from '../types/EOLType';

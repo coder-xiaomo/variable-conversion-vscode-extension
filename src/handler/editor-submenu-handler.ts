@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { EOL } from '../types/EOLType';
 import { caseConversion } from '../core/variable-convert/conversion';
-import { SupportCase } from '../core/variable-convert/types/SupportCaseType';
+import { SupportVariableCase } from '../core/variable-convert/types/SupportVariableCaseType';
 import { isStringArrayEqual } from '../utils/utils';
 
 /**
@@ -10,7 +10,7 @@ import { isStringArrayEqual } from '../utils/utils';
  * @param convertFunction
  * @returns
  */
-const handleEditorReplace = (targetCase: SupportCase) => {
+const handleEditorReplace = (targetCase: SupportVariableCase) => {
     // 获取当前编辑器
     let editor = vscode.window.activeTextEditor;
     if (!editor) {

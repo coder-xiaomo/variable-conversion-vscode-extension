@@ -13,7 +13,7 @@
 import * as vscode from 'vscode';
 import handleEditorReplace from './handler/editor-submenu-handler';
 import { handleQuickPick } from './handler/quick-pick-handler';
-import { commands } from './core/variable-convert/types/SupportCaseType';
+import { commands } from './core/variable-convert/types/SupportVariableCaseType';
 import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
 import * as CyclicConversion from './core/variable-convert/cyclic-conversion';
 import { EOL } from './types/EOLType';

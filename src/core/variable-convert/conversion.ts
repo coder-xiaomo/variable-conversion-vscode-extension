@@ -1,53 +1,53 @@
 import { EOL } from '../../types/EOLType';
-import { SupportCase } from './types/SupportCaseType';
+import { SupportVariableCase } from './types/SupportVariableCaseType';
 import { TransformTextResult } from '../../types/TransformTextResultType';
 import { transformMutliLineText, transformText } from '../../utils/transform';
 
 /**
  * 统一文本转换函数
  *
- * @param {SupportCase} targetCase 目标文本情况
+ * @param {SupportVariableCase} targetCase 目标文本情况
  * @param {string} str 用户选择的文本 user selection
  * @param {EOL} eol 行结束符
  * @param {Array<TransformTextResult>?} cutText 行结束符
  * @returns 转换后的文本
  * @since 2024-04-04
  */
-export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, cutText: Array<TransformTextResult> | undefined = undefined): string {
+export function caseConversion(targetCase: SupportVariableCase, str: string, eol: EOL, cutText: Array<TransformTextResult> | undefined = undefined): string {
     let spaceCharacter: '-' | '_' | ' ' | '.' | undefined = undefined;
     switch (targetCase) {
         default:
-        case SupportCase.CAMEL_CASE:        // 小驼峰(驼峰)命名
-        case SupportCase.PASCAL_CASE:       // 大驼峰(帕斯卡)命名
+        case SupportVariableCase.CAMEL_CASE:        // 小驼峰(驼峰)命名
+        case SupportVariableCase.PASCAL_CASE:       // 大驼峰(帕斯卡)命名
             spaceCharacter = undefined;
             break;
-        case SupportCase.SNAKE_CASE:        // 下划线(蛇形)命名
-        case SupportCase.SNAKE_CAMEL_CASE:  // 下划线(蛇形) + 小驼峰(驼峰)命名
-        case SupportCase.SNAKE_PASCAL_CASE: // 下划线(蛇形) + 大驼峰(帕斯卡)命名
-        case SupportCase.SNAKE_UPPER_CASE:  // 下划线(蛇形) + 全大写命名
+        case SupportVariableCase.SNAKE_CASE:        // 下划线(蛇形)命名
+        case SupportVariableCase.SNAKE_CAMEL_CASE:  // 下划线(蛇形) + 小驼峰(驼峰)命名
+        case SupportVariableCase.SNAKE_PASCAL_CASE: // 下划线(蛇形) + 大驼峰(帕斯卡)命名
+        case SupportVariableCase.SNAKE_UPPER_CASE:  // 下划线(蛇形) + 全大写命名
             spaceCharacter = '_';
             break;
-        case SupportCase.KEBAB_CASE:        // 中划线(连字符/脊柱式)命名
-        case SupportCase.KEBAB_CAMEL_CASE:  // 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名
-        case SupportCase.KEBAB_PASCAL_CASE: // 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名
-        case SupportCase.KEBAB_UPPER_CASE:  // 中划线(连字符/脊柱式) + 全大写命名
+        case SupportVariableCase.KEBAB_CASE:        // 中划线(连字符/脊柱式)命名
+        case SupportVariableCase.KEBAB_CAMEL_CASE:  // 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名
+        case SupportVariableCase.KEBAB_PASCAL_CASE: // 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名
+        case SupportVariableCase.KEBAB_UPPER_CASE:  // 中划线(连字符/脊柱式) + 全大写命名
             spaceCharacter = '-';
             break;
-        case SupportCase.SPACE_CASE:        // 空格分隔命名
-        case SupportCase.SPACE_CAMEL_CASE:  // 空格分隔 + 小驼峰(驼峰)命名
-        case SupportCase.SPACE_PASCAL_CASE: // 空格分隔 + 大驼峰(帕斯卡)命名
-        case SupportCase.SPACE_UPPER_CASE:  // 空格分隔 + 全大写命名
+        case SupportVariableCase.SPACE_CASE:        // 空格分隔命名
+        case SupportVariableCase.SPACE_CAMEL_CASE:  // 空格分隔 + 小驼峰(驼峰)命名
+        case SupportVariableCase.SPACE_PASCAL_CASE: // 空格分隔 + 大驼峰(帕斯卡)命名
+        case SupportVariableCase.SPACE_UPPER_CASE:  // 空格分隔 + 全大写命名
             spaceCharacter = ' ';
             break;
-        case SupportCase.DOT_CASE:          // 点分隔命名
-        case SupportCase.DOT_CAMEL_CASE:    // 点分隔 + 小驼峰(驼峰)命名
-        case SupportCase.DOT_PASCAL_CASE:   // 点分隔 + 大驼峰(帕斯卡)命名
-        case SupportCase.DOT_UPPER_CASE:    // 点分隔 + 全大写命名
+        case SupportVariableCase.DOT_CASE:          // 点分隔命名
+        case SupportVariableCase.DOT_CAMEL_CASE:    // 点分隔 + 小驼峰(驼峰)命名
+        case SupportVariableCase.DOT_PASCAL_CASE:   // 点分隔 + 大驼峰(帕斯卡)命名
+        case SupportVariableCase.DOT_UPPER_CASE:    // 点分隔 + 全大写命名
             spaceCharacter = '.';
             break;
-        case SupportCase.LOWER_CASE:        // 全小写
+        case SupportVariableCase.LOWER_CASE:        // 全小写
             return str.toLowerCase();
-        case SupportCase.UPPER_CASE:        // 全大写
+        case SupportVariableCase.UPPER_CASE:        // 全大写
             return str.toUpperCase();
     }
 
@@ -85,11 +85,11 @@ export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, c
 
             // 根据目标情况转换单词
             switch (targetCase) {
-                case SupportCase.CAMEL_CASE:        // 小驼峰(驼峰)命名
-                case SupportCase.SNAKE_CAMEL_CASE:  // 下划线(蛇形) + 小驼峰(驼峰)命名
-                case SupportCase.KEBAB_CAMEL_CASE:  // 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名
-                case SupportCase.SPACE_CAMEL_CASE:  // 空格分隔 + 小驼峰(驼峰)命名
-                case SupportCase.DOT_CAMEL_CASE:    // 点分隔 + 小驼峰(驼峰)命名
+                case SupportVariableCase.CAMEL_CASE:        // 小驼峰(驼峰)命名
+                case SupportVariableCase.SNAKE_CAMEL_CASE:  // 下划线(蛇形) + 小驼峰(驼峰)命名
+                case SupportVariableCase.KEBAB_CAMEL_CASE:  // 中划线(连字符/脊柱式) + 小驼峰(驼峰)命名
+                case SupportVariableCase.SPACE_CAMEL_CASE:  // 空格分隔 + 小驼峰(驼峰)命名
+                case SupportVariableCase.DOT_CAMEL_CASE:    // 点分隔 + 小驼峰(驼峰)命名
                     if (isFirstWord) {
                         transformedWords.push(word);
                         if (isCurrentWordNormal) {
@@ -99,23 +99,23 @@ export function caseConversion(targetCase: SupportCase, str: string, eol: EOL, c
                         transformedWords.push(pascalCaseWord);
                     }
                     break;
-                case SupportCase.PASCAL_CASE:       // 大驼峰(帕斯卡)命名
-                case SupportCase.SNAKE_PASCAL_CASE: // 下划线(蛇形) + 大驼峰(帕斯卡)命名
-                case SupportCase.KEBAB_PASCAL_CASE: // 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名
-                case SupportCase.SPACE_PASCAL_CASE: // 空格分隔 + 大驼峰(帕斯卡)命名
-                case SupportCase.DOT_PASCAL_CASE:   // 点分隔 + 大驼峰(帕斯卡)命名
+                case SupportVariableCase.PASCAL_CASE:       // 大驼峰(帕斯卡)命名
+                case SupportVariableCase.SNAKE_PASCAL_CASE: // 下划线(蛇形) + 大驼峰(帕斯卡)命名
+                case SupportVariableCase.KEBAB_PASCAL_CASE: // 中划线(连字符/脊柱式) + 大驼峰(帕斯卡)命名
+                case SupportVariableCase.SPACE_PASCAL_CASE: // 空格分隔 + 大驼峰(帕斯卡)命名
+                case SupportVariableCase.DOT_PASCAL_CASE:   // 点分隔 + 大驼峰(帕斯卡)命名
                     transformedWords.push(pascalCaseWord);
                     break;
-                case SupportCase.SNAKE_CASE:        // 下划线(蛇形)命名
-                case SupportCase.KEBAB_CASE:        // 中划线(连字符/脊柱式)命名
-                case SupportCase.SPACE_CASE:        // 空格分隔命名
-                case SupportCase.DOT_CASE:          // 点分隔命名x
+                case SupportVariableCase.SNAKE_CASE:        // 下划线(蛇形)命名
+                case SupportVariableCase.KEBAB_CASE:        // 中划线(连字符/脊柱式)命名
+                case SupportVariableCase.SPACE_CASE:        // 空格分隔命名
+                case SupportVariableCase.DOT_CASE:          // 点分隔命名x
                     transformedWords.push(word);
                     break;
-                case SupportCase.SNAKE_UPPER_CASE:  // 下划线(蛇形) + 全大写命名
-                case SupportCase.KEBAB_UPPER_CASE:  // 中划线(连字符/脊柱式) + 全大写命名
-                case SupportCase.SPACE_UPPER_CASE:  // 空格分隔 + 全大写命名
-                case SupportCase.DOT_UPPER_CASE:    // 点分隔 + 全大写命名
+                case SupportVariableCase.SNAKE_UPPER_CASE:  // 下划线(蛇形) + 全大写命名
+                case SupportVariableCase.KEBAB_UPPER_CASE:  // 中划线(连字符/脊柱式) + 全大写命名
+                case SupportVariableCase.SPACE_UPPER_CASE:  // 空格分隔 + 全大写命名
+                case SupportVariableCase.DOT_UPPER_CASE:    // 点分隔 + 全大写命名
                     transformedWords.push(word.toUpperCase());
                     break;
                 default:
