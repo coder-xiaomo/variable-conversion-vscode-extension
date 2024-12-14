@@ -66,8 +66,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 循环转换：记录当前选中内容，并且进行转换
 		let eol: EOL = textEditor.document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
+		// 变量循环转换 2024.04.09
 		CyclicConversionVariable.onUserSelectionUpdated(selections, textList, eol);
-
+		// 路径循环转换 2024.12.14
 		CyclicConversionPath.onUserSelectionUpdated(selections, textList, eol);
 	};
 

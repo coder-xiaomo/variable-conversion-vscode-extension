@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 // docs: https://code.visualstudio.com/api/references/vscode-api#StatusBarItem
 
-let statusBar: vscode.StatusBarItem;
+let statusBarItemList: Array<vscode.StatusBarItem> = [];
 
 /**
  * 创建状态栏按钮
@@ -10,11 +10,29 @@ let statusBar: vscode.StatusBarItem;
  * @since 2024-04-07
  */
 export function createStatusBarItem() {
-    statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-    statusBar.text = '$(find-replace)变量转换';
-    statusBar.command = 'variable-conversion.convertCase';
-    // statusBar.color = 'red';
-    // statusBar.show();
+	// 变量转换状态栏 2024.04.07
+    const createVariableConvertStatusBarItem = () => {
+        const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+        // Icon Listing docs: https://code.visualstudio.com/api/references/icons-in-labels#icon-listing
+        statusBarItem.text = '$(find-replace)变量转换';
+        statusBarItem.command = 'variable-conversion.convertCase';
+        // statusBarItem.color = 'red';
+        // statusBarItem.show();
+        return statusBarItem;
+    };
+	// 路径转换状态栏 2024.12.14
+    const createPathConvertStatusBarItem = () => {
+        const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+        statusBarItem.text = '$(sync-ignored)路径转换'; // italic symbol-null
+        statusBarItem.command = 'variable-conversion.convertPath';
+        statusBarItemList.push(statusBarItem);
+        return statusBarItem;
+    };
+
+    statusBarItemList.push(
+        createVariableConvertStatusBarItem(),
+        createPathConvertStatusBarItem(),
+    );
 }
 
 /**
@@ -23,14 +41,14 @@ export function createStatusBarItem() {
  * @since 2024-04-07
  */
 export function updateStatusBarItemVisable(selectTextLength: number) {
-    if (!statusBar) {
-        return;
-    }
-
     let editor = vscode.window.activeTextEditor;
     if (editor && selectTextLength > 0) {
-        statusBar.show();
+        statusBarItemList.forEach(statusBarItem => {
+            statusBarItem.show();
+        });
         return;
     }
-    statusBar.hide();
+    statusBarItemList.forEach(statusBarItem => {
+        statusBarItem.hide();
+    });
 }
