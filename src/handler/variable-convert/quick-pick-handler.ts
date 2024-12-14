@@ -122,7 +122,7 @@ export function handleQuickPick() {
     // 显示推荐项列表
     vscode.window.showQuickPick(options, {
         matchOnDetail: true,
-        title: '请选择需要转换的命名类型...',
+        title: '请选择需要转换的命名方式...',
         placeHolder: '点击转换，输入关键词可快速选择'
     }).then(pickItem => {
         if (!editor || pickItem === undefined) {

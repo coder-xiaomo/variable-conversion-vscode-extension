@@ -1,9 +1,13 @@
-# 变量命名转换插件 Variable Conversion
+# 变量命名转换助手 — Variable Conversion (VSCode 扩展)
 
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=coder-xiaomo.variable-conversion) [GitHub](https://github.com/coder-xiaomo/variable-conversion-vscode-extension.git) [Gitee](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git)
 
-一个强大的变量名转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
-A powerful variable naming conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and bottom bar.
+一个强大的变量命名及路径风格转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
+A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and status bar.
+
+> 【近期更新】v2.0.0 版本 (2024-12-15)
+>
+> - 支持 Windows / Unix 路径风格转换（可选中文本中的路径，然后使用  `Ctrl + Alt + /` 快捷键，或点击右键菜单、底部状态栏路径转换按钮轻松实现转换）
 
 - ✅ 支持多选区 Support multi-selection
 - ✅ 支持多窗口 Support subwindow
@@ -14,7 +18,7 @@ A powerful variable naming conversion extension. Supports one-key conversion & c
 
 ## 如何使用？ How to Use?
 
-### 循环转换 Cyclic conversion (Beta)
+### 循环转换 Cyclic conversion
 
 选中需要转换的内容，然后按下 `Ctrl + Alt + [` 或 `Ctrl + Alt + ]` 即可前后灵活切换变量命名方式。 <br>
 Select what you want to convert in the editor, and then press `Ctrl + Alt + [` or `Ctrl + Alt + ]` to flexibly convert variable name flexibly.
@@ -48,21 +52,45 @@ Or right-click on the selected text -> Convert string to...
 
 **3. 选择转换目标，转换完成** **Select the conversion target and complete**
 
+### 路径转换 Path Conversion (Beta)
+
+> 该功能仍在 Beta 测试阶段，如您在使用过程中遇到问题，欢迎通过文末联系方式进行反馈。
+>
+> This feature is still in Beta testing stage, if you encounter any problems during use, please give feedback via the contact information at the end of the article.
+
+路径转换与变量转换操作逻辑基本相同，都可以通过 *右键菜单*、*底部状态栏*、*快捷键* 等方式使用，唯一区别是快捷键的不同。
+
+路径转换快捷键为：
+
+- 切换下一个路径风格：`Ctrl + Alt + /`
+-  切换上一个路径风格：`Ctrl + Alt + Shift + /`
+
+![Path Conversion](image/path-conversion.gif)
+
+**注：**目前 `v2.0.0` 版本暂仅支持 `Windows 风格路径` 与 `Unix 风格路径` 互转，所以这两个快捷键目前效果相同。**后续会陆续增加其他更多路径风格**（例如 `Windows Git Bash` 风格，浏览器 `file://` 协议风格等），敬请期待。
+
 ## 快捷键 Shortcut key
 
-| 功能 Feature                                     | 快捷键 shortcut key |
-| ------------------------------------------------ | ------------------- |
-| 变量转换 快速选择 QuickPick                      | Shift + Alt + T     |
-| 循环转换→上一个 Cyclic conversion → Previous one | Ctrl + Alt + [      |
-| 循环转换→下一个 Cyclic conversion → Next one     | Ctrl + Alt + ]      |
+| 功能 Feature                                                 | 快捷键 shortcut key    |
+| ------------------------------------------------------------ | ---------------------- |
+| 变量转换 快速选择 Variable Conversion QuickPick              | Shift + Alt + T        |
+| 变量循环转换→上一个 Variable Cyclic Conversion → Previous one | Ctrl + Alt + [         |
+| 变量循环转换→下一个 Variable Cyclic Conversion → Next one    | Ctrl + Alt + ]         |
+| 路径转换 快速选择 Path Conversion QuickPick                  | Shift + Alt + /        |
+| 路径循环转换→上一个 Path Cyclic conversion → Previous one    | Ctrl + Alt + /         |
+| 路径循环转换→下一个 Path Cyclic conversion → Next one        | Ctrl + Shift + Alt + / |
 
-## 配置项 configurations
+> 若您觉得快捷键使用不顺手，您可在 VSCode 左下角齿轮图标⚙ → 键盘快捷方式中自定义修改快捷键。
+
+## 配置项 Configurations
 
 | 配置项 Configuration Key            | 描述 Description                                             | 配置示例                       | 默认值 |
 | ----------------------------------- | ------------------------------------------------------------ | ------------------------------ | ------ |
 | `variable-conversion.disableFormat` | 定义哪些格式是禁用的<br />Define which formats are disabled. | `["lower_case", "upper_case"]` | `[]`   |
 
 ## 支持的类型 Support Case
+
+### 变量转换
 
 | 类型                                       | Case                     | 举例 e.g.        |
 | ------------------------------------------ | ------------------------ | ---------------- |
@@ -86,6 +114,26 @@ Or right-click on the selected text -> Convert string to...
 | 点分隔 + 全大写命名                        | Dot Upper Case           | FOO.BAR          |
 | 全小写                                     | Lower Case               | foo_bar / foobar |
 | 全大写                                     | Upper Case               | FOO_BAR / FOOBAR |
+
+### 路径转换
+
+现已支持的路径风格：
+
+| 路径风格     | Sttyle        | 举例 e.g.                                      |
+| ------------ | ------------- | ---------------------------------------------- |
+| Windows 风格 | Windows Style | `C:\Windows\System32` <br />`.\public\assets\` |
+| Unix 风格    | Unix Style    | `/usr/bin`<br />`./public/assets/`             |
+
+尚未支持的路径风格：
+
+| 路径风格                   | Case                              | 举例 e.g.                             |
+| -------------------------- | --------------------------------- | ------------------------------------- |
+| 👇未来计划支持              |                                   |                                       |
+| Windows 风格（反斜杠转义） | Windows Style (Backslash Escaped) | `C:\\Windows\\System32`               |
+| Unix 风格（反斜杠转义）    | Unix Style (Backslash Escaped)    | `\/usr\/bin`                          |
+| Windows Git Bash 风格      | Windows Git Bash Style            | `/c/Windows/System32`                 |
+| 👇未来可能支持              |                                   |                                       |
+| 浏览器 `file://` 协议风格  |                                   | `file:///C:/Program%20Files%20(x86)/` |
 
 ## 小提示 Tips
 

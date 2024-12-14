@@ -109,7 +109,7 @@ export function caseConversion(targetCase: SupportVariableCase, str: string, eol
                 case SupportVariableCase.SNAKE_CASE:        // 下划线(蛇形)命名
                 case SupportVariableCase.KEBAB_CASE:        // 中划线(连字符/脊柱式)命名
                 case SupportVariableCase.SPACE_CASE:        // 空格分隔命名
-                case SupportVariableCase.DOT_CASE:          // 点分隔命名x
+                case SupportVariableCase.DOT_CASE:          // 点分隔命名
                     transformedWords.push(word);
                     break;
                 case SupportVariableCase.SNAKE_UPPER_CASE:  // 下划线(蛇形) + 全大写命名

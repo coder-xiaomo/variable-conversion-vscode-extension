@@ -16,3 +16,9 @@ const HELLOWORLD = ''
 // 加空格
 const a = 'hello world'
 ```
+
+```
+D:\Project\variable-conversion-vscode-extension\README.md
+D:\\Project\\variable-conversion-vscode-extension\\README.md
+D:/Project/variable-conversion-vscode-extension/README.md
+```
