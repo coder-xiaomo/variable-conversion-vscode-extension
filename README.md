@@ -67,7 +67,7 @@ Or right-click on the selected text -> Convert string to...
 
 ![Path Conversion](image/path-conversion.gif)
 
-**注：**目前 `v2.0.0` 版本暂仅支持 `Windows 风格路径` 与 `Unix 风格路径` 互转，所以这两个快捷键目前效果相同。**后续会陆续增加其他更多路径风格**（例如 `Windows Git Bash` 风格，浏览器 `file://` 协议风格等），敬请期待。
+**注：** 目前 `v2.0.0` 版本暂仅支持 `Windows 风格路径` 与 `Unix 风格路径` 互转，所以这两个快捷键目前效果相同。**后续会陆续增加其他更多路径风格**（例如 `Windows Git Bash` 风格，浏览器 `file://` 协议风格等），敬请期待。
 
 ## 快捷键 Shortcut key
 
