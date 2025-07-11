@@ -5,7 +5,7 @@
 一个强大的变量命名及路径风格转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
 A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and status bar.
 
-> 【近期更新】v2.0.0 版本 (2024-12-15)
+> **【近期更新】v2.0.1 版本 (2025-07-12)**
 >
 > - 支持 Windows / Unix 路径风格转换（可选中文本中的路径，然后使用  `Ctrl + Alt + /` 快捷键，或点击右键菜单、底部状态栏路径转换按钮轻松实现转换）
 

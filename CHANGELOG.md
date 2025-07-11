@@ -21,7 +21,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+### Internal
+
 -->
+
+## 2.0.1
+
+### Internal
+
+- Upgrade plugin dependency versions. (升级插件依赖版本)
+- Modify eslint configuration. (调整 eslint 配置)
 
 ## 2.0.0
 
