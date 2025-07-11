@@ -86,7 +86,7 @@ Or right-click on the selected text -> Convert string to...
 
 | 配置项 Configuration Key            | 描述 Description                                             | 配置示例                       | 默认值 |
 | ----------------------------------- | ------------------------------------------------------------ | ------------------------------ | ------ |
-| `variable-conversion.disableFormat` | 定义哪些格式是禁用的<br />Define which formats are disabled. | `["lower_case", "upper_case"]` | `[]`   |
+| `variable-conversion.enabledFormats` | 配置启用的变量命名方式<br />Configuration of Enabled Variable Naming Conventions. | `{ "xxxCase.enabled": boolean, ... }` | 见配置项   |
 
 ## 支持的类型 Support Case
 

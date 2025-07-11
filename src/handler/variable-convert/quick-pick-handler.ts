@@ -98,17 +98,17 @@ export function handleQuickPick() {
 
     // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
     // 获取用户配置
-    const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+    const enabledFormats = getUserConfigurations<Record<string, boolean>>('enabledFormats') || {};
     // 排除禁用的选项
     const enabledQuickPickSupportCases = [];
     for (const quickPick of quickPickSupportCases) {
-        if (disableFormatList.includes(quickPick.settingsKey)) {
+        if (enabledFormats[quickPick.settingsKey] === false) {
             continue;
         }
         enabledQuickPickSupportCases.push(quickPick);
     }
     if (enabledQuickPickSupportCases.length === 0) {
-        vscode.window.showInformationMessage('所有格式都已被配置为禁用，请修改配置 `variable-conversion.disableFormat` 后重试\nAll formats have been configured to disable. Modify the `variable-conversion.disableFormat` configuration and try again.');
+        vscode.window.showInformationMessage('所有格式都已被配置为禁用，请修改配置 `variable-conversion.enabledFormats` 后重试\nAll formats have been configured to disable. Modify the `variable-conversion.enabledFormats` configuration and try again.');
         return;
     }
 
