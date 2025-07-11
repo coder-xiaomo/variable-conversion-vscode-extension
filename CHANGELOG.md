@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Internal
 
+- Add `.editorconfig` file. (添加 `.editorconfig` 文件)
 - Upgrade plugin dependency versions. (升级插件依赖版本)
 - Modify eslint configuration. (调整 eslint 配置)
 
