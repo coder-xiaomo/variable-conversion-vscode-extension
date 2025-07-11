@@ -5,14 +5,20 @@
 一个强大的变量命名及路径风格转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
 A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and status bar.
 
-> **【近期更新】v2.0.1 版本 (2025-07-12)**
+> **【近期更新】**
+>
+> **v2.1.0 (2025-07-14)**
+>
+> - 支持仅开启部分目标转换格式 (优化 VSCode 配置项)
+>
+> **v2.0.0 (2024-12-15)**
 >
 > - 支持 Windows / Unix 路径风格转换（可选中文本中的路径，然后使用  `Ctrl + Alt + /` 快捷键，或点击右键菜单、底部状态栏路径转换按钮轻松实现转换）
 
 - ✅ 支持多选区 Support multi-selection
 - ✅ 支持多窗口 Support subwindow
 - ✅ 支持撤回 & 重做 Support undo & redo (Ctrl + Z / Ctrl + Y)
-- ✅ 支持禁用部分目标转换格式 Supports disabling some target conversion formats
+- ✅ 支持仅开启部分目标转换格式 Support enabling only partial target conversion formats
 
 > 🔭 Tips for Chinese users: 如果您无法看到下文图片，请[点这里](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension/blob/main/README.md)查看
 
