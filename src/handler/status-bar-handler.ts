@@ -10,7 +10,7 @@ let statusBarItemList: Array<vscode.StatusBarItem> = [];
  * @since 2024-04-07
  */
 export function createStatusBarItem() {
-	// 变量转换状态栏 2024.04.07
+    // 变量转换状态栏 2024.04.07
     const createVariableConvertStatusBarItem = () => {
         const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
         // Icon Listing docs: https://code.visualstudio.com/api/references/icons-in-labels#icon-listing
@@ -20,7 +20,7 @@ export function createStatusBarItem() {
         // statusBarItem.show();
         return statusBarItem;
     };
-	// 路径转换状态栏 2024.12.14
+    // 路径转换状态栏 2024.12.14
     const createPathConvertStatusBarItem = () => {
         const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
         statusBarItem.text = '$(sync-ignored)路径转换'; // italic symbol-null

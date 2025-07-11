@@ -2,11 +2,11 @@
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、状态栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、点分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, dot, lower, upper case, and more.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
-    "vscode": "^1.87.0"
+    "vscode": "^1.102.0"
   },
   "categories": [
     "Other"
@@ -402,20 +402,20 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src",
     "test": "vscode-test",
-    "package": "echo \"start `vsce package`\" & vsce package",
+    "package": "vsce package",
     "publish": "vsce publish"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
-    "@types/vscode": "^1.87.0",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
-    "@vscode/test-cli": "^0.0.8",
-    "@vscode/test-electron": "^2.3.9",
-    "eslint": "^8.57.0",
-    "typescript": "^5.3.3"
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
   }
 }

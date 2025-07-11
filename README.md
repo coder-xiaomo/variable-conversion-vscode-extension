@@ -5,7 +5,7 @@
 一个强大的变量命名及路径风格转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
 A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and status bar.
 
-> 【近期更新】v2.0.0 版本 (2024-12-15)
+> **【近期更新】v2.0.1 版本 (2025-07-12)**
 >
 > - 支持 Windows / Unix 路径风格转换（可选中文本中的路径，然后使用  `Ctrl + Alt + /` 快捷键，或点击右键菜单、底部状态栏路径转换按钮轻松实现转换）
 
@@ -67,7 +67,7 @@ Or right-click on the selected text -> Convert string to...
 
 ![Path Conversion](image/path-conversion.gif)
 
-**注：**目前 `v2.0.0` 版本暂仅支持 `Windows 风格路径` 与 `Unix 风格路径` 互转，所以这两个快捷键目前效果相同。**后续会陆续增加其他更多路径风格**（例如 `Windows Git Bash` 风格，浏览器 `file://` 协议风格等），敬请期待。
+**注：** 目前 `v2.0.0` 版本暂仅支持 `Windows 风格路径` 与 `Unix 风格路径` 互转，所以这两个快捷键目前效果相同。**后续会陆续增加其他更多路径风格**（例如 `Windows Git Bash` 风格，浏览器 `file://` 协议风格等），敬请期待。
 
 ## 快捷键 Shortcut key
 
