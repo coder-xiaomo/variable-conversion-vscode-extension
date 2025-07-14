@@ -25,7 +25,7 @@ import { commands as pathCommands } from './core/path-convert/types/SupportPathF
 import * as CyclicConversionPath from './core/path-convert/cyclic-conversion';
 
 // Common
-import { createStatusBarItem, updateStatusBarItemVisable } from './handler/status-bar-handler';
+import { createStatusBarItem, updateStatusBarItemVisible } from './handler/status-bar-handler';
 import { EOL } from './types/EOLType';
 import { getUserConfigurations } from './utils/user-configuration';
 
@@ -77,7 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		// 判断是否展示状态栏按钮
-		updateStatusBarItemVisable(selectTextLength);
+		updateStatusBarItemVisible(selectTextLength);
 
 		// 循环转换：记录当前选中内容，并且进行转换
 		let eol: EOL = textEditor.document.eol === vscode.EndOfLine.CRLF ? '\r\n' : '\n';
@@ -104,7 +104,7 @@ export function activate(context: vscode.ExtensionContext) {
 			onTextEditorSelectionChangeCallback(textEditor, selections);
 		} else { // 进入 else 的场景举例: 从[代码编辑器]切换到[设置页]
 			// 判断是否展示状态栏按钮
-			updateStatusBarItemVisable(selectTextLength);
+			updateStatusBarItemVisible(selectTextLength);
 		}
 	});
 
