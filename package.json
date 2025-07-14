@@ -2,7 +2,7 @@
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持右键菜单、快捷键、状态栏等多种方式使用，支持小驼峰、大驼峰(帕斯卡)、下划线(蛇形)、中划线(连字符/脊柱式)、空格分隔、点分隔、全小写、全大写等常用命名方式(及组合)转换。 \nA powerful variable naming conversion extension. You can use it through the editer menu, shortcut keys and bottom bar. Support camel, pascal, snake, kebab(spinal), space, dot, lower, upper case, and more.",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
@@ -324,9 +324,141 @@
     "configuration": {
       "title": "Variable Conversion 变量转换",
       "properties": {
+        "variable-conversion.enabledFormats": {
+          "type": "object",
+          "description": "Tags and options configured here will be used by the Add Tags command to add tags to struct fields. If promptForTags is true, then user will be prompted for tags and options. By default, json tags are added.",
+          "markdownDescription": "配置启用的变量命名方式\n\nConfiguration of Enabled Variable Naming Conventions.\n\n&nbsp;\n\n🌰 e.g. *Mike like eat ice-cream*\n\n对于这个句子，不同命名方式如以下示例：\n\nFor this sentence, different naming conventions are as follows:\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)",
+          "scope": "window",
+          "properties": {
+            "lowerCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全小写命名] lower case (全小写)\n 🌰e.g. mike like eat ice-cream"
+            },
+            "snakeCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全小写命名] snake case (下划线)\n 🌰e.g. mike_like_eat_ice_cream"
+            },
+            "kebabCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全小写命名] kebab case (连字符)\n 🌰e.g. mike-like-eat-ice-cream"
+            },
+            "spaceCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全小写命名] space case (空格)\n 🌰e.g. mike like eat ice cream"
+            },
+            "dotCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全小写命名] dot case (点)\n 🌰e.g. mike.like.eat.ice.cream"
+            },
+            "upperCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全大写命名] upper case (全大写)\n 🌰e.g. MIKE LIKE EAT ICE-CREAM"
+            },
+            "snakeUpperCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全大写命名] snake upper case (下划线)\n 🌰e.g. MIKE_LIKE_EAT_ICE_CREAM"
+            },
+            "kebabUpperCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全大写命名] kebab upper case (连字符)\n 🌰e.g. MIKE-LIKE-EAT-ICE-CREAM"
+            },
+            "spaceUpperCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全大写命名] space upper case (空格)\n 🌰e.g. MIKE LIKE EAT ICE CREAM"
+            },
+            "dotUpperCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[全大写命名] dot upper case (点)\n 🌰e.g. MIKE.LIKE.EAT.ICE.CREAM"
+            },
+            "pascalCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[大驼峰命名] pascal case (大驼峰)\n 🌰e.g. MikeLikeEatIceCream"
+            },
+            "snakePascalCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[大驼峰命名] snake pascal case (下划线)\n 🌰e.g. Mike_Like_Eat_Ice_Cream"
+            },
+            "kebabPascalCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[大驼峰命名] kebab pascal case (连字符)\n 🌰e.g. Mike-Like-Eat-Ice-Cream"
+            },
+            "spacePascalCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[大驼峰命名] space pascal case (空格)\n 🌰e.g. Mike Like Eat Ice Cream"
+            },
+            "dotPascalCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[大驼峰命名] dot pascal case (点)\n 🌰e.g. Mike.Like.Eat.Ice.Cream"
+            },
+            "camelCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[小驼峰命名] camel case (小驼峰)\n 🌰e.g. mikeLikeEatIceCream"
+            },
+            "snakeCamelCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[小驼峰命名] snake camel case (下划线)\n 🌰e.g. mike_Like_Eat_Ice_Cream"
+            },
+            "kebabCamelCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[小驼峰命名] kebab camel case (连字符)\n 🌰e.g. mike-Like-Eat-Ice-Cream"
+            },
+            "spaceCamelCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[小驼峰命名] space camel case (空格)\n 🌰e.g. mike Like Eat Ice Cream"
+            },
+            "dotCamelCase.enabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "[小驼峰命名] dot camel case (点)\n 🌰e.g. mike.Like.Eat.Ice.Cream"
+            }
+          },
+          "additionalProperties": false,
+          "default": {
+            "lowerCase.enabled": true,
+            "snakeCase.enabled": true,
+            "kebabCase.enabled": true,
+            "spaceCase.enabled": true,
+            "dotCase.enabled": false,
+            "upperCase.enabled": true,
+            "snakeUpperCase.enabled": true,
+            "kebabUpperCase.enabled": false,
+            "spaceUpperCase.enabled": true,
+            "dotUpperCase.enabled": false,
+            "pascalCase.enabled": true,
+            "snakePascalCase.enabled": false,
+            "kebabPascalCase.enabled": false,
+            "spacePascalCase.enabled": false,
+            "dotPascalCase.enabled": false,
+            "camelCase.enabled": true,
+            "snakeCamelCase.enabled": false,
+            "kebabCamelCase.enabled": false,
+            "spaceCamelCase.enabled": false,
+            "dotCamelCase.enabled": false
+          }
+        },
         "variable-conversion.disableFormat": {
           "order": 1,
           "markdownDescription": "定义哪些变量命名方式是禁用的\n\nDefine which variable formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",
+          "markdownDeprecationMessage": "**Deprecated**: Please use `#variable-conversion.enabledFormats#` instead.\n\n**已弃用**，请使用 `#variable-conversion.enabledFormats#`。",
           "type": "array",
           "items": {
             "type": "string",

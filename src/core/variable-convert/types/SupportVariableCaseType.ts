@@ -278,114 +278,142 @@ const keyword = {
     ],
 };
 
+interface Command {
+    command: string;
+    targetCase: SupportVariableCase;
+    settingsKey: string;
+    // variable-conversion.enabledFormats 中的配置项
+    enableSettingsKey: string;
+}
+
 /**
  * 接管的变量转换命令
  */
-export const commands: Array<{ command: string; targetCase: SupportVariableCase; settingsKey: string }> = [
+export const commands: Array<Command> = [
     {
         command: 'variable-conversion.toCamelCase',
         targetCase: SupportVariableCase.CAMEL_CASE,
-        settingsKey: 'camel_case'
+        settingsKey: 'camel_case',
+        enableSettingsKey: 'camelCase.enabled',
     },
     {
         command: 'variable-conversion.toPascalCase',
         targetCase: SupportVariableCase.PASCAL_CASE,
-        settingsKey: 'pascal_case'
+        settingsKey: 'pascal_case',
+        enableSettingsKey: 'pascalCase.enabled',
     },
     // +++++++++++++++++++++++++++++++++++++++++++++++
     {
         command: 'variable-conversion.toSnakeCase',
         targetCase: SupportVariableCase.SNAKE_CASE,
-        settingsKey: 'snake_case'
+        settingsKey: 'snake_case',
+        enableSettingsKey: 'snakeCase.enabled',
     },
     {
         command: 'variable-conversion.toSnakeUpperCase',
         targetCase: SupportVariableCase.SNAKE_UPPER_CASE,
-        settingsKey: 'snake_upper_case'
+        settingsKey: 'snake_upper_case',
+        enableSettingsKey: 'snakeUpperCase.enabled',
     },
     {
         command: 'variable-conversion.toSnakePascalCase',
         targetCase: SupportVariableCase.SNAKE_PASCAL_CASE,
-        settingsKey: 'snake_pascal_case'
+        settingsKey: 'snake_pascal_case',
+        enableSettingsKey: 'snakePascalCase.enabled',
     },
     {
         command: 'variable-conversion.toSnakeCamelCase',
         targetCase: SupportVariableCase.SNAKE_CAMEL_CASE,
-        settingsKey: 'snake_camel_case'
+        settingsKey: 'snake_camel_case',
+        enableSettingsKey: 'snakeCamelCase.enabled',
     },
     // +++++++++++++++++++++++++++++++++++++++++++++++
     {
         command: 'variable-conversion.toKebabCase',
         targetCase: SupportVariableCase.KEBAB_CASE,
-        settingsKey: 'kebab_case'
+        settingsKey: 'kebab_case',
+        enableSettingsKey: 'kebabCase.enabled',
     },
     {
         command: 'variable-conversion.toKebabUpperCase',
         targetCase: SupportVariableCase.KEBAB_UPPER_CASE,
-        settingsKey: 'kebab_upper_case'
+        settingsKey: 'kebab_upper_case',
+        enableSettingsKey: 'kebabUpperCase.enabled',
     },
     {
         command: 'variable-conversion.toKebabPascalCase',
         targetCase: SupportVariableCase.KEBAB_PASCAL_CASE,
-        settingsKey: 'kebab_pascal_case'
+        settingsKey: 'kebab_pascal_case',
+        enableSettingsKey: 'kebabPascalCase.enabled',
     },
     {
         command: 'variable-conversion.toKebabCamelCase',
         targetCase: SupportVariableCase.KEBAB_CAMEL_CASE,
-        settingsKey: 'kebab_camel_case'
+        settingsKey: 'kebab_camel_case',
+        enableSettingsKey: 'kebabCamelCase.enabled',
     },
     // +++++++++++++++++++++++++++++++++++++++++++++++
     {
         command: 'variable-conversion.toSpaceCase',
         targetCase: SupportVariableCase.SPACE_CASE,
-        settingsKey: 'space_case'
+        settingsKey: 'space_case',
+        enableSettingsKey: 'spaceCase.enabled',
     },
     {
         command: 'variable-conversion.toSpaceUpperCase',
         targetCase: SupportVariableCase.SPACE_UPPER_CASE,
-        settingsKey: 'space_upper_case'
+        settingsKey: 'space_upper_case',
+        enableSettingsKey: 'spaceUpperCase.enabled',
     },
     {
         command: 'variable-conversion.toSpacePascalCase',
         targetCase: SupportVariableCase.SPACE_PASCAL_CASE,
-        settingsKey: 'space_pascal_case'
+        settingsKey: 'space_pascal_case',
+        enableSettingsKey: 'spacePascalCase.enabled',
     },
     {
         command: 'variable-conversion.toSpaceCamelCase',
         targetCase: SupportVariableCase.SPACE_CAMEL_CASE,
-        settingsKey: 'space_camel_case'
+        settingsKey: 'space_camel_case',
+        enableSettingsKey: 'spaceCamelCase.enabled',
     },
     // +++++++++++++++++++++++++++++++++++++++++++++++
     {
         command: 'variable-conversion.toDotCase',
         targetCase: SupportVariableCase.DOT_CASE,
-        settingsKey: 'dot_case'
+        settingsKey: 'dot_case',
+        enableSettingsKey: 'dotCase.enabled',
     },
     {
         command: 'variable-conversion.toDotUpperCase',
         targetCase: SupportVariableCase.DOT_UPPER_CASE,
-        settingsKey: 'dot_upper_case'
+        settingsKey: 'dot_upper_case',
+        enableSettingsKey: 'dotUpperCase.enabled',
     },
     {
         command: 'variable-conversion.toDotPascalCase',
         targetCase: SupportVariableCase.DOT_PASCAL_CASE,
-        settingsKey: 'dot_pascal_case'
+        settingsKey: 'dot_pascal_case',
+        enableSettingsKey: 'dotPascalCase.enabled',
     },
     {
         command: 'variable-conversion.toDotCamelCase',
         targetCase: SupportVariableCase.DOT_CAMEL_CASE,
-        settingsKey: 'dot_camel_case'
+        settingsKey: 'dot_camel_case',
+        enableSettingsKey: 'dotCamelCase.enabled',
     },
     // +++++++++++++++++++++++++++++++++++++++++++++++
     {
         command: 'variable-conversion.toLowerCase',
         targetCase: SupportVariableCase.LOWER_CASE,
-        settingsKey: 'lower_case'
+        settingsKey: 'lower_case',
+        enableSettingsKey: 'lowerCase.enabled',
     },
     {
         command: 'variable-conversion.toUpperCase',
         targetCase: SupportVariableCase.UPPER_CASE,
-        settingsKey: 'upper_case'
+        settingsKey: 'upper_case',
+        enableSettingsKey: 'upperCase.enabled',
     },
 ];
 

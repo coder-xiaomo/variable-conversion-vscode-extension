@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 2.1.0
+
+### Changed
+
+- **[BREAKING!!!]** Deprecate `variable-conversion.disableFormat`, please use `variable-conversion.enabledFormats` instead. (移除 `variable-conversion.disableFormat` 配置项，请使用 `variable-conversion.enabledFormats`)
+- Support enabling only partial target conversion formats. (支持仅开启部分目标转换格式)
+
 ## 2.0.1
 
 ### Internal
