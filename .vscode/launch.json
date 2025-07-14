@@ -10,7 +10,8 @@
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
-				"--extensionDevelopmentPath=${workspaceFolder}"
+				"--extensionDevelopmentPath=${workspaceFolder}",
+				"--disable-extensions", // 调试时禁用其他扩展
 			],
 			"outFiles": [
 				"${workspaceFolder}/out/**/*.js"
