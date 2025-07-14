@@ -64,12 +64,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
 		// 获取用户配置
-		const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+		const enabledFormats = getUserConfigurations<Record<string, boolean>>('enabledFormats') || {};
 		const disablePathFormatList = getUserConfigurations<Array<string>>('disablePathFormat') || [];
 		// 更新右键菜单每一项是否展示
 		// 变量转换右键菜单visible 2024.07.29
-		for (const { settingsKey } of variableCommands) {
-			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, disableFormatList.includes(settingsKey));
+		for (const { settingsKey, enableSettingsKey } of variableCommands) {
+			vscode.commands.executeCommand('setContext', '_isHideSubMenuItem_' + settingsKey, enabledFormats[enableSettingsKey] === false);
 		}
 		// 路径转换右键菜单visible 2024.12.14
 		for (const { settingsKey } of pathCommands) {

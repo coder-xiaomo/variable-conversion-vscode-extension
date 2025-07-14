@@ -66,7 +66,7 @@ function lazyConvert() {
     }
 
     // 获取用户配置
-    const disableFormatList = getUserConfigurations<Array<string>>('disableFormat') || [];
+    const enabledFormats = getUserConfigurations<Record<string, boolean>>('enabledFormats') || {};
 
     const textList = userSelection.currentSelectionsText;
     // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
@@ -75,7 +75,7 @@ function lazyConvert() {
     for (const cyclicConvertCase of cyclicConvertCaseOrder) {
         // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
         // 跳过禁用的目标格式
-        if (disableFormatList.includes(cyclicConvertCase.settingsKey)) {
+        if (enabledFormats[cyclicConvertCase.settingsKey] === false) {
             continue;
         }
 
