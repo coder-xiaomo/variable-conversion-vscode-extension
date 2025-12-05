@@ -12,20 +12,20 @@ const DOUBLE_RIGHT_SLASH = '\\\\';
 export function pathConversion(targetPathType: SupportPathFormat, input: string, eol: EOL, cutText: Array<TransformTextResult> | undefined = undefined): string {
     let resultPath;
 
-    let isSeperator = false;
+    let isSeparator = false;
     switch (targetPathType) {
         case SupportPathFormat.Windows:
             // 将其中的 / 替换为 \
             resultPath = Array.from(input).map((char: string) => {
                 if (char !== LEFT_SLASH) {
                     // 当前字符不是 /
-                    isSeperator = false;
+                    isSeparator = false;
                     return char;
                 } else {
                     // 当前字符是 /
-                    if (!isSeperator) {
+                    if (!isSeparator) {
                         // 上一字符不是 /
-                        isSeperator = true;
+                        isSeparator = true;
                         return RIGHT_SLASH; // 替换成 \
                     }
                     // 上一字符是 /
@@ -38,13 +38,13 @@ export function pathConversion(targetPathType: SupportPathFormat, input: string,
             resultPath = Array.from(input).map((char: string) => {
                 if (char !== RIGHT_SLASH) {
                     // 当前字符不是 \
-                    isSeperator = false;
+                    isSeparator = false;
                     return char;
                 } else {
                     // 当前字符是 \
-                    if (!isSeperator) {
+                    if (!isSeparator) {
                         // 上一字符不是 \
-                        isSeperator = true;
+                        isSeparator = true;
                         return LEFT_SLASH; // 替换成 /
                     }
                     // 上一字符是 \

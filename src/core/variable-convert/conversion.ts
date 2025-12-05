@@ -1,7 +1,7 @@
 import { EOL } from '../../types/EOLType';
 import { SupportVariableCase } from './types/SupportVariableCaseType';
 import { TransformTextResult } from '../../types/TransformTextResultType';
-import { transformMutliLineText, transformText } from '../../utils/transform';
+import { transformMultiLineText } from '../../utils/transform';
 
 /**
  * 统一文本转换函数
@@ -52,7 +52,7 @@ export function caseConversion(targetCase: SupportVariableCase, str: string, eol
     }
 
     // Cut text 切割文本
-    const results: Array<TransformTextResult> = cutText === undefined ? transformMutliLineText(str) : cutText;
+    const results: Array<TransformTextResult> = cutText === undefined ? transformMultiLineText(str) : cutText;
     // console.log('results', results);
 
     const transformedLines: Array<string> = [];

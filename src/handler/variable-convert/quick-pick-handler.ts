@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import QuickPickItemEx from "../types/QuickPickItemExType";
 import { QuickPickSupportCaseItem, quickPickSupportCases } from '../../core/variable-convert/types/SupportVariableCaseType';
 import { TransformTextResult } from '../../types/TransformTextResultType';
-import { transformMutliSelectionText } from '../../utils/transform';
+import { transformMultiSelectionText } from '../../utils/transform';
 import { EOL } from '../../types/EOLType';
 import { caseConversion } from '../../core/variable-convert/conversion';
 import { isStringArrayEqual } from '../../utils/utils';
@@ -21,7 +21,7 @@ interface RecommendItem {
  */
 function generateOptionsBasedOnText(textList: string[], eol: EOL, enabledQuickPickSupportCases: Array<QuickPickSupportCaseItem>): Array<QuickPickItemEx> {
     // Cut text 切割文本
-    const resultsList: Array<TransformTextResult[]> = transformMutliSelectionText(textList);
+    const resultsList: Array<TransformTextResult[]> = transformMultiSelectionText(textList);
 
     const mergeResultList: Array<RecommendItem> = [];
     for (const quickPick of enabledQuickPickSupportCases) {

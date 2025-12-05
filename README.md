@@ -3,7 +3,7 @@
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=coder-xiaomo.variable-conversion) [GitHub](https://github.com/coder-xiaomo/variable-conversion-vscode-extension.git) [Gitee](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git)
 
 一个强大的变量命名及路径风格转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
-A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editer menu, shortcut keys and status bar.
+A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editor menu, shortcut keys and status bar.
 
 > **【近期更新】**
 >
@@ -126,7 +126,7 @@ Or right-click on the selected text -> Convert string to...
 
 现已支持的路径风格：
 
-| 路径风格     | Sttyle        | 举例 e.g.                                      |
+| 路径风格     | Style         | 举例 e.g.                                      |
 | ------------ | ------------- | ---------------------------------------------- |
 | Windows 风格 | Windows Style | `C:\Windows\System32` <br />`.\public\assets\` |
 | Unix 风格    | Unix Style    | `/usr/bin`<br />`./public/assets/`             |
