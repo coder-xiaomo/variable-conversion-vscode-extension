@@ -5,7 +5,7 @@ import { getUserConfigurations } from '../../utils/user-configuration';
 /**
  * 显示当前配置的格式顺序信息
  */
-export function showConvertCaseOrderDialog() {
+export function showConvertCaseDetailDialog() {
     // 获取用户配置的格式顺序
     const formatOrder = getUserConfigurations<string[]>('formatOrder') || [];
     // 获取启用的格式
@@ -120,7 +120,7 @@ export function showConvertCaseOrderDialog() {
 
     // 显示信息弹窗
     vscode.window.showInformationMessage<vscode.MessageItem>(
-        '格式顺序配置信息',
+        '变量转换功能配置信息',
         { modal: true, detail: message.join('') },
         // 弹窗按钮
         { title: '插件全部配置' },

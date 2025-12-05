@@ -17,7 +17,7 @@ import handleEditorReplaceVariable from './handler/variable-convert/editor-subme
 import { handleQuickPick as handleQuickPickVariable } from './handler/variable-convert/quick-pick-handler';
 import { commands as variableCommands } from './core/variable-convert/types/SupportVariableCaseType';
 import * as CyclicConversionVariable from './core/variable-convert/cyclic-conversion';
-import { showConvertCaseOrderDialog } from './core/variable-convert/show-convert-case-order-dialog';
+import { showConvertCaseDetailDialog } from './core/variable-convert/show-convert-case-order-dialog';
 
 // Path Convert
 import handleEditorReplacePath from './handler/path-convert/editor-submenu-handler';
@@ -158,8 +158,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(loopConvertCaseNextDisposable);
 
 	// 注册显示格式顺序信息的命令
-	let showConvertCaseOrderDialogDisposable = vscode.commands.registerCommand('variable-conversion.showConvertCaseOrderDialog', showConvertCaseOrderDialog);
-	context.subscriptions.push(showConvertCaseOrderDialogDisposable);
+	let showConvertCaseDetailDialogDisposable = vscode.commands.registerCommand('variable-conversion.showConvertCaseDetailDialog', showConvertCaseDetailDialog);
+	context.subscriptions.push(showConvertCaseDetailDialogDisposable);
 
 
 	/**
