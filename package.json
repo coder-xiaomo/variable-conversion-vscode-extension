@@ -54,6 +54,10 @@
         "when": "editorTextFocus"
       },
       {
+        "command": "variable-conversion.showConvertCaseOrderDialog",
+        "key": "ctrl+alt+\\"
+      },
+      {
         "command": "variable-conversion.convertPath",
         "key": "shift+alt+/",
         "when": "editorTextFocus"
@@ -457,7 +461,7 @@
         },
         "variable-conversion.formatOrder": {
           "type": "array",
-          "markdownDescription": "配置变量命名方式的显示顺序\n\nConfigure the display order of variable naming conventions.\n\n该配置中的格式名称必须与enabledFormats中的保持一致。如果某个格式在enabledFormats中被禁用，则即使在formatOrder中配置也不会显示。\n\nFormat names in this configuration must be consistent with those in enabledFormats. If a format is disabled in enabledFormats, it will not be displayed even if configured in formatOrder.\n\n&nbsp;\n\n🌰 e.g. `[\"camel_case\", \"snake_case\", \"pascal_case\"]`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)",
+          "markdownDescription": "配置变量命名方式的显示顺序\n\nConfigure the display order of variable naming conventions.\n\n该配置中的格式名称必须与enabledFormats中的保持一致。如果某个格式在enabledFormats中被禁用，则即使在formatOrder中配置也不会显示。\n\nFormat names in this configuration must be consistent with those in enabledFormats. If a format is disabled in enabledFormats, it will not be displayed even if configured in formatOrder.\n\n&nbsp;\n\n🌰 e.g. `[\"camel_case\", \"snake_case\", \"pascal_case\"]`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n[查看当前配置顺序](command:variable-conversion.showConvertCaseOrderDialog)",
           "scope": "window",
           "items": {
             "type": "string",
