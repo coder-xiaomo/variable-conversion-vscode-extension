@@ -7,7 +7,7 @@ import { variableConvertTestGroups } from './test-case/variable-convert-test-cas
 import { pathConvertTestGroups } from './test-case/path-convert-test-case';
 import { VariableTestCase, VariableTestCaseGroup } from './test-case/types/VariableTestCaseType';
 import { PathTestCase, PathTestCaseGroup } from './test-case/types/PathTestCaseType';
-import { transformMutliLineText, transformText } from '../utils/transform';
+import { transformMultiLineText } from '../utils/transform';
 import { caseConversion } from '../core/variable-convert/conversion';
 import { pathConversion } from '../core/path-convert/conversion';
 import { SupportVariableCase } from '../core/variable-convert/types/SupportVariableCaseType';
@@ -49,7 +49,7 @@ suite('Extension Test: run variable convert test case', () => {
 				for (const input of inputList) {
 					// console.log('input', '->' + input + '<-');
 					// 验证 transformText
-					const transformTextResult: Array<TransformTextResult> = transformMutliLineText(input);
+					const transformTextResult: Array<TransformTextResult> = transformMultiLineText(input);
 					const results = transformTextResult.map(res => res.result);
 					for (let index = 0; index < testCase.transformText.length; index++) {
 						const correctValue = testCase.transformText[index];

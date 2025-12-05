@@ -40,7 +40,7 @@ export function createStatusBarItem() {
  *
  * @since 2024-04-07
  */
-export function updateStatusBarItemVisable(selectTextLength: number) {
+export function updateStatusBarItemVisible(selectTextLength: number) {
     let editor = vscode.window.activeTextEditor;
     if (editor && selectTextLength > 0) {
         statusBarItemList.forEach(statusBarItem => {

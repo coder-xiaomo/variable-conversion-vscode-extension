@@ -9,8 +9,8 @@ const logDebugInfo = false;
  * @returns
  * @since 2024-04-03
  */
-export function transformMutliSelectionText(selectionInputs: string[]): Array<TransformTextResult[]> {
-    return selectionInputs.map(selectionInput => transformMutliLineText(selectionInput));
+export function transformMultiSelectionText(selectionInputs: string[]): Array<TransformTextResult[]> {
+    return selectionInputs.map(selectionInput => transformMultiLineText(selectionInput));
 }
 
 /**
@@ -20,7 +20,7 @@ export function transformMutliSelectionText(selectionInputs: string[]): Array<Tr
  * @returns
  * @since 2024-04-03
  */
-export function transformMutliLineText(multiLineInput: string): TransformTextResult[] {
+export function transformMultiLineText(multiLineInput: string): TransformTextResult[] {
     const results: TransformTextResult[] = [];
     const lines = multiLineInput.split(/\r?\n/);
     for (const line of lines) {

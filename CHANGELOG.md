@@ -25,6 +25,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 2.2.0
+
+### Added
+
+- Add new configuration `variable-conversion.formatOrder` to customize the display order of variable naming conventions. (新增 `variable-conversion.formatOrder` 配置项，用于自定义变量命名方式的显示顺序)
+- Add new command `variable-conversion.showConvertCaseDetailDialog` to display current format configuration. (新增 `variable-conversion.showConvertCaseDetailDialog` 命令，用于显示当前配置的格式信息)
+- Add clickable link for the configuration description. (在配置项描述中添加了点击跳转超链接)
+- Add shortcut key `Ctrl + Alt + \` to trigger format order info display dialog. (新增快捷键 `Ctrl + Alt + \` 用于触发显示格式顺序弹窗)
+- Support displaying duplicate and invalid items in format information dialog. (支持在信息弹窗中显示配置的重复项和无效项)
+- Add buttons in format information dialog for quick navigation to corresponding settings. (在格式弹窗中添加按钮，支持快捷跳转至设置页对应配置项)
+
+### Improved
+
+- Improve cyclic conversion to follow user-configured formatOrder. (改进了循环转换功能，使其遵循用户配置的formatOrder顺序)
+
 ## 2.1.0
 
 ### Changed
