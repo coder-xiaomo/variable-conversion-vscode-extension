@@ -12,7 +12,7 @@ const QuickPickLabelMaxLength = 60;
 
 interface RecommendItem {
     conversionText: Array<string>
-    transforTo: string[]
+    transformTo: string[]
     keyword: string[]
 }
 
@@ -37,14 +37,14 @@ function generateOptionsBasedOnText(textList: string[], eol: EOL, enabledQuickPi
         if (recommendItem === undefined) {
             let item: RecommendItem = {
                 conversionText: conversionResults,
-                transforTo: [quickPick.shortName], // quickPick.name
+                transformTo: [quickPick.shortName], // quickPick.name
                 keyword: quickPick.keyword,
             };
             mergeResultList.push(item);
             continue;
         }
 
-        recommendItem.transforTo.push(quickPick.shortName); // quickPick.name
+        recommendItem.transformTo.push(quickPick.shortName); // quickPick.name
         recommendItem.keyword = Array.from(new Set(recommendItem.keyword.concat(quickPick.keyword))); // 关键词去重
     }
 
@@ -68,7 +68,7 @@ function generateOptionsBasedOnText(textList: string[], eol: EOL, enabledQuickPi
             label: conversionTextForDisplay.length >= QuickPickLabelMaxLength
                 ? (conversionTextForDisplay.substring(0, QuickPickLabelMaxLength - 3) + '...')
                 : conversionTextForDisplay,
-            description: `转换为 ${recommendItem.transforTo.join(' / ')}`,
+            description: `转换为 ${recommendItem.transformTo.join(' / ')}`,
             detail: `关键词 ${recommendItem.keyword.join(' ')}`,
             value: recommendItem.conversionText,
         };
