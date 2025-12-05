@@ -7,6 +7,12 @@ A powerful variable and path conversion extension. Supports one-key conversion &
 
 > **【近期更新】**
 >
+> **v2.2.0 (2025-12-05)**
+>
+> - 支持配置目标转换格式顺序
+> - 支持展示当前配置的格式顺序信息弹窗，可显示配置重复项和无效项
+> - 支持从弹窗中点击按钮快捷跳转至设置页对应配置项
+>
 > **v2.1.0 (2025-07-14)**
 >
 > - 支持仅开启部分目标转换格式 (优化 VSCode 配置项)
@@ -82,6 +88,7 @@ Or right-click on the selected text -> Convert string to...
 | 变量转换 快速选择 Variable Conversion QuickPick              | Shift + Alt + T        |
 | 变量循环转换→上一个 Variable Cyclic Conversion → Previous one | Ctrl + Alt + [         |
 | 变量循环转换→下一个 Variable Cyclic Conversion → Next one    | Ctrl + Alt + ]         |
+| 显示格式顺序信息弹窗 Show Format Order Info Dialog           | Ctrl + Alt + \`        |
 | 路径转换 快速选择 Path Conversion QuickPick                  | Shift + Alt + /        |
 | 路径循环转换→上一个 Path Cyclic conversion → Previous one    | Ctrl + Alt + /         |
 | 路径循环转换→下一个 Path Cyclic conversion → Next one        | Ctrl + Shift + Alt + / |
@@ -90,10 +97,42 @@ Or right-click on the selected text -> Convert string to...
 
 ## 配置项 Configurations
 
-| 配置项 Configuration Key                | 描述 Description                                             | 配置示例                              | 默认值   |
-| --------------------------------------- | ------------------------------------------------------------ | ------------------------------------- | -------- |
-| `variable-conversion.enabledFormats`    | 配置启用的变量命名方式<br />Configuration of Enabled Variable Naming Conventions. | `{ "xxxCase.enabled": boolean, ... }` | 见配置项 |
-| `variable-conversion.disablePathFormat` | 定义哪些路径风格是禁用的<br />Define which path formats are disabled. | `["windows_style", "unix_style"]`     | 见配置项 |
+| 配置项 Configuration Key                | 描述 Description                                             | 配置示例                                        | 默认值   |
+| --------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------- | -------- |
+| `variable-conversion.enabledFormats`    | 配置启用的变量命名方式<br />Configuration of Enabled Variable Naming Conventions. | `{ "xxxCase.enabled": boolean, ... }`           | 见配置项 |
+| `variable-conversion.formatOrder`       | 配置变量命名方式的显示顺序<br />Configure the display order of variable naming conventions. | `[ "camel_case", "pascal_case", "snake_case" ]` | 见配置项 |
+| `variable-conversion.disablePathFormat` | 定义哪些路径风格是禁用的<br />Define which path formats are disabled. | `["windows_style", "unix_style"]`               | 见配置项 |
+
+配置项如下：
+
+<!--
+GitHub 上这种表格高亮行会有问题（表头不会高亮）
+
+|    ![Enabled Formats](image/settings-enable-formats.png)     | ![Format Order](image/settings-format-order.png) |
+| :----------------------------------------------------------: | :----------------------------------------------: |
+|                   **Enabled Formats 配置**                   |              **Format Order 配置**               |
+| ![Disable Path Format](image/settings-disable-path-format.png) |                                                  |
+|                 **Disable Path Format 配置**                 |                                                  |
+ -->
+
+<table>
+  <tr>
+    <td align="center"><strong>Enabled Formats 配置</strong></td>
+    <td align="center"><strong>Format Order 配置</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="image/settings-enable-formats.png" alt="Enabled Formats"></td>
+    <td align="center"><img src="image/settings-format-order.png" alt="Format Order"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Disable Path Format 配置</strong></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="image/settings-disable-path-format.png" alt="Disable Path Format"></td>
+    <td align="center"></td>
+  </tr>
+</table>
 
 ## 支持的类型 Support Case
 

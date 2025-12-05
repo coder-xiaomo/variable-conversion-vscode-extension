@@ -417,6 +417,12 @@ export const commands: Array<Command> = [
     },
 ];
 
+// settingsKey 到 enableSettingsKey 的映射
+export const settingsKeyToEnableSettingsKey = new Map<string, string>();
+commands.forEach(command => {
+    settingsKeyToEnableSettingsKey.set(command.settingsKey, command.enableSettingsKey);
+});
+
 export interface QuickPickSupportCaseItem {
     type: SupportVariableCase,
     name: string,

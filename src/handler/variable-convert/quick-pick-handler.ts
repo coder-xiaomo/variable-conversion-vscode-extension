@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import QuickPickItemEx from "../types/QuickPickItemExType";
-import { QuickPickSupportCaseItem, quickPickSupportCases } from '../../core/variable-convert/types/SupportVariableCaseType';
+import { QuickPickSupportCaseItem, quickPickSupportCases, settingsKeyToEnableSettingsKey } from '../../core/variable-convert/types/SupportVariableCaseType';
 import { TransformTextResult } from '../../types/TransformTextResultType';
 import { transformMultiSelectionText } from '../../utils/transform';
 import { EOL } from '../../types/EOLType';
@@ -101,20 +101,52 @@ export function handleQuickPick() {
         return;
     }
 
-    // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
     // 获取用户配置
     const enabledFormats = getUserConfigurations<Record<string, boolean>>('enabledFormats') || {};
+    const formatOrder = getUserConfigurations<string[]>('formatOrder') || [];
+
     // 排除禁用的选项
+    // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
     const enabledQuickPickSupportCases = [];
     for (const quickPick of quickPickSupportCases) {
-        if (enabledFormats[quickPick.settingsKey] === false) {
+        const enableSettingsKey = settingsKeyToEnableSettingsKey.get(quickPick.settingsKey);
+        if (!enableSettingsKey) {
+            console.warn('Cannot find enableSettingsKey for settingsKey:', quickPick.settingsKey);
+            continue;
+        }
+        if (enabledFormats[enableSettingsKey] !== true) {
             continue;
         }
         enabledQuickPickSupportCases.push(quickPick);
     }
+
     if (enabledQuickPickSupportCases.length === 0) {
         vscode.window.showInformationMessage('所有格式都已被配置为禁用，请修改配置 `variable-conversion.enabledFormats` 后重试\nAll formats have been configured to disable. Modify the `variable-conversion.enabledFormats` configuration and try again.');
         return;
+    }
+
+    // 按用户配置的顺序排序
+    // issue: #5 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/5
+    // issue: #6 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/6
+    if (formatOrder.length > 0) {
+        enabledQuickPickSupportCases.sort((a, b) => {
+            const indexA = formatOrder.indexOf(a.settingsKey);
+            const indexB = formatOrder.indexOf(b.settingsKey);
+
+            // 如果两个都在配置中，按配置顺序
+            if (indexA !== -1 && indexB !== -1) {
+                return indexA - indexB;
+            }
+            // 如果只有一个在配置中，在配置中的排在前面
+            if (indexA !== -1) {
+                return -1;
+            }
+            if (indexB !== -1) {
+                return 1;
+            }
+            // 如果都不在配置中，保持原有顺序
+            return 0;
+        });
     }
 
     // 基于选中的文本生成选项

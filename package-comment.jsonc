@@ -64,6 +64,11 @@
         },
         "when": "editorTextFocus"
       },
+      // 展示当前配置的转换格式顺序对话框
+      {
+        "command": "variable-conversion.showConvertCaseDetailDialog",
+        "key": "ctrl+alt+\\"
+      },
       // ↓ 路径转换快捷键
       {
         "command": "variable-conversion.convertPath",
@@ -547,7 +552,7 @@
         "variable-conversion.enabledFormats": {
           "type": "object",
           "description": "Tags and options configured here will be used by the Add Tags command to add tags to struct fields. If promptForTags is true, then user will be prompted for tags and options. By default, json tags are added.",
-          "markdownDescription": "配置启用的变量命名方式\n\nConfiguration of Enabled Variable Naming Conventions.\n\n&nbsp;\n\n🌰 e.g. *Mike like eat ice-cream*\n\n对于这个句子，不同命名方式如以下示例：\n\nFor this sentence, different naming conventions are as follows:\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)",
+          "markdownDescription": "配置启用的变量命名方式\n\nConfiguration of Enabled Variable Naming Conventions.\n\n[配置转换顺序](command:workbench.action.openSettings?%5B%22variable-conversion.formatOrder%22%5D)&nbsp;&nbsp;&nbsp;&nbsp;[查看当前配置(对话框)](command:variable-conversion.showConvertCaseDetailDialog)&nbsp;&nbsp;&nbsp;&nbsp;[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n&nbsp;\n\n🌰 e.g. *Mike like eat ice-cream*\n\n对于这个句子，不同命名方式示例如下：\n\nFor this sentence, different naming conventions are as follows:",
           "scope": "window",
           "properties": {
             "lowerCase.enabled": {
@@ -684,7 +689,59 @@
             "dotCamelCase.enabled": false
           }
         },
-        // "variable-conversion.formatOrder": {},
+        "variable-conversion.formatOrder": {
+          "type": "array",
+          "markdownDescription": "配置变量命名方式的显示顺序\n\nConfigure the display order of variable naming conventions.\n\n如果某个格式在 enabledFormats 中被禁用，则即使在 formatOrder 中配置也不会显示。\n\nIf a format is disabled in enabledFormats, it will not be displayed even if configured in formatOrder.\n\n如您通过 [settings.json](command:workbench.action.openSettingsJson) 进行配置，请确保该配置中的格式名称与 enabledFormats 中的保持一致。\n\nWhen configuring via [settings.json](command:workbench.action.openSettingsJson), please ensure that the format names in this configuration match those in enabledFormats.\n\n🌰 e.g. `[\"camel_case\", \"snake_case\", \"pascal_case\"]`\n\n[配置启用的变量命名方式](command:workbench.action.openSettings?%5B%22variable-conversion.enabledFormats%22%5D)&nbsp;&nbsp;&nbsp;&nbsp;[查看当前配置(对话框)](command:variable-conversion.showConvertCaseDetailDialog)&nbsp;&nbsp;&nbsp;&nbsp;[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)",
+          "scope": "window",
+          "items": {
+            "type": "string",
+            "enum": [
+              "camel_case",
+              "pascal_case",
+              "snake_case",
+              "snake_camel_case",
+              "snake_pascal_case",
+              "snake_upper_case",
+              "kebab_case",
+              "kebab_camel_case",
+              "kebab_pascal_case",
+              "kebab_upper_case",
+              "space_case",
+              "space_camel_case",
+              "space_pascal_case",
+              "space_upper_case",
+              "dot_case",
+              "dot_camel_case",
+              "dot_pascal_case",
+              "dot_upper_case",
+              "lower_case",
+              "upper_case"
+            ],
+            "enumDescriptions": [
+              "驼峰命名 (camel_case)",
+              "大驼峰命名 (pascal_case)",
+              "下划线命名 (snake_case)",
+              "下划线驼峰命名 (snake_camel_case)",
+              "下划线大驼峰命名 (snake_pascal_case)",
+              "下划线大写命名 (snake_upper_case)",
+              "连字符命名 (kebab_case)",
+              "连字符驼峰命名 (kebab_camel_case)",
+              "连字符大驼峰命名 (kebab_pascal_case)",
+              "连字符大写命名 (kebab_upper_case)",
+              "空格命名 (space_case)",
+              "空格驼峰命名 (space_camel_case)",
+              "空格大驼峰命名 (space_pascal_case)",
+              "空格大写命名 (space_upper_case)",
+              "点命名 (dot_case)",
+              "点驼峰命名 (dot_camel_case)",
+              "点大驼峰命名 (dot_pascal_case)",
+              "点大写命名 (dot_upper_case)",
+              "全小写命名 (lower_case)",
+              "全大写命名 (upper_case)"
+            ]
+          },
+          "default": []
+        },
         "variable-conversion.disableFormat": {
           "order": 1,
           // markdownDescription 最多配置 11 行
