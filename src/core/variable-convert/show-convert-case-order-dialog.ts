@@ -115,5 +115,23 @@ export function showConvertCaseOrderDialog() {
     message += '- 重复和无效的格式配置可能会导致显示异常\n';
 
     // 显示信息弹窗
-    vscode.window.showInformationMessage<vscode.MessageItem>('格式顺序配置信息', { modal: true, detail: message });
+    vscode.window.showInformationMessage<vscode.MessageItem>(
+        '格式顺序配置信息',
+        { modal: true, detail: message },
+        // 弹窗按钮
+        { title: '插件全部配置' },
+        { title: '配置启用的命名方式' },
+        { title: '配置转换顺序' },
+    ).then(selection => {
+        if (selection) {
+            // 跳转到设置项
+            if (selection.title === '插件全部配置') {
+                vscode.commands.executeCommand('workbench.action.openSettings', 'variable-conversion');
+            } else if (selection.title === '配置启用的命名方式') {
+                vscode.commands.executeCommand('workbench.action.openSettings', 'variable-conversion.enabledFormats');
+            } else if (selection.title === '配置转换顺序') {
+                vscode.commands.executeCommand('workbench.action.openSettings', 'variable-conversion.formatOrder');
+            }
+        }
+    });
 }
