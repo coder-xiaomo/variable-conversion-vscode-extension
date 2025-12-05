@@ -103,6 +103,37 @@ Or right-click on the selected text -> Convert string to...
 | `variable-conversion.formatOrder`       | 配置变量命名方式的显示顺序<br />Configure the display order of variable naming conventions. | `[ "camel_case", "pascal_case", "snake_case" ]` | 见配置项 |
 | `variable-conversion.disablePathFormat` | 定义哪些路径风格是禁用的<br />Define which path formats are disabled. | `["windows_style", "unix_style"]`               | 见配置项 |
 
+配置项如下：
+
+<!--
+GitHub 上这种表格高亮行会有问题（表头不会高亮）
+
+|    ![Enabled Formats](image/settings-enable-formats.png)     | ![Format Order](image/settings-format-order.png) |
+| :----------------------------------------------------------: | :----------------------------------------------: |
+|                   **Enabled Formats 配置**                   |              **Format Order 配置**               |
+| ![Disable Path Format](image/settings-disable-path-format.png) |                                                  |
+|                 **Disable Path Format 配置**                 |                                                  |
+ -->
+
+<table>
+  <tr>
+    <td align="center"><strong>Enabled Formats 配置</strong></td>
+    <td align="center"><strong>Format Order 配置</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="image/settings-enable-formats.png" alt="Enabled Formats"></td>
+    <td align="center"><img src="image/settings-format-order.png" alt="Format Order"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Disable Path Format 配置</strong></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="image/settings-disable-path-format.png" alt="Disable Path Format"></td>
+    <td align="center"></td>
+  </tr>
+</table>
+
 ## 支持的类型 Support Case
 
 ### 变量转换
