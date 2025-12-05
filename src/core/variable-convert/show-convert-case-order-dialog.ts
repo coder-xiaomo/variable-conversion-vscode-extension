@@ -17,6 +17,24 @@ export function showConvertCaseOrderDialog() {
         formatNameMap[item.settingsKey] = item.name;
     });
 
+    // 获取所有有效的settingsKey
+    const validSettingsKeys = new Set(quickPickSupportCases.map(item => item.settingsKey));
+
+    // 检测重复项和无效项
+    const seenSettingsKeys = new Set<string>();
+    const duplicateSettingsKeys = new Set<string>();
+    const invalidSettingsKeys = new Set<string>();
+
+    formatOrder.forEach(format => {
+        if (!validSettingsKeys.has(format)) {
+            invalidSettingsKeys.add(format);
+        } else if (seenSettingsKeys.has(format)) {
+            duplicateSettingsKeys.add(format);
+        } else {
+            seenSettingsKeys.add(format);
+        }
+    });
+
     // 创建settingsKey到enableSettingsKey的映射
     const settingsKeyToEnableKeyMap: Record<string, string> = {};
     commands.forEach(item => {
@@ -30,9 +48,19 @@ export function showConvertCaseOrderDialog() {
     if (formatOrder.length > 0) {
         message += '用户自定义顺序：\n';
         formatOrder.forEach((format, index) => {
-            const isEnabled = enabledFormats[format] !== false;
-            const status = isEnabled ? '✅' : '❌';
-            message += `${index + 1}. ${formatNameMap[format] || format} (${format}) ${status}\n`;
+            const enableKey = settingsKeyToEnableKeyMap[format];
+            const isEnabled = enableKey ? enabledFormats[enableKey] !== false : true;
+            const status = isEnabled ? '✔️' : '❌'; // ✅✔️☑️
+
+            // 添加重复和无效标记
+            let marker = '';
+            if (!validSettingsKeys.has(format)) {
+                marker = ' ❌ (无效格式)';
+            } else if (duplicateSettingsKeys.has(format)) {
+                marker = ' ⚠️ (重复配置)';
+            }
+
+            message += `${index + 1}. ${formatNameMap[format] || format} (${format}) ${marker || status}\n`;
         });
     } else {
         message += '未设置自定义顺序，使用默认顺序\n\n';
@@ -69,7 +97,22 @@ export function showConvertCaseOrderDialog() {
         });
     }
 
-    message += '\n提示：未启用的格式即使在顺序中配置也不会显示在转换选项中';
+    // 警告信息
+    if (duplicateSettingsKeys.size > 0 || invalidSettingsKeys.size > 0) {
+        message += '\n';
+        if (duplicateSettingsKeys.size > 0) {
+            message += `⚠️ 警告：发现重复配置的格式：${Array.from(duplicateSettingsKeys).join(', ')}\n`;
+        }
+
+        if (invalidSettingsKeys.size > 0) {
+            message += `❌ 错误：发现无效格式：${Array.from(invalidSettingsKeys).join(', ')}\n`;
+        }
+    }
+
+    message += '\n';
+    message += '提示：\n';
+    message += '- 未启用的格式即使在顺序中配置也不会显示在转换选项中\n';
+    message += '- 重复和无效的格式配置可能会导致显示异常\n';
 
     // 显示信息弹窗
     vscode.window.showInformationMessage<vscode.MessageItem>('格式顺序配置信息', { modal: true, detail: message });
