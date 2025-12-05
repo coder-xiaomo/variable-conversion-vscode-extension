@@ -10,6 +10,8 @@ A powerful variable and path conversion extension. Supports one-key conversion &
 > **v2.2.0 (2025-12-05)**
 >
 > - 支持配置目标转换格式顺序
+> - 支持展示当前配置的格式顺序信息弹窗，可显示配置重复项和无效项
+> - 支持从弹窗中点击按钮快捷跳转至设置页对应配置项
 >
 > **v2.1.0 (2025-07-14)**
 >
@@ -86,6 +88,7 @@ Or right-click on the selected text -> Convert string to...
 | 变量转换 快速选择 Variable Conversion QuickPick              | Shift + Alt + T        |
 | 变量循环转换→上一个 Variable Cyclic Conversion → Previous one | Ctrl + Alt + [         |
 | 变量循环转换→下一个 Variable Cyclic Conversion → Next one    | Ctrl + Alt + ]         |
+| 显示格式顺序信息弹窗 Show Format Order Info Dialog           | Ctrl + Alt + \`        |
 | 路径转换 快速选择 Path Conversion QuickPick                  | Shift + Alt + /        |
 | 路径循环转换→上一个 Path Cyclic conversion → Previous one    | Ctrl + Alt + /         |
 | 路径循环转换→下一个 Path Cyclic conversion → Next one        | Ctrl + Shift + Alt + / |
