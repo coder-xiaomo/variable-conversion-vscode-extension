@@ -19,6 +19,10 @@ interface RecommendItem {
 /**
  * 弹出的提示
  *
+ * @param textList
+ * @param eol
+ * @param enabledQuickPickSupportCases
+ * @returns
  * @since 2024-12-14
  */
 function generateOptionsBasedOnText(textList: string[], eol: EOL, enabledQuickPickSupportCases: Array<QuickPickSupportCaseItem>): Array<QuickPickItemEx> {

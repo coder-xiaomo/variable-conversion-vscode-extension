@@ -18,6 +18,11 @@ interface RecommendItem {
 
 /**
  * 弹出的提示
+ *
+ * @param textList
+ * @param eol
+ * @param enabledQuickPickSupportCases
+ * @returns
  */
 function generateOptionsBasedOnText(textList: string[], eol: EOL, enabledQuickPickSupportCases: Array<QuickPickSupportCaseItem>): Array<QuickPickItemEx> {
     // Cut text 切割文本

@@ -25,6 +25,14 @@ const userSelection: UserSelection = {
     lastConvertedSelectionsText: [],
 };
 
+/**
+ * 选中文本改变时触发
+ *
+ * @param selections
+ * @param textList
+ * @param eol
+ * @returns
+ */
 export function onUserSelectionUpdated(selections: readonly vscode.Selection[], textList: string[], eol: EOL): void {
     userSelection.currentSelections = selections;
     if (textList.length !== 0 && isStringArrayEqual(textList, userSelection.lastConvertedSelectionsText)) {
