@@ -42,11 +42,13 @@ export function showConvertCaseOrderDialog() {
     });
 
     // 构建显示内容
-    let message = '当前配置的变量命名格式顺序：\n\n';
+    const message = [
+        '当前配置的变量命名格式顺序：\n\n',
+    ];
 
     // 先显示用户配置的顺序
     if (formatOrder.length > 0) {
-        message += '用户自定义顺序：\n';
+        message.push('用户自定义顺序：\n');
         formatOrder.forEach((format, index) => {
             const enableKey = settingsKeyToEnableKeyMap[format];
             const isEnabled = enableKey ? enabledFormats[enableKey] !== false : true;
@@ -60,10 +62,10 @@ export function showConvertCaseOrderDialog() {
                 marker = ' ⚠️ (重复配置)';
             }
 
-            message += `${index + 1}. ${formatNameMap[format] || format} (${format}) ${marker || status}\n`;
+            message.push(`${index + 1}. ${formatNameMap[format] || format} (${format}) ${marker || status}\n`);
         });
     } else {
-        message += '未设置自定义顺序，使用默认顺序\n\n';
+        message.push('未设置自定义顺序，使用默认顺序\n\n');
     }
 
     // 显示未配置但已启用的格式
@@ -76,9 +78,9 @@ export function showConvertCaseOrderDialog() {
         .map(item => item.settingsKey);
 
     if (unconfiguredEnabledFormats.length > 0) {
-        message += '\n未配置但已启用的格式（默认顺序）：\n';
+        message.push('\n未配置但已启用的格式（默认顺序）：\n');
         unconfiguredEnabledFormats.forEach((format, index) => {
-            message += `${formatOrder.length + index + 1}. ${formatNameMap[format] || format} (${format}) ✅\n`;
+            message.push(`${formatOrder.length + index + 1}. ${formatNameMap[format] || format} (${format}) ✔️\n`);
         });
     }
 
@@ -91,33 +93,35 @@ export function showConvertCaseOrderDialog() {
         .map(item => item.settingsKey);
 
     if (disabledFormats.length > 0) {
-        message += '\n未启用的格式：\n';
+        message.push('\n未启用的格式：\n');
         disabledFormats.forEach(format => {
-            message += `- ${formatNameMap[format] || format} (${format}) ❌\n`;
+            message.push(`- ${formatNameMap[format] || format} (${format}) ❌\n`);
         });
     }
 
     // 警告信息
     if (duplicateSettingsKeys.size > 0 || invalidSettingsKeys.size > 0) {
-        message += '\n';
+        message.push('\n');
         if (duplicateSettingsKeys.size > 0) {
-            message += `⚠️ 警告：发现重复配置的格式：${Array.from(duplicateSettingsKeys).join(', ')}\n`;
+            message.push(`⚠️ 警告：发现重复配置的格式：${Array.from(duplicateSettingsKeys).join(', ')}\n`);
         }
 
         if (invalidSettingsKeys.size > 0) {
-            message += `❌ 错误：发现无效格式：${Array.from(invalidSettingsKeys).join(', ')}\n`;
+            message.push(`❌ 错误：发现无效格式：${Array.from(invalidSettingsKeys).join(', ')}\n`);
         }
     }
 
-    message += '\n';
-    message += '提示：\n';
-    message += '- 未启用的格式即使在顺序中配置也不会显示在转换选项中\n';
-    message += '- 重复和无效的格式配置可能会导致显示异常\n';
+    message.push(
+        '\n',
+        '提示：\n',
+        '- 未启用的格式即使在顺序中配置也不会显示在转换选项中\n',
+        '- 重复和无效的格式配置可能会导致显示异常\n',
+    );
 
     // 显示信息弹窗
     vscode.window.showInformationMessage<vscode.MessageItem>(
         '格式顺序配置信息',
-        { modal: true, detail: message },
+        { modal: true, detail: message.join('') },
         // 弹窗按钮
         { title: '插件全部配置' },
         { title: '配置启用的命名方式' },
