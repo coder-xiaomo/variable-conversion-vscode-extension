@@ -455,6 +455,59 @@
             "dotCamelCase.enabled": false
           }
         },
+        "variable-conversion.formatOrder": {
+          "type": "array",
+          "markdownDescription": "配置变量命名方式的显示顺序\n\nConfigure the display order of variable naming conventions.\n\n该配置中的格式名称必须与enabledFormats中的保持一致。如果某个格式在enabledFormats中被禁用，则即使在formatOrder中配置也不会显示。\n\nFormat names in this configuration must be consistent with those in enabledFormats. If a format is disabled in enabledFormats, it will not be displayed even if configured in formatOrder.\n\n&nbsp;\n\n🌰 e.g. `[\"camel_case\", \"snake_case\", \"pascal_case\"]`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)",
+          "scope": "window",
+          "items": {
+            "type": "string",
+            "enum": [
+              "camel_case",
+              "pascal_case",
+              "snake_case",
+              "snake_camel_case",
+              "snake_pascal_case",
+              "snake_upper_case",
+              "kebab_case",
+              "kebab_camel_case",
+              "kebab_pascal_case",
+              "kebab_upper_case",
+              "space_case",
+              "space_camel_case",
+              "space_pascal_case",
+              "space_upper_case",
+              "dot_case",
+              "dot_camel_case",
+              "dot_pascal_case",
+              "dot_upper_case",
+              "lower_case",
+              "upper_case"
+            ],
+            "enumDescriptions": [
+              "驼峰命名 (camel_case)",
+              "大驼峰命名 (pascal_case)",
+              "下划线命名 (snake_case)",
+              "下划线驼峰命名 (snake_camel_case)",
+              "下划线大驼峰命名 (snake_pascal_case)",
+              "下划线大写命名 (snake_upper_case)",
+              "连字符命名 (kebab_case)",
+              "连字符驼峰命名 (kebab_camel_case)",
+              "连字符大驼峰命名 (kebab_pascal_case)",
+              "连字符大写命名 (kebab_upper_case)",
+              "空格命名 (space_case)",
+              "空格驼峰命名 (space_camel_case)",
+              "空格大驼峰命名 (space_pascal_case)",
+              "空格大写命名 (space_upper_case)",
+              "点命名 (dot_case)",
+              "点驼峰命名 (dot_camel_case)",
+              "点大驼峰命名 (dot_pascal_case)",
+              "点大写命名 (dot_upper_case)",
+              "全小写命名 (lower_case)",
+              "全大写命名 (upper_case)"
+            ]
+          },
+          "default": []
+        },
         "variable-conversion.disableFormat": {
           "order": 1,
           "markdownDescription": "定义哪些变量命名方式是禁用的\n\nDefine which variable formats are disabled.\n\n若您感觉以下配置比较麻烦，也可以选择在 `settings.json` 中编辑：\n\nIf you find the following configuration troublesome, you can also edit this configuration item in `settings.json`:\n\n`\"variable-conversion.disableFormat\": [ ... ],`\n\n[在 settings.json 中编辑 (Edit in settings.json)](command:workbench.action.openSettingsJson)\n\n配置后，您可能需要*重启扩展宿主*，或*重启当前窗口*才可使该配置完全生效（二选一即可）:\n\nYou may need to *restart extension host* or *reload window* after configuration to take full effect (either):\n\n[重启扩展宿主 (Restart Extension Host)](command:workbench.action.restartExtensionHost), [重启当前窗口 (Reload Window)](command:workbench.action.reloadWindow)",

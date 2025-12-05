@@ -67,11 +67,15 @@ function lazyConvert() {
 
     // 获取用户配置
     const enabledFormats = getUserConfigurations<Record<string, boolean>>('enabledFormats') || {};
+    const formatOrder = getUserConfigurations<string[]>('formatOrder') || [];
 
     const textList = userSelection.currentSelectionsText;
     // vscode.window.showInformationMessage('lazyConvert' + textList.join('\n'));
     const eol = userSelection.currentEol;
-    const conversionsTarget: Array<string[]> = [textList];
+
+    // 先收集所有启用的格式及其转换结果
+    // const conversionsTarget: Array<string[]> = [textList];
+    const formatMap = new Map<string, string[]>();
     for (const cyclicConvertCase of cyclicConvertCaseOrder) {
         // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
         // 跳过禁用的目标格式
@@ -86,11 +90,34 @@ function lazyConvert() {
             const conversionResult: string = caseConversion(cyclicConvertCase.type, line, eol);
             conversionsTargetItem.push(conversionResult);
         }
-        conversionsTarget.push(conversionsTargetItem);
+        // conversionsTarget.push(conversionsTargetItem);
+        formatMap.set(cyclicConvertCase.settingsKey, conversionsTargetItem);
+    }
+
+    // 根据formatOrder对格式进行排序
+    const orderedConversions: Array<string[]> = [textList];
+    const processedSettingsKeys = new Set<string>();
+    // 先添加在formatOrder中配置的格式
+    for (const formatName of formatOrder) {
+        const conversions = formatMap.get(formatName);
+        if (conversions && !processedSettingsKeys.has(formatName)) {
+            orderedConversions.push(conversions);
+            processedSettingsKeys.add(formatName);
+        }
+    }
+    // 再添加未在formatOrder中配置但启用的格式，保持原有顺序
+    for (const cyclicConvertCase of cyclicConvertCaseOrder) {
+        const settingsKey = cyclicConvertCase.settingsKey;
+        const conversions = formatMap.get(settingsKey);
+        if (conversions && !processedSettingsKeys.has(settingsKey)) {
+            orderedConversions.push(conversions);
+            processedSettingsKeys.add(settingsKey);
+        }
     }
 
     // 按数组去重
-    const noDuplicate = stringListArrayDuplicateRemoval(conversionsTarget);
+    // const noDuplicate = stringListArrayDuplicateRemoval(conversionsTarget);
+    const noDuplicate = stringListArrayDuplicateRemoval(orderedConversions);
     // console.log('noDuplicate', noDuplicate);
 
     userSelection.conversionsTarget = noDuplicate;
