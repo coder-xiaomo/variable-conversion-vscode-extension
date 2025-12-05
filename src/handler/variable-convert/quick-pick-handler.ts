@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import QuickPickItemEx from "../types/QuickPickItemExType";
-import { QuickPickSupportCaseItem, quickPickSupportCases } from '../../core/variable-convert/types/SupportVariableCaseType';
+import { QuickPickSupportCaseItem, quickPickSupportCases, settingsKeyToEnableSettingsKey } from '../../core/variable-convert/types/SupportVariableCaseType';
 import { TransformTextResult } from '../../types/TransformTextResultType';
 import { transformMultiSelectionText } from '../../utils/transform';
 import { EOL } from '../../types/EOLType';
@@ -104,7 +104,12 @@ export function handleQuickPick() {
     // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
     const enabledQuickPickSupportCases = [];
     for (const quickPick of quickPickSupportCases) {
-        if (enabledFormats[quickPick.settingsKey] === false) {
+        const enableSettingsKey = settingsKeyToEnableSettingsKey.get(quickPick.settingsKey);
+        if (!enableSettingsKey) {
+            console.warn('Cannot find enableSettingsKey for settingsKey:', quickPick.settingsKey);
+            continue;
+        }
+        if (enabledFormats[enableSettingsKey] !== true) {
             continue;
         }
         enabledQuickPickSupportCases.push(quickPick);

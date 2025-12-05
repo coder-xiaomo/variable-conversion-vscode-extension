@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { EOL } from "../../types/EOLType";
-import { cyclicConvertCaseOrder } from "./types/SupportVariableCaseType";
+import { cyclicConvertCaseOrder, settingsKeyToEnableSettingsKey } from "./types/SupportVariableCaseType";
 import { caseConversion } from "./conversion";
 import { isStringArrayEqual, stringListArrayDuplicateRemoval } from '../../utils/utils';
 import { getUserConfigurations } from '../../utils/user-configuration';
@@ -79,7 +79,12 @@ function lazyConvert() {
     for (const cyclicConvertCase of cyclicConvertCaseOrder) {
         // issue: #1 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/1
         // 跳过禁用的目标格式
-        if (enabledFormats[cyclicConvertCase.settingsKey] === false) {
+        const enableSettingsKey = settingsKeyToEnableSettingsKey.get(cyclicConvertCase.settingsKey);
+        if (!enableSettingsKey) {
+            console.warn('Cannot find enableSettingsKey for settingsKey:', cyclicConvertCase.settingsKey);
+            continue;
+        }
+        if (enabledFormats[enableSettingsKey] !== true) {
             continue;
         }
 
