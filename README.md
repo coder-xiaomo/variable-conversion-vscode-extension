@@ -7,6 +7,10 @@ A powerful variable and path conversion extension. Supports one-key conversion &
 
 > **【近期更新】**
 >
+> **v2.2.0 (2025-12-05)**
+>
+> - 支持配置目标转换格式顺序
+>
 > **v2.1.0 (2025-07-14)**
 >
 > - 支持仅开启部分目标转换格式 (优化 VSCode 配置项)
@@ -90,10 +94,11 @@ Or right-click on the selected text -> Convert string to...
 
 ## 配置项 Configurations
 
-| 配置项 Configuration Key                | 描述 Description                                             | 配置示例                              | 默认值   |
-| --------------------------------------- | ------------------------------------------------------------ | ------------------------------------- | -------- |
-| `variable-conversion.enabledFormats`    | 配置启用的变量命名方式<br />Configuration of Enabled Variable Naming Conventions. | `{ "xxxCase.enabled": boolean, ... }` | 见配置项 |
-| `variable-conversion.disablePathFormat` | 定义哪些路径风格是禁用的<br />Define which path formats are disabled. | `["windows_style", "unix_style"]`     | 见配置项 |
+| 配置项 Configuration Key                | 描述 Description                                             | 配置示例                                        | 默认值   |
+| --------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------- | -------- |
+| `variable-conversion.enabledFormats`    | 配置启用的变量命名方式<br />Configuration of Enabled Variable Naming Conventions. | `{ "xxxCase.enabled": boolean, ... }`           | 见配置项 |
+| `variable-conversion.formatOrder`       | 配置变量命名方式的显示顺序<br />Configure the display order of variable naming conventions. | `[ "camel_case", "pascal_case", "snake_case" ]` | 见配置项 |
+| `variable-conversion.disablePathFormat` | 定义哪些路径风格是禁用的<br />Define which path formats are disabled. | `["windows_style", "unix_style"]`               | 见配置项 |
 
 ## 支持的类型 Support Case
 

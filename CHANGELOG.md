@@ -25,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [Unreleased]
+
+### Added
+
+- Add new configuration `variable-conversion.formatOrder` to customize the display order of variable naming conventions. (新增 `variable-conversion.formatOrder` 配置项，用于自定义变量命名方式的显示顺序)
+
+### Improved
+
+- Improve cyclic conversion to follow user-configured formatOrder. (改进了循环转换功能，使其遵循用户配置的formatOrder顺序)
+
 ## 2.1.0
 
 ### Changed
