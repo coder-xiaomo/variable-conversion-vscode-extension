@@ -2,11 +2,11 @@
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持多种使用方式，支持大/小驼峰、下划线、连字符、空格/点分隔、大/小写等常用命名方式转换。 \nA powerful variable naming conversion extension. You can use it in many ways. Support camel, pascal, snake, kebab(spinal), space, dot, lower, upper case, and more.",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
-    "vscode": "^1.102.0"
+    "vscode": "^1.109.0"
   },
   "categories": [
     "Other"
@@ -83,6 +83,14 @@
       {
         "command": "variable-conversion.convertCase",
         "title": "变量转换"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertCase.previous",
+        "title": "变量转换 - 转换为上一个命名方式"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertCase.next",
+        "title": "变量转换 - 转换为下一个命名方式"
       },
       {
         "command": "variable-conversion.toCamelCase",
@@ -167,6 +175,14 @@
       {
         "command": "variable-conversion.convertPath",
         "title": "路径转换"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.previous",
+        "title": "路径转换 - 转换为上一个路径格式"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.next",
+        "title": "路径转换 - 转换为下一个路径格式"
       },
       {
         "command": "variable-conversion.pathFormat.toWindowsStyle",
@@ -593,18 +609,17 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
     "test": "vscode-test",
-    "package": "vsce package",
-    "publish": "vsce publish"
+    "package": "npx @vscode/vsce package",
+    "publish": "npx @vscode/vsce publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.102.0",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "@vscode/test-cli": "^0.0.11",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.109.0",
+    "typescript-eslint": "^8.54.0",
+    "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3"
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
   }
 }
