@@ -146,13 +146,21 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(convertCaseDisposable);
 
 	// 注册循环转换 command
-	let loopConvertCasePrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', ({ arrowKey }) => {
-		console.log('variable-conversion.cyclicConvertCase.previous', arrowKey);
+	let loopConvertCasePrevDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.previous', (param) => {
+		// 2026.02.21 fix: 自定义快捷键后, package.json 中注册的 contributes.keybindings 绑定的快捷键 args 参数未携带过来, 导致 param 为 undefined, 直接解包会报错
+		// 不知 vscode 宿主为何未携带 args 参数, 可能是 vscode 侧 bug? 经测试 1.109.5 版本有此问题, 后续问题是否依然存在有待观察
+		// 目前此处不使用 arrowKey 参数, 所以这里暂时不再解包以避免报错影响转换逻辑
+		// issue: #8 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/8
+		console.log('variable-conversion.cyclicConvertCase.previous', 'param:', param); // param.arrowKey
 		CyclicConversionVariable.previousOne();
 	});
 	context.subscriptions.push(loopConvertCasePrevDisposable);
-	let loopConvertCaseNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', ({ arrowKey }) => {
-		console.log('variable-conversion.cyclicConvertCase.next', arrowKey);
+	let loopConvertCaseNextDisposable = vscode.commands.registerCommand('variable-conversion.cyclicConvertCase.next', (param) => {
+		// 2026.02.21 fix: 自定义快捷键后, package.json 中注册的 contributes.keybindings 绑定的快捷键 args 参数未携带过来, 导致 param 为 undefined, 直接解包会报错
+		// 不知 vscode 宿主为何未携带 args 参数, 可能是 vscode 侧 bug? 经测试 1.109.5 版本有此问题, 后续问题是否依然存在有待观察
+		// 目前此处不使用 arrowKey 参数, 所以这里暂时不再解包以避免报错影响转换逻辑
+		// issue: #8 https://github.com/coder-xiaomo/variable-conversion-vscode-extension/issues/8
+		console.log('variable-conversion.cyclicConvertCase.next', 'param:', param); // param.arrowKey
 		CyclicConversionVariable.nextOne();
 	});
 	context.subscriptions.push(loopConvertCaseNextDisposable);
