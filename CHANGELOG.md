@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 2.2.1
+
+### Fixed
+
+- Fix error when pressing shortcut key after customizing it. (修复自定义快捷键后按快捷键报错问题)
+
 ## 2.2.0
 
 ### Added
