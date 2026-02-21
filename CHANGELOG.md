@@ -25,11 +25,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
-## [Unreleased]
+## 2.3.0
 
-### Added
+### Changed
 
 - Add support for displaying friendly Chinese descriptions in the keyboard shortcuts settings page. (在键盘快捷键设置页中支持显示友好中文描述文字)
+
+### Internal
+
+- Update plugin framework dependencies to the latest version. (更新插件框架依赖至最新版本)
 
 ## 2.2.1
 

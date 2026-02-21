@@ -2,7 +2,7 @@
   "name": "variable-conversion",
   "displayName": "Variable Conversion",
   "description": "一个强大的变量名转换插件，支持多种使用方式，支持大/小驼峰、下划线、连字符、空格/点分隔、大/小写等常用命名方式转换。 \nA powerful variable naming conversion extension. You can use it in many ways. Support camel, pascal, snake, kebab(spinal), space, dot, lower, upper case, and more.",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
