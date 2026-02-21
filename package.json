@@ -6,7 +6,7 @@
   "icon": "image/logo.png",
   "publisher": "coder-xiaomo",
   "engines": {
-    "vscode": "^1.102.0"
+    "vscode": "^1.109.0"
   },
   "categories": [
     "Other"
@@ -609,18 +609,17 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
     "test": "vscode-test",
-    "package": "vsce package",
-    "publish": "vsce publish"
+    "package": "npx @vscode/vsce package",
+    "publish": "npx @vscode/vsce publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.102.0",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "@vscode/test-cli": "^0.0.11",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.109.0",
+    "typescript-eslint": "^8.54.0",
+    "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3"
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
   }
 }
