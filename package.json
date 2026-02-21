@@ -85,6 +85,14 @@
         "title": "变量转换"
       },
       {
+        "command": "variable-conversion.cyclicConvertCase.previous",
+        "title": "变量转换 - 转换为上一个命名方式"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertCase.next",
+        "title": "变量转换 - 转换为下一个命名方式"
+      },
+      {
         "command": "variable-conversion.toCamelCase",
         "title": "小驼峰(驼峰)命名 (Camel Case) [ fooBar ]"
       },
@@ -167,6 +175,14 @@
       {
         "command": "variable-conversion.convertPath",
         "title": "路径转换"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.previous",
+        "title": "路径转换 - 转换为上一个路径格式"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.next",
+        "title": "路径转换 - 转换为下一个路径格式"
       },
       {
         "command": "variable-conversion.pathFormat.toWindowsStyle",

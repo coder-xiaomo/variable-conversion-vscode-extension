@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## [Unreleased]
+
+### Added
+
+- Add support for displaying friendly Chinese descriptions in the keyboard shortcuts settings page. (在键盘快捷键设置页中支持显示友好中文描述文字)
+
 ## 2.2.1
 
 ### Fixed

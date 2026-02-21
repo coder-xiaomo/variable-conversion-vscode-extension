@@ -116,6 +116,17 @@
         "title": "变量转换"
       },
       /**
+       * vscode 自定义快捷键页 - 快捷键文字描述
+       */
+      {
+        "command": "variable-conversion.cyclicConvertCase.previous",
+        "title": "变量转换 - 转换为上一个命名方式"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertCase.next",
+        "title": "变量转换 - 转换为下一个命名方式"
+      },
+      /**
        * 右键菜单 - 子菜单
        */
       // group-1-camel
@@ -241,6 +252,17 @@
       {
         "command": "variable-conversion.convertPath",
         "title": "路径转换"
+      },
+      /**
+       * vscode 自定义快捷键页 - 快捷键文字描述
+       */
+      {
+        "command": "variable-conversion.cyclicConvertPath.previous",
+        "title": "路径转换 - 转换为上一个路径格式"
+      },
+      {
+        "command": "variable-conversion.cyclicConvertPath.next",
+        "title": "路径转换 - 转换为下一个路径格式"
       },
       /**
        * 右键菜单 - 子菜单
