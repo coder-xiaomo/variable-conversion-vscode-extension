@@ -25,6 +25,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 2.3.1
+
+This release does not include functional changes (本次变更不包含功能性改动)
+
+### Added
+
+- Extension is now also published to the Open VSX Registry. (扩展同步发布至 Open VSX Registry)
+
 ## 2.3.0
 
 ### Changed
