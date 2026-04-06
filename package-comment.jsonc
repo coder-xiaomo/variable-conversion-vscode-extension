@@ -932,7 +932,7 @@
     "lint": "eslint src",
     "test": "vscode-test",
     "package": "npx @vscode/vsce package",
-    "publish": "npx @vscode/vsce publish"
+    "publish": "npx @vscode/vsce publish & npx ovsx publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
