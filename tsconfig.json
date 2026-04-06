@@ -13,5 +13,8 @@
 		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
 		// "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
 		// "noUnusedParameters": true,  /* Report errors on unused parameters. */
+
+		// 2026.04.06 移除打包产物中的不必要代码注释
+		"removeComments": true,
 	}
 }
