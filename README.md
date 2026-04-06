@@ -1,6 +1,6 @@
 # 变量命名转换助手 — Variable Conversion (VSCode 扩展)
 
-[Marketplace](https://marketplace.visualstudio.com/items?itemName=coder-xiaomo.variable-conversion) [GitHub](https://github.com/coder-xiaomo/variable-conversion-vscode-extension.git) [Gitee](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git)
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=coder-xiaomo.variable-conversion) [OpenVSX](https://open-vsx.org/extension/coder-xiaomo/variable-conversion) [GitHub](https://github.com/coder-xiaomo/variable-conversion-vscode-extension.git) [Gitee](https://gitee.com/coder-xiaomo/variable-conversion-vscode-extension.git)
 
 一个强大的变量命名及路径风格转换插件，支持一键转换、循环转换，支持右键菜单、快捷键、状态栏等多种方式使用。<br>
 A powerful variable and path conversion extension. Supports one-key conversion & cyclic conversion. You can use it through the editor menu, shortcut keys and status bar.
