@@ -25,6 +25,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -->
 
+## 2.3.2
+
+This release does not include functional changes (本次变更不包含功能性改动)
+
+### Internal
+
+- Align extension version numbers across different marketplaces. (对齐不同扩展市场间的版本号)
+
 ## 2.3.1
 
 This release does not include functional changes (本次变更不包含功能性改动)
