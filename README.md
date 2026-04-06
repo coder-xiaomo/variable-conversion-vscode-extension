@@ -12,6 +12,7 @@ A powerful variable and path conversion extension. Supports one-key conversion &
 > - 支持配置目标转换格式顺序
 > - 支持展示当前配置的格式顺序信息弹窗，可显示配置重复项和无效项
 > - 支持从弹窗中点击按钮快捷跳转至设置页对应配置项
+<!--
 >
 > **v2.1.0 (2025-07-14)**
 >
@@ -20,6 +21,7 @@ A powerful variable and path conversion extension. Supports one-key conversion &
 > **v2.0.0 (2024-12-15)**
 >
 > - 支持 Windows / Unix 路径风格转换（可选中文本中的路径，然后使用  `Ctrl + Alt + /` 快捷键，或点击右键菜单、底部状态栏路径转换按钮轻松实现转换）
+ -->
 
 - ✅ 支持多选区 Support multi-selection
 - ✅ 支持多窗口 Support subwindow

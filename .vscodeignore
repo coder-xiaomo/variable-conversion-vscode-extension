@@ -14,3 +14,9 @@ vsc-extension-quickstart.md
 docs/**
 package-comment.jsonc
 test-code.md
+out/test/**
+
+# README.md 在打包时, 内部图片引用地址会变更为 GitHub 仓库 raw 地址, 此处无需打包进 .vsix 包中
+image/**
+# logo.png 是扩展图标, 需要保留
+!image/logo.png
