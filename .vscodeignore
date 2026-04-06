@@ -9,3 +9,8 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+
+# 打包时排除的目录
+docs/**
+package-comment.jsonc
+test-code.md
